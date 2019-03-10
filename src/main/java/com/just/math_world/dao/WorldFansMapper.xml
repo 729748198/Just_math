@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.just.math_world.dao.WorldFansMapper" >
+  <resultMap id="BaseResultMap" type="com.just.math_world.entity.WorldFans" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="follower" property="follower" jdbcType="VARCHAR" />
+    <result column="created_at" property="createdAt" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, username, follower, created_at
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from world_fans
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectByUsername" resultType="com.just.math_world.entity.WorldFans" parameterType="java.lang.String">
+    select
+    <include refid="Base_Column_List"/>
+    from  world_fans
+    where username = ${name}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from world_fans
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.just.math_world.entity.WorldFans" >
+    insert into world_fans (id, username, follower, 
+      created_at)
+    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{follower,jdbcType=VARCHAR}, 
+      #{createdAt,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.just.math_world.entity.WorldFans" >
+    insert into world_fans
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="follower != null" >
+        follower,
+      </if>
+      <if test="createdAt != null" >
+        created_at,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="follower != null" >
+        #{follower,jdbcType=VARCHAR},
+      </if>
+      <if test="createdAt != null" >
+        #{createdAt,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.just.math_world.entity.WorldFans" >
+    update world_fans
+    <set >
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="follower != null" >
+        follower = #{follower,jdbcType=VARCHAR},
+      </if>
+      <if test="createdAt != null" >
+        created_at = #{createdAt,jdbcType=DATE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.just.math_world.entity.WorldFans" >
+    update world_fans
+    set username = #{username,jdbcType=VARCHAR},
+      follower = #{follower,jdbcType=VARCHAR},
+      created_at = #{createdAt,jdbcType=DATE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

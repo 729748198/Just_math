@@ -1,0 +1,896 @@
+*
+{
+    margin:0;
+    padding:0;
+    border:0;
+    font-family: "微软雅黑", Times, serif;
+}
+button:hover
+{
+    cursor: pointer;
+}
+ul.worldnav
+{
+    list-style-type:none;
+    margin:0;
+    padding:0;
+    position: relative;
+    left:20%;
+    height: auto;
+}
+li.worldnav
+{
+    display:inline-block;
+    left:10%;
+    height:50px;
+    width: 15%;
+}
+a.nava:link,a.nava:visited
+{
+    left:35%;
+    font-weight:bold;
+    color:#FFFFFF;
+    padding :2% ;
+    line-height:300%;
+    height:171%;
+    text-decoration:none;
+    text-transform:uppercase;
+    text-align: center;
+    top:12%;
+    position:relative;
+}
+a.nava:hover,a.nava:active
+{
+    color:orange;
+}
+div.nav
+{
+    width:100%;
+    height:auto;
+    z-index:9999;
+    position:fixed;
+    top:0;
+    left:0;
+    margin: 0;
+    display: inline-block;
+}
+img.navbgc
+{
+    width:100%;
+    height:auto ;
+    position: absolute;
+}
+img.navimg
+{
+    height:172%;
+    width:auto;
+    position: absolute;
+    display: inline-block;
+}
+img.navimg1
+{
+    left:-200%;
+    top:-66%;
+    height:250%;
+}
+img.navimg2
+{
+    left:-90%;
+}
+img.navimg3
+{
+    left:-90%;
+    top:-66%;
+    height:225%;
+}
+img.navimg4
+{
+    left:-110%;
+    top:-50%;
+}
+div.container
+{
+    top:60px;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    position: relative;
+}
+div.worldmain
+{
+    top:-2px;
+    width: 915px;
+    height:758px;
+    left:210px;
+    background-color:lightblue;
+    position: relative;
+    display: inline-block;
+}
+div.user
+{
+    position:absolute;
+    top: 7px;
+    left:12px;
+    width: 218px;
+    height: 238px;
+    background-color: #ffffff;
+    display:inline-block;
+}
+
+div.worldsubmit
+{
+    position:absolute;
+    top: 7px;
+    left:240px;
+    width: 663px;
+    height: 178px;
+    background-color: #ffffff;
+    display:inline-block;
+}
+div.worldclassify
+{
+    position:absolute;
+    top: 195px;
+    left:240px;
+    width: 663px;
+    height: 48px;
+    background-color: #ffffff;
+    display:inline-block;
+    border-bottom-left-radius: 8.5px;
+    border-top-left-radius: 8.5px;
+}
+div.worldcolumn
+{
+    position:absolute;
+    top: 250px;
+    left:12px;
+    width: 218px;
+    height: 469px;
+    background-color: #ffffff;
+    display:inline-block;
+}
+div.worldcontent
+{
+    position:absolute;
+    top: 250px;
+    left:240px;
+    width: 663px;
+    height: 469px;
+    background-color: #ffffff;
+    display:inline-block;
+    overflow: auto;
+}
+img.worldbcg
+{
+    position: absolute;
+    top:-1px;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: auto;
+}
+img.worlduser
+{
+    width: 50%;
+    height: auto;
+    display: inline-block;
+    border-radius: 50%;
+    position: absolute;
+    left:25%;
+    top:10%;
+}
+span.username
+{
+    position :relative;
+    width: 20%;
+    font-size: 15px;
+    left: 30%;
+    top:60%;
+}
+#customers
+{
+    font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+    width:100%;
+    border-collapse:collapse;
+    display: inline-block;
+    position: relative;
+    top:60%;
+    left:10%;
+}
+#customers td, #customers th
+{
+    font-size:11px;
+    border:none;
+    padding:8px 16px;
+}
+#customers th
+{
+    font-size:15px;
+    text-align:center;
+    padding-top:5px;
+    padding-bottom:4px;
+    background-color:#A7C942;
+    color:#ffffff;
+}
+input.world-user-submit
+{
+    width: 90%;
+    height:70%;
+    top:3%;
+    left:4.5%;
+    display: block;
+    position:relative;
+    border: solid 2px gray ;
+    text-align: start;
+    overflow: auto;
+    filter: alpha(opacity:0.5);
+}
+button.world-submit-button
+{
+    width: 88px;
+    left : 85%;
+    height:25px;
+    bottom:4%;
+    background-color: lightblue;
+    display: block;
+    position:absolute;
+    font-size: 15px;
+    text-align: center;
+    border-radius: 8px;
+    cursor: pointer;
+}
+button.world-submit-button:hover
+{
+    font-weight: bold;
+}
+button.world-submit-button:visited,button.world-submit-button:active
+{
+    border: none;
+    text-decoration: none;
+}
+ul.world-classify-ul
+{
+    list-style-type:none;
+    margin:0;
+    padding:0;
+    position: relative;
+    height: 100%;
+}
+li.world-classify-il
+{
+    display:inline-block;
+    height:100%;
+    width: 15%;
+    bottom:50%;
+    line-height: 45px;
+    font-size: 18px;
+    text-align: center;
+    border-radius: 8px;
+}
+li.world-classify-il:hover
+{
+    background-color: powderblue;
+    cursor: pointer;
+}
+ul.world-col-ul
+{
+    list-style-type:none;
+    margin:0;
+    padding:0;
+    position: relative;
+    height: 100%;
+    top:50px;
+}
+li.world-col-li
+{
+    height:88px;
+    width: 100%;
+    bottom:50%;
+    line-height: 88px;
+    font-size: 23px;
+    text-align: center;
+    display: block;
+}
+li.world-col-li:hover
+{
+    background-color: lightblue;
+    cursor: pointer;
+    font-weight: bold;
+}
+.mymath-container
+{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    position: relative;
+}
+ul.mymathnav
+{
+    list-style-type:none;
+    margin:0;
+    padding:0;
+    position: relative;
+    left:15%;
+    height: auto;
+    width: 1000px;
+
+}
+li.mymathnav
+{
+    display:inline-block;
+    left:38%;
+    height:50px;
+    width: 30%;
+}
+img.navimg-mm
+{
+    height:150%;
+    width:auto;
+    position: absolute;
+    display: inline-block;
+}
+img.navimg1-mm
+{
+    left:-200%;
+    top:-50%;
+    height:200%;
+}
+img.navimg2-mm
+{
+    left:-90%;
+    height:225%;
+    top:-66%;
+}
+img.navimg3-mm
+{
+    left:-90%;
+    top:-50%;
+    height:200%;
+}
+div.mymathmain
+{
+    top:12px;
+    width: 915px;
+    height:700px;
+    left:210px;
+    background-color:rgb(181,205,231);
+    position: relative;
+    display: inline-block;
+
+}
+img.navtitle-mm
+{
+    width: 235px;
+    display:inline-block;
+    top:-45px;
+    left:80%;
+    position: absolute;
+    z-index: 1;
+}
+div.user-mm
+{
+    background-color:white;
+    height:90px;
+    width: 220px;
+    display: inline-block;
+    position: absolute;
+    top:12px;
+    left:8px;
+}
+img.user-mm
+{
+    top:10px;
+    left:10px;
+    height:70px;
+    border-radius: 100px;
+    display: inline-block;
+    position: absolute;
+}
+a.user-mm-name
+{
+    text-decoration: none;
+    cursor: default;
+    color: black;
+    display:inline-block;
+    position: absolute;
+    line-height: 90px;
+    left:100px;
+    font-weight: bold;
+}
+div.project-mm
+{
+    background-color: #FFFFFF;
+    width:220px;
+    height:275px;
+    display: inline-block;
+    position: absolute;
+    top:110px;
+    left:8px;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 40px;
+}
+div.project-mm-content
+{
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+p.text-indent
+{
+    text-indent: 15px;
+}
+div.zhushi-mm
+{
+    background-color: #FFFFFF;
+    width:220px;
+    height:300px;
+    display: inline-block;
+    position: absolute;
+    top:400px;
+    left:8px;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 33px;
+    overflow: hidden;
+}
+div.zhushi-mm-content
+{
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width:100px;
+}
+p.zhushi-right
+{
+    text-align: right;
+}
+#zhushiimg1-mm
+{
+    width:95%;
+    display: inline-block;
+    position: absolute;
+    right:-25px;
+    top:-8px;
+}
+#zhushiimg2-mm
+{
+    width:120%;
+    display: inline-block;
+    position: absolute;
+    right:-5px;
+    top:100px;
+}
+div.mytree
+{
+    width:660px;
+    height:685px;
+    display: inline-block;
+    position: absolute;
+    left:236px;
+    top:12px;
+    background-color: rgb(208,234,232);
+}
+#tree
+{
+    width:660px;
+}
+ul.qa-col
+{
+    text-decoration: none;
+    list-style: none;
+    text-align: center;
+    position: absolute;
+    top:8px;
+    left: 18px;
+}
+li.qa-col
+{
+    display: inline-block;
+    width: 33%;
+    line-height: 65px;
+    margin:5px;
+    font-size: 20px;
+}
+li.qa-col1
+{
+    width:410px;
+    background-color:dodgerblue;
+}
+li.qa-col2
+{
+    width: 250px;
+    background-color:cadetblue;
+}
+li.qa-col3
+{
+    width: 180px;
+    background-color: darkorange;
+}
+button.qa-button
+{
+    border: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    width: 100%;
+    height:100%;
+    line-height: 65px;
+    background-color:rgba(0,0,0,0);
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+button.qa-button:hover
+{
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 65px;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+div.qa-box
+{
+    background-color: #FFFFFF;
+    width:889px;
+    height: 626px;
+    display: inline-block;
+    position: absolute;
+    top:95px;
+    left:12px;
+}
+img.qa-table-user
+{
+    width: 55px;
+    border-radius: 100%;
+}
+table.qa-table
+{
+    border: none;
+    width: 871px;
+    left:8px;
+    top:12px;
+    border-radius:8px;
+    position: absolute;
+}
+tr.qa-table
+{
+    width: 871px;
+    height: 71px;
+    background-color:lightblue;
+    border-radius: 5%;
+    top:12px;
+    left:8px;
+    border:0;
+
+}
+div.rating-col
+{
+    width: 213px;
+    height: 700px;
+    background-color: #FFFFFF;
+    display: inline-block;
+    position: absolute;
+    top:7px;
+    left: 11px;
+}
+div.rating-user
+{
+    width: 446px;
+    height: 107px;
+    background-color: #FFFFFF;
+    display: inline-block;
+    position: absolute;
+    top:7px;
+    left: 234px;
+}
+div.rating-content
+{
+    width: 446px;
+    height: 635px;
+    background-color: #FFFFFF;
+    display: inline-block;
+    position: absolute;
+    top:121px;
+    left: 234px;
+}
+div.rating-rules
+{
+    width: 215px;
+    height: 541px;
+    background-color: #FFFFFF;
+    display: inline-block;
+    position: absolute;
+    top:7px;
+    left: 690px;
+}
+ul.rating-col
+{
+    width: 215px;
+    height: 669px;
+    text-align: center;
+    position: relative;
+    top:10px;
+    text-decoration: none;
+    list-style-type: none;
+}
+li.rating-col0
+{
+    font-size: 20px;
+    height:40px;
+}
+button.rating-col1
+{
+    line-height: 28px;
+    height: 28px;
+    font-size: 18px;
+    width:180px;
+    margin: 5px;
+    background-color: lightblue;
+    border-radius: 8px;
+}
+button.rating-col
+{
+    line-height: 28px;
+    height: 26px;
+    font-size: 15px;
+    margin: 5px;
+    background-color: #FFFFFF;
+    text-align: left;
+    width: 60%;
+    display: inline-block;
+}
+img.rating-button
+{
+    height: 26px;
+    background:url(/img/button.png) -5px -5px;
+}
+img.rating-user
+{
+    height:80px;
+    border-radius: 100%;
+    display: inline-block;
+    position: absolute;
+    top:13%;
+    left: 5%;
+}
+div.rating-user-ifo
+{
+    display: inline-block;
+    position: absolute;
+    top:30%;
+    left:25%;
+}
+div.rating-user-score
+{
+    font-size: 30px;
+    font-weight: bold;
+    color:lawngreen;
+    display: inline-block;
+    position: absolute;
+    top:30%;
+    right:10%;
+}
+p.rating-user-name
+{
+    font-size: 18px;
+    font-weight: bold;
+}
+p.rating-user-mingci
+{
+    font-size: 15px;
+    color: gray;
+}
+img.rating-medal
+{
+    height:50px;
+}
+img.rating-table-user
+{
+    height:58px;
+    border-radius: 100%;
+}
+th.rating-table-th
+{
+    line-height: 35px;
+    font-size: 15px;
+}
+th.rating-col1
+{
+    width:100px;
+}
+th.rating-col2
+{
+    width:80px;
+}
+th.rating-col3
+{
+    width:200px;
+    text-align: left;
+}
+th.rating-col4
+{
+    width:100px;
+    font-size: 23px;
+    color: orange;
+}
+th.rating-three
+{
+    font-size: 25px;
+    font-weight: bold;
+}
+img.hp-bgc
+{
+    width: 100%;
+    display: inline-block;
+    position: absolute;
+    z-index: -1;
+}
+div.jing
+{
+    width:250px;
+    height:250px;
+    color: #FFFFFF;
+    font-size: 85px;
+    line-height: 250px;
+    text-align: center;
+    display: inline-block;
+    position: absolute;
+    top:235px;
+    left:150px;
+    border-radius: 100%;
+    z-index: 1;
+    opacity: 0.9;
+    text-shadow:0 0 10px #FFFFFF;
+    background: -webkit-radial-gradient(#405999 23%,#405999 ,white ); /* Safari 5.1 - 6.0 */
+    background: -o-radial-gradient(#405999 23%, #405999 ,white ); /* Opera 11.6 - 12.0 */
+    background: -moz-radial-gradient(#405999 23%, #405999,white ); /* Firefox 3.6 - 15 */
+    background: radial-gradient(#405999 23%, #405999 ,white ); /* 标准的语法（必须放在最后） */
+}
+div.hu
+{
+    width:250px;
+    height:250px;
+    color: #FFFFFF;
+    background-color: #4284A6;
+    font-size: 85px;
+    line-height: 250px;
+    text-align: center;
+    display: inline-block;
+    position: absolute;
+    top:235px;
+    left:550px;
+    border-radius: 100%;
+    z-index: 1;
+    opacity: 0.9;
+    text-shadow:0 0 10px #FFFFFF;
+    background: -webkit-radial-gradient(#4284A6 23%,#4284A6,white); /* Safari 5.1 - 6.0 */
+    background: -o-radial-gradient(#4284A6 23%,#4284A6,white); /* Opera 11.6 - 12.0 */
+    background: -moz-radial-gradient(#4284A6 23%,#4284A6,white); /* Firefox 3.6 - 15 */
+    background: radial-gradient(#4284A6 23%,#4284A6,white); /* 标准的语法（必须放在最后） */
+}
+div.tong
+{
+    width:250px;
+    height:250px;
+    color: #FFFFFF;
+    background-color: #3DAFAE;
+    font-size: 85px;
+    line-height: 250px;
+    text-align: center;
+    display: inline-block;
+    position: absolute;
+    top:235px;
+    left:950px;
+    border-radius: 100%;
+    z-index: 1;
+    opacity: 0.9;
+    text-shadow:0 0 10px #FFFFFF;
+    background: -webkit-radial-gradient(#3DAFAE 23%,#3DAFAE,white); /* Safari 5.1 - 6.0 */
+    background: -o-radial-gradient(#3DAFAE 23%,#3DAFAE,white); /* Opera 11.6 - 12.0 */
+    background: -moz-radial-gradient(#3DAFAE 23%,#3DAFAE,white); /* Firefox 3.6 - 15 */
+    background: radial-gradient(#3DAFAE 23%,#3DAFAE,white); /* 标准的语法（必须放在最后） */
+}
+div.menu
+{
+    font-size: 25px;
+    width:180px;
+    height:250px;
+    top:5px;
+    left: 60px;
+    display: none;
+    position: absolute;
+    opacity: 0.8;
+    border-radius: 100%;
+    z-index: 10;
+}
+div.jing:hover
+{
+    width:300px;
+    height: 300px;
+    top: 210px;
+    left: 125px;
+    line-height: 300px;
+    opacity: 1;
+    background: -webkit-radial-gradient(#405999,#405999); /* Safari 5.1 - 6.0 */
+    background: -o-radial-gradient(#405999,#405999); /* Opera 11.6 - 12.0 */
+    background: -moz-radial-gradient(#405999,#405999); /* Firefox 3.6 - 15 */
+    background: radial-gradient(#405999,#405999); /* 标准的语法（必须放在最后） */
+}
+div.hu:hover
+{
+    width:300px;
+    height: 300px;
+    top: 210px;
+    left: 525px;
+    line-height: 300px;
+    opacity: 1;
+    background-color: #4284A6;
+    background: -webkit-radial-gradient(#4284A6,#4284A6); /* Safari 5.1 - 6.0 */
+    background: -o-radial-gradient(#4284A6,#4284A6); /* Opera 11.6 - 12.0 */
+    background: -moz-radial-gradient(#4284A6,#4284A6); /* Firefox 3.6 - 15 */
+    background: radial-gradient(#4284A6,#4284A6); /* 标准的语法（必须放在最后） */
+}
+div.tong:hover
+{
+    width:300px;
+    height: 300px;
+    top: 210px;
+    left: 925px;
+    line-height: 300px;
+    opacity: 1;
+    background-color: #3DAFAE;
+    background: -webkit-radial-gradient(#3DAFAE,#3DAFAE); /* Safari 5.1 - 6.0 */
+    background: -o-radial-gradient(#3DAFAE,#3DAFAE); /* Opera 11.6 - 12.0 */
+    background: -moz-radial-gradient(#3DAFAE,#3DAFAE); /* Firefox 3.6 - 15 */
+    background: radial-gradient(#3DAFAE,#3DAFAE); /* 标准的语法（必须放在最后） */
+}
+div.jing:hover .jing-menu
+{
+    display:block;
+}
+div.hu:hover .hu-menu
+{
+    display:block;
+}
+div.tong:hover .tong-menu
+{
+    display:block;
+}
+ul.hp-menu
+{
+    line-height: 25px;
+    text-decoration: none;
+    list-style-type: none;
+    color: white;
+    padding-top: 25px;
+}
+ul.tong-menu
+{
+    top:40px;
+    display: inline-block;
+    position: absolute;
+}
+li.tong-menu
+{
+    width: 180px;
+}
+a.hp-a
+{
+    line-height: 80px;
+    text-decoration: none;
+    list-style-type: none;
+    color: black;
+}
+div.menu ul li:hover
+{
+    background-color: gainsboro;
+    border-radius: 10px;
+}

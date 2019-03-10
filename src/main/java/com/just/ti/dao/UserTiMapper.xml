@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.just.ti.dao.UserTiMapper" >
+  <resultMap id="BaseResultMap" type="com.just.ti.entity.UserTi" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="ti_id" property="tiId" jdbcType="INTEGER" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="is_do" property="isDo" jdbcType="INTEGER" />
+    <result column="dotime" property="dotime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.just.ti.entity.UserTiWithBLOBs" extends="BaseResultMap" >
+    <result column="doanswer" property="doanswer" jdbcType="LONGVARCHAR" />
+    <result column="rightanswer" property="rightanswer" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, ti_id, username, is_do, dotime
+  </sql>
+  <sql id="Blob_Column_List" >
+    doanswer, rightanswer
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from user_ti
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user_ti
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.just.ti.entity.UserTiWithBLOBs" >
+    insert into user_ti (id, ti_id, username, 
+      is_do, dotime, doanswer, 
+      rightanswer)
+    values (#{id,jdbcType=INTEGER}, #{tiId,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, 
+      #{isDo,jdbcType=INTEGER}, #{dotime,jdbcType=TIMESTAMP}, #{doanswer,jdbcType=LONGVARCHAR}, 
+      #{rightanswer,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.just.ti.entity.UserTiWithBLOBs" >
+    insert into user_ti
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="tiId != null" >
+        ti_id,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="isDo != null" >
+        is_do,
+      </if>
+      <if test="dotime != null" >
+        dotime,
+      </if>
+      <if test="doanswer != null" >
+        doanswer,
+      </if>
+      <if test="rightanswer != null" >
+        rightanswer,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="tiId != null" >
+        #{tiId,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="isDo != null" >
+        #{isDo,jdbcType=INTEGER},
+      </if>
+      <if test="dotime != null" >
+        #{dotime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="doanswer != null" >
+        #{doanswer,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="rightanswer != null" >
+        #{rightanswer,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.just.ti.entity.UserTiWithBLOBs" >
+    update user_ti
+    <set >
+      <if test="tiId != null" >
+        ti_id = #{tiId,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="isDo != null" >
+        is_do = #{isDo,jdbcType=INTEGER},
+      </if>
+      <if test="dotime != null" >
+        dotime = #{dotime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="doanswer != null" >
+        doanswer = #{doanswer,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="rightanswer != null" >
+        rightanswer = #{rightanswer,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.just.ti.entity.UserTiWithBLOBs" >
+    update user_ti
+    set ti_id = #{tiId,jdbcType=INTEGER},
+      username = #{username,jdbcType=VARCHAR},
+      is_do = #{isDo,jdbcType=INTEGER},
+      dotime = #{dotime,jdbcType=TIMESTAMP},
+      doanswer = #{doanswer,jdbcType=LONGVARCHAR},
+      rightanswer = #{rightanswer,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.just.ti.entity.UserTi" >
+    update user_ti
+    set ti_id = #{tiId,jdbcType=INTEGER},
+      username = #{username,jdbcType=VARCHAR},
+      is_do = #{isDo,jdbcType=INTEGER},
+      dotime = #{dotime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

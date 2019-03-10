@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.just.ti.dao.AnswerMapper" >
+  <resultMap id="BaseResultMap" type="com.just.ti.entity.Answer" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="ti_id" property="tiId" jdbcType="INTEGER" />
+    <result column="answer_type" property="answerType" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.just.ti.entity.AnswerWithBLOBs" extends="BaseResultMap" >
+    <result column="answer" property="answer" jdbcType="LONGVARCHAR" />
+    <result column="jiexi" property="jiexi" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, ti_id, answer_type
+  </sql>
+  <sql id="Blob_Column_List" >
+    answer, jiexi
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from ti_answer
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ti_answer
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.just.ti.entity.AnswerWithBLOBs" >
+    insert into ti_answer (id, ti_id, answer_type, 
+      answer, jiexi)
+    values (#{id,jdbcType=INTEGER}, #{tiId,jdbcType=INTEGER}, #{answerType,jdbcType=INTEGER}, 
+      #{answer,jdbcType=LONGVARCHAR}, #{jiexi,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.just.ti.entity.AnswerWithBLOBs" >
+    insert into ti_answer
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="tiId != null" >
+        ti_id,
+      </if>
+      <if test="answerType != null" >
+        answer_type,
+      </if>
+      <if test="answer != null" >
+        answer,
+      </if>
+      <if test="jiexi != null" >
+        jiexi,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="tiId != null" >
+        #{tiId,jdbcType=INTEGER},
+      </if>
+      <if test="answerType != null" >
+        #{answerType,jdbcType=INTEGER},
+      </if>
+      <if test="answer != null" >
+        #{answer,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="jiexi != null" >
+        #{jiexi,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.just.ti.entity.AnswerWithBLOBs" >
+    update ti_answer
+    <set >
+      <if test="tiId != null" >
+        ti_id = #{tiId,jdbcType=INTEGER},
+      </if>
+      <if test="answerType != null" >
+        answer_type = #{answerType,jdbcType=INTEGER},
+      </if>
+      <if test="answer != null" >
+        answer = #{answer,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="jiexi != null" >
+        jiexi = #{jiexi,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.just.ti.entity.AnswerWithBLOBs" >
+    update ti_answer
+    set ti_id = #{tiId,jdbcType=INTEGER},
+      answer_type = #{answerType,jdbcType=INTEGER},
+      answer = #{answer,jdbcType=LONGVARCHAR},
+      jiexi = #{jiexi,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.just.ti.entity.Answer" >
+    update ti_answer
+    set ti_id = #{tiId,jdbcType=INTEGER},
+      answer_type = #{answerType,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

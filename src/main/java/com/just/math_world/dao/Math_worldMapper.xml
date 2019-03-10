@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.just.math_world.dao.Math_worldMapper" >
+  <resultMap id="BaseResultMap" type="com.just.math_world.entity.Math_world" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="user" property="user" jdbcType="VARCHAR" />
+    <result column="creat_time" property="creatTime" jdbcType="TIMESTAMP" />
+    <result column="worldtype" property="worldtype" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="is_OK" property="isOk" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.just.math_world.entity.Math_world" extends="BaseResultMap" >
+    <result column="content" property="content" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, user, creat_time, worldtype, title, is_OK
+  </sql>
+  <sql id="Blob_Column_List" >
+    content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from math_world
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectAll" resultMap="ResultMapWithBLOBs"  >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from math_world
+  </select>
+  <select id="selectJing" resultMap="ResultMapWithBLOBs"  >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from math_world
+    where is_OK=1
+  </select>
+  <select id="selectPic" resultMap="ResultMapWithBLOBs"  >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from math_world
+    where worldtype=1;
+  </select>
+  <select id="selectTxt" resultMap="ResultMapWithBLOBs"  >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from math_world
+    where worldtype=0;
+  </select>
+  <select id="selectVdo" resultMap="ResultMapWithBLOBs"  >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from math_world
+    where worldtype=2;
+  </select>
+  <select id="selectByUsername" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from math_world
+    where user = #{name,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from math_world
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.just.math_world.entity.Math_world" >
+    insert into math_world (ID, user, creat_time, 
+      worldtype, title, is_OK,
+      content)
+    values (#{id,jdbcType=INTEGER}, #{user,jdbcType=VARCHAR}, #{creatTime,jdbcType=TIMESTAMP}, 
+      #{worldtype,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{isOk,jdbcType=INTEGER},
+      #{content,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.just.math_world.entity.Math_world" >
+    insert into math_world
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="user != null" >
+        user,
+      </if>
+      <if test="creatTime != null" >
+        creat_time,
+      </if>
+      <if test="worldtype != null" >
+        worldtype,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="isOk != null" >
+        is_OK,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="user != null" >
+        #{user,jdbcType=VARCHAR},
+      </if>
+      <if test="creatTime != null" >
+        #{creatTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="worldtype != null" >
+        #{worldtype,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="isOk != null" >
+        #{isOk,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.just.math_world.entity.Math_world" >
+    update math_world
+    <set >
+      <if test="user != null" >
+        user = #{user,jdbcType=VARCHAR},
+      </if>
+      <if test="creatTime != null" >
+        creat_time = #{creatTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="worldtype != null" >
+        worldtype = #{worldtype,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="isOk != null" >
+        is_OK = #{isOk,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.just.math_world.entity.Math_world" >
+    update math_world
+    set user = #{user,jdbcType=VARCHAR},
+      creat_time = #{creatTime,jdbcType=TIMESTAMP},
+      worldtype = #{worldtype,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR},
+      is_OK = #{isOk,jdbcType=INTEGER},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.just.math_world.entity.Math_world" >
+    update math_world
+    set user = #{user,jdbcType=VARCHAR},
+      creat_time = #{creatTime,jdbcType=TIMESTAMP},
+      worldtype = #{worldtype,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR},
+      is_OK = #{isOk,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
