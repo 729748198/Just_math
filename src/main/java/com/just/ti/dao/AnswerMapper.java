@@ -10,6 +10,11 @@ public interface AnswerMapper {
 
     int insertSelective(AnswerWithBLOBs record);
 
+    /**
+     * 根据问题ID查找答案
+     * @param id
+     * @return
+     */
     AnswerWithBLOBs selectByPrimaryKey(Integer id);
 
     int updateByPrimaryKeySelective(AnswerWithBLOBs record);

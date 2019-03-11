@@ -8,6 +8,11 @@ public interface UserTiMapper {
 
     int insert(UserTiWithBLOBs record);
 
+    /**
+     * 插入数据
+     * @param record
+     * @return
+     */
     int insertSelective(UserTiWithBLOBs record);
 
     UserTiWithBLOBs selectByPrimaryKey(Integer id);

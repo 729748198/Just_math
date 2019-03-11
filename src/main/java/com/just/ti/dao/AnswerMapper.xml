@@ -22,7 +22,7 @@
     ,
     <include refid="Blob_Column_List" />
     from ti_answer
-    where id = #{id,jdbcType=INTEGER}
+    where ti_id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from ti_answer

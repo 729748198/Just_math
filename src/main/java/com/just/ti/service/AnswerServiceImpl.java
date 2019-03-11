@@ -1,5 +1,7 @@
 package com.just.ti.service;
 
+import com.just.ti.dao.AnswerMapper;
+import com.just.ti.entity.AnswerWithBLOBs;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,4 +12,10 @@ import org.springframework.stereotype.Service;
 @Service("AnswerServiceImpl")
 public class AnswerServiceImpl implements AnswerService {
 
+    @Autowired
+    AnswerMapper mapper;
+    @Override
+    public AnswerWithBLOBs selectByQId(Integer id) {
+        return mapper.selectByPrimaryKey(id);
+    }
 }

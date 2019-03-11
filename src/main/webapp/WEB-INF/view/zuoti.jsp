@@ -19,7 +19,7 @@
 <html>
 <head>
     <title>做题Demo</title>
-    <script src="https://www.wiris.net/demo/editor/editor"></script>
+    <script src="<%=basePath%>/js/editor.js"></script>
     <script src="<%=basePath%>/js/jquery-1.8.3.min.js"></script>
 </head>
 <body>
@@ -40,12 +40,34 @@
 </script>
 <div id="editorContainer"></div>
 <button id="su"> 提交</button>
+<p id="messg"></p>
+<div id="answer"></div>
+
 <script>
     $(document).ready(function () {
         $("#su").click(function () {
-            console.log($(".wrs_container").html());
             var doanswer=$(".wrs_container").html();
+            $.ajax({
+                type:"POST",
+                url:"http://localhost:8080/ti/doanswer",
+                data:{
+                    username:${user},
+                    doanswer:doanswer,
+                    ti_id:${ti_id}
 
+                },
+                dataType:"json",
+                success:function (data) {
+                    console.log(data.rightanswer);
+                    $("#messg").html(data.mess);
+                    $("#answer").html(data.rightanswer);
+
+                },
+                error:function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("请求失败");
+                }
+
+            })
 
         })
 
