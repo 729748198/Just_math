@@ -29,7 +29,7 @@
 </listener>
 
   <welcome-file-list>
-    <welcome-file>/index.jsp</welcome-file>
+    <welcome-file>/welcome.jsp</welcome-file>
 
   </welcome-file-list>
 
@@ -51,7 +51,7 @@
 </servlet-mapping>
 
   <error-page>
-    <location>/user/Login</location>
+    <location>/just/error</location>
   </error-page>
 </web-app>
         
