@@ -539,12 +539,13 @@ button.qa-button:hover
 div.qa-box
 {
     background-color: #FFFFFF;
-    width:889px;
+    width:900px;
     height: 626px;
     display: inline-block;
     position: absolute;
     top:95px;
-    left:12px;
+    left: 10px;
+    overflow: scroll;
 }
 img.qa-table-user
 {
@@ -554,22 +555,87 @@ img.qa-table-user
 table.qa-table
 {
     border: none;
-    width: 871px;
-    left:8px;
-    top:12px;
-    border-radius:8px;
+    width: 866px;
+    left:5px;
+    top:8px;
     position: absolute;
 }
 tr.qa-table
 {
-    width: 871px;
+    width: 100%;
     height: 71px;
     background-color:lightblue;
-    border-radius: 5%;
-    top:12px;
-    left:8px;
-    border:0;
-
+    border-radius: 8px;
+    border: none;
+    margin: 12px;
+    margin-left: 0;
+    display: inline-block;
+    position: relative;
+}
+td.qa-table
+{
+    border: none;
+    text-align: center;
+    font-size: 18px;
+}
+td.qa-title
+{
+    width: 450px;
+    display: inline-block;
+    position:relative;
+    line-height: 71px;
+    left: 25px;
+    z-index: 32;
+    text-align: left;
+}
+text.title
+{
+    width:300px;
+}
+a.qa-title
+{
+    text-decoration: none;
+    color: black;
+}
+a.qa-title:hover
+{
+    font-weight: bold;
+    cursor: pointer;
+}
+text.bubble
+{
+    padding:0 5px;
+    text-align: center;
+    font-size: 12px;
+    width: auto;
+    height: 18px;
+    line-height: 18px;
+    background-color: #60A7BB;
+    border-radius: 3px;
+    display: inline-block;
+    position: relative;
+    top:-16px;
+}
+td.qa-userimg
+{
+    display: inline-block;
+    position: absolute;
+    right: 30%;
+    top:10%;
+}
+td.qa-username
+{
+    display: inline-block;
+    position: absolute;
+    right: 18%;
+    top:33%;
+}
+td.qa-date
+{
+    display: inline-block;
+    position: absolute;
+    right: 5%;
+    top:33%;
 }
 div.rating-col
 {
@@ -893,4 +959,160 @@ div.menu ul li:hover
 {
     background-color: gainsboro;
     border-radius: 10px;
+}
+img.welbcg
+{
+    position: absolute;
+    top:-16px;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: auto;
+}
+div.wel-intro
+{
+    width: 100%;
+    height: 279px;
+    display: inline-block;
+    position: absolute;
+    overflow: hidden;
+}
+img.wel-img
+{
+    width: 100%;
+    height: 279px;
+    display: inline-block;
+    position: absolute;
+    z-index: 1;
+}
+div.welmain
+{
+    top:-2px;
+    width: 915px;
+    height:736px;
+    left:210px;
+    background-color:lightblue;
+    position: relative;
+    display: inline-block;
+}
+div.wel-intro-text
+{
+    height: 100%;
+    padding:80px 88px 0 88px;
+    text-align: left;
+    text-indent: 2em;
+    background-color:rgba(220,220,220,0.5);
+    display: inline-block;
+    position: absolute;
+    font-size: 20px;
+    z-index: 999;
+}
+div.wel-teacher
+{
+    width: 264px;
+    height: 418px;
+    display: inline-block;
+    position: absolute;
+    top:288px;
+    background-color: #FFFFFF;
+}
+text.teacher-1
+{
+    font-size:28px;
+    font-weight: bold;
+    font-family: 楷体;
+    display: inline-block;
+    position: absolute;
+    top:3px;
+    left: 3px;
+    text-align: left;
+}
+img.wel-teacher
+{
+    width: 95px;
+    border-radius: 100%;
+    display: inline-block;
+    position: absolute;
+    top:40px;
+    left:5px;
+}
+text.teacher-2
+{
+    font-size:22px;
+    font-weight: bolder;
+    font-family: 楷体;
+    display: inline-block;
+    position: absolute;
+    top:55px;
+    right: 45px;
+    text-align: left;
+}
+text.teacher-3
+{
+    width:180px;
+    font-size:15px;
+    display: inline-block;
+    position: absolute;
+    top:150px;
+    left:25px;
+    text-align: left;
+    text-indent: 2em;
+}
+
+#container{
+    position: absolute;
+    width: 642px;
+    height: 418px;
+    overflow: hidden;
+    top:288px;
+    left:272px;
+    z-index: 999;
+}
+.pic{
+    width:2668px;
+    position: absolute;
+    left:0;
+    animation-name: focusmap;
+    animation-duration: 12s;
+    animation-iteration-count: infinite;
+
+}
+@keyframes focusmap {
+    0%,30%{
+        left: 0;
+    }
+    35%,65%{
+        left: -642px;
+    }
+    70%,99%{
+        left: -1284px;
+    }
+    100%{
+        left: -1926px;
+    }
+
+}
+.pic li{
+    float: left;
+    background: #5dd94e;
+}
+
+.pic li img {
+    width: 642px;
+    height: 418px;
+}
+div.wel-link
+{
+    display: inline-block;
+    position: absolute;
+    top:666px;
+    left: -200px;
+}
+img.wel-link
+{
+    display: inline-block;
+    position: absolute;
+    right:-85px;
+    top:-10px;
+    height:75px;
 }

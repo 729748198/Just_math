@@ -65,65 +65,24 @@
 
         <!--内容-->
         <div class="qa-box">
-            <%--<form action="<%=basePath%>saveshouyeContent1" method="post" id="saveTiezi">--%>
-                <%--<label for="mainTitle">帖子标题</label>--%>
-                <%--<input type="text" name="mainTitle" id="mainTitle" placeholder="最大长度80个汉字" style="width:360px;">--%>
-                <%--<c:choose>--%>
-                    <%--<c:when test="${sessionScope.loginFlag}">--%>
-                        <%--<button type="button" class="btn btn-primary btn-xs text-right" onclick="subForm()" >发表帖子</button>--%>
-                    <%--</c:when>--%>
-                    <%--<c:otherwise>--%>
-                        <%--<button type="button" class="btn btn-primary btn-xs text-right" onclick="goLogin()">发表帖子</button>--%>
-                    <%--</c:otherwise>--%>
-                <%--</c:choose>--%>
-                <%--<!-- 加载编辑器的容器 -->--%>
-                <%--<div style="padding: 0px;margin: 0px;width: 100%;height: 100%;" >--%>
-                    <%--<script id="container" name="content" type="text/plain">--%>
-
-                    <%--</script>--%>
-                <%--</div>--%>
-            <%--</form>--%>
-
-            <%--<!-- 配置文件 -->--%>
-            <%--<script type="text/javascript" src="<%=basePath %>/js/uedit/js/ueditor.config.js"> </script>--%>
-            <%--<!-- 编辑器源码文件 -->--%>
-            <%--<script type="text/javascript" src="<%=basePath %>/js/uedit/js/ueditor.all.js"> </script>--%>
-            <%--<!-- 实例化编辑器 -->--%>
-            <%--<script type="text/javascript">--%>
-                <%--var editor = UE.getEditor('container');--%>
-                <%--var success = ${sessionScope.loginFlag};--%>
-                <%--editor.addListener('ready',function (){--%>
-                    <%--if(success){--%>
-                        <%--console.log("OK");--%>
-                        <%--return;--%>
-                    <%--}else{--%>
-                        <%--editor.setDisabled('fullscreen');--%>
-                        <%--editor.setContent('<br/><br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="<%=basePath%>login.jsp" target="_parent" onclick="goLogin()">请登录</a>');--%>
-                    <%--}--%>
-                <%--});--%>
-                <%--function goLogin(){--%>
-                    <%--if (confirm('发帖前请先登录,确定跳转登录页面')){--%>
-                        <%--window.location.href="<%=basePath%>login.jsp";--%>
-                    <%--}--%>
-                <%--}--%>
-                <%--function subForm (){--%>
-                    <%--var content = editor.getContent();--%>
-                    <%--var mainTitle = $("#mainTitle").val();--%>
-                    <%--if (content === '' || mainTitle === ''){--%>
-                        <%--alert ("请输入标题与内容");--%>
-                    <%--}else{--%>
-                        <%--$("#saveTiezi").submit();--%>
-                    <%--}--%>
-                <%--}--%>
-            <%--</script>--%>
             <table class="qa-table">
                 <c:forEach items="${tiezi}" var="tie"  >
                 <tr class="qa-table">
-                    <th class="qa-table">${tie.mainTitle}</th>
-                    <%--<th class="qa-table">1283</th>--%>
-                    <th class="qa-table"><img src="<%=basePath%>img/worlduser.jpg" alt="" class="qa-table-user" ></th>
-                    <th class="qa-table">${tie.mainCreatuser}</th>
-                    <th class="qa-table"><fmt:formatDate value="${tie.mainCreatime}" pattern="yyyy年MM月dd日HH点mm分ss秒" /></th>
+                    <%--帖子标题--%>
+                        <td class="qa-table qa-title">
+                            <nobr>
+                                <text class="title">
+                                    <a href="" class="qa-title">${tie.forumMain.mainTitle}</a>
+                                </text>
+                                <text class="bubble">${tie.forumInfo.infoReply}</text>
+                            </nobr>
+                        </td>
+                        <%--照片--%>
+                        <td class="qa-table qa-userimg"><img src="<%=basePath%>img/worlduser.jpg" alt="" class="qa-table-user" ></td>
+                        <%--创建者--%>
+                        <td class="qa-table qa-username">${tie.forumMain.mainCreatuser}</td>
+                        <%--创建时间--%>
+                        <td class="qa-table qa-date"><fmt:formatDate value="${tie.forumMain.mainCreatime}" pattern="yyyy年MM月dd日HH点mm分ss秒" /></td>
                 </tr>
                 </c:forEach>
             </table>
@@ -132,31 +91,7 @@
     </div>
 
 </div>
-<form >
-    <label >帖子标题</label>
-    <input type="text" name="mainTitle" placeholder="最大长度80个汉字" style="width:360px;">
-    <button type="submit" class="btn btn-primary btn-xs text-right">
-        发表帖子
-    </button>
-    <div>
-        <script id="container" name="content" type="text/plain">
-
-        </script>
-    </div>
-</form>
-<!-- 配置文件 -->
-<script type="text/javascript" src="<%=basePath%>/js/uedit/js/ueditor.config.js"> </script>
-<!-- 编辑器源码文件 -->
-<script type="text/javascript" src="<%=basePath%>/js/uedit/js/ueditor.all.js"> </script>
-<!-- 实例化编辑器 -->
-<script type="text/javascript">
-    var editor = UE.getEditor('container');
-</script>
 
 
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="<%=basePath %>/js/jquery-1.8.3.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="<%=basePath %>/js/bootstrap.min.js"></script>
 </body>
 </html>

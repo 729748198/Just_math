@@ -1,7 +1,9 @@
 package com.just;
 
+import com.just.fatie.entity.ForumInfo;
 import com.just.fatie.entity.ForumMain;
 import com.just.fatie.service.FatieService;
+import com.just.fatie.service.ForumInfoService;
 import com.just.math_world.entity.Math_world;
 import com.just.math_world.entity.WorldFans;
 import com.just.math_world.entity.WorldFollow;
@@ -13,6 +15,7 @@ import com.just.ti.service.AnswerService;
 import com.just.ti.service.QuestionService;
 import com.just.user.entity.Rank;
 import com.just.user.service.RankService;
+import com.sun.org.apache.xerces.internal.xs.datatypes.ObjectList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,9 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author 贺文杰
@@ -34,23 +35,25 @@ public class JSPController {
     //大数世界
 
     @Autowired
-    WorldService Worldservice;
+    WorldService worldService;
 
     @Autowired
-    WorldFollowService Followservice;
+    WorldFollowService followService;
 
     @Autowired
-    WorldFansService FansService;
+    WorldFansService fansService;
 
     //师生答疑
 
     @Autowired
-    FatieService Fatieservice;
+    FatieService fatieService;
+    @Autowired
+    ForumInfoService forumInfoService;
 
     //排名
 
     @Autowired
-    RankService Rankservice;
+    RankService rankService;
 
     //做题
 
@@ -82,10 +85,10 @@ public class JSPController {
     @RequestMapping("/MathWorld")
     public String mathworld(HttpServletRequest request, HttpServletResponse response){
         String username=(String) request.getSession().getAttribute("user");
-        List<WorldFollow> follows=Followservice.getByUsername(username);
-        List<WorldFans>fans=FansService.selectByUsername(username);
-        List<Math_world> worlds=Worldservice.getall();
-        List<Math_world> myworlds=Worldservice.getbyuser(username);
+        List<WorldFollow> follows=followService.getByUsername(username);
+        List<WorldFans>fans=fansService.selectByUsername(username);
+        List<Math_world> worlds=worldService.getall();
+        List<Math_world> myworlds=worldService.getbyuser(username);
         request.setAttribute("follow",follows);
         request.setAttribute("fans",fans);
         request.setAttribute("worlds",worlds);
@@ -121,8 +124,24 @@ public class JSPController {
     @RequestMapping("/Q&A")
     public String qa(HttpServletRequest request, HttpServletResponse response){
 
-        List<ForumMain>forumMainList=Fatieservice.selectAll();
-        request.setAttribute("tiezi",forumMainList);
+        /**
+         * 查找所有帖子
+         */
+        List<ForumMain>forumMainList=fatieService.selectAll();
+        /**
+         * 新建一个List存储帖子信息和回复信息
+         */
+        List<Map<String,Object>> lists=new ArrayList<Map<String, Object>>();
+        for (ForumMain m :
+                forumMainList) {
+            Map<String,Object>map=new HashMap<String, Object>(2);
+            ForumInfo forumInfo=forumInfoService.selectByMainId(m.getMainId());
+            map.put("forumMain",m);
+            map.put("forumInfo",forumInfo);
+            lists.add(map);
+
+        }
+        request.setAttribute("tiezi",lists);
         return "Q&A";
     }
 
@@ -135,7 +154,7 @@ public class JSPController {
         String username=(String) request.getSession().getAttribute("user");
         int cout=0;
         int he=0;
-        List<Rank> rankList=Rankservice.selectAll();
+        List<Rank> rankList=rankService.selectAll();
         Comparator<Rank> comparator=new Comparator<Rank>() {
             @Override
             public int compare(Rank o1, Rank o2) {

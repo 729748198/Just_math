@@ -13,10 +13,16 @@
     info_id, info_reply, info_see, info_lastuser, info_lastime, main_id
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
+    select
     <include refid="Base_Column_List" />
     from forum_info
     where info_id = #{infoId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByMainID" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from forum_info
+    where main_id = #{mainId,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from forum_info
