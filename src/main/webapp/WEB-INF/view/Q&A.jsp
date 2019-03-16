@@ -28,22 +28,22 @@
     <img class="navbgc" src="<%=basePath%>img/q&anav.jpg" alt="">
     <ul class="worldnav">
         <li class="worldnav">
-            <a class="nava" href="http://localhost:8080/just/index">
+            <a class="nava" href="<%=path%>/just/index">
                 <img src="<%=basePath%>img/navhome.png" alt="" class="navimg navimg1">主页
             </a>
         </li>
         <li class="worldnav">
-            <a class="nava" href="http://localhost:8080/just/MathWorld">
+            <a class="nava" href="<%=path%>/just/MathWorld">
                 <img src="<%=basePath%>img/navworld.png" alt="" class="navimg navimg2">大数世界
             </a>
         </li>
         <li class="worldnav">
-            <a class="nava" href="http://localhost:8080/just/Q&A">
+            <a class="nava" href="<%=path%>/just/Q&A">
                 <img src="<%=basePath%>img/navq&a.png" alt="" class="navimg navimg3">师生答疑
             </a>
         </li>
         <li class="worldnav">
-            <a class="nava" href="http://localhost:8080/just/Rank">
+            <a class="nava" href="<%=path%>/just/Rank">
                 <img src="<%=basePath%>img/navrating.png" alt="" class="navimg navimg4">积分排行
             </a>
         </li>
@@ -82,7 +82,7 @@
                         <%--创建者--%>
                         <td class="qa-table qa-username">${tie.forumMain.mainCreatuser}</td>
                         <%--创建时间--%>
-                        <td class="qa-table qa-date"><fmt:formatDate value="${tie.forumMain.mainCreatime}" pattern="yyyy年MM月dd日HH点mm分ss秒" /></td>
+                        <td class="qa-table qa-date"><fmt:formatDate value="${tie.forumMain.mainCreatime}" pattern="yyyy年MM月dd日" /></td>
                 </tr>
                 </c:forEach>
             </table>

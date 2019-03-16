@@ -28,7 +28,7 @@
     <!--导航栏-->
     <ul class="mymathnav">
         <li class="mymathnav">
-            <a class="nava" href="http://localhost:8080/just/index">
+            <a class="nava" href="<%=path%>/just/index">
                 <img src="<%=basePath%>img/navhome1.png" alt="" class="navimg-mm navimg1-mm">主页
             </a>
         </li>

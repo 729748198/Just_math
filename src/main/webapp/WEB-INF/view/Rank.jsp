@@ -19,6 +19,7 @@
     <meta charset="UTF-8">
     <title>积分排行</title>
     <link rel="stylesheet" href="<%=basePath%>/css/main.css" type="text/css">
+    <script src="<%=basePath%>/js/jquery-1.8.3.min.js"></script>
 </head>
 <body>
 <!--导航栏-->
@@ -26,22 +27,22 @@
     <img class="navbgc" src="<%=basePath%>img/ratingnav.jpg" alt="">
     <ul class="worldnav">
         <li class="worldnav">
-            <a class="nava" href="http://localhost:8080/user/index">
+            <a class="nava" href="<%=path%>/user/index">
                 <img src="<%=basePath%>img/navhome.png" alt="" class="navimg navimg1">主页
             </a>
         </li>
         <li class="worldnav">
-            <a class="nava" href="http://localhost:8080/user/MathWorld">
+            <a class="nava" href="<%=path%>/user/MathWorld">
                 <img src="<%=basePath%>img/navworld.png" alt="" class="navimg navimg2">大数世界
             </a>
         </li>
         <li class="worldnav">
-            <a class="nava" href="http://localhost:8080/user/Q&A">
+            <a class="nava" href="<%=path%>/user/Q&A">
                 <img src="<%=basePath%>img/navq&a.png" alt="" class="navimg navimg3">师生答疑
             </a>
         </li>
         <li class="worldnav">
-            <a class="nava" href="http://localhost:8080/user/Rank">
+            <a class="nava" href="<%=path%>/user/Rank">
                 <img src="<%=basePath%>img/navrating.png" alt="" class="navimg navimg4">积分排行
             </a>
         </li>
@@ -57,25 +58,26 @@
         <div class="rating-col">
             <ul class="rating-col">
                 <li class="rating-col0">排行榜</li>
-                <li class="rating-col1"><button class="rating-col1">总排行</button></li>
+                <li class="rating-col1"><button class="rating-col1" id="he">总排行</button></li>
                 <li class="rating-col1"><button class="rating-col1">章节排行</button></li>
-                <li class="rating-col2"><button class="rating-col"><img src="<%=basePath%>img/button.png" alt="" class="rating-button"> 高数第一章</button></li>
-                <li class="rating-col2"><button class="rating-col"><img src="<%=basePath%>img/button.png" alt="" class="rating-button"> 高数第二章</button></li>
-                <li class="rating-col2"><button class="rating-col"><img src="<%=basePath%>img/button.png" alt="" class="rating-button"> 高数第三章</button></li>
-                <li class="rating-col2"><button class="rating-col"><img src="<%=basePath%>img/button.png" alt="" class="rating-button"> 高数第四章</button></li>
-                <li class="rating-col2"><button class="rating-col"><img src="<%=basePath%>img/button.png" alt="" class="rating-button"> 高数第五章</button></li>
-                <li class="rating-col2"><button class="rating-col"><img src="<%=basePath%>img/button.png" alt="" class="rating-button"> 高数第六章</button></li>
-                <li class="rating-col2"><button class="rating-col"><img src="<%=basePath%>img/button.png" alt="" class="rating-button"> 高数第七章</button></li>
-                <li class="rating-col2"><button class="rating-col"><img src="<%=basePath%>img/button.png" alt="" class="rating-button"> 高数第八章</button></li>
-                <li class="rating-col2"><button class="rating-col"><img src="<%=basePath%>img/button.png" alt="" class="rating-button"> 高数第九章</button></li>
-                <li class="rating-col2"><button class="rating-col"><img src="<%=basePath%>img/button.png" alt="" class="rating-button"> 高数第十章</button></li>
-                <li class="rating-col2"><button class="rating-col"><img src="<%=basePath%>img/button.png" alt="" class="rating-button"> 高数第十一章</button></li>
-                <li class="rating-col2"><button class="rating-col"><img src="<%=basePath%>img/button.png" alt="" class="rating-button"> 高数第十二章</button></li>
-                <li class="rating-col2"><button class="rating-col"><img src="<%=basePath%>img/button.png" alt="" class="rating-button"> 概率论</button></li>
-                <li class="rating-col2"><button class="rating-col"><img src="<%=basePath%>img/button.png" alt="" class="rating-button"> 离散数学</button></li>
+                <li class="rating-col2"><button class="rating-col" id="one"><img src="<%=basePath%>img/button.png" alt="" class="rating-button"> 高数第一章</button></li>
+                <li class="rating-col2"><button class="rating-col" id="two"><img src="<%=basePath%>img/button.png" alt="" class="rating-button"> 高数第二章</button></li>
+                <li class="rating-col2"><button class="rating-col" id="three"><img src="<%=basePath%>img/button.png" alt="" class="rating-button"> 高数第三章</button></li>
+                <li class="rating-col2"><button class="rating-col" id="four"><img src="<%=basePath%>img/button.png" alt="" class="rating-button"> 高数第四章</button></li>
+                <li class="rating-col2"><button class="rating-col" id="five"><img src="<%=basePath%>img/button.png" alt="" class="rating-button"> 高数第五章</button></li>
+                <li class="rating-col2"><button class="rating-col" id="six"><img src="<%=basePath%>img/button.png" alt="" class="rating-button"> 高数第六章</button></li>
+                <li class="rating-col2"><button class="rating-col" id="seven"><img src="<%=basePath%>img/button.png" alt="" class="rating-button"> 高数第七章</button></li>
+                <li class="rating-col2"><button class="rating-col" id="eight"><img src="<%=basePath%>img/button.png" alt="" class="rating-button"> 高数第八章</button></li>
+                <li class="rating-col2"><button class="rating-col" id="nine"><img src="<%=basePath%>img/button.png" alt="" class="rating-button"> 高数第九章</button></li>
+                <li class="rating-col2"><button class="rating-col" id="ten"><img src="<%=basePath%>img/button.png" alt="" class="rating-button"> 高数第十章</button></li>
+                <li class="rating-col2"><button class="rating-col" id="eleven"><img src="<%=basePath%>img/button.png" alt="" class="rating-button"> 高数第十一章</button></li>
+                <li class="rating-col2"><button class="rating-col" id="tweven"><img src="<%=basePath%>img/button.png" alt="" class="rating-button"> 高数第十二章</button></li>
+                <li class="rating-col2"><button class="rating-col" id="gailv"><img src="<%=basePath%>img/button.png" alt="" class="rating-button"> 概率论</button></li>
+                <li class="rating-col2"><button class="rating-col" id="lisan"><img src="<%=basePath%>img/button.png" alt="" class="rating-button"> 离散数学</button></li>
             </ul>
         </div>
         <!--玩家排行-->
+        <div id="content">
         <div class="rating-user">
             <img src="<%=basePath%>img/worlduser.jpg" alt="" class="rating-user">
             <div class="rating-user-ifo">
@@ -121,6 +123,15 @@
                 </c:forEach>
             </table>
         </div>
+        </div>
+        <script>
+            $(document).ready(function () {
+                $(".rating-col2").click(function () {
+                    var ban=this.text;
+                    alert(ban);
+                })
+            })
+        </script>
         <!--榜单规则-->
         <div class="rating-rules">
             <div style="left: 10px;top:10px;display: inline;position: absolute;">

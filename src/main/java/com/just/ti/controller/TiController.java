@@ -1,8 +1,11 @@
 package com.just.ti.controller;
 
 import com.just.ti.entity.AnswerWithBLOBs;
+import com.just.ti.entity.ChoiceWithBLOBs;
+import com.just.ti.entity.Question;
 import com.just.ti.entity.UserTiWithBLOBs;
 import com.just.ti.service.AnswerService;
+import com.just.ti.service.Choiceservice;
 import com.just.ti.service.QuestionService;
 import com.just.ti.service.UserTiService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +34,14 @@ public class TiController {
     @Autowired
     UserTiService userTiService;
 
+    @Autowired
+    Choiceservice choiceservice;
+    /**
+     * 提交题目
+     * @param response
+     * @param request
+     * @return
+     */
     @RequestMapping("/doanswer")
     @ResponseBody
     public Map<String, String> doanswer(HttpServletResponse response, HttpServletRequest request){
@@ -72,5 +83,21 @@ public class TiController {
     }
 
 
+    @RequestMapping("/getone")
+    @ResponseBody
+    public Map<String,String> getone(){
+        Question question=questionService.selectById(3);
+        System.out.println(question.getTiTitle());
+        ChoiceWithBLOBs choiceWithBLOBs=choiceservice.selectById(3);
+        Map<String,String>map=new HashMap<>(7);
+        map.put("title",question.getTiTitle());
+        map.put("A",choiceWithBLOBs.getPa());
+        map.put("B",choiceWithBLOBs.getPb());
+        map.put("C",choiceWithBLOBs.getPc());
+        map.put("D",choiceWithBLOBs.getPd());
+        map.put("jiexi",choiceWithBLOBs.getJiexi());
+        map.put("answer",choiceWithBLOBs.getAnswer());
+        return map;
+    }
 
 }

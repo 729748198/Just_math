@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
-  Date: 2019/3/9
-  Time: 10:25
+  Date: 2019/3/15
+  Time: 21:25
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -13,19 +13,17 @@
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
     String socketPath = request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>难题突破</title>
+    <title>资料解析</title>
     <link rel="stylesheet" href="<%=basePath%>css/main.css" type="text/css">
 </head>
 <body>
 
-<!--container-->
 <div class="mymath-container">
     <!--background-->
-    <img src="<%=basePath%>img/exe-bcg.png" class="worldbcg" alt="">
+    <img src="<%=basePath%>img/database-bcg.png" class="worldbcg" alt="">
     <!--导航栏-->
     <ul class="mymathnav">
         <li class="mymathnav">
@@ -34,7 +32,7 @@
             </a>
         </li>
         <li class="mymathnav">
-            <a class="nava" href="<%=path%>/just/zuoti">
+            <a class="nava" href="<%=path%>/just/ti">
                 <img src="<%=basePath%>img/exe-exe.png" alt="" class="navimg-mm navimg2-mm">难题突破
             </a>
         </li>
@@ -68,30 +66,48 @@
                 </ul>
             </div>
         </div>
-        <!--题目-->
+        <!--资料-->
         <div class="exe-exe">
             <!--抬头-->
             <p class="exe-chapter">高等数学 > 函数与极限</p>
-            <!--emmm，这里的示例表示难度系数两颗星（一颗星 to left, white 66%, skyblue 33%, blue；两颗星 to right, blue, skyblue 66%, white 33%；三颗星 to right, blue, skyblue），嗯就是这样-->
-            <div class="exe-progressbar" style="background: linear-gradient(to right, blue, skyblue 66%, white 33%); ">
-                <img src="<%=basePath%>img/exe-probar.png" alt="" class="exe-probar">
-            </div>
-            <!--答题-->
+            <!--内容-->
             <div class="exe-content">
-                <div class="exercise-content">
-                    设x=1,y=2,x+y=（）？设x=1,y=2,x+y=（）？设x=1,y=2,x+y=（）？设x=1,y=2,x+y=（）？设x=1,y=2,x+y=（）？设x=1,y=2,x+y=（）？设x=1,y=2,x+y=（）？设x=1,y=2,x+y=（）？设x=1,y=2,x+y=（）？
-                    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                    A.0  B.1 C.2 D.3
-                </div>
-                <input type="text" class="exe-answer">
-                <a href="" class="exe-button exe-submit">提交</a>
-                <a href="" class="exe-button exe-next">下一题</a>
+                <a href="" class="db-button db-knowledge">
+                    <img src="<%=basePath%>img/tubiao.png" alt="" class="db-tubiao">
+                    <img src="<%=basePath%>img/knowledge.png" alt="" class="db-content">
+                    <p class="db-content">基础知识</p>
+                </a>
+                <a href="" class="db-button db-expand">
+                    <img src="<%=basePath%>img/tubiao.png" alt="" class="db-tubiao">
+                    <img src="<%=basePath%>img/expand-knowledge.png" alt="" class="db-content" style="top: 45px;left:38px;">
+                    <p class="db-content">拓展知识</p>
+                </a>
+                <a href="" class="db-button db-history">
+                    <img src="<%=basePath%>img/tubiao.png" alt="" class="db-tubiao">
+                    <img src="<%=basePath%>img/histroy-exe.png" alt="" class="db-content" style="top: 45px;left:35px;">
+                    <p class="db-content">往届练习题</p>
+                </a>
+                <a href="" class="db-button db-videos">
+                    <img src="<%=basePath%>img/tubiao.png" alt="" class="db-tubiao">
+                    <img src="<%=basePath%>img/videos.png" alt="" class="db-content" style="top: 35px;left:32px;">
+                    <p class="db-content">视频微课</p>
+                </a>
+                <a href="" class="db-button db-bcg">
+                    <img src="<%=basePath%>img/tubiao.png" alt="" class="db-tubiao">
+                    <img src="<%=basePath%>img/bcg-database.png" alt="" class="db-content" style="top: 25px;left:38px;">
+                    <p class="db-content">背景资料库</p>
+                </a>
+                <a href="" class="db-button db-kaoyan">
+                    <img src="<%=basePath%>img/tubiao.png" alt="" class="db-tubiao">
+                    <img src="<%=basePath%>img/kaoyan.png" alt="" class="db-content" style="top: 30px;left:25px;">
+                    <p class="db-content">考研真题</p>
+                </a>
             </div>
-
         </div>
     </div>
 
 </div>
+
 
 
 </body>

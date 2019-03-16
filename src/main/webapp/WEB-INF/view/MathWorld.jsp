@@ -35,22 +35,22 @@
     <img class="navbgc" src="<%=basePath%>img/q&anav.jpg" alt="">
     <ul class="worldnav">
         <li class="worldnav">
-            <a class="nava" href="http://localhost:8080/just/index">
+            <a class="nava" href="<%=path%>/just/index">
                 <img src="<%=basePath%>img/navhome.png" alt="" class="navimg navimg1">主页
             </a>
         </li>
         <li class="worldnav">
-            <a class="nava" href="http://localhost:8080/just/MathWorld">
+            <a class="nava" href="<%=path%>/just/MathWorld">
                 <img src="<%=basePath%>img/navworld.png" alt="" class="navimg navimg2">大数世界
             </a>
         </li>
         <li class="worldnav">
-            <a class="nava" href="http://localhost:8080/just/Q&A">
+            <a class="nava" href="<%=path%>/just/Q&A">
                 <img src="<%=basePath%>img/navq&a.png" alt="" class="navimg navimg3">师生答疑
             </a>
         </li>
         <li class="worldnav">
-            <a class="nava" href="http://localhost:8080/just/Rank">
+            <a class="nava" href="<%=path%>/just/Rank">
                 <img src="<%=basePath%>img/navrating.png" alt="" class="navimg navimg4">积分排行
             </a>
         </li>
@@ -84,7 +84,7 @@
         </div>
         <!--发表栏-->
         <div class="worldsubmit">
-            <form method="post" action="/world/dofrom" enctype="multipart/form-data">
+            <form method="post" action="<%=path%>/world/dofrom" enctype="multipart/form-data">
 
 
             <input name="title" type="text" value="标题">
@@ -137,7 +137,7 @@
 
         $("#txtWorld").click(function () {
             $.ajax({
-                url:"http://localhost:8080/world/getallTxt",
+                url:"<%=path%>/world/getallTxt",
                 type:"get",
                 success:function (data) {
                     var jsObject = JSON.parse(data);
@@ -168,7 +168,7 @@
         });
         $("#picWorld").click(function () {
             $.ajax({
-                url:"http://localhost:8080/world/getallPic",
+                url:"<%=path%>/world/getallPic",
                 type:"get",
                 success:function (data) {
                     var jsObject = JSON.parse(data);
@@ -199,7 +199,7 @@
         });
         $("#allWorld").click(function () {
             $.ajax({
-                url:"http://localhost:8080/world/getall",
+                url:"<%=path%>/world/getall",
                 type:"get",
                 success:function (data) {
                     var jsObject = JSON.parse(data);
@@ -239,7 +239,7 @@
         });
         $("#wode").click(function () {
             $.ajax({
-                url:"http://localhost:8080/world/getbyname?username="+${user},
+                url:"<%=path%>/world/getbyname?username="+${user},
                 type:"get",
                 success:function(data){
 
@@ -272,7 +272,7 @@
         });
         $("#jingxuan").click(function () {
             $.ajax({
-                url:"http://localhost:8080/world/getjing",
+                url:"<%=path%>/world/getjing",
                 type:"get",
                 success:function(data){
 

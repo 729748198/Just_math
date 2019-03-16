@@ -27,7 +27,7 @@
     <p>欢迎您,${user}</p>
 </c:when>
 <c:otherwise>
-    <a href="Login" id="example">登 录 </a>
+    <a href="<%=path%>/just/Login" id="example">登 录 </a>
 </c:otherwise>
 </c:choose>
 
@@ -37,9 +37,9 @@
     精
     <div class="menu jing-menu">
         <ul class="hp-menu">
-            <li><a href="http://localhost:8080/just/zuoti" target="_blank" class="hp-a">难题突破</a></li>
-            <li><a href="" target="_blank" class="hp-a">竞技乐园</a></li>
-            <li><a href="" target="_blank" class="hp-a">资料库</a></li>
+            <li><a href="<%=path%>/just/ti" target="_blank" class="hp-a">难题突破</a></li>
+            <li><a href="<%=path%>/just/zuoti" target="_blank" class="hp-a">竞技乐园</a></li>
+            <li><a href="<%=path%>/just/ziliao" target="_blank" class="hp-a">资料库</a></li>
         </ul>
     </div>
 </div>
@@ -48,9 +48,9 @@
     互
     <div class="menu hu-menu">
         <ul class="hp-menu">
-            <li><a href="http://localhost:8080/just/MathWorld" target="_blank" class="hp-a">大数世界</a></li>
-            <li><a href="http://localhost:8080/just/Q&A" target="_blank" class="hp-a">师生答疑</a></li>
-            <li><a href="http://localhost:8080/just/Rank" target="_blank" class="hp-a">排行榜</a></li>
+            <li><a href="<%=path%>/just/MathWorld" target="_blank" class="hp-a">大数世界</a></li>
+            <li><a href="<%=path%>/just/Q&A" target="_blank" class="hp-a">师生答疑</a></li>
+            <li><a href="<%=path%>/just/Rank" target="_blank" class="hp-a">排行榜</a></li>
         </ul>
     </div>
 </div>
@@ -60,7 +60,7 @@
     同
     <div class="menu tong-menu">
         <ul class="hp-menu tong-menu">
-            <li class="tong-menu"><a href="http://localhost:8080/just/MyMath" target="_blank" class="hp-a tong-a1">我的大数</a></li>
+            <li class="tong-menu"><a href="<%=path%>/just/MyMath" target="_blank" class="hp-a tong-a1">我的大数</a></li>
             <li class="tong-menu"><a href="" target="_blank" class="hp-a tong-a2">大同社区</a></li>
         </ul>
     </div>

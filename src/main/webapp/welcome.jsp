@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="<%=basePath%>/css/main.css" type="text/css">
 </head>
 <body>
+
 <!--导航栏-->
 <div class="nav">
     <img class="navbgc" src="<%=basePath%>/img/welcomenav.jpg" alt="">
@@ -25,10 +26,11 @@
     <!--主体部分-->
     <div class="welmain">
         <!--平台介绍-->
+        <a href="<%=path%>/just/Login" id="example">登 录 </a>
         <div class="wel-intro">
             <img src="<%=basePath%>/img/wel-img-1.jpg" alt="" class="wel-img">
             <div class="wel-intro-text">
-                <text style="font-size: 25px;font-weight: bold">“精互同”大学数学游戏式教学平台</text>是一款用于八九点克服了多少开了房；几点上课；里番的数据来看房价多少短时间分；几点上课；安静了开放的；就啊；六点十分骄傲舒服的； 马上；eiffel单身快乐；分九分裤；是
+                <text style="font-size: 25px;font-weight: bold">“精互同”大学数学游戏式教学平台</text>是一款用于八九点克服了；几点上课；里番的数据来看房价多少短时间分；几点上课；安静了开放的；就啊；六点十分骄傲舒服的； 马上；eiffel单身快乐；分九分裤；是
             </div>
         </div>
         <!--叶老师介绍-->

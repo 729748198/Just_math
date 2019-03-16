@@ -49,7 +49,7 @@
             var doanswer=$(".wrs_container").html();
             $.ajax({
                 type:"POST",
-                url:"http://localhost:8080/ti/doanswer",
+                url:"<%=path%>/ti/doanswer",
                 data:{
                     username:${user},
                     doanswer:doanswer,

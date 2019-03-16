@@ -178,6 +178,11 @@ public class JSPController {
         request.setAttribute("he",he);
         return "Rank";
     }
+
+    /**
+     * 登录页
+     * @return
+     */
     @RequestMapping("/Login")
     public String login(){
         return "login";
@@ -196,4 +201,25 @@ public class JSPController {
         return  "zuoti";
     }
 
+    /**
+     * 跳转难题突破
+     * @param request
+     * @param response
+     * @return
+     */
+    @RequestMapping("/ti")
+    public String ti(HttpServletRequest request,HttpServletResponse response){
+        return "ti";
+    }
+
+    /**
+     * 跳转到资料页
+     * @param request
+     * @param response
+     * @return
+     */
+    @RequestMapping("/ziliao")
+    public  String ziliao(HttpServletRequest request,HttpServletResponse response){
+        return "ziliao";
+    }
 }

@@ -1116,3 +1116,221 @@ img.wel-link
     top:-10px;
     height:75px;
 }
+div.exe-menu
+{
+    width: 200px;
+    height: 700px;
+    display: inline-block;
+    position: absolute;
+    top:8px;
+    left:12px;
+    background-color: powderblue;
+    text-align: center;
+    font-size: 22px;
+    line-height: 50px;
+    border-radius:10px;
+}
+div.exe-chapter
+{
+    width: 198px;
+    height: 650px;
+    display: inline-block;
+    position: absolute;
+    top:50px;
+    left:0;
+    background-color: white;
+    border: 1px solid black;
+}
+ul.exe-chapter
+{
+    text-decoration: none;
+    list-style: none;
+    font-size: 15px;
+    line-height: 35px;
+    font-family: 黑体;
+    text-align: left;
+}
+a.exe-chapter
+{
+    width: 85%;
+    display: inline-block;
+    position: relative;
+    padding-left: 15%;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+a.exe-chapter:hover
+{
+    font-weight: normal;
+    background-color: lightblue;
+    cursor: pointer;
+}
+div.exe-exe
+{
+    width: 680px;
+    height: 700px;
+    display: inline-block;
+    position: absolute;
+    top:8px;
+    left:224px;
+    background-color: powderblue;
+    font-size: 18px;
+    border-radius:10px;
+}
+p.exe-chapter
+{
+    display: inline-block;
+    position: absolute;
+    top:15px;
+    left:66px;
+    font-weight: bold;
+}
+div.exe-progressbar
+{
+    height: 12px;
+    width:225px;
+    display: inline-block;
+    position: absolute;
+    top:20px;
+    right:30px;
+    border: 1px solid white;
+}
+img.exe-probar
+{
+    display: inline-block;
+    position: absolute;
+    top:-25px;
+    left:20px;
+}
+div.exe-content
+{
+    width: 678px;
+    height: 650px;
+    display: inline-block;
+    position: absolute;
+    top:50px;
+    background-color: #FFFFFF;
+    border: 1px solid black;
+}
+div.exercise-content
+{
+    padding-left: 35px;
+    width: 538px;
+    height: 300px;
+    overflow: auto;
+    font-size: 15px;
+    font-family: "宋体", Times, serif;
+    display: inline-block;
+    position: absolute;
+    top:36px;
+    left:36px;
+}
+input.exe-answer
+{
+    width: 628px;
+    height: 188px;
+    display: inline-block;
+    position: absolute;
+    overflow: auto;
+    font-size: 15px;
+    font-family: "宋体", Times, serif;
+    top:366px;
+    left: 25px;
+    border: 2px solid black;
+    vertical-align: top;
+}
+a.exe-button
+{
+    display: inline-block;
+    position: absolute;
+    width: 150px;
+    height:35px;
+    bottom:25px;
+    font-size: 22px;
+    line-height: 35px;
+    background-color: skyblue;
+    border: 1px solid black;
+    border-radius: 8px;
+    text-decoration: none;
+    color: black;
+    text-align: center;
+
+}
+a.exe-submit
+{
+    right:200px;
+}
+a.exe-next
+{
+    right: 25px;
+}
+a.exe-button:hover
+{
+    font-weight: bold;
+    cursor: pointer;
+}
+img.db-tubiao
+{
+    display: inline-block;
+    position: absolute;
+
+}
+img.db-content
+{
+    display: inline-block;
+    position: absolute;
+    top:35px;
+    left:38px;
+    z-index: 1;
+}
+p.db-content
+{
+    height: 35px;
+    line-height: 35px;
+    display: inline-block;
+    position: absolute;
+    font-size: 22px;
+    text-align: center;
+    top:175px;
+    width: 175px;
+    z-index: 2;
+    text-decoration:none;
+    color: black;
+    font-weight: bold;
+}
+a.db-button
+{
+    display: inline-block;
+    position: absolute;
+}
+a.db-knowledge
+{
+    top:50px;
+    left:25px;
+}
+a.db-expand
+{
+    top:50px;
+    left:250px;
+}
+a.db-history
+{
+    top:50px;
+    left:475px;
+}
+a.db-videos
+{
+    top:250px;
+    left:25px;
+}
+a.db-bcg
+{
+    top:250px;
+    left:250px;
+}
+a.db-kaoyan
+{
+    top:250px;
+    left:475px;
+}
