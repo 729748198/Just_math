@@ -33,25 +33,18 @@
             </a>
         </li>
         <li class="mymathnav">
-            <a class="nava" href="#">
+            <a class="nava" href="<%=path%>/just/MyMath">
                 <img src="<%=basePath%>img/navmymath.png" alt="" class="navimg-mm navimg2-mm">我的大数
             </a>
         </li>
         <li class="mymathnav">
-            <a class="nava" href="#">
+            <a class="nava" href="<%=path%>/just/community">
                 <img src="<%=basePath%>img/navcommunity.png" alt="" class="navimg-mm navimg3-mm">大同社区
             </a>
         </li>
     </ul>
     <img src="<%=basePath%>img/mymath-title.png" alt="" class="navtitle-mm">
     <!--主体部分-->
-        <%
-    Cookie[] cookies = request.getCookies();
-    if (null != cookies)
-        for (int d = 0; d <= cookies.length - 1; d++) {
-            out.print(cookies[d].getName() + ":" + cookies[d].getValue() + "<br>");
-        }
-%>
     <div class="mymathmain">
         <!--个人头像-->
         <div class="user-mm">
@@ -83,6 +76,63 @@
         <!--我的大树-->
         <div class="mytree">
             <img src="<%=basePath%>img/mytree.png" alt="" id="tree">
+            <div class="mychapter mychapter1">
+                <p class="mychapter mychapter1" style="background-color:#0A4D8B">1</p>
+                <div class="myprogress">本章节已完成5%</div>
+            </div>
+            <div class="mychapter mychapter2">
+                <p class="mychapter mychapter2" style="background-color:#4C9DB8">2</p>
+                <div class="myprogress">本章节已完成50%</div>
+            </div>
+            <div class="mychapter mychapter3">
+                <p class="mychapter mychapter3" style="background-color:#50D8CE">3</p>
+                <div class="myprogress">本章节已完成88%</div>
+            </div>
+            <div class="mychapter mychapter4">
+                <p class="mychapter mychapter4" style="background-color:#0A4D8B">4</p>
+                <div class="myprogress">本章节已完成5%</div>
+            </div>
+            <div class="mychapter mychapter5">
+                <p class="mychapter mychapter5" style="background-color:#0A4D8B">5</p>
+                <div class="myprogress">本章节已完成5%</div>
+            </div>
+            <div class="mychapter mychapter6">
+                <p class="mychapter mychapter6" style="background-color:#0A4D8B">6</p>
+                <div class="myprogress">本章节已完成5%</div>
+            </div>
+            <div class="mychapter mychapter7">
+                <p class="mychapter mychapter7" style="background-color:#0A4D8B">7</p>
+                <div class="myprogress">本章节已完成5%</div>
+            </div>
+            <div class="mychapter mychapter8">
+                <p class="mychapter mychapter8" style="background-color:#0A4D8B">8</p>
+                <div class="myprogress">本章节已完成5%</div>
+            </div>
+            <div class="mychapter mychapter9">
+                <p class="mychapter mychapter9" style="background-color:#0A4D8B">9</p>
+                <div class="myprogress">本章节已完成5%</div>
+            </div>
+            <div class="mychapter mychapter10">
+                <p class="mychapter mychapter10" style="background-color:#0A4D8B">10</p>
+                <div class="myprogress">本章节已完成5%</div>
+            </div>
+            <div class="mychapter mychapter11">
+                <p class="mychapter mychapter11" style="background-color:#0A4D8B">11</p>
+                <div class="myprogress">本章节已完成5%</div>
+            </div>
+            <div class="mychapter mychapter12">
+                <p class="mychapter mychapter12" style="background-color:#0A4D8B">12</p>
+                <div class="myprogress">本章节已完成5%</div>
+            </div>
+            <div class="mychapter mychapterG">
+                <p class="mychapter mychapterG" style="background-color:#0A4D8B">G</p>
+                <div class="myprogress">本章节已完成5%</div>
+            </div>
+            <div class="mychapter mychapterX">
+                <p class="mychapter mychapterX" style="background-color:#0A4D8B">X</p>
+                <div class="myprogress">本章节已完成5%</div>
+            </div>
+
         </div>
 
     </div>

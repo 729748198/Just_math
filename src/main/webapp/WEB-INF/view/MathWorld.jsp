@@ -141,27 +141,15 @@
                 type:"get",
                 success:function (data) {
                     var jsObject = JSON.parse(data);
-                    var str="";
-                    str+="<table class='dataintable2'>";
-                    str+="<tr>" ;
-                    str+="<th style='width:20%'>" ;
-                    str+="标题" ;
-                    str+="</th>" ;
-                    str+="<th style='width:20%' >" ;
-                    str+="内容" ;
-                    str+="</th>" ;
-                    str+="<th style='width:20%'>" ;
-                    str+="发帖人" ;
-                    str+="</th>" ;
-                    str+="</tr>";
+                    var str='   <ul class="worldcontent">' ;
                     for(var i=0;i<jsObject.length;i++){
-                        str+="<tr>";
-                        str+="<td>"+i+"."+jsObject[i].title+"</td>";
-                        str+="<td>"+jsObject[i].content+"</td>";
-                        str+="<td>"+jsObject[i].user+"</td>";
-                        str+="</tr>";
+                        str+='<li class="worldcontent"><div class="tiezi">';
+                        str+='<img src="<%=basePath%>/img/worlduser.jpg"  class="tie-user">';
+                        str+='<p class="tie-username">'+jsObject[i].user+'</p>';
+                        str+='<p class="tie-title">'+jsObject[i].title+'</p>';
+                        str+='<text class="tie-main">'+jsObject[i].content+'</text></div></li>';
                     }
-                    str+="</table>";
+                    str+='</ul>';
                     $("#content").html(str);
                 }
             })

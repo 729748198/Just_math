@@ -87,7 +87,6 @@ public class TiController {
     @ResponseBody
     public Map<String,String> getone(){
         Question question=questionService.selectById(3);
-        System.out.println(question.getTiTitle());
         ChoiceWithBLOBs choiceWithBLOBs=choiceservice.selectById(3);
         Map<String,String>map=new HashMap<>(7);
         map.put("title",question.getTiTitle());
@@ -97,6 +96,17 @@ public class TiController {
         map.put("D",choiceWithBLOBs.getPd());
         map.put("jiexi",choiceWithBLOBs.getJiexi());
         map.put("answer",choiceWithBLOBs.getAnswer());
+        return map;
+    }
+
+    @RequestMapping("/test")
+    @ResponseBody
+    public Map<String,String> test(){
+        Question question=questionService.selectById(1);
+        AnswerWithBLOBs answerWithBLOBs=answerService.selectByQId(1);
+        Map<String,String>map=new HashMap<>(7);
+        map.put("title",question.getTiTitle());
+        map.put("answer",answerWithBLOBs.getAnswer());
         return map;
     }
 

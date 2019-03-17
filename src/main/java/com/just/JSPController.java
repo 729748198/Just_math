@@ -10,8 +10,10 @@ import com.just.math_world.entity.WorldFollow;
 import com.just.math_world.service.WorldFansService;
 import com.just.math_world.service.WorldFollowService;
 import com.just.math_world.service.WorldService;
+import com.just.ti.entity.ChoiceWithBLOBs;
 import com.just.ti.entity.Question;
 import com.just.ti.service.AnswerService;
+import com.just.ti.service.Choiceservice;
 import com.just.ti.service.QuestionService;
 import com.just.user.entity.Rank;
 import com.just.user.service.RankService;
@@ -61,6 +63,8 @@ public class JSPController {
     AnswerService answerService;
     @Autowired
     QuestionService questionService;
+    @Autowired
+    Choiceservice choiceservice;
 
 
     @RequestMapping("/error")
@@ -209,6 +213,17 @@ public class JSPController {
      */
     @RequestMapping("/ti")
     public String ti(HttpServletRequest request,HttpServletResponse response){
+        Question question=questionService.selectById(3);
+        ChoiceWithBLOBs choiceWithBLOBs=choiceservice.selectById(3);
+        request.setAttribute("title",question.getTiTitle());
+       Map<String,String>map=new HashMap<>(4);
+        map.put("A",choiceWithBLOBs.getPa());
+        map.put("B",choiceWithBLOBs.getPb());
+        map.put("C",choiceWithBLOBs.getPc());
+        map.put("D",choiceWithBLOBs.getPd());
+        request.setAttribute("choice",map);
+        request.setAttribute("jiexi",choiceWithBLOBs.getJiexi());
+        request.setAttribute("answer",choiceWithBLOBs.getAnswer());
         return "ti";
     }
 
@@ -221,5 +236,13 @@ public class JSPController {
     @RequestMapping("/ziliao")
     public  String ziliao(HttpServletRequest request,HttpServletResponse response){
         return "ziliao";
+    }
+
+    /**
+     * 跳转大同社区界面
+     */
+    @RequestMapping("/community")
+    public  String community(HttpServletResponse response,HttpServletRequest request){
+        return "community";
     }
 }

@@ -161,6 +161,8 @@ div.worldcontent
     background-color: #ffffff;
     display:inline-block;
     overflow: auto;
+    font-family: "微软雅黑", Times, serif;
+    overflow: auto;
 }
 img.worldbcg
 {
@@ -375,7 +377,7 @@ div.user-mm
 {
     background-color:white;
     height:90px;
-    width: 220px;
+    width: 280px;
     display: inline-block;
     position: absolute;
     top:12px;
@@ -1333,4 +1335,599 @@ a.db-kaoyan
 {
     top:250px;
     left:475px;
+}
+div.mychapter
+{
+    display: inline-block;
+    position: absolute;
+    height: 80px;
+    width: 150px;
+}
+div.mychapter:hover .myprogress
+{
+    display: inline-block;
+}
+p.mychapter
+{
+    display: inline-block;
+    position: absolute;
+    font-size: 18px;
+    color: #FFFFFF;
+    text-align: center;
+    border-radius: 100%;
+    border: none;
+}
+div.myprogress
+{
+    display: none;
+    position: absolute;
+    height: 80px;
+    width: 150px;
+    line-height: 80px;
+    text-align: center;
+    background-color: rgb(201,214,233,0.6);
+    border: 1px solid black;
+    z-index: 50;
+}
+div.mychapter1
+ {
+     top:345px;
+     left:130px;
+ }
+p.mychapter1
+{
+    height:60px;
+    width:60px;
+    line-height: 60px;
+    top:10px;
+    left:45px;
+}
+div.mychapter2
+{
+    top:340px;
+    left:288px;
+}
+p.mychapter2
+{
+    height:50px;
+    width:50px;
+    line-height: 50px;
+    top:15px;
+    left:50px;
+}
+div.mychapter3
+{
+    top:355px;
+    left:400px;
+}
+p.mychapter3
+{
+    height:55px;
+    width:55px;
+    line-height: 55px;
+    top:8px;
+    left:42px;
+}
+div.mychapter4
+{
+    top:290px;
+    left:230px;
+}
+p.mychapter4
+{
+    height:60px;
+    width:60px;
+    line-height: 60px;
+    top:10px;
+    left:45px;
+}
+div.mychapter5
+{
+    top:220px;
+    left:55px;
+}
+p.mychapter5
+{
+    height:55px;
+    width:55px;
+    line-height: 55px;
+    top:8px;
+    left:42px;
+}
+div.mychapter6
+{
+    top:225px;
+    left:150px;
+}
+p.mychapter6
+{
+    height:40px;
+    width:40px;
+    line-height: 40px;
+    top:20px;
+    left:55px;
+}
+div.mychapter7
+{
+    top:220px;
+    left:322px;
+}
+p.mychapter7
+{
+    height:55px;
+    width:55px;
+    line-height: 55px;
+    top:8px;
+    left:42px;
+}
+div.mychapter8
+{
+    top:210px;
+    left:466px;
+}
+p.mychapter8
+{
+    height:55px;
+    width:55px;
+    line-height: 55px;
+    top:8px;
+    left:42px;
+}
+div.mychapter9
+{
+    top:150px;
+    left:222px;
+}
+p.mychapter9
+{
+    height:40px;
+    width:40px;
+    line-height: 40px;
+    top:20px;
+    left:55px;
+}
+div.mychapter10
+{
+    top:110px;
+    left:130px;
+}
+p.mychapter10
+{
+    height:55px;
+    width:55px;
+    line-height: 55px;
+    top:8px;
+    left:42px;
+}
+div.mychapter11
+{
+    top:110px;
+    left:392px;
+}
+p.mychapter11
+{
+    height:55px;
+    width:55px;
+    line-height: 55px;
+    top:8px;
+    left:42px;
+}
+div.mychapter12
+{
+    top:55px;
+    left:288px;
+}
+p.mychapter12
+{
+    height:55px;
+    width:55px;
+    line-height: 55px;
+    top:8px;
+    left:42px;
+}
+div.mychapterG
+{
+    top:448px;
+    left:356px;
+}
+p.mychapterG
+{
+    height:40px;
+    width:40px;
+    line-height: 40px;
+    top:20px;
+    left:55px;
+}
+div.mychapterX
+ {
+     top:430px;
+     left:155px;
+ }
+p.mychapterX
+{
+    height:40px;
+    width:40px;
+    line-height: 40px;
+    top:20px;
+    left:55px;
+}
+ul.worldcontent
+{
+    text-decoration: none;
+    list-style: none;
+    display: inline-block;
+    position: absolute;
+}
+li.worldcontent
+{
+    height: 325px;
+}
+div.tiezi
+{
+    display: inline-block;
+    position: relative;
+    width: 100%;
+}
+img.tie-user
+{
+    display: inline-block;
+    position: absolute;
+    width: 66px;
+    height: 66px;
+    border-radius: 100%;
+    top:10px;
+    left:15px;
+}
+p.tie-username
+{
+    display: inline-block;
+    position: absolute;
+    font-size: 16px;
+    width: 100px;
+    height: 22px;
+    line-height: 22px;
+    text-align: left;
+    top:22px;
+    left:100px;
+}
+p.tie-date
+{
+    display: inline-block;
+    position: absolute;
+    font-size: 13px;
+    width: 100px;
+    height: 18px;
+    line-height: 18px;
+    text-align: left;
+    top:52px;
+    left: 100px;
+}
+p.tie-title
+{
+    display: inline-block;
+    position: absolute;
+    font-size: 22px;
+    width: 250px;
+    height: 25px;
+    line-height: 25px;
+    text-align: left;
+    top:80px;
+    left:36px;
+}
+text.tie-main
+{
+    display: inline-block;
+    position: absolute;
+    padding: 15px;
+    font-size: 16px;
+    text-indent: 2em;
+    width:550px;
+    height: 150px;
+    line-height:18px;
+    top:110px;
+    left: 25px;
+    background-color: #EAF8F8;
+    overflow: auto;
+}
+video.tie-video
+{
+    display: inline-block;
+    position: absolute;
+    width:auto;
+    height: 150px;
+    top:110px;
+    left: 25px;
+}
+a.tie-audio
+{
+    display: inline-block;
+    position: absolute;
+    width: 588px;
+    height: 88px;
+    top:110px;
+    left: 25px;
+    text-decoration: none;
+    color: black;
+    background-color:#EAF8F8;
+}
+img.tie-music
+{
+    display: inline-block;
+    position: absolute;
+    width: 88px;
+    height: 88px;
+}
+img.tie-musicbut
+{
+    display: inline-block;
+    position: absolute;
+    width: 88px;
+    height: 88px;
+    background-color: rgb(128,128,128,0.6);
+    z-index: 2;
+}
+p.tie-musicname
+{
+    display: inline-block;
+    position: absolute;
+    width: 250px;
+    height: 88px;
+    line-height: 88px;
+    font-size: 18px;
+    left:100px;
+}
+div.com-group
+{
+    background-color: #FFFFFF;
+    width:280px;
+    height:575px;
+    display: inline-block;
+    position: absolute;
+    top:110px;
+    left:8px;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 40px;
+    overflow: auto;
+}
+p.com-group
+{
+    display: inline-block;
+    font-size: 25px;
+    width: 280px;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    color: #3F8D97;
+}
+ul.com-menu
+{
+    list-style: none;
+    display: inline-block;
+    position: absolute;
+}
+li.com-menu
+{
+    height: 60px;
+    border: 10px black;
+}
+a.com-main
+{
+    display: inline-block;
+    position: absolute;
+    width: 280px;
+    height: 60px;
+    text-decoration: none;
+    color: black;
+    border-top: 1px solid black;
+}
+a.com-main:hover
+{
+    background-color: #C6CBE8;
+    cursor: pointer;
+}
+img.com-img
+{
+    width: 36px;
+    height: 36px;
+    display: inline-block;
+    position: absolute;
+    top:12px;
+    left:12px;
+    border-radius: 100%;
+    border: 1px solid black;
+}
+p.com-name
+{
+    display: inline-block;
+    position: absolute;
+    height: 20px;
+    width: 150px;
+    top:10px;
+    left:66px;
+    font-size: 13px;
+    line-height: 20px;
+    font-weight: bold;
+    overflow: hidden;
+}
+p.com-last
+{
+    display: inline-block;
+    position: absolute;
+    height: 15px;
+    width: 150px;
+    top:35px;
+    left:66px;
+    font-size: 12px;
+    line-height: 15px;
+    font-weight: normal;
+    overflow: hidden;
+}
+p.com-date
+{
+    display: inline-block;
+    position: absolute;
+    height: 20px;
+    width: 55px;
+    top:10px;
+    right:8px;
+    font-size: 13px;
+    line-height: 20px;
+    font-weight: bold;
+    text-align: center;
+    overflow: hidden;
+}
+div.chatting
+{
+    display: inline-block;
+    position: absolute;
+    top:12px;
+    left:295px;
+    width: 520px;
+    height: 675px;
+    background-color: #FFFFFF;
+}
+p.chatting
+{
+    display: inline-block;
+    position: absolute;
+    width: 520px;
+    height: 66px;
+    font-size: 18px;
+    line-height: 66px;
+    font-weight: normal;
+    text-align: center;
+    border-bottom: 2px solid black;
+}
+div.chatting-room
+{
+    display: inline-block;
+    position: absolute;
+    width: 520px;
+    height: 450px;
+    top:70px;
+    background-color: #FFFFFF;
+    border-bottom: 2px solid black;
+    overflow: auto;
+}
+ul.chatting-content
+{
+    list-style: none;
+}
+li.chatting-content
+{
+    display: inline-block;
+    position: relative;
+    width: 520px;
+    min-height:66px;
+}
+li.others p.chatting-user
+{
+    display: inline-block;
+    position: absolute;
+    width: 55px;
+    height: 18px;
+    font-size: 12px;
+    line-height: 18px;
+    top:8px;
+    left:20px;
+    color: gray;
+    text-align: center;
+}
+li.others img.chatting-user
+{
+    display: inline-block;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    top:26px;
+    left:26px;
+    color: gray;
+}
+li.others p.chatting-content
+{
+    display: inline-block;
+    position: absolute;
+    padding: 8px;
+    max-width: 350px;
+    height: auto;
+    top:18px;
+    left:75px;
+    font-size: 18px;
+    line-height: 25px;
+    text-align: left;
+    background-color: #B9E2E8;
+    border: 1px solid #B9E2E8;
+    border-radius: 8px;
+}
+li.mine p.chatting-user
+{
+    display: inline-block;
+    position: absolute;
+    width: 55px;
+    height: 18px;
+    font-size: 12px;
+    line-height: 18px;
+    top:8px;
+    right:20px;
+    color: gray;
+    text-align: center;
+}
+li.mine img.chatting-user
+{
+    display: inline-block;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    top:26px;
+    right:26px;
+    color: gray;
+}
+li.mine p.chatting-content
+{
+    display: inline-block;
+    position: absolute;
+    padding: 8px;
+    max-width: 350px;
+    height: auto;
+    top:18px;
+    right:75px;
+    font-size: 18px;
+    line-height: 25px;
+    text-align: left;
+    background-color: #B9E2E8;
+    border: 1px solid #B9E2E8;
+    border-radius: 8px;
+}
+input.chat-reply
+{
+    display: inline-block;
+    position: absolute;
+    height: 75px;
+    width: 450px;
+    top:535px;
+    left:15px;
+    border:1px solid black;
+}
+a.chat-submit
+{
+    text-decoration: none;
+    color: black;
+    display: inline-block;
+    position: absolute;
+    height: 35px;
+    width: 88px;
+    top:630px;
+    right:15px;
+    font-size: 18px;
+    line-height: 35px;
+    text-align: center;
+    background-color: powderblue;
+    border-radius: 8px;
+}
+a.chat-submit:hover
+{
+    cursor: pointer;
 }

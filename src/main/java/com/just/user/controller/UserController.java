@@ -88,19 +88,12 @@ public class UserController {
      * @return
      */
     @RequestMapping("/dologin")
-    public String login(HttpServletRequest request, HttpServletResponse response){
-        String username=request.getParameter("username");
-        String password=request.getParameter("password");
-        Map<String,String> temp;
-        temp=service.selectUser(username);
-        if (password.equals(temp.get("password"))){
-            request.getSession().setAttribute("user", username);
-            request.getSession().setAttribute("loginFlag",true);
-            return "index";
-        }else {
-            request.getSession().setAttribute("errormessage", "用户名或密码错误请重新输入！");
-            return "登录失败";
-        }
+    public String login(String username,HttpServletRequest request, HttpServletResponse response){
+
+        request.getSession().setAttribute("user", username);
+        request.getSession().setAttribute("loginFlag",true);
+        return "index";
+
     }
 
     //接口——查询用户

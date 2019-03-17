@@ -61,7 +61,7 @@
     <div class="menu tong-menu">
         <ul class="hp-menu tong-menu">
             <li class="tong-menu"><a href="<%=path%>/just/MyMath" target="_blank" class="hp-a tong-a1">我的大数</a></li>
-            <li class="tong-menu"><a href="" target="_blank" class="hp-a tong-a2">大同社区</a></li>
+            <li class="tong-menu"><a href="<%=path%>/just/community" target="_blank" class="hp-a tong-a2">大同社区</a></li>
         </ul>
     </div>
 </div>

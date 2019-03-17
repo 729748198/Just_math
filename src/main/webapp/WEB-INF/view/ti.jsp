@@ -19,6 +19,7 @@
     <meta charset="UTF-8">
     <title>难题突破</title>
     <link rel="stylesheet" href="<%=basePath%>css/main.css" type="text/css">
+    <script src="<%=basePath%>/js/jquery-1.8.3.min.js"></script>
 </head>
 <body>
 
@@ -78,14 +79,44 @@
             </div>
             <!--答题-->
             <div class="exe-content">
-                <div class="exercise-content">
-                    设x=1,y=2,x+y=（）？设x=1,y=2,x+y=（）？设x=1,y=2,x+y=（）？设x=1,y=2,x+y=（）？设x=1,y=2,x+y=（）？设x=1,y=2,x+y=（）？设x=1,y=2,x+y=（）？设x=1,y=2,x+y=（）？设x=1,y=2,x+y=（）？
-                    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                    A.0  B.1 C.2 D.3
+                <div class="exercise-content" style="border:1px solid #274b8b ;
+padding: 5px 5px 10px 5px;">
+                   ${title}
+                    <br><br><br><br><br><br><br><br><br><br><br><br><br>
+                    <label>
+                        <input type="radio" name="choice" value="A"/>A.${choice.A}
+                    </label>
+                    <label>
+                        <input type="radio" name="choice" value="B"/>B.${choice.B}
+                    </label>
+                    <label>
+                        <input type="radio" name="choice" value="C"/>C.${choice.C}
+                    </label>
+                    <label>
+                        <input type="radio" name="choice" value="D" />D.${choice.D}
+                    </label>
+                    <div id="demo">
+
+                    </div>
                 </div>
-                <input type="text" class="exe-answer">
-                <a href="" class="exe-button exe-submit">提交</a>
+                <%--<input type="text" class="exe-answer">--%>
+                <p> <a id="tijiao"  class="exe-button exe-submit">提交</a></p>
                 <a href="" class="exe-button exe-next">下一题</a>
+                <script>
+                    $("#tijiao").click(function () {
+                        var radioValue = $('input:radio[name="choice"]:checked').val();
+                        var html="";
+                        var anser="${answer}";
+                        if(radioValue==anser){
+                            html+="<p style='color: green'>答案正确</p>";
+                        }else {
+
+                            html+="<p style='color: red'>答案错误！</p>";
+                            html+="<p>正确答案为${answer}</p>";
+                        }
+                        $("#demo").html(html);
+                    });
+                </script>
             </div>
 
         </div>
