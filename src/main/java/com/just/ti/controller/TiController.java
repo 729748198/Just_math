@@ -99,15 +99,15 @@ public class TiController {
         return map;
     }
 
-    @RequestMapping("/test")
+    @RequestMapping(value = "/test")
     @ResponseBody
-    public Map<String,String> test(){
-        Question question=questionService.selectById(1);
-        AnswerWithBLOBs answerWithBLOBs=answerService.selectByQId(1);
+    public String test(){
+        Question question=questionService.selectById(3);
+        AnswerWithBLOBs answerWithBLOBs=answerService.selectByQId(3);
         Map<String,String>map=new HashMap<>(7);
         map.put("title",question.getTiTitle());
         map.put("answer",answerWithBLOBs.getAnswer());
-        return map;
+        return question.getTiTitle();
     }
 
 }

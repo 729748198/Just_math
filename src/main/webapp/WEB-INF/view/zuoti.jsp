@@ -25,8 +25,23 @@
 <body>
 
 
-<div>
-    ${ti}
+<div id="demo">
+    <script>
+        $(document).ready(function () {
+          console.log("ceshi");
+            $.ajax({
+
+              url: "<%=path%>/ti/test",
+              type:"get",
+              success:function (data) {
+                  console.log(data);
+                  var heml=data;
+                  $("#demo").html(heml);
+              }
+
+          })
+        })
+    </script>
 </div>
 
 <br>
@@ -49,7 +64,7 @@
             var doanswer=$(".wrs_container").html();
             $.ajax({
                 type:"POST",
-                url:"<%=path%>/ti/doanswer",
+                url:"<%=path%>/ti/test",
                 data:{
                     username:${user},
                     doanswer:doanswer,
