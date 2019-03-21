@@ -17,4 +17,9 @@ public class QuestionServiceImpl implements QuestionService {
     public Question selectById(Integer id) {
         return mapper.selectByPrimaryKey(id);
     }
+
+    @Override
+    public int add(Question question) {
+        return mapper.insertSelective(question);
+    }
 }

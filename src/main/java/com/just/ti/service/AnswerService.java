@@ -14,4 +14,11 @@ public interface AnswerService {
      * @return
      */
     AnswerWithBLOBs selectByQId(Integer id);
+
+    /**
+     * 增加一道题的答案
+     * @param answerWithBLOBs
+     * @return
+     */
+    int add(AnswerWithBLOBs answerWithBLOBs);
 }

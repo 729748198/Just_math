@@ -13,4 +13,11 @@ public interface QuestionService {
      * @return
      */
     Question selectById(Integer id);
+
+    /**
+     * 数据库中加一道题
+     * @param question 题目实体
+     * @return
+     */
+    int add(Question question);
 }

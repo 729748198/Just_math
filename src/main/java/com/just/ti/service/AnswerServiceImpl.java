@@ -18,4 +18,9 @@ public class AnswerServiceImpl implements AnswerService {
     public AnswerWithBLOBs selectByQId(Integer id) {
         return mapper.selectByPrimaryKey(id);
     }
+
+    @Override
+    public int add(AnswerWithBLOBs answerWithBLOBs) {
+        return mapper.insertSelective(answerWithBLOBs);
+    }
 }

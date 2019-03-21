@@ -8,6 +8,7 @@ import com.just.ti.service.AnswerService;
 import com.just.ti.service.Choiceservice;
 import com.just.ti.service.QuestionService;
 import com.just.ti.service.UserTiService;
+import com.just.tools.MD5;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -93,11 +94,39 @@ public class TiController {
         String ban=request.getParameter("Ban");
         String title=request.getParameter("Title");
         String score=request.getParameter("Score");
+        String answer=request.getParameter("Answer");
+        Integer ti_id= Integer.valueOf(MD5.md5(title));
+        //2是填空题
+        Integer type=2;
 
+        /**
+         * 问题的实体
+         */
+        Question question=new Question();
+        question.setId(ti_id);
+        question.setTiBan(ban);
+        question.setTiScore(score);
+        question.setTiTitle(title);
 
+        /**
+         * 答案的实体
+         */
+        AnswerWithBLOBs answerWithBLOBs=new AnswerWithBLOBs();
+        answerWithBLOBs.setAnswer(answer);
+        answerWithBLOBs.setTiId(ti_id);
+        answerWithBLOBs.setAnswerType(2);
 
+        System.out.println("题目");
+        System.out.println(title);
+        System.out.println("答案");
+        System.out.println(answer);
+        System.out.println("题目ID");
+        System.out.println(ti_id);
 
-        return  null;
+        questionService.add(question);
+        answerService.add(answerWithBLOBs);
+
+        return  "插入成功";
     }
 
 
