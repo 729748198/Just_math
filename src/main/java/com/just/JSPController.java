@@ -245,4 +245,10 @@ public class JSPController {
     public  String community(HttpServletResponse response,HttpServletRequest request){
         return "community";
     }
+
+    @RequestMapping("/teacher")
+    public  String teacher(HttpServletResponse response,HttpServletRequest request){
+
+        return "admin/teach";
+    }
 }

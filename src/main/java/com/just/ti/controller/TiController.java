@@ -77,9 +77,27 @@ public class TiController {
         }
         userTiService.add(userTiWithBLOBs);
 
+        System.out.println(doanswer);
+        doanswer=doanswer.replaceAll("\"","&quot");
+        System.out.println(doanswer);
         map.put("rightanswer",answerWithBLOBs.getAnswer());
         map.put("jiexi",answerWithBLOBs.getJiexi());
         return  map;
+    }
+
+    @RequestMapping("/dotest")
+    @ResponseBody
+    public String dotest(HttpServletResponse response, HttpServletRequest request){
+
+
+        String ban=request.getParameter("Ban");
+        String title=request.getParameter("Title");
+        String score=request.getParameter("Score");
+
+
+
+
+        return  null;
     }
 
 
@@ -101,13 +119,13 @@ public class TiController {
 
     @RequestMapping(value = "/test")
     @ResponseBody
-    public String test(){
-        Question question=questionService.selectById(3);
-        AnswerWithBLOBs answerWithBLOBs=answerService.selectByQId(3);
+    public Map<String, String> test(){
+        Question question=questionService.selectById(1);
+        AnswerWithBLOBs answerWithBLOBs=answerService.selectByQId(1);
         Map<String,String>map=new HashMap<>(7);
         map.put("title",question.getTiTitle());
         map.put("answer",answerWithBLOBs.getAnswer());
-        return question.getTiTitle();
+        return map;
     }
 
 }

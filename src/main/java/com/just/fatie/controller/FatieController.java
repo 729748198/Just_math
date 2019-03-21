@@ -29,13 +29,22 @@ public class FatieController {
     UserService userService;
 
 
-    //获取帖子列表
+    /**
+     * 获取帖子列表
+     */
+
     @RequestMapping("/getall")
     @ResponseBody
     public List<ForumMain> getAlltiezi(){
         return  service.selectAll();
     }
-    //获取帖子详细信息
+
+    /**
+     * //获取帖子详细信息
+     * @param username
+     * @param Tid
+     * @return
+     */
     @RequestMapping("/gettie")
     @ResponseBody
     public Map<String,Object>getTiezi(String username,String Tid){
@@ -45,12 +54,17 @@ public class FatieController {
         map.put("huitie",service.selectByTid(Tid));
         return map;
     }
-    public int dofatie(HttpServletRequest request,String title,String content){
 
-        String name="贺文杰";
+    @RequestMapping("/dofatie")
+    @ResponseBody
+    public int dofatie(HttpServletRequest request,String content,String mainTitle){
+        System.out.println(request.getParameter("mainTitle"));
+        System.out.println(request.getParameter("content"));
+        System.out.println(request.getSession().getAttribute("user"));
 
         return 1;
     }
+
     @ModelAttribute
     public  void kuayu(HttpServletResponse response){
         response.setHeader("Access-Control-Allow-Origin", "*");

@@ -23,7 +23,9 @@
     <script src="<%=basePath%>/js/jquery-1.8.3.min.js"></script>
 </head>
 <body>
+<div id="ceshi">
 
+</div>
 
 <div id="demo">
     <script>
@@ -35,8 +37,10 @@
               type:"get",
               success:function (data) {
                   console.log(data);
+                  var Ti=data["title"];
+                  console.log(Ti);
                   var heml=data;
-                  $("#demo").html(heml);
+                  $("#demo").html(Ti);
               }
 
           })
@@ -64,7 +68,7 @@
             var doanswer=$(".wrs_container").html();
             $.ajax({
                 type:"POST",
-                url:"<%=path%>/ti/test",
+                url:"<%=path%>/ti/dotest",
                 data:{
                     username:${user},
                     doanswer:doanswer,

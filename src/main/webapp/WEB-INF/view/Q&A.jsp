@@ -88,7 +88,28 @@
             </table>
         </div>
 
+
     </div>
+    <form action="<%=path%>/fatie/dofatie" method="post" class="form-signin">
+        <label >帖子标题</label>
+        <input type="text" name="mainTitle" placeholder="最大长度80个汉字" style="width:360px;">
+        <button type="submit" class="btn btn-primary btn-xs text-right">
+            发表帖子
+        </button>
+        <div>
+            <script id="container" name="content" type="text/plain">
+
+            </script>
+        </div>
+    </form>
+    <!-- 配置文件 -->
+    <script type="text/javascript" src="<%=basePath%>/js/uedit/js/ueditor.config.js"> </script>
+    <!-- 编辑器源码文件 -->
+    <script type="text/javascript" src="<%=basePath%>/js/uedit/js/ueditor.all.js"> </script>
+    <!-- 实例化编辑器 -->
+    <script type="text/javascript">
+        var editor = UE.getEditor('container');
+    </script>
 
 </div>
 
