@@ -22,14 +22,14 @@
     <script src="<%=basePath%>/js/jquery.min.js"></script>
 </head>
 <body>
-<c:choose>
-<c:when test="${!empty user}">
-    <p>欢迎您,${user}</p>
-</c:when>
-<c:otherwise>
-    <a href="<%=path%>/just/Login" id="example">登 录 </a>
-</c:otherwise>
-</c:choose>
+<%--<c:choose>--%>
+<%--<c:when test="${!empty user}">--%>
+    <%--<p>欢迎您,${user}</p>--%>
+<%--</c:when>--%>
+<%--<c:otherwise>--%>
+    <%--<a href="<%=path%>/just/Login" id="example">登 录 </a>--%>
+<%--</c:otherwise>--%>
+<%--</c:choose>--%>
 
 <img src="<%=basePath%>img/homepagebcg.png" alt="" class="hp-bgc">
 <!--精模块-->
@@ -38,7 +38,7 @@
     <div class="menu jing-menu">
         <ul class="hp-menu">
             <li><a href="<%=path%>/just/ti" target="_blank" class="hp-a">难题突破</a></li>
-            <li><a href="<%=path%>/just/zuoti" target="_blank" class="hp-a">竞技乐园</a></li>
+            <li><a href="http://134.175.36.112:8009/" target="_blank" class="hp-a">竞技乐园</a></li>
             <li><a href="<%=path%>/just/ziliao" target="_blank" class="hp-a">资料库</a></li>
         </ul>
     </div>
