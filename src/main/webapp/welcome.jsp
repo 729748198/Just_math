@@ -223,7 +223,7 @@
     </div>
     <div class="row">
         密&nbsp;&nbsp;&nbsp;&nbsp;码: <span class="inputBox">
-                <input type="text" id="txtPwd" placeholder="密码">
+                <input type="password" id="txtPwd" placeholder="密码">
             </span><a href="javascript:void(0)" title="提示" class="warning" id="warn2">*</a>
     </div>
     <div class="row">
