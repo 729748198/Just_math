@@ -260,145 +260,50 @@
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-        <br>
-        <p>增加一道选择题</p>
-        <label for="ban">所属板块</label><input name="ban" id="ban" type="text" ><br>
-        <label for="score">分数</label><input name="score" id="score" type="text" ><br>
-        <label for="title">标题</label><input name="title" id="title" type="text" > <button id="q">确定</button><br>
-        <div id="editorContainer"></div>
-        <p id="Ca">选项A </p><button id="Ba">确定</button>
-        <div id="editorContainer1"></div>
-        <p id="Cb">选项B</p><button id="Bb">确定</button>
-        <div id="editorContainer2"></div>
-        <p id="Cc">选项C</p><button id="Bc">确定</button>
-        <div id="editorContainer3"></div>
-        <p id="Cd">选项D</p><button id="Bd">确定</button>
-        <div id="editorContainer4"></div>
-        <label for="answer">答案</label><input name="answer" id="answer" type="text"><br><br>
-        <p id="jiexi">添加解析</p><button id="Bjiexi">确定</button>
-        <div id="editorContainer5"></div>
-        <button id="tijiao">提交</button>
-
-        <script>
-            var editor;
-            var editor1;
-            var editor2;
-            var editor3;
-            var editor4;
-            var editor5;
-            window.onload = function () {
-                editor = com.wiris.jsEditor.JsEditor.newInstance({'language': 'en'});
-                editor.insertInto(document.getElementById('editorContainer'));
-                editor1 = com.wiris.jsEditor.JsEditor.newInstance({'language': 'en'});
-                editor1.insertInto(document.getElementById('editorContainer1'));
-                editor2 = com.wiris.jsEditor.JsEditor.newInstance({'language': 'en'});
-                editor2.insertInto(document.getElementById('editorContainer2'));
-                editor3 = com.wiris.jsEditor.JsEditor.newInstance({'language': 'en'});
-                editor3.insertInto(document.getElementById('editorContainer3'));
-                editor4 = com.wiris.jsEditor.JsEditor.newInstance({'language': 'en'});
-                editor4.insertInto(document.getElementById('editorContainer4'));
-                editor5 = com.wiris.jsEditor.JsEditor.newInstance({'language': 'en'});
-                editor5.insertInto(document.getElementById('editorContainer5'));
-            };
-            $("#editorContainer").hide();
-            $("#editorContainer1").hide();
-            $("#editorContainer2").hide();
-            $("#editorContainer3").hide();
-            $("#editorContainer4").hide();
-            $("#editorContainer5").hide();
-        </script>
+        <form action="<%=path%>/ti/dochoice" method="post">
+            <label>
+                章节板块.<input type="text" name="ban" >
+            </label>
+            <br>
+            <label>
+                分数.<input type="text" name="score" >
+            </label>
+            <br>
+            <label>
+                标题.<input type="text" name="title" >
+            </label>
+            <br>
+            <label>
+                A：<input type="text" name="Aa" >
+            </label>
+            <br>
+            <label>
+                B:<input type="text" name="Ab" >
+            </label>
+            <br>
+            <label>
+                C:<input type="text" name="Ac" >
+            </label>
+            <Br>
+            <label>
+                D"<input type="text" name="Ad" >
+            </label>
+            <br>
+            <label>
+                答案.<input type="text" name="answer">
+            </label>
+            <br>
+            <label>
+                解析<input type="text" name="jiexi">
+            </label>
+            <input type="submit" value="提交">
+        </form>
 
 
 
     </div>
-    <script>
-        $(document).ready(function () {
 
-            $("#Ca").click(function () {
-                $("#editorContainer1").show();
-            });
-            $("#Ba").click(function () {
-                $("#editorContainer1").hide();
-            });
-            $("#Cb").click(function () {
-                $("#editorContainer2").show();
-            });
-            $("#Bb").click(function () {
-                $("#editorContainer2").hide();
-            });
-            $("#Cc").click(function () {
-                $("#editorContainer3").show();
-            });
-            $("#Bc").click(function () {
-                $("#editorContainer3").hide();
-            });
-            $("#Cd").click(function () {
-                $("#editorContainer4").show();
-            });
-            $("#Bd").click(function () {
-                $("#editorContainer4").hide();
-            });
-            $("#title").click(function () {
-                $("#editorContainer").show();
-            });
-            $("#q").click(function () {
-                $("#editorContainer").hide();
-            });
-            $("#jiexi").click(function () {
-                $("#editorContainer5").show();
-            });
-            $("#Bjiexi").click(function () {
-                $("#editorContainer5").hide();
-            });
-            $("#tijiao").click(function () {
-                var title = $("div#editorContainer .wrs_container").html();
-                var Aa=$("div#editorContainer1 .wrs_container").html();
-                var Ab=$("div#editorContainer2 .wrs_container").html();
-               var Ac =$("div#editorContainer3 .wrs_container").html();
-                var Ad= $("div#editorContainer4 .wrs_container").html();
-                var jiexi= $("div#editorContainer5 .wrs_container").html();
-                var ban = $("#ban").val();
-                var score = $("#score").val();
-                var answer=$("#answer").val();
-                console.log("题目"+title);
-                console.log("a"+Aa);
-                console.log("b"+Ab);
-                console.log("c"+Ac);
-                console.log("d"+Ad);
-                console.log("jiexi"+jiexi);
-                console.log("ban"+ban);
-                console.log("score"+score);
-                console.log("answer"+answer);
 
-                $.ajax({
-                    type: "POST",
-                    url: "<%=basePath%>ti/doChoice",
-                    data: {
-                        "Ban":ban,
-                        "Title":title,
-                        "Score":score,
-                        "Answer":answer,
-                        "Aa":Aa,
-                        "Ab":Ab,
-                        "Ac":Ac,
-                        "Ad":Ad,
-                        "Jiexi":jiexi
-                    },
-                    // dataType: "json",
-                    success: function (data) {
-                        alert("成功插入");
-                        window.location.reload();
-                    },
-                    error:function (XMLHttpRequest, textStatus, errorThrown) {
-                        alert("请求失败");
-                        console.log(errorThrown);
-                        console.log(textStatus);
-                        console.log(XMLHttpRequest);
-                    }
-                })
-            })
-        })
-    </script>
     <!-- /.content-wrapper -->
 
     <!-- Main Footer -->

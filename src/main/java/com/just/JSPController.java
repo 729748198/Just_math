@@ -258,8 +258,26 @@ public class JSPController {
 
         return "admin/teach";
     }
+
+    /**
+     * 添加选择题
+     * @param request
+     * @param response
+     * @return
+     */
     @RequestMapping("/addChoice")
     public  String addChoice(HttpServletRequest request,HttpServletResponse response){
         return "admin/addchoice";
     }
+    /**
+     * 添加不带公式的选择题
+     * @param request
+     * @param response
+     * @return
+     */
+    @RequestMapping("/addchoice")
+    public  String addchoice(HttpServletRequest request,HttpServletResponse response){
+        return "admin/addchoiceNomath";
+    }
+
 }

@@ -176,6 +176,46 @@ public class TiController {
         return  "插入成功";
     }
 
+    @RequestMapping("/dochoice")
+    public  String doChoiceNoMath(HttpServletRequest request,HttpServletResponse respnse){
+        String ban=request.getParameter("ban");
+        String title=request.getParameter("title");
+        String score=request.getParameter("score");
+        String answer=request.getParameter("answer");
+        String aa=request.getParameter("Aa");
+        String ab=request.getParameter("Ab");
+        String ac=request.getParameter("Ac");
+        String ad=request.getParameter("Ad");
+        String jiexi=request.getParameter("jiexi");
+        Integer ti_id= Integer.valueOf(MD5.md5(title));
+        //没有公式的选择题
+        Integer type=5;
+
+        /**
+         * 问题的实体
+         */
+        Question question=new Question();
+        question.setId(ti_id);
+        question.setTiBan(ban);
+        question.setTiScore(score);
+        question.setTiTitle(title);
+        question.setTiSum(type);
+
+        /**
+         * 答案的实体
+         */
+        ChoiceWithBLOBs bloBs=new ChoiceWithBLOBs();
+        bloBs.setId(ti_id);
+        bloBs.setPa(aa);
+        bloBs.setPb(ab);
+        bloBs.setPc(ac);
+        bloBs.setPd(ad);
+        bloBs.setAnswer(answer);
+        bloBs.setJiexi(jiexi);
+        questionService.add(question);
+        choiceservice.addById(bloBs);
+    return  "admin/addchoiceNomath";
+    }
     @RequestMapping("/getone")
     @ResponseBody
     public Map<String,String> getone(){

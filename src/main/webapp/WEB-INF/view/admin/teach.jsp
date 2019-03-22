@@ -251,6 +251,7 @@
                 <!-- Optionally, you can add icons to the links -->
                 <li class="active"><a href="<%=path%>/just/teacher" target="_self"><i class="fa fa-link"></i> <span>上传填空题</span></a></li>
                 <li><a href="<%=path%>/just/addChoice" target="_self"><i class="fa fa-link"></i> <span>上传选择题</span></a></li>
+                <li><a href="<%=path%>/just/addchoice" target="_self"><i class="fa fa-link"></i> <span>上传选择题(不带公式)</span></a></li>
             </ul>
             <!-- /.sidebar-menu -->
         </section>
