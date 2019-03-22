@@ -13,4 +13,11 @@ public interface Choiceservice {
      * @return
      */
     ChoiceWithBLOBs selectById(Integer id);
+
+    /**
+     * 增加一道选择题
+     * @param bloBs
+     * @return
+     */
+    int addById(ChoiceWithBLOBs bloBs);
 }

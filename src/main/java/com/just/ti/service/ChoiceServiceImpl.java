@@ -18,4 +18,9 @@ public class ChoiceServiceImpl implements Choiceservice {
     public ChoiceWithBLOBs selectById(Integer id) {
         return mapper.selectByPrimaryKey(id);
     }
+
+    @Override
+    public int addById(ChoiceWithBLOBs bloBs) {
+        return mapper.insertSelective(bloBs);
+    }
 }

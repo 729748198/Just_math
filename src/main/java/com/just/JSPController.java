@@ -213,7 +213,7 @@ public class JSPController {
      */
     @RequestMapping("/ti")
     public String ti(HttpServletRequest request,HttpServletResponse response){
-        Question question=questionService.selectById(3);
+        Question question=questionService.selectById(618694747);
         ChoiceWithBLOBs choiceWithBLOBs=choiceservice.selectById(3);
         request.setAttribute("title",question.getTiTitle());
        Map<String,String>map=new HashMap<>(4);
@@ -246,9 +246,20 @@ public class JSPController {
         return "community";
     }
 
+
+    /**
+     * 后台——添加填空题
+     * @param response
+     * @param request
+     * @return
+     */
     @RequestMapping("/teacher")
     public  String teacher(HttpServletResponse response,HttpServletRequest request){
 
         return "admin/teach";
+    }
+    @RequestMapping("/addChoice")
+    public  String addChoice(HttpServletRequest request,HttpServletResponse response){
+        return "admin/addchoice";
     }
 }

@@ -23,6 +23,7 @@
     <script src="<%=basePath%>/js/jquery-1.8.3.min.js"></script>
 </head>
 <body>
+
 <div id="ceshi">
 
 </div>
@@ -31,16 +32,16 @@
     <script>
         $(document).ready(function () {
           console.log("ceshi");
-            $.ajax({
 
+            $.ajax({
               url: "<%=path%>/ti/test",
               type:"get",
               success:function (data) {
-                  console.log(data);
-                  var Ti=data["title"];
+                  var jsObject = JSON.parse(data);
+                  console.log(jsObject);
+                  var Ti=jsObject.title;
                   console.log(Ti);
-                  var heml=data;
-                  $("#demo").html(Ti);
+                  // $("#ceshi").html(Ti);
               }
 
           })

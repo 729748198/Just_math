@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
@@ -86,10 +87,15 @@ public class TiController {
         return  map;
     }
 
-    @RequestMapping("/dotest")
+    /**
+     * 插入一道填空题目的答案
+     * @param response
+     * @param request
+     * @return
+     */
+    @RequestMapping("/dotian")
     @ResponseBody
-    public String dotest(HttpServletResponse response, HttpServletRequest request){
-
+    public String dotian(HttpServletResponse response, HttpServletRequest request){
 
         String ban=request.getParameter("Ban");
         String title=request.getParameter("Title");
@@ -107,7 +113,7 @@ public class TiController {
         question.setTiBan(ban);
         question.setTiScore(score);
         question.setTiTitle(title);
-
+        question.setTiSum(type);
         /**
          * 答案的实体
          */
@@ -116,19 +122,59 @@ public class TiController {
         answerWithBLOBs.setTiId(ti_id);
         answerWithBLOBs.setAnswerType(2);
 
-        System.out.println("题目");
-        System.out.println(title);
-        System.out.println("答案");
-        System.out.println(answer);
-        System.out.println("题目ID");
-        System.out.println(ti_id);
-
         questionService.add(question);
         answerService.add(answerWithBLOBs);
 
         return  "插入成功";
     }
 
+    /**
+     * 插入选择题
+     * @param response
+     * @param request
+     * @return
+     */
+    @RequestMapping("/doChoice")
+    @ResponseBody
+    public  String doChoice(HttpServletResponse response, HttpServletRequest request){
+        String ban=request.getParameter("Ban");
+        String title=request.getParameter("Title");
+        String score=request.getParameter("Score");
+        String answer=request.getParameter("Answer");
+        String aa=request.getParameter("Aa");
+        String ab=request.getParameter("Ab");
+        String ac=request.getParameter("Ac");
+        String ad=request.getParameter("Ad");
+        String jiexi=request.getParameter("Jiexi");
+        Integer ti_id= Integer.valueOf(MD5.md5(title));
+        //1是选择题
+        Integer type=1;
+
+        /**
+         * 问题的实体
+         */
+        Question question=new Question();
+        question.setId(ti_id);
+        question.setTiBan(ban);
+        question.setTiScore(score);
+        question.setTiTitle(title);
+        question.setTiSum(type);
+
+        /**
+         * 答案的实体
+         */
+        ChoiceWithBLOBs bloBs=new ChoiceWithBLOBs();
+        bloBs.setId(ti_id);
+        bloBs.setPa(aa);
+        bloBs.setPb(ab);
+        bloBs.setPc(ac);
+        bloBs.setPd(ad);
+        bloBs.setAnswer(answer);
+        bloBs.setJiexi(jiexi);
+        questionService.add(question);
+        choiceservice.addById(bloBs);
+        return  "插入成功";
+    }
 
     @RequestMapping("/getone")
     @ResponseBody
@@ -149,11 +195,12 @@ public class TiController {
     @RequestMapping(value = "/test")
     @ResponseBody
     public Map<String, String> test(){
-        Question question=questionService.selectById(1);
-        AnswerWithBLOBs answerWithBLOBs=answerService.selectByQId(1);
+        Question question=questionService.selectById(618694747);
+        AnswerWithBLOBs answerWithBLOBs=answerService.selectByQId(618694747);
         Map<String,String>map=new HashMap<>(7);
         map.put("title",question.getTiTitle());
         map.put("answer",answerWithBLOBs.getAnswer());
+
         return map;
     }
 
