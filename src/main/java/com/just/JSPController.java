@@ -10,6 +10,8 @@ import com.just.math_world.entity.WorldFollow;
 import com.just.math_world.service.WorldFansService;
 import com.just.math_world.service.WorldFollowService;
 import com.just.math_world.service.WorldService;
+import com.just.ti.entity.Answer;
+import com.just.ti.entity.AnswerWithBLOBs;
 import com.just.ti.entity.ChoiceWithBLOBs;
 import com.just.ti.entity.Question;
 import com.just.ti.service.AnswerService;
@@ -21,6 +23,7 @@ import com.sun.org.apache.xerces.internal.xs.datatypes.ObjectList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -213,7 +216,7 @@ public class JSPController {
      */
     @RequestMapping("/ti")
     public String ti(HttpServletRequest request,HttpServletResponse response){
-        Question question=questionService.selectById(618694747);
+        Question question=questionService.selectById(3);
         ChoiceWithBLOBs choiceWithBLOBs=choiceservice.selectById(3);
         request.setAttribute("title",question.getTiTitle());
        Map<String,String>map=new HashMap<>(4);
@@ -227,6 +230,14 @@ public class JSPController {
         return "ti";
     }
 
+    @RequestMapping("/dotian")
+    public String dotian(HttpServletResponse response,HttpServletRequest request){
+        Question question=questionService.selectById(618694747);
+        AnswerWithBLOBs answerWithBLOBs=answerService.selectByQId(618694747);
+        request.setAttribute("title",question.getTiTitle());
+        request.setAttribute("answer",answerWithBLOBs.getAnswer());
+        return "ti_tiankong";
+    }
     /**
      * 跳转到资料页
      * @param request

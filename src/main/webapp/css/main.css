@@ -1208,7 +1208,7 @@ img.exe-probar
 div.exe-content
 {
     width: 678px;
-    height: 650px;
+    height: 100%;
     display: inline-block;
     position: absolute;
     top:50px;

@@ -20,7 +20,9 @@
     <title>难题突破</title>
     <link rel="stylesheet" href="<%=basePath%>css/main.css" type="text/css">
     <script src="<%=basePath%>/js/jquery-1.8.3.min.js"></script>
+    <script src="<%=basePath%>/js/editor.js"></script>
 </head>
+
 <body>
 
 <!--container-->
@@ -53,7 +55,7 @@
             <div class="exe-chapter">
                 <ul class="exe-chapter">
                     <li><a href="" class="exe-chapter">Ⅰ 函数与极限</a></li>
-                    <li><a href="<%=path%>/just/dotian" class="exe-chapter">Ⅱ 导数与微分</a></li>
+                    <li><a href="" class="exe-chapter">Ⅱ 导数与微分</a></li>
                     <li><a href="" class="exe-chapter">Ⅲ 微分中值定理与导数的应用</a></li>
                     <li><a href="" class="exe-chapter">Ⅳ 不定积分</a></li>
                     <li><a href="" class="exe-chapter">Ⅴ 定积分</a></li>
@@ -77,50 +79,49 @@
             <div class="exe-progressbar" style="background: linear-gradient(to right, blue, skyblue 66%, white 33%); ">
                 <img src="<%=basePath%>img/exe-probar.png" alt="" class="exe-probar">
             </div>
+
             <!--答题-->
             <div class="exe-content">
-                <div class="exercise-content" style="border:1px solid #274b8b ;
-padding: 5px 5px 10px 5px;">
-                   ${title}
-                    <br><br><br><br><br><br><br><br><br><br><br><br><br>
-                    <label>
-                        <input type="radio" name="choice" value="A"/>A.${choice.A}
-                    </label>
-                    <label>
-                        <input type="radio" name="choice" value="B"/>B.${choice.B}
-                    </label>
-                    <label>
-                        <input type="radio" name="choice" value="C"/>C.${choice.C}
-                    </label>
-                    <label>
-                        <input type="radio" name="choice" value="D" />D.${choice.D}
-                    </label>
-                    <div id="demo">
+                <div class="exercise-content" >
+                    ${title}
+                    <br><br><br>
+                        <div id="demo">
 
-                    </div>
+                        </div>
+                        <script>
+                            var editor;
+                            window.onload = function () {
+                                editor = com.wiris.jsEditor.JsEditor.newInstance({'language': 'en'});
+                                editor.insertInto(document.getElementById('demo'));
+                            };
+                        </script>
+                        <div id="jieguo"></div>
+                        <%--<input type="text" class="exe-answer">--%>
+
                 </div>
-                <%--<input type="text" class="exe-answer">--%>
-                <p> <a id="tijiao"  class="exe-button exe-submit">提交</a></p>
-                <a href="" class="exe-button exe-next">下一题</a>
-                <script>
+
+            </div>
+            <p> <a id="tijiao"  class="exe-button exe-submit">提交</a></p>
+            <a href="" class="exe-button exe-next">下一题</a>
+            <script>
+
+                $(document).ready(function () {
                     $("#tijiao").click(function () {
-                        var radioValue = $('input:radio[name="choice"]:checked').val();
+                        var value=$(".wrs_container").html();
                         var html="";
                         var anser="${answer}";
-                        if(radioValue==anser){
-                            html+="<p style='color: green'>答案正确</p>";
-                        }else {
-
-                            html+="<p style='color: red'>答案错误！</p>";
-                            html+="<p>正确答案为${answer}</p>";
-                        }
-                        $("#demo").html(html);
+                        html+="<p style='color: red'>答案错误！</p>";
+                        html+="<p>正确答案为</p><div>";
+                        html+=${answer};
+                        html+="</div>";
+                        $("#jieguo").html(html);
                     });
-                </script>
-            </div>
-
+                });
+            </script>
         </div>
     </div>
+
+
 
 </div>
 
