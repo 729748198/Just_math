@@ -350,15 +350,17 @@
         <div class="wel-intro">
             <img src="<%=basePath%>/img/wel-img-1.jpg" alt="" class="wel-img">
             <div class="wel-intro-text">
-                <text style="font-size: 25px;font-weight: bold">“精互同”大学数学游戏式教学平台</text>是一款用于八九点克服了；几点上课；里番的数据来看房价多少短时间分；几点上课；安静了开放的；就啊；六点十分骄傲舒服的； 马上；eiffel单身快乐；分九分裤；是
+                <text style="font-size: 25px;font-weight: bold">“精互同”大学数学游戏式教学平台</text><b>是一款学生学习大学数学的平台。教师可以通过此平台详细了解每个知识点学生的掌握情况，同时此平台以竞技的方式刺激学生学习兴趣，更好的掌握大学数学。</b>
             </div>
         </div>
         <!--叶老师介绍-->
         <div class="wel-teacher">
             <text class="teacher-1">关于叶慧老师</text>
-            <img src="<%=basePath%>/img/worlduser.jpg" alt="" class="wel-teacher">
+            <img src="<%=basePath%>/img/main-user.png" alt="" class="wel-teacher">
             <text class="teacher-2">叶慧 <br> <text style="font-size:15px;font-weight: normal">理学院副教授</text></text>
-            <text class="teacher-3">注重教学创新，很漂亮很漂亮很漂亮很漂亮很漂亮很漂亮很 <br>漂亮很漂亮很漂亮很漂亮很漂亮很漂亮很漂亮很漂亮很漂亮很漂亮很漂亮很漂亮很漂亮很漂亮很漂亮很漂亮 </text>
+            <text class="teacher-3"><b>注重教学创新，被学生自发誉为“高数女神” <br>江苏电视台、镇江电视台进行教学专访，新浪、搜狐、现代快报、扬子晚报等多家媒体转载报道</b> </text>
+            <text class="teacher-4"><b>教学成果显著，被学校评为教学名师，省度优秀党员，省优秀教学工作者。自创“精互同”教学模式，获学校“教学成果特等奖”</b> <br></text>
+
         </div>
         <!--图片轮播-->
         <div id="container">
