@@ -264,7 +264,7 @@
         <p>增加一道选择题</p>
         <label for="ban">所属板块</label><input name="ban" id="ban" type="text" ><br>
         <label for="score">分数</label><input name="score" id="score" type="text" ><br>
-        <label for="title">标题</label><input name="title" id="title" type="text" > <button id="q">确定</button><br>
+        <label for="title">标题</label><input name="title" id="title" type="text" maxlength="1000"> <button id="q">确定</button><br>
         <div id="editorContainer"></div>
         <p id="Ca">选项A </p><button id="Ba">确定</button>
         <div id="editorContainer1"></div>

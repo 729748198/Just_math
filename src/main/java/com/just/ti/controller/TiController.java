@@ -18,10 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author 贺文杰
@@ -39,10 +36,16 @@ public class TiController {
 
     @Autowired
     Choiceservice choiceservice;
+
+    /**
+     * 处理跨域问题
+     * @param response
+     */
     @ModelAttribute
     public  void kuayu(HttpServletResponse response){
         response.setHeader("Access-Control-Allow-Origin", "*");
     }
+
     /**
      * 提交题目
      * @param response
@@ -181,6 +184,12 @@ public class TiController {
         return  "插入成功";
     }
 
+    /**
+     * 插入不带公式的选择题
+     * @param request
+     * @param respnse
+     * @return
+     */
     @RequestMapping("/dochoice")
     public  String doChoiceNoMath(HttpServletRequest request,HttpServletResponse respnse){
         String ban=request.getParameter("ban");
@@ -221,6 +230,40 @@ public class TiController {
         choiceservice.addById(bloBs);
     return  "admin/addchoiceNomath";
     }
+
+    @RequestMapping("/getByban")
+    @ResponseBody
+    public  Map<String, String> getByBan(String ban){
+
+        List<Question> list=questionService.selectByBan(ban);
+        List<Map<String,String>>result=new ArrayList<>();
+        for (Question question:list
+             ) {
+            ChoiceWithBLOBs choiceWithBLOBs=choiceservice.selectById(question.getId());
+
+            Map<String,String>map=new HashMap<>(7);
+            map.put("title",question.getTiTitle());
+            map.put("A",choiceWithBLOBs.getPa());
+            map.put("B",choiceWithBLOBs.getPb());
+            map.put("C",choiceWithBLOBs.getPc());
+            map.put("D",choiceWithBLOBs.getPd());
+            map.put("jiexi",choiceWithBLOBs.getJiexi());
+            map.put("answer",choiceWithBLOBs.getAnswer());
+            result.add(map);
+        }
+        int length=result.size();
+        return result.get((int)(1+Math.random()*(length-2+1)));
+    }
+
+
+
+
+
+
+    /**
+     * 测试——获取一道选择题
+     * @return
+     */
     @RequestMapping("/getone")
     @ResponseBody
     public Map<String,String> getone(){
@@ -237,6 +280,10 @@ public class TiController {
         return map;
     }
 
+    /**
+     * 测试——获取一道公式题
+     * @return
+     */
     @RequestMapping(value = "/test")
     @ResponseBody
     public Map<String, String> test(){
@@ -248,5 +295,6 @@ public class TiController {
 
         return map;
     }
+
 
 }

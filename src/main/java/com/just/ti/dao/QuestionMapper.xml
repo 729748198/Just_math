@@ -25,6 +25,14 @@
     from ti_question
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="selectByBan" resultMap="ResultMapWithBLOBs" parameterType="string" >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from ti_question
+    where ti_ban = ${ban}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from ti_question
     where id = #{id,jdbcType=INTEGER}
