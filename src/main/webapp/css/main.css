@@ -622,21 +622,21 @@ td.qa-userimg
 {
     display: inline-block;
     position: absolute;
-    right: 30%;
+    right: 34%;
     top:10%;
 }
 td.qa-username
 {
     display: inline-block;
     position: absolute;
-    right: 18%;
+    right: 20%;
     top:33%;
 }
 td.qa-date
 {
     display: inline-block;
     position: absolute;
-    right: 5%;
+    right: 0%;
     top:33%;
 }
 div.rating-col

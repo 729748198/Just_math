@@ -22,6 +22,7 @@ import com.just.user.service.RankService;
 import com.sun.org.apache.xerces.internal.xs.datatypes.ObjectList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -69,7 +70,10 @@ public class JSPController {
     @Autowired
     Choiceservice choiceservice;
 
-
+    @ModelAttribute
+    public  void kuayu(HttpServletResponse response){
+        response.setHeader("Access-Control-Allow-Origin", "*");
+    }
     @RequestMapping("/error")
     public String error(){
         return "404";

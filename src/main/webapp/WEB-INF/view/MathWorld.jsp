@@ -84,14 +84,14 @@
         </div>
         <!--发表栏-->
         <div class="worldsubmit">
-            <form method="post" action="<%=path%>/world/dofrom" enctype="multipart/form-data">
+            <%--<form method="post" action="<%=path%>/world/dofrom" enctype="multipart/form-data">--%>
 
 
-            <input name="title" type="text" value="标题">
-            <input class="world-user-submit" value="正文" name="content" id="world-user-submit" type="text"/><br>
-            <input type="file" name="file" value="选择图片">
+            <%--<input name="title" type="text" >--%>
+            <input class="world-user-submit"  name="content" id="world-user-submit" type="text"/><br>
+            <%--<input type="file" name="file" value="选择图片">--%>
             <input  type="submit" class="world-submit-button">发  表</input>
-            </form>
+            <%--</form>--%>
         </div>
         <!--分类按钮-->
         <div class="worldclassify">
@@ -135,7 +135,7 @@
 <SCRIPT>
     $(document).ready(function () {
 
-        $("#txtWorld").click(function () {
+
             $.ajax({
                 url:"<%=path%>/world/getallTxt",
                 type:"get",
@@ -153,7 +153,7 @@
                     $("#content").html(str);
                 }
             })
-        });
+
         $("#picWorld").click(function () {
             $.ajax({
                 url:"<%=path%>/world/getallPic",

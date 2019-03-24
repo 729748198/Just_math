@@ -10,6 +10,7 @@ import com.just.tools.MD5;
 import org.aspectj.weaver.World;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -38,6 +39,10 @@ public class WorldController {
     @Autowired
     WorldFansService fansService;
 
+    @ModelAttribute
+    public  void kuayu(HttpServletResponse response){
+        response.setHeader("Access-Control-Allow-Origin", "*");
+    }
     /**
      * 获取所有作品的接口
      * @return

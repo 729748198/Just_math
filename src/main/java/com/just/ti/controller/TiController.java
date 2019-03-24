@@ -11,6 +11,7 @@ import com.just.ti.service.UserTiService;
 import com.just.tools.MD5;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -38,6 +39,10 @@ public class TiController {
 
     @Autowired
     Choiceservice choiceservice;
+    @ModelAttribute
+    public  void kuayu(HttpServletResponse response){
+        response.setHeader("Access-Control-Allow-Origin", "*");
+    }
     /**
      * 提交题目
      * @param response
