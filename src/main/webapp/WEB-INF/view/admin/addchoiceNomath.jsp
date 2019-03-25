@@ -260,17 +260,17 @@
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-        <form action="<%=path%>/ti/dochoice" method="post">
+        <form action="<%=path%>/ti/doChoice" method="post">
             <label>
-                章节板块.<input type="text" name="ban" >
+                章节板块.<input type="text" name="Ban" >
             </label>
             <br>
             <label>
-                分数.<input type="text" name="score" >
+                分数.<input type="text" name="Score" >
             </label>
             <br>
             <label>
-                标题.<input type="text" name="title" >
+                标题.<input type="text" name="Title" >
             </label>
             <br>
             <label>
@@ -290,13 +290,15 @@
             </label>
             <br>
             <label>
-                答案.<input type="text" name="answer">
+                答案.<input type="text" name="Answer">
             </label>
             <br>
             <label>
-                解析<input type="text" name="jiexi">
+                解析<input type="text" name="Jiexi">
             </label>
+            <input name="type" value="5">
             <input type="submit" value="提交">
+
         </form>
 
 

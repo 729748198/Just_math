@@ -96,7 +96,7 @@
                             };
                         </script>
                         <div id="jieguo" class="container" ></div>
-                        <%--<input type="text" class="exe-answer">--%>
+                        <div id="mess" class="container"></div>
 
                 </div>
 
@@ -108,19 +108,29 @@
                 $(document).ready(function () {
                     $("#tijiao").click(function () {
                         var value=$(".wrs_container").html();
-                        $("#demo").hide();
-
-                        // console.log(value);
-                        // value=value.replace(/\"/g, "\\\"");
-                        // console.log(value);
-                        var html="";
-                   //     var anser="${answer}";
-                        //console.log(anser);
-                        html+="<p style='color: red'>答案错误！</p>";
-                        html+="<p>正确答案为</p><div>";
-                        <%--html+=${answer};--%>
-                        html+="</div>";
+                        $("#demo").hide()
                         $("#jieguo").html(value);
+                        $.ajax({
+                            type:"POST",
+                            url:"<%=path%>/ti/doanswer",
+                            data:{
+                                username:${user},
+                                doanswer:value,
+                                ti_id:${ti_id}
+
+                            },
+                            dataType:"json",
+                            success:function (data) {
+                                console.log(data);
+                                $("#mess").html(data.mess);
+                               // $("#answer").html(data.rightanswer);
+
+                            },
+                            error:function (XMLHttpRequest, textStatus, errorThrown) {
+                                alert("请求失败");
+                            }
+
+                        })
                     });
                 });
             </script>

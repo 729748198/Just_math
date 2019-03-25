@@ -237,10 +237,11 @@ public class JSPController {
 
     @RequestMapping("/dotian")
     public String dotian(HttpServletResponse response,HttpServletRequest request){
-        Question question=questionService.selectById(1);
-        AnswerWithBLOBs answerWithBLOBs=answerService.selectByQId(1);
+        Question question=questionService.selectById(2214183);
+        AnswerWithBLOBs answerWithBLOBs=answerService.selectByQId(2214183);
         request.setAttribute("title",question.getTiTitle());
-        request.setAttribute("answer",answerWithBLOBs.getAnswer());
+        request.setAttribute("ti_id",question.getId());
+
         return "ti_tiankong";
     }
     /**

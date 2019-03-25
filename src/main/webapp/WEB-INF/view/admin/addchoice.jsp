@@ -382,7 +382,8 @@
                         "Ab":Ab,
                         "Ac":Ac,
                         "Ad":Ad,
-                        "Jiexi":jiexi
+                        "Jiexi":jiexi,
+                        "type":5
                     },
                     // dataType: "json",
                     success: function (data) {

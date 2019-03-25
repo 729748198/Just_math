@@ -78,6 +78,8 @@ public class TiController {
         userTiWithBLOBs.setRightanswer(answerWithBLOBs.getAnswer());
         userTiWithBLOBs.setDoanswer(doanswer);
         userTiWithBLOBs.setDotime(new Date());
+        System.out.println("答案"+answerWithBLOBs.getAnswer());
+        System.out.println("填的"+doanswer);
         if(answerWithBLOBs.getAnswer().equals(doanswer)){
             userTiWithBLOBs.setIsDo(2);
             map.put("mess","答案正确！");
@@ -87,9 +89,7 @@ public class TiController {
         }
         userTiService.add(userTiWithBLOBs);
 
-        System.out.println(doanswer);
         doanswer=doanswer.replaceAll("\"","&quot");
-        System.out.println(doanswer);
         map.put("rightanswer",answerWithBLOBs.getAnswer());
         map.put("jiexi",answerWithBLOBs.getJiexi());
         return  map;
@@ -137,14 +137,12 @@ public class TiController {
     }
 
     /**
-     * 插入选择题
+     * 插入一道选择题
      * @param response
      * @param request
-     * @return
      */
-    @RequestMapping("/doChoice")
-    @ResponseBody
-    public  String doChoice(HttpServletResponse response, HttpServletRequest request){
+
+    public  void funchoice(HttpServletResponse response,HttpServletRequest request){
         String ban=request.getParameter("Ban");
         String title=request.getParameter("Title");
         String score=request.getParameter("Score");
@@ -154,12 +152,12 @@ public class TiController {
         String ac=request.getParameter("Ac");
         String ad=request.getParameter("Ad");
         String jiexi=request.getParameter("Jiexi");
+        String ttype=request.getParameter("type");
         Integer ti_id= Integer.valueOf(MD5.md5(title));
-        //1是选择题
-        Integer type=1;
+
+        Integer type=Integer.valueOf(ttype);
 
         /**
-         * 问题的实体
          */
         Question question=new Question();
         question.setId(ti_id);
@@ -181,53 +179,29 @@ public class TiController {
         bloBs.setJiexi(jiexi);
         questionService.add(question);
         choiceservice.addById(bloBs);
+    }
+    /**
+     * 插入选择题，返回json
+     * @param response
+     * @param request
+     * @return
+     */
+    @RequestMapping("/doChoice")
+    @ResponseBody
+    public  String doChoice(HttpServletResponse response, HttpServletRequest request){
+        funchoice(response,request);
         return  "插入成功";
     }
 
     /**
-     * 插入不带公式的选择题
+     * 插入不带公式的选择题,返回页面
      * @param request
      * @param respnse
      * @return
      */
     @RequestMapping("/dochoice")
     public  String doChoiceNoMath(HttpServletRequest request,HttpServletResponse respnse){
-        String ban=request.getParameter("ban");
-        String title=request.getParameter("title");
-        String score=request.getParameter("score");
-        String answer=request.getParameter("answer");
-        String aa=request.getParameter("Aa");
-        String ab=request.getParameter("Ab");
-        String ac=request.getParameter("Ac");
-        String ad=request.getParameter("Ad");
-        String jiexi=request.getParameter("jiexi");
-        Integer ti_id= Integer.valueOf(MD5.md5(title));
-        //没有公式的选择题
-        Integer type=5;
-
-        /**
-         * 问题的实体
-         */
-        Question question=new Question();
-        question.setId(ti_id);
-        question.setTiBan(ban);
-        question.setTiScore(score);
-        question.setTiTitle(title);
-        question.setTiSum(type);
-
-        /**
-         * 答案的实体
-         */
-        ChoiceWithBLOBs bloBs=new ChoiceWithBLOBs();
-        bloBs.setId(ti_id);
-        bloBs.setPa(aa);
-        bloBs.setPb(ab);
-        bloBs.setPc(ac);
-        bloBs.setPd(ad);
-        bloBs.setAnswer(answer);
-        bloBs.setJiexi(jiexi);
-        questionService.add(question);
-        choiceservice.addById(bloBs);
+        funchoice(respnse,request);
     return  "admin/addchoiceNomath";
     }
 
