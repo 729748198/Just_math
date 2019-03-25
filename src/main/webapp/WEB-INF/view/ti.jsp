@@ -106,7 +106,7 @@ padding: 5px 5px 10px 5px;">
                     $("#tijiao").click(function () {
                         var radioValue = $('input:radio[name="choice"]:checked').val();
                         var html="";
-                        var anser="${answer}";
+                        var anser="${answer}
                         if(radioValue==anser){
                             html+="<p style='color: green'>答案正确</p>";
                         }else {

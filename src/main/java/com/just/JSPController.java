@@ -74,6 +74,7 @@ public class JSPController {
     public  void kuayu(HttpServletResponse response){
         response.setHeader("Access-Control-Allow-Origin", "*");
     }
+
     @RequestMapping("/error")
     public String error(){
         return "404";
@@ -236,8 +237,8 @@ public class JSPController {
 
     @RequestMapping("/dotian")
     public String dotian(HttpServletResponse response,HttpServletRequest request){
-        Question question=questionService.selectById(618694747);
-        AnswerWithBLOBs answerWithBLOBs=answerService.selectByQId(618694747);
+        Question question=questionService.selectById(1);
+        AnswerWithBLOBs answerWithBLOBs=answerService.selectByQId(1);
         request.setAttribute("title",question.getTiTitle());
         request.setAttribute("answer",answerWithBLOBs.getAnswer());
         return "ti_tiankong";

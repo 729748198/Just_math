@@ -95,7 +95,7 @@
                                 editor.insertInto(document.getElementById('demo'));
                             };
                         </script>
-                        <div id="jieguo"></div>
+                        <div id="jieguo" class="container" ></div>
                         <%--<input type="text" class="exe-answer">--%>
 
                 </div>
@@ -108,13 +108,19 @@
                 $(document).ready(function () {
                     $("#tijiao").click(function () {
                         var value=$(".wrs_container").html();
+                        $("#demo").hide();
+
+                        // console.log(value);
+                        // value=value.replace(/\"/g, "\\\"");
+                        // console.log(value);
                         var html="";
-                        var anser="${answer}";
+                   //     var anser="${answer}";
+                        //console.log(anser);
                         html+="<p style='color: red'>答案错误！</p>";
                         html+="<p>正确答案为</p><div>";
-                        html+=${answer};
+                        <%--html+=${answer};--%>
                         html+="</div>";
-                        $("#jieguo").html(html);
+                        $("#jieguo").html(value);
                     });
                 });
             </script>
