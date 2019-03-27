@@ -13,6 +13,7 @@
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
     String socketPath = request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
