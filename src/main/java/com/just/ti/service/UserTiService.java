@@ -13,4 +13,5 @@ public interface UserTiService {
      * @return
      */
     int add(UserTiWithBLOBs userTiWithBLOBs);
+
 }

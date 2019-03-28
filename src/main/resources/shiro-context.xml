@@ -1,0 +1,48 @@
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<beans xmlns="http://www.springframework.org/schema/beans"-->
+       <!--xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+       <!--xmlns:aop="http://www.springframework.org/schema/aop"-->
+       <!--xmlns:context="http://www.springframework.org/schema/context"-->
+       <!--xsi:schemaLocation="http://www.springframework.org/schema/beans-->
+       <!--http://www.springframework.org/schema/beans/spring-beans.xsd-->
+       <!--http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd-->
+       <!--http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">-->
+
+    <!--<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">-->
+        <!--<property name="securityManager" ref="securityManager"/>-->
+        <!--<property name="loginUrl" value="/welcome"/>&lt;!&ndash;登录页面，&ndash;&gt;-->
+        <!--<property name="successUrl" value="/Login"/>&lt;!&ndash;登录成功页面，如果自己设置了返回页面，则不跳转&ndash;&gt;-->
+        <!--<property name="unauthorizedUrl" value="/preerror"/>&lt;!&ndash; 没有权限跳转的地址 &ndash;&gt;-->
+        <!--<property name="filterChainDefinitions">-->
+            <!--<value>-->
+                <!--/toLogin=anon &lt;!&ndash;表示都可以访问&ndash;&gt;-->
+                <!--/error=authc-->
+                <!--/test=anon-->
+                <!--/login=anon-->
+                <!--/home=perms[home] &lt;!&ndash;perms表示需要该权限才能访问的页面&ndash;&gt;-->
+                <!--/admin=roles["admin"] &lt;!&ndash; roles["admin,user"] 只有拥有admin角色的用户才可访问，同时需要拥有多个角色的话，用引号引起来，中间用逗号隔开&ndash;&gt;-->
+                <!--&lt;!&ndash;/admin=anon&ndash;&gt;-->
+                <!--/**=authc &lt;!&ndash;authc表示需要认证才能访问的页面&ndash;&gt;-->
+            <!--</value>-->
+        <!--</property>-->
+    <!--</bean>-->
+
+    <!--<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">-->
+        <!--<property name="realm" ref="MyRealm"/>-->
+    <!--</bean>-->
+
+    <!--&lt;!&ndash; 自定义Realm &ndash;&gt;-->
+    <!--<bean id="MyRealm" class="com.realm.MyRealm">-->
+        <!--&lt;!&ndash; 定义凭证匹配器 &ndash;&gt;-->
+        <!--<property name="credentialsMatcher" ref="credentialsMatcher"></property>-->
+    <!--</bean>-->
+
+    <!--&lt;!&ndash; 凭证匹配器 org.apache.shiro.authc.credential.HashedCredentialsMatcher&ndash;&gt;-->
+    <!--<bean id="credentialsMatcher" class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">-->
+        <!--&lt;!&ndash; 加密算法名称 &ndash;&gt;-->
+        <!--<property name="hashAlgorithmName" value="MD5"></property>-->
+        <!--&lt;!&ndash; 散列次数 &ndash;&gt;-->
+        <!--&lt;!&ndash;<property name="hashIterations" value="2"></property>&ndash;&gt;-->
+    <!--</bean>-->
+
+<!--</beans>u-->

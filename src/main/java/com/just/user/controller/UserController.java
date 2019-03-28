@@ -13,6 +13,7 @@ import com.just.user.entity.Rank;
 import com.just.user.entity.UserLogin;
 import com.just.user.service.RankService;
 import com.just.user.service.UserService;
+import jdk.nashorn.internal.ir.BaseNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -53,6 +54,7 @@ public class UserController {
 
     @Autowired
     RankService Rankservice;
+
 
 
     //注册
@@ -104,6 +106,82 @@ public class UserController {
         map= service.selectUser(username);
         return map;
     }
+
+    /**
+     * 根据章节进行排名
+     * @return
+     */
+    @RequestMapping("/rank")
+    @ResponseBody
+    public Map<String, Object> rank(HttpServletRequest request, HttpServletResponse response){
+        String username=(String) request.getSession().getAttribute("user");
+        String Ban=request.getParameter("ban");
+        Ban=Ban.trim();
+        int cout=0;
+        int he=0;
+        String ban;
+        Map<String,Integer>banMap=new HashMap<>(15);
+        banMap.put("高数第一章",1);
+        banMap.put("高数第二章",2);
+        banMap.put("高数第三章",3);
+        banMap.put("高数第四章",4);
+        banMap.put("高数第五章",5);
+        banMap.put("高数第六章",6);
+        banMap.put("高数第七章",7);
+        banMap.put("高数第八章",8);
+        banMap.put("高数第九章",9);
+        banMap.put("高数第十章",10);
+        banMap.put("高数第十一章",11);
+        banMap.put("高数第十二章",12);
+        banMap.put("概率论",13);
+        banMap.put("线性代数",14);
+        banMap.put("总排行",15);
+        Integer i=banMap.get("高数第一章");
+        switch (banMap.get(Ban)){
+            case 1:ban="one";break;
+            case 2:ban="two";break;
+            case 3:ban="three";break;
+            case 4:ban="four";break;
+            case 5:ban="five";break;
+            case 6:ban="six";break;
+            case 7:ban="seven";break;
+            case 8:ban="eight";break;
+            case 9:ban="nine";break;
+            case 10:ban="ten";break;
+            case 11:ban="eleven";break;
+            case 12:ban="tweven";break;
+            case 13:ban="gailvlun";break;
+            case 14:ban="xiandai";break;
+            case 15:ban="he";break;
+            default:ban="null";break;
+        }
+        List<Rank> rankList=Rankservice.selectByban(ban);
+        for (Rank r:rankList
+             ) {
+            System.out.println(r.getUsername());
+        }
+        /**
+         * 查找自己的分数/排名
+         */
+        for (Rank r :
+                rankList) {
+            cout++;
+            if(username.equals(r.getUsername())){
+                he=r.get(Ban);
+                break;
+            }
+        }
+        Map<String,Object>map=new HashMap<>();
+        map.put("first",rankList.remove(0));
+        map.put("second",rankList.remove(0));
+        map.put("thread",rankList.remove(0));
+        map.put("rank",rankList);
+        map.put("me",cout);
+        map.put("he",he);
+
+        return map;
+    }
+
 
     //测试
     @RequestMapping("/testAjax")

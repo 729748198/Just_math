@@ -19,4 +19,9 @@ public class RankServiceImpl implements RankService {
     public List<Rank> selectAll() {
         return mapper.selectall();
     }
+
+    @Override
+    public List<Rank> selectByban(String ban) {
+        return mapper.selectByban(ban);
+    }
 }

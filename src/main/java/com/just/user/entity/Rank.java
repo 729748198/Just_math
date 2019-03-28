@@ -160,4 +160,27 @@ public class Rank {
     public void setGailvlun(Integer gailvlun) {
         this.gailvlun = gailvlun;
     }
+
+    public Integer get(String Ban){
+        switch (Ban){
+            case "高数第一章":return getOne();
+            case "高数第二章":return getTwo();
+            case "高数第三章":return getThree();
+            case "高数第四章":return getFour();
+            case "高数第五章":return getFive();
+            case "高数第六章":return getSix();
+            case "高数第七章":return getSeven();
+            case "高数第八章":return getEight();
+            case "高数第九章":return getNine();
+            case "高数第十章":return getTen();
+            case "高数第十一章":return getEleven();
+            case "高数第十二章":return getTweven();
+            case "概率论":return getGailvlun();
+            case "线性代数":return getXiandai();
+            case "总排行":return gethe();
+
+            default:break;
+        }
+        return null;
+    }
 }

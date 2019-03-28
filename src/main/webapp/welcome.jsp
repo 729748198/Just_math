@@ -205,7 +205,7 @@
 </head>
 <body>
 
-<!--导航栏-->
+<!--测试导航栏-->
 <div class="nav">
     <img class="navbgc" src="<%=basePath%>/img/welcomenav.jpg" alt="">
 </div>

@@ -33,6 +33,13 @@
     select
     <include refid="Base_Column_List" />
     from rank
+    order by he DESC
+  </select>
+  <select id="selectbyBan" resultType="com.just.user.entity.Rank" >
+    select
+      username,${ban}
+    from rank
+    order by ${ban} DESC
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from rank

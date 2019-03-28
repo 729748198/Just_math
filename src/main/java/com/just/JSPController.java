@@ -75,11 +75,19 @@ public class JSPController {
         response.setHeader("Access-Control-Allow-Origin", "*");
     }
 
+    /**
+     * 错误页面
+     * @return
+     */
     @RequestMapping("/error")
     public String error(){
         return "404";
     }
 
+    @RequestMapping("/preerror")
+    public String preerror(){
+        return "preError";
+    }
 
     //以下是跳转页面
 
@@ -167,13 +175,6 @@ public class JSPController {
         int cout=0;
         int he=0;
         List<Rank> rankList=rankService.selectAll();
-        Comparator<Rank> comparator=new Comparator<Rank>() {
-            @Override
-            public int compare(Rank o1, Rank o2) {
-                return o2.gethe()-o1.gethe();
-            }
-        };
-        Collections.sort(rankList,comparator);
         for (Rank r :
                 rankList) {
             cout++;

@@ -1,6 +1,7 @@
 package com.just.user.dao;
 
 import com.just.user.entity.Rank;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -16,6 +17,13 @@ public interface RankMapper {
      * @return
      */
     List<Rank> selectall();
+
+    /**
+     * 根据板块查找成绩
+     * @param ban
+     * @return
+     */
+    List<Rank> selectByban(@Param(value = "ban") String ban);
 
     Rank selectByPrimaryKey(String username);
 

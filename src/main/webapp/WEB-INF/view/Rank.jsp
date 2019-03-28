@@ -59,7 +59,7 @@
             <ul class="rating-col">
                 <li class="rating-col0">排行榜</li>
                 <li class="rating-col1"><button class="rating-col1" id="he">总排行</button></li>
-                <li class="rating-col1"><button class="rating-col1">章节排行</button></li>
+                <li class="rating-col1"><span class="rating-col1">章节排行</span></li>
                 <li class="rating-col2"><button class="rating-col" id="one"><img src="<%=basePath%>img/button.png" alt="" class="rating-button"> 高数第一章</button></li>
                 <li class="rating-col2"><button class="rating-col" id="two"><img src="<%=basePath%>img/button.png" alt="" class="rating-button"> 高数第二章</button></li>
                 <li class="rating-col2"><button class="rating-col" id="three"><img src="<%=basePath%>img/button.png" alt="" class="rating-button"> 高数第三章</button></li>
@@ -126,9 +126,20 @@
         </div>
         <script>
             $(document).ready(function () {
-                $(".rating-col2").click(function () {
-                    var ban=this.text;
-                    alert(ban);
+                $(".rating-col li button").click(function () {
+                    var ban=$(this).text();
+                    $.ajax({
+                        url:"<%=path%>/user/rank",
+                        type:"POST",
+                        data:{
+                            "ban":ban
+                        },
+                        success:function (data) {
+                            console.log(data);
+                        },
+
+
+                    })
                 })
             })
         </script>
