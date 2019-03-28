@@ -33,7 +33,7 @@
 
 <img src="<%=basePath%>img/homepagebcg.png" alt="" class="hp-bgc">
 <!--精模块-->
-<!--ceshi-->
+
 <div class="jing">
     精
     <div class="menu jing-menu">
