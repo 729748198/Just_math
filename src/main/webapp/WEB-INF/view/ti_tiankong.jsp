@@ -95,8 +95,10 @@
                                 editor.insertInto(document.getElementById('demo'));
                             };
                         </script>
-                        <div id="jieguo" class="container" ></div>
-                        <div id="mess" class="container"></div>
+                        <div id="jieguo" class="container" style="height: 66px;"></div>
+                        <div id="mess" class="container" style="height: 66px;"></div>
+                        <div id="right" class="container" style="height: 66px;"></div>
+
 
                 </div>
 
@@ -123,6 +125,8 @@
                             success:function (data) {
                                 console.log(data);
                                 $("#mess").html(data.mess);
+                                $("#right").html(data.rightanswer);
+
                                // $("#answer").html(data.rightanswer);
 
                             },
