@@ -11,7 +11,7 @@ import java.util.List;
  * @author 贺文杰
  * 2019/3/6 18:40
  */
-@Service("RankServiceImpl")
+@Service("rankServiceImpl")
 public class RankServiceImpl implements RankService {
     @Autowired
     RankMapper mapper;
@@ -22,6 +22,6 @@ public class RankServiceImpl implements RankService {
 
     @Override
     public List<Rank> selectByban(String ban) {
-        return mapper.selectByban(ban);
+        return mapper.selectbyBan(ban);
     }
 }

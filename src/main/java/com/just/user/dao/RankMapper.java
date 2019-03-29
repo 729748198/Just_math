@@ -23,7 +23,7 @@ public interface RankMapper {
      * @param ban
      * @return
      */
-    List<Rank> selectByban(@Param(value = "ban") String ban);
+    List<Rank> selectbyBan(@Param(value = "ban") String ban);
 
     Rank selectByPrimaryKey(String username);
 

@@ -134,8 +134,17 @@
                         data:{
                             "ban":ban
                         },
+
+                        dataType:"json",
                         success:function (data) {
+                            //可以再log中查看数据
                             console.log(data);
+                            console.log(data.me);//当前登录者的学号
+                            console.log(data.he);//当前登录者对应章节的分数
+                            console.log(data.first.fen);//第一名的分数
+                            console.log(data.first.username);//第一名的学号
+                            console.log(data.rank[0].username);//第四名的学号
+
                         },
 
 

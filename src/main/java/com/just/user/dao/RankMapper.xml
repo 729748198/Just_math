@@ -35,7 +35,7 @@
     from rank
     order by he DESC
   </select>
-  <select id="selectbyBan" resultType="com.just.user.entity.Rank" >
+  <select id="selectbyBan" resultType="com.just.user.entity.Rank" parameterType="java.lang.String">
     select
       username,${ban}
     from rank
@@ -52,7 +52,7 @@
       nine, ten, eleven, 
       tweven, xiandai, gailvlun
       )
-    values (#{username,jdbcType=VARCHAR}, #{he,jdbcType=INTEGER}, #{one,jdbcType=INTEGER},
+    values (#{username, }, #{he,jdbcType=INTEGER}, #{one,jdbcType=INTEGER},
       #{two,jdbcType=INTEGER}, #{three,jdbcType=INTEGER}, #{four,jdbcType=INTEGER}, #{five,jdbcType=INTEGER}, 
       #{six,jdbcType=INTEGER}, #{seven,jdbcType=INTEGER}, #{eight,jdbcType=INTEGER}, 
       #{nine,jdbcType=INTEGER}, #{ten,jdbcType=INTEGER}, #{eleven,jdbcType=INTEGER}, 
@@ -215,7 +215,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.just.user.entity.Rank" >
     update rank
-    set all = #{he,jdbcType=INTEGER},
+    set he = #{he,jdbcType=INTEGER},
       one = #{one,jdbcType=INTEGER},
       two = #{two,jdbcType=INTEGER},
       three = #{three,jdbcType=INTEGER},

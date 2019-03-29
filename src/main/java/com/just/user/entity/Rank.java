@@ -1,6 +1,19 @@
 package com.just.user.entity;
 
 public class Rank {
+    /**
+     * 新增的一个参数，当初数据库没有设置好，这个当作传给前台的板块分数
+     */
+    private Integer fen;
+
+    public Integer getFen() {
+        return fen;
+    }
+
+    public void setFen(Integer fen) {
+        this.fen = fen;
+    }
+
     private String username;
 
     private Integer he;

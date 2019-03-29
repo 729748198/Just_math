@@ -136,7 +136,6 @@ public class UserController {
         banMap.put("概率论",13);
         banMap.put("线性代数",14);
         banMap.put("总排行",15);
-        Integer i=banMap.get("高数第一章");
         switch (banMap.get(Ban)){
             case 1:ban="one";break;
             case 2:ban="two";break;
@@ -155,28 +154,29 @@ public class UserController {
             case 15:ban="he";break;
             default:ban="null";break;
         }
+        /**
+         * 此时的Rank中只有 username和要查的版块分数两个参数
+         */
         List<Rank> rankList=Rankservice.selectByban(ban);
-        for (Rank r:rankList
-             ) {
-            System.out.println(r.getUsername());
-        }
         /**
          * 查找自己的分数/排名
          */
+        int realCout=0;
         for (Rank r :
                 rankList) {
             cout++;
             if(username.equals(r.getUsername())){
                 he=r.get(Ban);
-                break;
+                realCout=cout;
             }
+            r.setFen(r.get(Ban));
         }
-        Map<String,Object>map=new HashMap<>();
+        Map<String,Object>map=new HashMap<>(10);
         map.put("first",rankList.remove(0));
         map.put("second",rankList.remove(0));
         map.put("thread",rankList.remove(0));
         map.put("rank",rankList);
-        map.put("me",cout);
+        map.put("me",realCout);
         map.put("he",he);
 
         return map;
