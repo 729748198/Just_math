@@ -148,24 +148,26 @@ public class WorldController {
     }
 
 
-@RequestMapping("/dofrom")
+
+    @RequestMapping("/dofrom")
     public String doimg(MultipartFile file, HttpServletRequest request) throws IOException {
 
     String contentType=file.getContentType();
     System.out.println(contentType);
     String name= (String) request.getSession().getAttribute("user");
     String title=request.getParameter("title");
+    System.out.println(title);
     String uri =MD5.md5(file.getOriginalFilename());
-    String content="../webapps/Just_math/WEB-INF/img/"+uri+".jpg";
+    String content="http://localhost:8080/Just_math/img/"+uri+".jpg";
     Math_world world=new Math_world();
-    world.setContent("http://localhost:8080/img/"+uri+".jpg");
+    world.setContent(content);
     world.setUser(name);
     world.setCreatTime(new Date());
     world.setWorldtype(1);
     world.setTitle(title);
     world.setIsOk(0);
     System.out.println(name);
-    File loadPath = new File("../webapps/Just_math/WEB-INF/img/" + uri+".jpg");
+    File loadPath = new File(content);
     System.out.println(loadPath);
     file.transferTo(loadPath);
     service.insertByUsername(world);

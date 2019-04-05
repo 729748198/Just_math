@@ -137,6 +137,8 @@
 
                         dataType:"json",
                         success:function (data) {
+                            var html="";
+
                             //可以再log中查看数据
                             console.log(data);
                             console.log(data.me);//当前登录者的学号

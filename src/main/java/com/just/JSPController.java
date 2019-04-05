@@ -298,4 +298,9 @@ public class JSPController {
         return "admin/addchoiceNomath";
     }
 
+    @RequestMapping("/ceshi")
+    public  String ceshi(HttpServletRequest request,HttpServletResponse response){
+        return "admin/index";
+    }
+
 }

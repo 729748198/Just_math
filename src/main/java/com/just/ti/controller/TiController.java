@@ -205,6 +205,11 @@ public class TiController {
     return  "admin/addchoiceNomath";
     }
 
+    /**
+     * 根据板块ban随机获取一道题
+     * @param ban
+     * @return
+     */
     @RequestMapping("/getByban")
     @ResponseBody
     public  Map<String, String> getByBan(String ban){
