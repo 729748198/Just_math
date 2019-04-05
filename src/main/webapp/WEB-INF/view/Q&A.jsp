@@ -21,6 +21,7 @@
     <meta charset="UTF-8">
     <title>师生答疑</title>
     <link rel="stylesheet" href="<%=basePath%>css/main.css" type="text/css">
+    <script src="<%=basePath%>/js/jquery.min.js"></script>
 </head>
 <body>
 <!--导航栏-->
@@ -85,9 +86,39 @@
                         <td class="qa-table qa-date"><fmt:formatDate value="${tie.forumMain.mainCreatime}" pattern="yyyy年MM月dd日" /></td>
                 </tr>
                 </c:forEach>
-            </table>
-        </div>
 
+
+            </table>
+            <form action="<%=basePath%>fatie/dofatie" method="post" id="saveTiezi">
+                <label for="mainTitle">帖子标题</label>
+                <input type="text" name="mainTitle" id="mainTitle" placeholder="最大长度80个汉字" style="width:360px;">
+                <button type="button" class="btn btn-primary btn-xs text-right" onclick="subForm()">发表帖子</button>
+
+                <!-- 加载编辑器的容器 -->
+                <div style="padding: 0px;margin: 0px;width: 100%;height: 100%;" >
+                    <script id="container" name="content" type="text/plain">
+                    </script>
+                </div>
+            </form>
+            <!-- 配置文件 -->
+            <script type="text/javascript" src="<%=basePath %>js/uedit/js/ueditor.config.js"> </script>
+            <!-- 编辑器源码文件 -->
+            <script type="text/javascript" src="<%=basePath %>js/uedit/js/ueditor.all.js"> </script>
+            <!-- 实例化编辑器 -->
+            <script type="text/javascript">
+                var editor = UE.getEditor('container');
+                function subForm (){
+                    var content = editor.getContent();
+                    var mainTitle = $("#mainTitle").val();
+                    if (content === '' || mainTitle === ''){
+                        alert ("请输入标题与内容");
+                    }else{
+                        $("#saveTiezi").submit();
+                    }
+                }
+            </script>
+
+        </div>
 
     </div>
 

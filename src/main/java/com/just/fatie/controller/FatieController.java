@@ -1,7 +1,9 @@
 package com.just.fatie.controller;
 
+import com.just.fatie.entity.ForumInfo;
 import com.just.fatie.entity.ForumMain;
 import com.just.fatie.service.FatieService;
+import com.just.fatie.service.ForumInfoService;
 import com.just.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,9 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author 贺文杰
@@ -23,8 +23,10 @@ import java.util.Map;
 @RequestMapping("fatie")
 public class FatieController {
     @Autowired
-    FatieService service;
+    FatieService fatieService;
 
+    @Autowired
+    ForumInfoService forumInfoService;
     @Autowired
     UserService userService;
 
@@ -36,7 +38,7 @@ public class FatieController {
     @RequestMapping("/getall")
     @ResponseBody
     public List<ForumMain> getAlltiezi(){
-        return  service.selectAll();
+        return  fatieService.selectAll();
     }
 
     /**
@@ -49,20 +51,45 @@ public class FatieController {
     @ResponseBody
     public Map<String,Object>getTiezi(String username,String Tid){
         Map<String,Object> map=new HashMap<>();
-        map.put("tie",service.selectByPrimaryMainId(Tid));
+        map.put("tie",fatieService.selectByPrimaryMainId(Tid));
         map.put("mainuser",userService.selectUserInfo(username));
-        map.put("huitie",service.selectByTid(Tid));
+        map.put("huitie",fatieService.selectByTid(Tid));
         return map;
     }
 
     @RequestMapping("/dofatie")
-    @ResponseBody
-    public int dofatie(HttpServletRequest request,String content,String mainTitle){
-        System.out.println(request.getParameter("mainTitle"));
-        System.out.println(request.getParameter("content"));
-        System.out.println(request.getSession().getAttribute("user"));
+    public String dofatie(HttpServletRequest request,String content,String mainTitle){
 
-        return 1;
+        String mainid=UUID.randomUUID().toString();//随机生成帖子ID
+        String userid=request.getSession().getAttribute("user").toString();
+        /**
+         * 发帖表
+         */
+
+        ForumMain forumMain=new ForumMain();
+        forumMain.setMainId(mainid);
+        forumMain.setMainTitle(mainTitle);
+        forumMain.setMainFlag("default");
+        forumMain.setMainType("index");
+        forumMain.setMainContent(content);
+        forumMain.setMainCreatime(new Date());
+        forumMain.setMainCreatuser(userid);
+        forumMain.setMainRecommend(5);
+        forumMain.setMainDelete("n");
+
+        fatieService.add(forumMain);
+        /**
+         * 发帖信息表
+         */
+        ForumInfo forumInfo=new ForumInfo();
+        forumInfo.setMainId(mainid);
+        forumInfo.setInfoReply(0);
+        forumInfo.setInfoSee(0);
+        forumInfo.setInfoLastuser(userid);
+        forumInfo.setInfoLastime(new Date());
+
+        forumInfoService.add(forumInfo);
+        return "redirect:/just/Q&A";
     }
 
     @ModelAttribute

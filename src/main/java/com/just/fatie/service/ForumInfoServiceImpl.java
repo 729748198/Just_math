@@ -18,4 +18,9 @@ public class ForumInfoServiceImpl implements ForumInfoService {
     public ForumInfo selectByMainId(String id) {
         return mapper.selectByMainID(id);
     }
+
+    @Override
+    public int add(ForumInfo info) {
+        return mapper.insertSelective(info);
+    }
 }

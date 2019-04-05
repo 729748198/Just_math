@@ -18,4 +18,7 @@ public interface FatieService {
 
    //根据主贴ID查找回帖
    List<ForumSecond> selectByTid(String Tid);
+
+   //发表一条帖子
+   int add(ForumMain main);
 }

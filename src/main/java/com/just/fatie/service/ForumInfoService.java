@@ -13,4 +13,11 @@ public interface ForumInfoService {
      * @return
      */
     ForumInfo selectByMainId(String id);
+
+    /**
+     * 增加发表帖子的信息
+     * @param info
+     * @return
+     */
+    int add(ForumInfo info);
 }

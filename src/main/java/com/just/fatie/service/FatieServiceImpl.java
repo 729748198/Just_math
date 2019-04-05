@@ -37,4 +37,9 @@ public class FatieServiceImpl implements FatieService {
     public List<ForumSecond> selectByTid(String Tid) {
         return secondMapper.selectByTid(Tid);
     }
+
+    @Override
+    public int add(ForumMain main) {
+        return mainMapper.insertSelective(main);
+    }
 }
