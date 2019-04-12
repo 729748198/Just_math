@@ -127,9 +127,11 @@
         <script>
             $(document).ready(function () {
                 $(".rating-col li button").click(function () {
+
                     var ban=$(this).text();
+                    console.log(ban);
                     $.ajax({
-                        url:"<%=path%>/user/rank",
+                        url:"<%=basePath%>user/rank",
                         type:"POST",
                         data:{
                             "ban":ban
@@ -137,7 +139,29 @@
 
                         dataType:"json",
                         success:function (data) {
-                            var html="";
+                            <%--var html="";--%>
+                            <%--html+="<table class=\"rating-table\">";--%>
+                            <%--html+="<tr class=\"rating-table-tr\">";--%>
+                            <%--html+="<th class=\"rating-table-th medal rating-col1\"><img src=\"<%=basePath%>img/first.png\" alt=\"\" class=\"rating-medal\"></th>";--%>
+                            <%--html+="<th class=\"rating-table-user rating-col2\"><img src=\"<%=basePath%>img/worlduser.jpg\" alt=\"\" class=\"rating-table-user\"></th>";--%>
+                            <%--html+=" <th class=\"rating-table-th rating-col3\">";--%>
+                            <%--html+=" "${first.username}"";--%>
+                            <%--html+=" "</th>";--%>
+                            <%--html+="<th class=\"rating-table-th rating-col4 rating-three\">${first.he}</th>";--%>
+                            <%--html+=" </tr>";--%>
+                            <%--html+="<tr class=\"rating-table-tr\">";--%>
+                            <%--html+="<th class=\"rating-table-th medal rating-col1\"><img src=\"<%=basePath%>img/second.png\" alt=\"\" class=\"rating-medal\"></th>";--%>
+                            <%--html+="<th class=\"rating-table-user rating-col2\"><img src=\"<%=basePath%>img/worlduser.jpg\" alt=\"\" class=\"rating-table-user\"></th>";--%>
+                            <%--html+="<th class=\"rating-table-th rating-col3\">${second.username}</th>";--%>
+                            <%--html+="<th class=\"rating-table-th rating-col4 rating-three\">${second.he}</th>";--%>
+                            <%--html+="</tr>";--%>
+                            <%--html+="<tr class=\"rating-table-tr\">";--%>
+                            <%--html+="<th class=\"rating-table-th medal rating-col1\"><img src=\"<%=basePath%>img/third.png\" alt=\"\" class=\"rating-medal\"></th>";--%>
+                            <%--html+="<th class=\"rating-table-user rating-col2\"><img src=\"<%=basePath%>img/worlduser.jpg\" alt=\"\" class=\"rating-table-user\"></th>";--%>
+                            <%--html+="<th class=\"rating-table-th rating-col3\">${thread.username}</th>";--%>
+                            <%--html+=" <th class=\"rating-table-th rating-col4 rating-three\">${thread.he}</th>";--%>
+                            <%--html+=" </tr>";--%>
+
 
                             //可以再log中查看数据
                             console.log(data);

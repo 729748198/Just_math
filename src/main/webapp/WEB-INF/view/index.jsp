@@ -40,7 +40,7 @@
         <ul class="hp-menu">
             <li><a href="<%=path%>/just/ti" target="_blank" class="hp-a">难题突破</a></li>
             <li><a href="http://134.175.36.112:8009/" target="_blank" class="hp-a">竞技乐园</a></li>
-            <li><a href="<%=path%>/just/ziliao" target="_blank" class="hp-a">资料库</a></li>
+            <li><a href="<%=path%>" target="_blank" class="hp-a">数学建模</a></li>
         </ul>
     </div>
 </div>

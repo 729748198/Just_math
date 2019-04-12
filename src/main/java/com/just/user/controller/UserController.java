@@ -114,9 +114,14 @@ public class UserController {
     @RequestMapping("/rank")
     @ResponseBody
     public Map<String, Object> rank(HttpServletRequest request, HttpServletResponse response){
+        System.out.println(
+                "后台"
+        );
         String username=(String) request.getSession().getAttribute("user");
         String Ban=request.getParameter("ban");
+        System.out.println(Ban);
         Ban=Ban.trim();
+        System.out.println(Ban);
         int cout=0;
         int he=0;
         String ban;
@@ -136,7 +141,8 @@ public class UserController {
         banMap.put("概率论",13);
         banMap.put("线性代数",14);
         banMap.put("总排行",15);
-        switch (banMap.get(Ban)){
+
+        switch (Integer.valueOf(banMap.get(Ban))){
             case 1:ban="one";break;
             case 2:ban="two";break;
             case 3:ban="three";break;
@@ -154,6 +160,7 @@ public class UserController {
             case 15:ban="he";break;
             default:ban="null";break;
         }
+        System.out.println(ban);
         /**
          * 此时的Rank中只有 username和要查的版块分数两个参数
          */
