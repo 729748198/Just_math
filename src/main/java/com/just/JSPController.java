@@ -89,8 +89,18 @@ public class JSPController {
         return "preError";
     }
 
-    //以下是跳转页面
-
+    /**
+     * ——————————————————————————————————跳转页面————————————————————————————————————
+     * @return
+     */
+@RequestMapping("/MathModel")
+    public String mathModel(){
+        return "MathModel";
+    }
+    /**
+     * 跳转到首页
+     * @return
+     */
     @RequestMapping("/index")
     public String main(){
         return "index";
@@ -263,6 +273,11 @@ public class JSPController {
     public  String community(HttpServletResponse response,HttpServletRequest request){
         return "community";
     }
+
+
+    /**
+     * ________________________________________________________________后台__________________________________________________________________
+     */
 
 
     /**
