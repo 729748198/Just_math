@@ -14,8 +14,14 @@ import java.util.concurrent.CopyOnWriteArraySet;
 
 @ServerEndpoint(value="/chatServer",configurator=HttpSessionConfigurator.class)
 public class ChatServer {
-	private static int onlineCount=0;	//统计在线人数
-	private static CopyOnWriteArraySet<ChatServer> webSocket=new CopyOnWriteArraySet<ChatServer>();//存放每个Server设置为线程安全
+	//统计在线人数
+	private static int onlineCount=0;
+
+	/**
+	 * 存放每个Server设置为线程安全
+	 */
+
+	private static CopyOnWriteArraySet<ChatServer> webSocket=new CopyOnWriteArraySet<ChatServer>();
 	private Session session;
 	private String user;//用户Id
 	private HttpSession httpSession;

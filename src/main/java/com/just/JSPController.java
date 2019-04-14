@@ -20,6 +20,7 @@ import com.just.ti.service.QuestionService;
 import com.just.user.entity.Rank;
 import com.just.user.service.RankService;
 import com.sun.org.apache.xerces.internal.xs.datatypes.ObjectList;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -30,16 +31,16 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.*;
+import java.util.logging.Logger;
 
 /**
  * @author 贺文杰
- * 2019/2/25 23:38
+ * 2019/2/25 23:38o
  */
 @Controller
 @RequestMapping("just")
 public class JSPController {
     //大数世界
-
     @Autowired
     WorldService worldService;
 
