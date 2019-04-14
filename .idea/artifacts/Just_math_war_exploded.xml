@@ -1,0 +1,106 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="Just_math:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/Just_math_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="Just_math" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: com.sun.mail:javax.mail:1.5.0" />
+          <element id="library" level="project" name="Maven: javax.activation:activation:1.1" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-websocket:4.1.4.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-messaging:4.1.4.RELEASE" />
+          <element id="library" level="project" name="Maven: org.apache.shiro:shiro-all:1.3.2" />
+          <element id="library" level="project" name="Maven: org.apache.shiro:shiro-guice:1.3.2" />
+          <element id="library" level="project" name="Maven: org.apache.shiro:shiro-core:1.3.2" />
+          <element id="library" level="project" name="Maven: com.google.inject:guice:3.0" />
+          <element id="library" level="project" name="Maven: javax.inject:javax.inject:1" />
+          <element id="library" level="project" name="Maven: com.google.inject.extensions:guice-multibindings:3.0" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-core:4.1.4.RELEASE" />
+          <element id="library" level="project" name="Maven: commons-logging:commons-logging:1.2" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-beans:4.1.4.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-context:4.1.4.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-expression:4.1.4.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-tx:4.1.4.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:4.1.4.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-test:4.1.4.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-web:4.1.4.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:4.1.4.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-aop:4.1.4.RELEASE" />
+          <element id="library" level="project" name="Maven: aopalliance:aopalliance:1.0" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-context-support:4.1.4.RELEASE" />
+          <element id="library" level="project" name="Maven: org.aspectj:aspectjweaver:1.8.5" />
+          <element id="library" level="project" name="Maven: org.mybatis:mybatis:3.2.8" />
+          <element id="library" level="project" name="Maven: org.mybatis:mybatis-spring:1.2.2" />
+          <element id="library" level="project" name="Maven: jstl:jstl:1.2" />
+          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.38" />
+          <element id="library" level="project" name="Maven: com.alibaba:druid:1.0.12" />
+          <element id="library" level="module" name="Maven: com.alibaba:jconsole:1.8.0" module-name="Just_math" />
+          <element id="library" level="module" name="Maven: com.alibaba:tools:1.8.0" module-name="Just_math" />
+          <element id="library" level="project" name="Maven: com.alibaba:fastjson:1.2.7" />
+          <element id="library" level="project" name="Maven: org.json:json:20150729" />
+          <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-mapper-asl:1.9.13" />
+          <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-core-asl:1.9.13" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.2.3" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.2.3" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.2.3" />
+          <element id="library" level="project" name="Maven: org.apache.maven.plugins:maven-resources-plugin:2.6" />
+          <element id="library" level="project" name="Maven: org.apache.maven:maven-plugin-api:2.0.6" />
+          <element id="library" level="project" name="Maven: org.apache.maven:maven-project:2.0.6" />
+          <element id="library" level="project" name="Maven: org.apache.maven:maven-profile:2.0.6" />
+          <element id="library" level="project" name="Maven: org.apache.maven:maven-artifact-manager:2.0.6" />
+          <element id="library" level="project" name="Maven: org.apache.maven:maven-plugin-registry:2.0.6" />
+          <element id="library" level="project" name="Maven: org.apache.maven:maven-core:2.0.6" />
+          <element id="library" level="project" name="Maven: org.apache.maven.wagon:wagon-file:1.0-beta-2" />
+          <element id="library" level="project" name="Maven: org.apache.maven:maven-plugin-parameter-documenter:2.0.6" />
+          <element id="library" level="project" name="Maven: org.apache.maven.wagon:wagon-http-lightweight:1.0-beta-2" />
+          <element id="library" level="project" name="Maven: org.apache.maven.wagon:wagon-http-shared:1.0-beta-2" />
+          <element id="library" level="project" name="Maven: jtidy:jtidy:4aug2000r7-dev" />
+          <element id="library" level="project" name="Maven: xml-apis:xml-apis:1.0.b2" />
+          <element id="library" level="project" name="Maven: org.apache.maven.reporting:maven-reporting-api:2.0.6" />
+          <element id="library" level="project" name="Maven: org.apache.maven.doxia:doxia-sink-api:1.0-alpha-7" />
+          <element id="library" level="project" name="Maven: org.apache.maven.wagon:wagon-provider-api:1.0-beta-2" />
+          <element id="library" level="project" name="Maven: org.apache.maven:maven-repository-metadata:2.0.6" />
+          <element id="library" level="project" name="Maven: org.apache.maven:maven-error-diagnostics:2.0.6" />
+          <element id="library" level="project" name="Maven: commons-cli:commons-cli:1.0" />
+          <element id="library" level="project" name="Maven: org.apache.maven.wagon:wagon-ssh-external:1.0-beta-2" />
+          <element id="library" level="project" name="Maven: org.apache.maven.wagon:wagon-ssh-common:1.0-beta-2" />
+          <element id="library" level="project" name="Maven: org.apache.maven:maven-plugin-descriptor:2.0.6" />
+          <element id="library" level="project" name="Maven: org.codehaus.plexus:plexus-interactivity-api:1.0-alpha-4" />
+          <element id="library" level="project" name="Maven: org.apache.maven.wagon:wagon-ssh:1.0-beta-2" />
+          <element id="library" level="project" name="Maven: com.jcraft:jsch:0.1.27" />
+          <element id="library" level="project" name="Maven: classworlds:classworlds:1.1" />
+          <element id="library" level="project" name="Maven: org.apache.maven:maven-artifact:2.0.6" />
+          <element id="library" level="project" name="Maven: org.apache.maven:maven-settings:2.0.6" />
+          <element id="library" level="project" name="Maven: org.apache.maven:maven-model:2.0.6" />
+          <element id="library" level="project" name="Maven: org.apache.maven:maven-monitor:2.0.6" />
+          <element id="library" level="project" name="Maven: org.codehaus.plexus:plexus-container-default:1.0-alpha-9-stable-1" />
+          <element id="library" level="project" name="Maven: junit:junit:3.8.1" />
+          <element id="library" level="project" name="Maven: org.codehaus.plexus:plexus-utils:2.0.5" />
+          <element id="library" level="project" name="Maven: org.apache.maven.shared:maven-filtering:1.1" />
+          <element id="library" level="project" name="Maven: org.sonatype.plexus:plexus-build-api:0.0.4" />
+          <element id="library" level="project" name="Maven: org.codehaus.plexus:plexus-interpolation:1.13" />
+          <element id="library" level="project" name="Maven: commons-dbcp:commons-dbcp:1.4" />
+          <element id="library" level="project" name="Maven: commons-pool:commons-pool:1.5.4" />
+          <element id="library" level="project" name="Maven: commons-beanutils:commons-beanutils:1.9.2" />
+          <element id="library" level="project" name="Maven: commons-collections:commons-collections:3.2.1" />
+          <element id="library" level="project" name="Maven: org.apache.commons:commons-lang3:3.4" />
+          <element id="library" level="project" name="Maven: commons-lang:commons-lang:2.6" />
+          <element id="library" level="project" name="Maven: commons-fileupload:commons-fileupload:1.3.1" />
+          <element id="library" level="project" name="Maven: commons-io:commons-io:2.4" />
+          <element id="library" level="project" name="Maven: commons-codec:commons-codec:1.10" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.21" />
+          <element id="library" level="project" name="Maven: org.slf4j:jcl-over-slf4j:1.7.21" />
+          <element id="library" level="project" name="Maven: org.slf4j:jul-to-slf4j:1.7.21" />
+          <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-core:2.5" />
+          <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-api:2.5" />
+          <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-slf4j-impl:2.5" />
+          <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-web:2.5" />
+          <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-jul:2.5" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="Just_math/web/Web" />
+    </root>
+  </artifact>
+</component>

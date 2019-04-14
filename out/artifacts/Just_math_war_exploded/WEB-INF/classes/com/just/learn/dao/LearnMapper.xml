@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.just.learn.dao.LearnMapper" >
+  <resultMap id="BaseResultMap" type="com.just.learn.entity.Learn" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="learn_ban" property="learnBan" jdbcType="VARCHAR" />
+    <result column="is_video" property="isVideo" jdbcType="INTEGER" />
+    <result column="video_adress" property="videoAdress" jdbcType="VARCHAR" />
+    <result column="learn_title" property="learnTitle" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.just.learn.entity.Learn" extends="BaseResultMap" >
+    <result column="learn_content" property="learnContent" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, learn_ban, is_video, video_adress, learn_title
+  </sql>
+  <sql id="Blob_Column_List" >
+    learn_content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from learn
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectByBan" resultType="java.util.HashMap" parameterType="string" >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from learn
+    where learn_ban = ${ban}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from learn
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.just.learn.entity.Learn" >
+    insert into learn (id, learn_ban, is_video, 
+      video_adress, learn_title, learn_content
+      )
+    values (#{id,jdbcType=INTEGER}, #{learnBan,jdbcType=VARCHAR}, #{isVideo,jdbcType=INTEGER}, 
+      #{videoAdress,jdbcType=VARCHAR}, #{learnTitle,jdbcType=VARCHAR}, #{learnContent,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.just.learn.entity.Learn" >
+    insert into learn
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="learnBan != null" >
+        learn_ban,
+      </if>
+      <if test="isVideo != null" >
+        is_video,
+      </if>
+      <if test="videoAdress != null" >
+        video_adress,
+      </if>
+      <if test="learnTitle != null" >
+        learn_title,
+      </if>
+      <if test="learnContent != null" >
+        learn_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="learnBan != null" >
+        #{learnBan,jdbcType=VARCHAR},
+      </if>
+      <if test="isVideo != null" >
+        #{isVideo,jdbcType=INTEGER},
+      </if>
+      <if test="videoAdress != null" >
+        #{videoAdress,jdbcType=VARCHAR},
+      </if>
+      <if test="learnTitle != null" >
+        #{learnTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="learnContent != null" >
+        #{learnContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.just.learn.entity.Learn" >
+    update learn
+    <set >
+      <if test="learnBan != null" >
+        learn_ban = #{learnBan,jdbcType=VARCHAR},
+      </if>
+      <if test="isVideo != null" >
+        is_video = #{isVideo,jdbcType=INTEGER},
+      </if>
+      <if test="videoAdress != null" >
+        video_adress = #{videoAdress,jdbcType=VARCHAR},
+      </if>
+      <if test="learnTitle != null" >
+        learn_title = #{learnTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="learnContent != null" >
+        learn_content = #{learnContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.just.learn.entity.Learn" >
+    update learn
+    set learn_ban = #{learnBan,jdbcType=VARCHAR},
+      is_video = #{isVideo,jdbcType=INTEGER},
+      video_adress = #{videoAdress,jdbcType=VARCHAR},
+      learn_title = #{learnTitle,jdbcType=VARCHAR},
+      learn_content = #{learnContent,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.just.learn.entity.Learn" >
+    update learn
+    set learn_ban = #{learnBan,jdbcType=VARCHAR},
+      is_video = #{isVideo,jdbcType=INTEGER},
+      video_adress = #{videoAdress,jdbcType=VARCHAR},
+      learn_title = #{learnTitle,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

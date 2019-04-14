@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.just.ti.dao.ChoiceMapper" >
+  <resultMap id="BaseResultMap" type="com.just.ti.entity.Choice" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="answer" property="answer" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.just.ti.entity.ChoiceWithBLOBs" extends="BaseResultMap" >
+    <result column="pA" property="pa" jdbcType="LONGVARCHAR" />
+    <result column="pB" property="pb" jdbcType="LONGVARCHAR" />
+    <result column="pC" property="pc" jdbcType="LONGVARCHAR" />
+    <result column="pD" property="pd" jdbcType="LONGVARCHAR" />
+    <result column="jiexi" property="jiexi" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, answer
+  </sql>
+  <sql id="Blob_Column_List" >
+    pA, pB, pC, pD, jiexi
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from ti_choice
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ti_choice
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.just.ti.entity.ChoiceWithBLOBs" >
+    insert into ti_choice (id, answer, pA, 
+      pB, pC, pD, 
+      jiexi)
+    values (#{id,jdbcType=INTEGER}, #{answer,jdbcType=VARCHAR}, #{pa,jdbcType=LONGVARCHAR}, 
+      #{pb,jdbcType=LONGVARCHAR}, #{pc,jdbcType=LONGVARCHAR}, #{pd,jdbcType=LONGVARCHAR}, 
+      #{jiexi,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.just.ti.entity.ChoiceWithBLOBs" >
+    insert into ti_choice
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="answer != null" >
+        answer,
+      </if>
+      <if test="pa != null" >
+        pA,
+      </if>
+      <if test="pb != null" >
+        pB,
+      </if>
+      <if test="pc != null" >
+        pC,
+      </if>
+      <if test="pd != null" >
+        pD,
+      </if>
+      <if test="jiexi != null" >
+        jiexi,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="answer != null" >
+        #{answer,jdbcType=VARCHAR},
+      </if>
+      <if test="pa != null" >
+        #{pa,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="pb != null" >
+        #{pb,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="pc != null" >
+        #{pc,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="pd != null" >
+        #{pd,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="jiexi != null" >
+        #{jiexi,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.just.ti.entity.ChoiceWithBLOBs" >
+    update ti_choice
+    <set >
+      <if test="answer != null" >
+        answer = #{answer,jdbcType=VARCHAR},
+      </if>
+      <if test="pa != null" >
+        pA = #{pa,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="pb != null" >
+        pB = #{pb,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="pc != null" >
+        pC = #{pc,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="pd != null" >
+        pD = #{pd,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="jiexi != null" >
+        jiexi = #{jiexi,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.just.ti.entity.ChoiceWithBLOBs" >
+    update ti_choice
+    set answer = #{answer,jdbcType=VARCHAR},
+      pA = #{pa,jdbcType=LONGVARCHAR},
+      pB = #{pb,jdbcType=LONGVARCHAR},
+      pC = #{pc,jdbcType=LONGVARCHAR},
+      pD = #{pd,jdbcType=LONGVARCHAR},
+      jiexi = #{jiexi,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.just.ti.entity.Choice" >
+    update ti_choice
+    set answer = #{answer,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
