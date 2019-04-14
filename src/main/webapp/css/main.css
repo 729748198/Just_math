@@ -1943,3 +1943,30 @@ a.chat-submit:hover
 {
     cursor: pointer;
 }
+ul.model-chapter
+{
+    text-decoration: none;
+    list-style: none;
+    font-size: 25px;
+    line-height: 40px;
+    font-family: 黑体;
+    text-align: left;
+}
+a.model-chapter
+{
+    width: 85%;
+    display: inline-block;
+    position: relative;
+    padding-left: 25%;
+    padding-bottom:25% ;
+    padding-top: 25%;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+a.model-chapter:hover
+{
+    font-weight: normal;
+    background-color: lightblue;
+    cursor: pointer;
+}

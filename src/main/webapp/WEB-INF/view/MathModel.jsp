@@ -44,7 +44,19 @@
     </ul>
     <!--主体部分-->
     <div class="mymathmain" style="top:10px;height: 710px;">
-
+        <!--目录-->
+        <div class="exe-menu">
+            目录<br>
+            <div class="exe-chapter">
+                <ul class="model-chapter">
+                    <li><a href="" class="model-chapter">入门了解</a></li>
+                    <li><a href="" class="model-chapter">资源共享</a></li>
+                    <li><a href="" class="model-chapter">真题详解</a></li>
+                    <li><a href="" class="model-chapter">重点指引</a></li>
+                    <li><a href="" class="model-chapter">辅助工具</a></li>
+                </ul>
+            </div>
+        </div>
 
 
 
