@@ -21,6 +21,15 @@ public class LearnController {
     @Autowired
     LearnService service;
 
+    /**
+     * 页面跳转
+     */
+    @RequestMapping("/ziliao")
+    public String toziliao(){
+        return "ziliao-content";
+    }
+
+
     /**接口
      * 按照板块查询所有资料
      * @param ban
@@ -32,8 +41,14 @@ public class LearnController {
         return service.selectBan(ban);
     }
 
+
+
+
+    //跨域处理
     @ModelAttribute
     public  void kuayu(HttpServletResponse response){
         response.setHeader("Access-Control-Allow-Origin", "*");
     }
+
+
 }

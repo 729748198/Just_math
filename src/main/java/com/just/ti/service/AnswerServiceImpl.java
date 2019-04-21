@@ -1,7 +1,7 @@
 package com.just.ti.service;
 
-import com.just.ti.dao.AnswerMapper;
-import com.just.ti.entity.AnswerWithBLOBs;
+import com.just.ti.dao.TiankongMapper;
+import com.just.ti.entity.TiankongWithBLOBs;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,14 +13,14 @@ import org.springframework.stereotype.Service;
 public class AnswerServiceImpl implements AnswerService {
 
     @Autowired
-    AnswerMapper mapper;
+    TiankongMapper mapper;
     @Override
-    public AnswerWithBLOBs selectByQId(Integer id) {
+    public TiankongWithBLOBs selectByQId(String id) {
         return mapper.selectByPrimaryKey(id);
     }
 
     @Override
-    public int add(AnswerWithBLOBs answerWithBLOBs) {
+    public int add(TiankongWithBLOBs answerWithBLOBs) {
         return mapper.insertSelective(answerWithBLOBs);
     }
 }

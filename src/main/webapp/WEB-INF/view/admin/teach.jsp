@@ -264,23 +264,21 @@
         <p>增加一道填空题</p>
         <label for="ban">所属板块</label><input name="ban" id="ban" type="text" ><br>
         <label for="score">分数</label><input name="score" id="score" type="text" ><br>
-        <label for="title">标题</label><input name="title" id="title" type="text" > <button id="que">确定</button><br>
+        <label for="file">标题</label><input name="file" id="file" type="file" ><br>
 
-        <label for="answer">答案</label><input name="answer" id="answer" type="text"><br><button id="que1">确定</button><br>
+        <label for="answer">答案</label><input name="answer" id="answer" type="text"><button id="que">确定</button><br>
         <button id="tijiao">提交</button>
         <div id="editorContainer"></div>
-        <div id="editorContainer1"></div>
+
         <script>
             var editor;
-            var editor2;
+
             window.onload = function () {
                 editor = com.wiris.jsEditor.JsEditor.newInstance({'language': 'en'});
                 editor.insertInto(document.getElementById('editorContainer'));
-                editor2 = com.wiris.jsEditor.JsEditor.newInstance({'language': 'en'});
-                editor2.insertInto(document.getElementById('editorContainer1'));
+
             };
             $("#editorContainer").hide();
-            $("#editorContainer1").hide();
         </script>
 
 
@@ -289,33 +287,28 @@
     <script>
         $(document).ready(function () {
             $("#answer").click(function () {
-                $("#editorContainer1").show();
-            });
-            $("#que1").click(function () {
-                var Title=$(".wrs_container").html();
-                $("#editorContainer1").hide();
-            });
-            $("#title").click(function () {
                 $("#editorContainer").show();
             });
             $("#que").click(function () {
-                var Title=$(".wrs_container").html();
                 $("#editorContainer").hide();
             });
             $("#tijiao").click(function () {
-                var title = $("div#editorContainer .wrs_container").html();
-                var answer=$("div#editorContainer1 .wrs_container").html();
+                var answerformarch=editor.getMathML();
+                var answerforshow=$(".wrs_container").html();
                 var ban = $("#ban").val();
                 var score = $("#score").val();
+                var formData = new FormData();
+                formData.append('file', $('#file')[0].files[0]);
+                formData.append('answerformath',answerformarch);
+                formData.append('answerforshow',answerforshow);
+                formData.append('ban',ban);
+                formData.append('score',score);
                 $.ajax({
-                    type: "POST",
                     url: "<%=basePath%>ti/dotian",
-                    data: {
-                        "Ban":ban,
-                        "Title":title,
-                        "Score":score,
-                        "Answer":answer
-                    },
+                    type: "POST",
+                    processData: false,
+                    contentType: false,
+                    data: formData,
                     // dataType: "json",
                     success: function (data) {
                             alert("成功插入");

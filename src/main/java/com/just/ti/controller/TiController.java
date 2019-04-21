@@ -1,23 +1,28 @@
 package com.just.ti.controller;
 
-import com.just.ti.entity.AnswerWithBLOBs;
 import com.just.ti.entity.ChoiceWithBLOBs;
 import com.just.ti.entity.Question;
+import com.just.ti.entity.TiankongWithBLOBs;
 import com.just.ti.entity.UserTiWithBLOBs;
 import com.just.ti.service.AnswerService;
 import com.just.ti.service.Choiceservice;
 import com.just.ti.service.QuestionService;
 import com.just.ti.service.UserTiService;
 import com.just.tools.MD5;
+import org.apache.commons.io.FilenameUtils;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -37,6 +42,7 @@ public class TiController {
     @Autowired
     Choiceservice choiceservice;
 
+    Logger logger= Logger.getLogger(TiController.class);
     /**
      * 处理跨域问题
      * @param response
@@ -66,31 +72,31 @@ public class TiController {
         /**
          * 处理参数,查找题目对应的答案
          */
-        Integer ti=Integer.parseInt(ti_id);
-        AnswerWithBLOBs answerWithBLOBs=answerService.selectByQId(ti);
+
+        TiankongWithBLOBs answerWithBLOBs=answerService.selectByQId(ti_id);
         Map<String,String>map=new HashMap<>(3);
         /**
          * 新增一条做题记录
          */
         UserTiWithBLOBs userTiWithBLOBs=new UserTiWithBLOBs();
-        userTiWithBLOBs.setTiId(ti);
+//        userTiWithBLOBs.setTiId(ti_id);
         userTiWithBLOBs.setUsername(name);
-        userTiWithBLOBs.setRightanswer(answerWithBLOBs.getAnswer());
+//        userTiWithBLOBs.setRightanswer(answerWithBLOBs.getAnswer());
         userTiWithBLOBs.setDoanswer(doanswer);
         userTiWithBLOBs.setDotime(new Date());
-        System.out.println("答案"+answerWithBLOBs.getAnswer());
-        System.out.println("填的"+doanswer);
-        if(answerWithBLOBs.getAnswer().equals(doanswer)){
-            userTiWithBLOBs.setIsDo(2);
-            map.put("mess","答案正确！");
-        }else{
-            userTiWithBLOBs.setIsDo(1);
-            map.put("mess","答案错误！正确答案为：");
-        }
+//        System.out.println("答案"+answerWithBLOBs.getAnswer());
+//        System.out.println("填的"+doanswer);
+//        if(answerWithBLOBs.getAnswer().equals(doanswer)){
+//            userTiWithBLOBs.setIsDo(2);
+//            map.put("mess","答案正确！");
+//        }else{
+//            userTiWithBLOBs.setIsDo(1);
+//            map.put("mess","答案错误！正确答案为：");
+//        }
         userTiService.add(userTiWithBLOBs);
 
         doanswer=doanswer.replaceAll("\"","&quot");
-        map.put("rightanswer",answerWithBLOBs.getAnswer());
+//        map.put("rightanswer",answerWithBLOBs.getAnswer());
         map.put("jiexi",answerWithBLOBs.getJiexi());
         return  map;
     }
@@ -103,13 +109,31 @@ public class TiController {
      */
     @RequestMapping("/dotian")
     @ResponseBody
-    public String dotian(HttpServletResponse response, HttpServletRequest request){
+    public String dotian(@RequestParam("file") MultipartFile file,String answerformath,String answerforshow,String ban,String score,HttpServletResponse response, HttpServletRequest request) throws IOException {
 
-        String ban=request.getParameter("Ban");
-        String title=request.getParameter("Title");
-        String score=request.getParameter("Score");
-        String answer=request.getParameter("Answer");
-        Integer ti_id= Integer.valueOf(MD5.md5(title));
+        //ID
+        String name = UUID.randomUUID().toString().replaceAll("-", "");
+
+        /**
+         * 存储图片
+         */
+        // 获取文件的扩展名
+        String ext = FilenameUtils.getExtension(file
+                .getOriginalFilename());
+        // 设置图片上传路径
+        String url = request.getSession().getServletContext()
+                .getRealPath("/upload");
+        File filePath = new File(url);
+        logger.info("文件保存路径：" + url);
+        if (!filePath.exists() && !filePath.isDirectory()) {
+            logger.info("目录不存在，创建目录：" + filePath);
+            filePath.mkdir();
+        }
+        url=url+"/"+name+"."+ext;
+        // 以绝对路径保存重名命后的图片
+        file.transferTo(new File(url));
+
+
         //2是填空题
         Integer type=2;
 
@@ -117,18 +141,24 @@ public class TiController {
          * 问题的实体
          */
         Question question=new Question();
-        question.setId(ti_id);
+        question.setId(name);
+        question.setTiTitle(url);
         question.setTiBan(ban);
         question.setTiScore(score);
-        question.setTiTitle(title);
-        question.setTiSum(type);
+        question.setTiType(type);
+
         /**
          * 答案的实体
          */
-        AnswerWithBLOBs answerWithBLOBs=new AnswerWithBLOBs();
-        answerWithBLOBs.setAnswer(answer);
-        answerWithBLOBs.setTiId(ti_id);
+        TiankongWithBLOBs answerWithBLOBs=new TiankongWithBLOBs();
+        answerWithBLOBs.setTiId(name);
+        answerWithBLOBs.setAnswerformarch(answerformath);
+        answerWithBLOBs.setAnswerforshow(answerforshow);
         answerWithBLOBs.setAnswerType(2);
+
+        logger.info(question.getTiTitle());
+        logger.info(answerWithBLOBs.getId());
+        logger.info(answerWithBLOBs.getAnswerformarch());
 
         questionService.add(question);
         answerService.add(answerWithBLOBs);
@@ -156,15 +186,15 @@ public class TiController {
         Integer ti_id= Integer.valueOf(MD5.md5(title));
 
         Integer type=Integer.valueOf(ttype);
-
-        /**
-         */
-        Question question=new Question();
-        question.setId(ti_id);
-        question.setTiBan(ban);
-        question.setTiScore(score);
-        question.setTiTitle(title);
-        question.setTiSum(type);
+//
+//        /**
+//         */
+//        Question question=new Question();
+//        question.setId(ti_id);
+//        question.setTiBan(ban);
+//        question.setTiScore(score);
+//        question.setTiTitle(title);
+//        question.setTiSum(type);
 
         /**
          * 答案的实体
@@ -177,7 +207,7 @@ public class TiController {
         bloBs.setPd(ad);
         bloBs.setAnswer(answer);
         bloBs.setJiexi(jiexi);
-        questionService.add(question);
+//        questionService.add(question);
         choiceservice.addById(bloBs);
     }
     /**
@@ -205,75 +235,48 @@ public class TiController {
     return  "admin/addchoiceNomath";
     }
 
-    /**
-     * 根据板块ban随机获取一道题
-     * @param ban
-     * @return
-     */
-    @RequestMapping("/getByban")
-    @ResponseBody
-    public  Map<String, String> getByBan(String ban){
-
-        List<Question> list=questionService.selectByBan(ban);
+//    /**
+//     * 根据板块ban随机获取一道题
+//     * @param ban
+//     * @return
+//     */
+//    @RequestMapping("/getByban")
+//    @ResponseBody
+//    public  Map<String, String> getByBan(String ban){
+////
+////        List<Question> list=questionService.selectByBan(ban);
+////        List<Map<String,String>>result=new ArrayList<>();
+////        for (Question question:list
+////             ) {
+//////            ChoiceWithBLOBs choiceWithBLOBs=choiceservice.selectById(question.getId().toString());
+////
+////            Map<String,String>map=new HashMap<>(7);
+////            map.put("title",question.getTiTitle());
+////            map.put("A",choiceWithBLOBs.getPa());
+////            map.put("B",choiceWithBLOBs.getPb());
+////            map.put("C",choiceWithBLOBs.getPc());
+////            map.put("D",choiceWithBLOBs.getPd());
+////            map.put("jiexi",choiceWithBLOBs.getJiexi());
+////            map.put("answer",choiceWithBLOBs.getAnswer());
+////            result.add(map);
+////        }
+////        int length=result.size();
+//        return result.get((int)(1+Math.random()*(length-2+1)));
+//    }
+    public  Map<String,String> getTiByBan(String ban){
+        List<Question>list=questionService.selectByBan(ban);
         List<Map<String,String>>result=new ArrayList<>();
-        for (Question question:list
-             ) {
-            ChoiceWithBLOBs choiceWithBLOBs=choiceservice.selectById(question.getId());
+        for (Question question:list){
+            //如果是填空题
+            if(question.getTiType()==2){
+                TiankongWithBLOBs tiankongWithBLOBs=answerService.selectByQId(question.getId());
 
-            Map<String,String>map=new HashMap<>(7);
-            map.put("title",question.getTiTitle());
-            map.put("A",choiceWithBLOBs.getPa());
-            map.put("B",choiceWithBLOBs.getPb());
-            map.put("C",choiceWithBLOBs.getPc());
-            map.put("D",choiceWithBLOBs.getPd());
-            map.put("jiexi",choiceWithBLOBs.getJiexi());
-            map.put("answer",choiceWithBLOBs.getAnswer());
-            result.add(map);
+            }
+
         }
-        int length=result.size();
-        return result.get((int)(1+Math.random()*(length-2+1)));
+        return null;
     }
 
-
-
-
-
-
-    /**
-     * 测试——获取一道选择题
-     * @return
-     */
-    @RequestMapping("/getone")
-    @ResponseBody
-    public Map<String,String> getone(){
-        Question question=questionService.selectById(3);
-        ChoiceWithBLOBs choiceWithBLOBs=choiceservice.selectById(3);
-        Map<String,String>map=new HashMap<>(7);
-        map.put("title",question.getTiTitle());
-        map.put("A",choiceWithBLOBs.getPa());
-        map.put("B",choiceWithBLOBs.getPb());
-        map.put("C",choiceWithBLOBs.getPc());
-        map.put("D",choiceWithBLOBs.getPd());
-        map.put("jiexi",choiceWithBLOBs.getJiexi());
-        map.put("answer",choiceWithBLOBs.getAnswer());
-        return map;
-    }
-
-    /**
-     * 测试——获取一道公式题
-     * @return
-     */
-    @RequestMapping(value = "/test")
-    @ResponseBody
-    public Map<String, String> test(){
-        Question question=questionService.selectById(618694747);
-        AnswerWithBLOBs answerWithBLOBs=answerService.selectByQId(618694747);
-        Map<String,String>map=new HashMap<>(7);
-        map.put("title",question.getTiTitle());
-        map.put("answer",answerWithBLOBs.getAnswer());
-
-        return map;
-    }
 
 
 }

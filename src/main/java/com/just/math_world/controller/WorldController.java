@@ -158,7 +158,7 @@ public class WorldController {
     String title=request.getParameter("title");
     System.out.println(title);
     String uri =MD5.md5(file.getOriginalFilename());
-    String content="http://localhost:8080/img/"+uri+".jpg";
+    String content="/img/"+uri+".jpg";
     Math_world world=new Math_world();
     world.setContent(content);
     world.setUser(name);

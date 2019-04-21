@@ -14,7 +14,7 @@ public interface QuestionService {
      * @param id 题目Id
      * @return 一个题目实体
      */
-    Question selectById(Integer id);
+    Question selectById(String id);
 
     /**
      * 数据库中加一道题

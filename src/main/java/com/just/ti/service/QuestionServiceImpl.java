@@ -16,7 +16,7 @@ public class QuestionServiceImpl implements QuestionService {
     @Autowired
     QuestionMapper mapper;
     @Override
-    public Question selectById(Integer id) {
+    public Question selectById(String id) {
         return mapper.selectByPrimaryKey(id);
     }
 

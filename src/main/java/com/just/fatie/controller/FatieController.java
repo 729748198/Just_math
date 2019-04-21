@@ -32,6 +32,20 @@ public class FatieController {
 
 
     /**
+     * 页面跳转
+     */
+    /**
+     * 页面跳转
+     *
+     */
+    @RequestMapping("/content")
+    public String toContent(){
+        return "Q&A-content";
+    }
+
+
+
+    /**
      * 获取帖子列表
      */
 

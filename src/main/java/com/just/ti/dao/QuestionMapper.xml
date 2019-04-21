@@ -2,47 +2,40 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.just.ti.dao.QuestionMapper" >
   <resultMap id="BaseResultMap" type="com.just.ti.entity.Question" >
-    <id column="id" property="id" jdbcType="INTEGER" />
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="ti_title" property="tiTitle" jdbcType="VARCHAR" />
     <result column="ti_ban" property="tiBan" jdbcType="VARCHAR" />
     <result column="ti_score" property="tiScore" jdbcType="VARCHAR" />
-    <result column="ti_sum" property="tiSum" jdbcType="INTEGER" />
+    <result column="ti_type" property="tiType" jdbcType="INTEGER" />
     <result column="ti_ero" property="tiEro" jdbcType="INTEGER" />
   </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.just.ti.entity.Question" extends="BaseResultMap" >
-    <result column="ti_title" property="tiTitle" jdbcType="LONGVARCHAR" />
-  </resultMap>
   <sql id="Base_Column_List" >
-    id, ti_ban, ti_score, ti_sum, ti_ero
+    id, ti_title, ti_ban, ti_score, ti_type, ti_ero
   </sql>
-  <sql id="Blob_Column_List" >
-    ti_title
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
     from ti_question
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=VARCHAR}
   </select>
-  <select id="selectByBan" resultMap="ResultMapWithBLOBs" parameterType="string" >
+
+
+  <select id="selectByBan" resultMap="BaseResultMap" parameterType="string" >
     select
     <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
     from ti_question
     where ti_ban = ${ban}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from ti_question
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.just.ti.entity.Question" >
-    insert into ti_question (id, ti_ban, ti_score, 
-      ti_sum, ti_ero, ti_title
+    insert into ti_question (id, ti_title, ti_ban, 
+      ti_score, ti_type, ti_ero
       )
-    values (#{id,jdbcType=INTEGER}, #{tiBan,jdbcType=VARCHAR}, #{tiScore,jdbcType=VARCHAR}, 
-      #{tiSum,jdbcType=INTEGER}, #{tiEro,jdbcType=INTEGER}, #{tiTitle,jdbcType=LONGVARCHAR}
+    values (#{id,jdbcType=VARCHAR}, #{tiTitle,jdbcType=VARCHAR}, #{tiBan,jdbcType=VARCHAR}, 
+      #{tiScore,jdbcType=VARCHAR}, #{tiType,jdbcType=INTEGER}, #{tiEro,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.just.ti.entity.Question" >
@@ -51,25 +44,28 @@
       <if test="id != null" >
         id,
       </if>
+      <if test="tiTitle != null" >
+        ti_title,
+      </if>
       <if test="tiBan != null" >
         ti_ban,
       </if>
       <if test="tiScore != null" >
         ti_score,
       </if>
-      <if test="tiSum != null" >
-        ti_sum,
+      <if test="tiType != null" >
+        ti_type,
       </if>
       <if test="tiEro != null" >
         ti_ero,
       </if>
-      <if test="tiTitle != null" >
-        ti_title,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        #{id,jdbcType=INTEGER},
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="tiTitle != null" >
+        #{tiTitle,jdbcType=VARCHAR},
       </if>
       <if test="tiBan != null" >
         #{tiBan,jdbcType=VARCHAR},
@@ -77,53 +73,42 @@
       <if test="tiScore != null" >
         #{tiScore,jdbcType=VARCHAR},
       </if>
-      <if test="tiSum != null" >
-        #{tiSum,jdbcType=INTEGER},
+      <if test="tiType != null" >
+        #{tiType,jdbcType=INTEGER},
       </if>
       <if test="tiEro != null" >
         #{tiEro,jdbcType=INTEGER},
-      </if>
-      <if test="tiTitle != null" >
-        #{tiTitle,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.just.ti.entity.Question" >
     update ti_question
     <set >
+      <if test="tiTitle != null" >
+        ti_title = #{tiTitle,jdbcType=VARCHAR},
+      </if>
       <if test="tiBan != null" >
         ti_ban = #{tiBan,jdbcType=VARCHAR},
       </if>
       <if test="tiScore != null" >
         ti_score = #{tiScore,jdbcType=VARCHAR},
       </if>
-      <if test="tiSum != null" >
-        ti_sum = #{tiSum,jdbcType=INTEGER},
+      <if test="tiType != null" >
+        ti_type = #{tiType,jdbcType=INTEGER},
       </if>
       <if test="tiEro != null" >
         ti_ero = #{tiEro,jdbcType=INTEGER},
       </if>
-      <if test="tiTitle != null" >
-        ti_title = #{tiTitle,jdbcType=LONGVARCHAR},
-      </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.just.ti.entity.Question" >
-    update ti_question
-    set ti_ban = #{tiBan,jdbcType=VARCHAR},
-      ti_score = #{tiScore,jdbcType=VARCHAR},
-      ti_sum = #{tiSum,jdbcType=INTEGER},
-      ti_ero = #{tiEro,jdbcType=INTEGER},
-      ti_title = #{tiTitle,jdbcType=LONGVARCHAR}
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.just.ti.entity.Question" >
     update ti_question
-    set ti_ban = #{tiBan,jdbcType=VARCHAR},
+    set ti_title = #{tiTitle,jdbcType=VARCHAR},
+      ti_ban = #{tiBan,jdbcType=VARCHAR},
       ti_score = #{tiScore,jdbcType=VARCHAR},
-      ti_sum = #{tiSum,jdbcType=INTEGER},
+      ti_type = #{tiType,jdbcType=INTEGER},
       ti_ero = #{tiEro,jdbcType=INTEGER}
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

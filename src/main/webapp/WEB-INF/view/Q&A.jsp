@@ -73,7 +73,7 @@
                         <td class="qa-table qa-title">
                             <nobr>
                                 <text class="title">
-                                    <a href="" class="qa-title">${tie.forumMain.mainTitle}</a>
+                                    <a href="<%=basePath%>/fatie/content" class="qa-title">${tie.forumMain.mainTitle}</a>
                                 </text>
                                 <text class="bubble">${tie.forumInfo.infoReply}</text>
                             </nobr>

@@ -189,7 +189,6 @@ public class UserController {
         return map;
     }
 
-
     //测试
     @RequestMapping("/testAjax")
     public String testAjax(){
@@ -200,10 +199,5 @@ public class UserController {
     public  void kuayu(HttpServletResponse response){
         response.setHeader("Access-Control-Allow-Origin", "*");
     }
-
-
-
-
-
 
 }

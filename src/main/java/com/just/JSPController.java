@@ -10,28 +10,23 @@ import com.just.math_world.entity.WorldFollow;
 import com.just.math_world.service.WorldFansService;
 import com.just.math_world.service.WorldFollowService;
 import com.just.math_world.service.WorldService;
-import com.just.ti.entity.Answer;
-import com.just.ti.entity.AnswerWithBLOBs;
 import com.just.ti.entity.ChoiceWithBLOBs;
 import com.just.ti.entity.Question;
+import com.just.ti.entity.TiankongWithBLOBs;
 import com.just.ti.service.AnswerService;
 import com.just.ti.service.Choiceservice;
 import com.just.ti.service.QuestionService;
 import com.just.user.entity.Rank;
 import com.just.user.service.RankService;
-import com.sun.org.apache.xerces.internal.xs.datatypes.ObjectList;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.*;
-import java.util.logging.Logger;
 
 /**
  * @author 贺文杰
@@ -219,7 +214,7 @@ public class JSPController {
     @RequestMapping("/zuoti")
     public String zuoti(HttpServletRequest request,HttpServletResponse response){
 
-        Question question=questionService.selectById(1);
+        Question question=questionService.selectById("1");
         request.setAttribute("ti",question.getTiTitle());
         request.setAttribute("ti_id",question.getId());
         return  "zuoti";
@@ -233,7 +228,7 @@ public class JSPController {
      */
     @RequestMapping("/ti")
     public String ti(HttpServletRequest request,HttpServletResponse response){
-        Question question=questionService.selectById(3);
+        Question question=questionService.selectById("3");
         ChoiceWithBLOBs choiceWithBLOBs=choiceservice.selectById(3);
         request.setAttribute("title",question.getTiTitle());
        Map<String,String>map=new HashMap<>(4);
@@ -249,8 +244,8 @@ public class JSPController {
 
     @RequestMapping("/dotian")
     public String dotian(HttpServletResponse response,HttpServletRequest request){
-        Question question=questionService.selectById(2214183);
-        AnswerWithBLOBs answerWithBLOBs=answerService.selectByQId(2214183);
+        Question question=questionService.selectById("2214183");
+        TiankongWithBLOBs answerWithBLOBs=answerService.selectByQId("2214183");
         request.setAttribute("title",question.getTiTitle());
         request.setAttribute("ti_id",question.getId());
 

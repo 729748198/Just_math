@@ -5,7 +5,7 @@
 
 <generatorConfiguration>
 
-    <classPathEntry    location="C:\apache-tomcat-9.0.7\mysql-connector-java-5.1.47.jar"/>
+    <classPathEntry    location="D:\Tomcat\apache-tomcat-9.0.16\lib\mysql-connector-java-5.1.6.jar"/>
     <context id="DB2Tables"    targetRuntime="MyBatis3">
         <commentGenerator>
             <property name="suppressDate" value="true"/>
@@ -34,7 +34,6 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
      <!--指定生成哪张表-->
-        <table tableName="ti_choice" domainObjectName="Choice" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
-
+        <table tableName="ti_answer" domainObjectName="Tiankong" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
     </context>
 </generatorConfiguration>

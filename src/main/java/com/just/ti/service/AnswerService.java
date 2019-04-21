@@ -1,6 +1,6 @@
 package com.just.ti.service;
 
-import com.just.ti.entity.AnswerWithBLOBs;
+import com.just.ti.entity.TiankongWithBLOBs;
 
 /**
  * @author 贺文杰
@@ -13,12 +13,12 @@ public interface AnswerService {
      * @param id
      * @return
      */
-    AnswerWithBLOBs selectByQId(Integer id);
+    TiankongWithBLOBs selectByQId(String id);
 
     /**
      * 增加一道题的答案
      * @param answerWithBLOBs
      * @return
      */
-    int add(AnswerWithBLOBs answerWithBLOBs);
+    int add(TiankongWithBLOBs answerWithBLOBs);
 }

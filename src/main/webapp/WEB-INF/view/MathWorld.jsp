@@ -89,7 +89,7 @@
 
             <input name="title" type="text" >
             <input class="world-user-submit"  name="content" id="world-user-submit" type="text"/><br>
-            <input type="file" name="file" value="选择图片">
+            <input type="file" name="file" value="选择图片或视频">
             <input  type="submit" class="world-submit-button">发  表</input>
             </form>
         </div>

@@ -72,36 +72,7 @@
             <p class="exe-chapter">高等数学 > 函数与极限</p>
             <!--内容-->
             <div class="exe-content">
-                <a href="" class="db-button db-knowledge">
-                    <img src="<%=basePath%>img/tubiao.png" alt="" class="db-tubiao">
-                    <img src="<%=basePath%>img/knowledge.png" alt="" class="db-content">
-                    <p class="db-content">基础知识</p>
-                </a>
-                <a href="" class="db-button db-expand">
-                    <img src="<%=basePath%>img/tubiao.png" alt="" class="db-tubiao">
-                    <img src="<%=basePath%>img/expand-knowledge.png" alt="" class="db-content" style="top: 45px;left:38px;">
-                    <p class="db-content">拓展知识</p>
-                </a>
-                <a href="" class="db-button db-history">
-                    <img src="<%=basePath%>img/tubiao.png" alt="" class="db-tubiao">
-                    <img src="<%=basePath%>img/histroy-exe.png" alt="" class="db-content" style="top: 45px;left:35px;">
-                    <p class="db-content">往届练习题</p>
-                </a>
-                <a href="" class="db-button db-videos">
-                    <img src="<%=basePath%>img/tubiao.png" alt="" class="db-tubiao">
-                    <img src="<%=basePath%>img/videos.png" alt="" class="db-content" style="top: 35px;left:32px;">
-                    <p class="db-content">视频微课</p>
-                </a>
-                <a href="" class="db-button db-bcg">
-                    <img src="<%=basePath%>img/tubiao.png" alt="" class="db-tubiao">
-                    <img src="<%=basePath%>img/bcg-database.png" alt="" class="db-content" style="top: 25px;left:38px;">
-                    <p class="db-content">背景资料库</p>
-                </a>
-                <a href="" class="db-button db-kaoyan">
-                    <img src="<%=basePath%>img/tubiao.png" alt="" class="db-tubiao">
-                    <img src="<%=basePath%>img/kaoyan.png" alt="" class="db-content" style="top: 30px;left:25px;">
-                    <p class="db-content">考研真题</p>
-                </a>
+
             </div>
         </div>
     </div>

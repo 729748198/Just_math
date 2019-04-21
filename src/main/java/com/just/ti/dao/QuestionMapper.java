@@ -6,24 +6,11 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface QuestionMapper {
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(String id);
 
     int insert(Question record);
 
-    /**
-     * 插入一道题
-     * @param record
-     * @return
-     */
     int insertSelective(Question record);
-
-
-    /**
-     * 通过id查找一道题
-     * @param id 题目id
-     * @return
-     */
-    Question selectByPrimaryKey(Integer id);
 
     /**
      * 根据板块查找题目
@@ -31,9 +18,9 @@ public interface QuestionMapper {
      * @return
      */
     List<Question> selectByBan(@Param(value = "ban") String ban);
-    int updateByPrimaryKeySelective(Question record);
+    Question selectByPrimaryKey(String id);
 
-    int updateByPrimaryKeyWithBLOBs(Question record);
+    int updateByPrimaryKeySelective(Question record);
 
     int updateByPrimaryKey(Question record);
 }

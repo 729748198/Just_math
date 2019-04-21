@@ -1,24 +1,32 @@
 package com.just.ti.entity;
 
 public class Question {
-    private Integer id;
+    private String id;
+
+    private String tiTitle;
 
     private String tiBan;
 
     private String tiScore;
 
-    private Integer tiSum;
+    private Integer tiType;
 
     private Integer tiEro;
 
-    private String tiTitle;
-
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
+    }
+
+    public String getTiTitle() {
+        return tiTitle;
+    }
+
+    public void setTiTitle(String tiTitle) {
+        this.tiTitle = tiTitle == null ? null : tiTitle.trim();
     }
 
     public String getTiBan() {
@@ -37,12 +45,12 @@ public class Question {
         this.tiScore = tiScore == null ? null : tiScore.trim();
     }
 
-    public Integer getTiSum() {
-        return tiSum;
+    public Integer getTiType() {
+        return tiType;
     }
 
-    public void setTiSum(Integer tiSum) {
-        this.tiSum = tiSum;
+    public void setTiType(Integer tiType) {
+        this.tiType = tiType;
     }
 
     public Integer getTiEro() {
@@ -51,13 +59,5 @@ public class Question {
 
     public void setTiEro(Integer tiEro) {
         this.tiEro = tiEro;
-    }
-
-    public String getTiTitle() {
-        return tiTitle;
-    }
-
-    public void setTiTitle(String tiTitle) {
-        this.tiTitle = tiTitle == null ? null : tiTitle.trim();
     }
 }
