@@ -1943,3 +1943,46 @@ a.chat-submit:hover
 {
     cursor: pointer;
 }
+ul.model-chapter
+{
+    text-decoration: none;
+    list-style: none;
+    color: black;
+    font-size: 18px;
+    line-height: 35px;
+    font-family: 黑体;
+    text-align: center;
+}
+a.model-chapter
+{
+    width: 85%;
+    display: inline-block;
+    position: relative;
+    padding-left: 15%;
+    padding-top: 50%;
+    padding-bottom: 50%;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+a.model-chapter:hover
+{
+    font-weight: normal;
+    background-color: lightblue;
+    cursor: pointer;
+}
+div.mod-content
+{
+    background: white;
+    display: inline-block;
+    position: absolute;
+    top:8px;
+    left:225px;
+    width: 450px;
+    height: 660px;
+}
+div.mod-text
+{
+    left: 12px;
+    color: #00a65a;
+}
