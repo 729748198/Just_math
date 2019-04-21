@@ -48,19 +48,31 @@
         <div class="exe-menu">
             目录<br>
             <div class="exe-chapter">
-                <ul class="model-chapter">
-                    <li><a href="" class="model-chapter">入门了解</a></li>
-                    <li><a href="" class="model-chapter">资源共享</a></li>
-                    <li><a href="" class="model-chapter">真题详解</a></li>
-                    <li><a href="" class="model-chapter">重点指引</a></li>
-                    <li><a href="" class="model-chapter">辅助工具</a></li>
+                <ul class="exe-chapter" style="list-style: none">
+                    <li><a href="" class="exe-chapter" style="padding-bottom: 15%;padding-top:15%;padding-left: 0;text-align: center;font-size:18px; width: 100%">入门了解</a></li>
+                    <li><a href="" class="exe-chapter" style="padding-bottom: 15%;padding-top:15%;padding-left: 0;text-align: center;font-size:18px; width: 100%">资源共享</a></li>
+                    <li><a href="" class="exe-chapter" style="padding-bottom: 15%;padding-top:15%;padding-left: 0;text-align: center;font-size:18px; width: 100%">真题详解</a></li>
+                    <li><a href="" class="exe-chapter" style="padding-bottom: 15%;padding-top:15%;padding-left: 0;text-align: center;font-size:18px; width: 100%">重点指引</a></li>
+                    <li><a href="" class="exe-chapter" style="padding-bottom: 15%;padding-top:15%;padding-left: 0;text-align: center;font-size:18px; width: 100%">辅助工具</a></li>
                 </ul>
             </div>
         </div>
+        <div class="exe-exe">
+            <!--抬头-->
+            <p class="exe-chapter">数学建模 > 入门了解</p>
 
+            <!--答题-->
+            <div class="exe-content">
+                <div class="mod-text">
+                    数学建模入门须知
+                </div>
 
+            </div>
 
+        </div>
     </div>
+
+</div>
 </div>
 </body>
 </html>
