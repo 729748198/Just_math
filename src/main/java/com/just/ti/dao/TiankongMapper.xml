@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.just.ti.dao.TiankongMapper" >
+  <resultMap id="BaseResultMap" type="com.just.ti.entity.Tiankong" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="ti_id" property="tiId" jdbcType="VARCHAR" />
+    <result column="answer_type" property="answerType" jdbcType="INTEGER" />
+    <result column="jiexi" property="jiexi" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.just.ti.entity.TiankongWithBLOBs" extends="BaseResultMap" >
+    <result column="answerformarch" property="answerformarch" jdbcType="LONGVARCHAR" />
+    <result column="answerforshow" property="answerforshow" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, ti_id, answer_type, jiexi
+  </sql>
+  <sql id="Blob_Column_List" >
+    answerformarch, answerforshow
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from ti_answer
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ti_answer
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.just.ti.entity.TiankongWithBLOBs" >
+    insert into ti_answer (id, ti_id, answer_type, 
+      jiexi, answerformarch, answerforshow
+      )
+    values (#{id,jdbcType=INTEGER}, #{tiId,jdbcType=VARCHAR}, #{answerType,jdbcType=INTEGER}, 
+      #{jiexi,jdbcType=VARCHAR}, #{answerformarch,jdbcType=LONGVARCHAR}, #{answerforshow,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.just.ti.entity.TiankongWithBLOBs" >
+    insert into ti_answer
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="tiId != null" >
+        ti_id,
+      </if>
+      <if test="answerType != null" >
+        answer_type,
+      </if>
+      <if test="jiexi != null" >
+        jiexi,
+      </if>
+      <if test="answerformarch != null" >
+        answerformarch,
+      </if>
+      <if test="answerforshow != null" >
+        answerforshow,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="tiId != null" >
+        #{tiId,jdbcType=VARCHAR},
+      </if>
+      <if test="answerType != null" >
+        #{answerType,jdbcType=INTEGER},
+      </if>
+      <if test="jiexi != null" >
+        #{jiexi,jdbcType=VARCHAR},
+      </if>
+      <if test="answerformarch != null" >
+        #{answerformarch,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="answerforshow != null" >
+        #{answerforshow,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.just.ti.entity.TiankongWithBLOBs" >
+    update ti_answer
+    <set >
+      <if test="tiId != null" >
+        ti_id = #{tiId,jdbcType=VARCHAR},
+      </if>
+      <if test="answerType != null" >
+        answer_type = #{answerType,jdbcType=INTEGER},
+      </if>
+      <if test="jiexi != null" >
+        jiexi = #{jiexi,jdbcType=VARCHAR},
+      </if>
+      <if test="answerformarch != null" >
+        answerformarch = #{answerformarch,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="answerforshow != null" >
+        answerforshow = #{answerforshow,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.just.ti.entity.TiankongWithBLOBs" >
+    update ti_answer
+    set ti_id = #{tiId,jdbcType=VARCHAR},
+      answer_type = #{answerType,jdbcType=INTEGER},
+      jiexi = #{jiexi,jdbcType=VARCHAR},
+      answerformarch = #{answerformarch,jdbcType=LONGVARCHAR},
+      answerforshow = #{answerforshow,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.just.ti.entity.Tiankong" >
+    update ti_answer
+    set ti_id = #{tiId,jdbcType=VARCHAR},
+      answer_type = #{answerType,jdbcType=INTEGER},
+      jiexi = #{jiexi,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
