@@ -13,7 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:spring-config.xml"})
 public class UserService {
-    Logger logger= Logger.getLogger(UserController.class);
+    Logger logger= Logger.getLogger(UserService.class);
 
     @Autowired
     com.just.user.service.UserService service;

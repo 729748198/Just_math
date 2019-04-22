@@ -101,24 +101,40 @@ padding: 5px 5px 10px 5px;">
                 </div>
                 <%--<input type="text" class="exe-answer">--%>
                 <p> <a id="tijiao"  class="exe-button exe-submit">提交</a></p>
-                <a href="" class="exe-button exe-next">下一题</a>
-                <script>
-                    $("#tijiao").click(function () {
-                        var radioValue = $('input:radio[name="choice"]:checked').val();
-                        var html="";
-                        var anser="${answer}
-                        if(radioValue==anser){
-                            html+="<p style='color: green'>答案正确</p>";
-                        }else {
+                <a id="nextTi" class="exe-button exe-next">下一题</a>
 
-                            html+="<p style='color: red'>答案错误！</p>";
-                            html+="<p>正确答案为${answer}</p>";
-                        }
-                        $("#demo").html(html);
-                    });
-                </script>
             </div>
+            <script>
+                var ban="第一章";
+                $("#tijiao").click(function () {
+                    var radioValue = $('input:radio[name="choice"]:checked').val();
+                    var html="";
+                    var anser="${answer}";
+                    if(radioValue==anser){
+                        html+="<p style='color: green'>答案正确</p>";
+                    }else {
 
+                        html+="<p style='color: red'>答案错误！</p>";
+                        html+="<p>正确答案为${answer}</p>";
+                    }
+                    $("#demo").html(html);
+                });
+                $("#nextTi").click(function () {
+                    $.ajax({
+                        url: "<%=basePath%>/ti/getBanRandom?ban="+ban,
+                        type:"get",
+                        dataType:"json",
+                        success:function (data) {
+                            var html="";
+                            console.log(data);
+                            html=html+"<h1>题目</h1><img src='<%=basePath%>/upload/e14ebdabeec1446191a3559d24e85a87.png'/>"+
+                                    "<p></p>"
+                            $(".exercise-content").html(html);
+                        }
+
+                    })
+                })
+            </script>
         </div>
     </div>
 

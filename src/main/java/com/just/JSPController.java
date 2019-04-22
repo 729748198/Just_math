@@ -18,6 +18,7 @@ import com.just.ti.service.Choiceservice;
 import com.just.ti.service.QuestionService;
 import com.just.user.entity.Rank;
 import com.just.user.service.RankService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -66,6 +67,15 @@ public class JSPController {
     @Autowired
     Choiceservice choiceservice;
 
+    /**
+     * log4j日志
+     */
+    Logger logger=Logger.getLogger(JSPController.class);
+
+    /**
+     * 跨域处理
+     * @param response
+     */
     @ModelAttribute
     public  void kuayu(HttpServletResponse response){
         response.setHeader("Access-Control-Allow-Origin", "*");
@@ -111,6 +121,11 @@ public class JSPController {
     @RequestMapping("/MathWorld")
     public String mathworld(HttpServletRequest request, HttpServletResponse response){
         String username=(String) request.getSession().getAttribute("user");
+        logger.info(username);
+        if(username==null){
+            username=request.getParameter("user");
+        }
+        logger.info(username);
         List<WorldFollow> follows=followService.getByUsername(username);
         List<WorldFans>fans=fansService.selectByUsername(username);
         List<Math_world> worlds=worldService.getall();
@@ -228,17 +243,17 @@ public class JSPController {
      */
     @RequestMapping("/ti")
     public String ti(HttpServletRequest request,HttpServletResponse response){
-        Question question=questionService.selectById("3");
-        ChoiceWithBLOBs choiceWithBLOBs=choiceservice.selectById(3);
-        request.setAttribute("title",question.getTiTitle());
-       Map<String,String>map=new HashMap<>(4);
-        map.put("A",choiceWithBLOBs.getPa());
-        map.put("B",choiceWithBLOBs.getPb());
-        map.put("C",choiceWithBLOBs.getPc());
-        map.put("D",choiceWithBLOBs.getPd());
-        request.setAttribute("choice",map);
-        request.setAttribute("jiexi",choiceWithBLOBs.getJiexi());
-        request.setAttribute("answer",choiceWithBLOBs.getAnswer());
+//        Question question=questionService.selectById("3");
+//        ChoiceWithBLOBs choiceWithBLOBs=choiceservice.selectById(3);
+//        request.setAttribute("title",question.getTiTitle());
+//       Map<String,String>map=new HashMap<>(4);
+//        map.put("A",choiceWithBLOBs.getPa());
+//        map.put("B",choiceWithBLOBs.getPb());
+//        map.put("C",choiceWithBLOBs.getPc());
+//        map.put("D",choiceWithBLOBs.getPd());
+//        request.setAttribute("choice",map);
+//        request.setAttribute("jiexi",choiceWithBLOBs.getJiexi());
+//        request.setAttribute("answer",choiceWithBLOBs.getAnswer());
         return "ti";
     }
 

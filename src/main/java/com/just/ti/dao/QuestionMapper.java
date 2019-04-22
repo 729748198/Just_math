@@ -17,7 +17,15 @@ public interface QuestionMapper {
      * @param ban
      * @return
      */
-    List<Question> selectByBan(@Param(value = "ban") String ban);
+    Question selectByBan(@Param(value = "ban") String ban);
+
+    /**
+     * 根据板块随机查找一道题目
+     * @param ban
+     * @return
+     */
+    Question selectTianByRandom(@Param(value = "ban") String ban);
+
     Question selectByPrimaryKey(String id);
 
     int updateByPrimaryKeySelective(Question record);

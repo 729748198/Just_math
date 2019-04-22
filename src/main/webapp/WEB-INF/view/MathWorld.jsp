@@ -26,10 +26,6 @@
 </head>
 
 <body>
-<%
-
-        String username= (String) request.getSession().getAttribute("user");
-%>
 <!--导航栏-->
 <div class="nav">
     <img class="navbgc" src="<%=basePath%>img/q&anav.jpg" alt="">
@@ -87,9 +83,11 @@
             <form method="post" action="<%=path%>/world/dofrom" enctype="multipart/form-data">
 
 
-            <input name="title" type="text" >
-            <input class="world-user-submit"  name="content" id="world-user-submit" type="text"/><br>
-            <input type="file" name="file" value="选择图片或视频">
+                <label>
+                    标题<input name="title" type="text" >
+                </label>
+                <input class="world-user-submit"  name="content" id="world-user-submit" type="text"/><br>
+            <input type="file" name="file" value="选择图片">
             <input  type="submit" class="world-submit-button">发  表</input>
             </form>
         </div>
@@ -130,11 +128,33 @@
                 </c:if>
             </c:forEach>
         </div>
+
     </div>
+
 </div>
 <SCRIPT>
     $(document).ready(function () {
 
+    <% %>
+            $.ajax({
+                url:"<%=path%>/world/getallTxt",
+                type:"get",
+                success:function (data) {
+                    var jsObject = JSON.parse(data);
+                    var str='   <ul class="worldcontent">' ;
+                    for(var i=0;i<jsObject.length;i++){
+                        str+='<li class="worldcontent"><div class="tiezi">';
+                        str+='<img src="<%=basePath%>/img/worlduser.jpg"  class="tie-user">';
+                        str+='<p class="tie-username">'+jsObject[i].user+'</p>';
+                        str+='<p class="tie-title">'+jsObject[i].title+'</p>';
+                        str+='<text class="tie-main">'+jsObject[i].content+'</text></div></li>';
+                    }
+                    str+='</ul>';
+                    $("#content").html(str);
+                }
+            });
+
+         $("#txtWorld").click(function () {
 
             $.ajax({
                 url:"<%=path%>/world/getallTxt",
@@ -154,6 +174,7 @@
                 }
             });
 
+        });
         $("#picWorld").click(function () {
             $.ajax({
                 url:"<%=path%>/world/getallPic",
@@ -176,7 +197,7 @@
                     for(var i=0;i<jsObject.length;i++){
                         str+="<tr>";
                         str+="<td>"+i+"."+jsObject[i].title+"</td>";
-                        str+="<td> <img src= '"+jsObject[i].content+"'/></td>";
+                        str+="<td> <img src= '<%=basePath%>"+jsObject[i].content+"'/></td>";
                         str+="<td>"+jsObject[i].user+"</td>";
                         str+="</tr>";
                     }
@@ -252,7 +273,7 @@
                         str+="<td>"+jsObject[i].user+"</td>";
                         str+="</tr>";
                     }
-                    str+="</table>"
+                    str+="</table>";
                     $("#content").html(str);
                 }
             })

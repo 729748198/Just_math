@@ -166,7 +166,7 @@
     update rank
     <set >
       <if test="he != null" >
-        all = #{all,jdbcType=INTEGER},
+        he = #{he,jdbcType=INTEGER},
       </if>
       <if test="one != null" >
         one = #{one,jdbcType=INTEGER},

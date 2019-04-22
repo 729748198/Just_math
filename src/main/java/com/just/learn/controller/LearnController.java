@@ -42,8 +42,6 @@ public class LearnController {
     }
 
 
-
-
     //跨域处理
     @ModelAttribute
     public  void kuayu(HttpServletResponse response){

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 @Service("UserTiServiceImpl")
 public class UserTiServiceImpl implements UserTiService {
    @Autowired
-    UserTiMapper mapper;
+   UserTiMapper mapper;
 
     @Override
     public int add(UserTiWithBLOBs userTiWithBLOBs) {

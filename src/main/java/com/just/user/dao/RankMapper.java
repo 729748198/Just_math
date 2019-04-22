@@ -27,6 +27,11 @@ public interface RankMapper {
 
     Rank selectByPrimaryKey(String username);
 
+    /**
+     * 更新分数
+     * @param record
+     * @return
+     */
     int updateByPrimaryKeySelective(Rank record);
 
     int updateByPrimaryKey(Rank record);

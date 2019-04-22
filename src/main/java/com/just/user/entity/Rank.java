@@ -196,4 +196,24 @@ public class Rank {
         }
         return null;
     }
+    public void set(String Ban,Integer score){
+        switch (Ban){
+            case "高数第一章":setOne(score);break;
+            case "高数第二章":setTwo(score);break;
+            case "高数第三章":setThree(score);break;
+            case "高数第四章":setFour(score);break;
+            case "高数第五章":setFive(score);break;
+            case "高数第六章":setSix(score);break;
+            case "高数第七章":setSeven(score);break;
+            case "高数第八章":setEight(score);break;
+            case "高数第九章":setNine(score);break;
+            case "高数第十章":setTen(score);break;
+            case "高数第十一章":setEleven(score);break;
+            case "高数第十二章":setTweven(score);break;
+            case "概率论":setGailvlun(score);break;
+            case "线性代数":setXiandai(score);break;
+            default:break;
+        }
+
+    }
 }

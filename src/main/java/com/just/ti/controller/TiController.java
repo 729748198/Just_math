@@ -9,6 +9,8 @@ import com.just.ti.service.Choiceservice;
 import com.just.ti.service.QuestionService;
 import com.just.ti.service.UserTiService;
 import com.just.tools.MD5;
+import com.just.user.entity.Rank;
+import com.just.user.service.RankService;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +44,9 @@ public class TiController {
     @Autowired
     Choiceservice choiceservice;
 
+    @Autowired
+    RankService rankService;
+
     Logger logger= Logger.getLogger(TiController.class);
     /**
      * 处理跨域问题
@@ -52,6 +57,8 @@ public class TiController {
         response.setHeader("Access-Control-Allow-Origin", "*");
     }
 
+
+
     /**
      * 提交题目
      * @param response
@@ -60,7 +67,7 @@ public class TiController {
      */
     @RequestMapping("/doanswer")
     @ResponseBody
-    public Map<String, String> doanswer(HttpServletResponse response, HttpServletRequest request){
+    public String doanswer(HttpServletResponse response, HttpServletRequest request){
 
         /**
          * 获取参数
@@ -68,37 +75,31 @@ public class TiController {
         String name= (String) request.getSession().getAttribute("user");
         String doanswer=request.getParameter("doanswer");
         String ti_id=request.getParameter("ti_id");
+        String ban=request.getParameter("ban");
+        String score=request.getParameter("score");
 
-        /**
-         * 处理参数,查找题目对应的答案
-         */
-
-        TiankongWithBLOBs answerWithBLOBs=answerService.selectByQId(ti_id);
-        Map<String,String>map=new HashMap<>(3);
         /**
          * 新增一条做题记录
          */
+        TiankongWithBLOBs answerWithBLOBs=answerService.selectByQId(ti_id);
         UserTiWithBLOBs userTiWithBLOBs=new UserTiWithBLOBs();
-//        userTiWithBLOBs.setTiId(ti_id);
+        userTiWithBLOBs.setTiId(ti_id);
         userTiWithBLOBs.setUsername(name);
-//        userTiWithBLOBs.setRightanswer(answerWithBLOBs.getAnswer());
+        userTiWithBLOBs.setRightanswer(answerWithBLOBs.getAnswerformarch());
         userTiWithBLOBs.setDoanswer(doanswer);
         userTiWithBLOBs.setDotime(new Date());
-//        System.out.println("答案"+answerWithBLOBs.getAnswer());
-//        System.out.println("填的"+doanswer);
-//        if(answerWithBLOBs.getAnswer().equals(doanswer)){
-//            userTiWithBLOBs.setIsDo(2);
-//            map.put("mess","答案正确！");
-//        }else{
-//            userTiWithBLOBs.setIsDo(1);
-//            map.put("mess","答案错误！正确答案为：");
-//        }
         userTiService.add(userTiWithBLOBs);
 
-        doanswer=doanswer.replaceAll("\"","&quot");
-//        map.put("rightanswer",answerWithBLOBs.getAnswer());
-        map.put("jiexi",answerWithBLOBs.getJiexi());
-        return  map;
+        /**
+         * 更新积分
+         */
+        Rank rank=new Rank();
+        rank.setUsername(name);
+        rank.set(ban,Integer.valueOf(score));
+
+        int i=rankService.updataScore(rank);
+
+        return  "success";
     }
 
     /**
@@ -235,46 +236,69 @@ public class TiController {
     return  "admin/addchoiceNomath";
     }
 
-//    /**
-//     * 根据板块ban随机获取一道题
-//     * @param ban
-//     * @return
-//     */
-//    @RequestMapping("/getByban")
-//    @ResponseBody
-//    public  Map<String, String> getByBan(String ban){
-////
-////        List<Question> list=questionService.selectByBan(ban);
-////        List<Map<String,String>>result=new ArrayList<>();
-////        for (Question question:list
-////             ) {
-//////            ChoiceWithBLOBs choiceWithBLOBs=choiceservice.selectById(question.getId().toString());
-////
-////            Map<String,String>map=new HashMap<>(7);
-////            map.put("title",question.getTiTitle());
-////            map.put("A",choiceWithBLOBs.getPa());
-////            map.put("B",choiceWithBLOBs.getPb());
-////            map.put("C",choiceWithBLOBs.getPc());
-////            map.put("D",choiceWithBLOBs.getPd());
-////            map.put("jiexi",choiceWithBLOBs.getJiexi());
-////            map.put("answer",choiceWithBLOBs.getAnswer());
-////            result.add(map);
-////        }
-////        int length=result.size();
-//        return result.get((int)(1+Math.random()*(length-2+1)));
-//    }
-    public  Map<String,String> getTiByBan(String ban){
-        List<Question>list=questionService.selectByBan(ban);
+    /**
+     * 根据板块ban随机获取一道选择题
+     * @param ban
+     * @return
+     */
+    @RequestMapping("/getByban")
+    @ResponseBody
+    public  Map<String, String> getByBan(String ban){
+
+        Question question=questionService.selectByBan(ban);
         List<Map<String,String>>result=new ArrayList<>();
-        for (Question question:list){
-            //如果是填空题
-            if(question.getTiType()==2){
+
+           ChoiceWithBLOBs choiceWithBLOBs=choiceservice.selectById(Integer.valueOf(question.getId()));
+
+            Map<String,String>map=new HashMap<>(7);
+            map.put("title",question.getTiTitle());
+            map.put("A",choiceWithBLOBs.getPa());
+            map.put("B",choiceWithBLOBs.getPb());
+            map.put("C",choiceWithBLOBs.getPc());
+            map.put("D",choiceWithBLOBs.getPd());
+            map.put("jiexi",choiceWithBLOBs.getJiexi());
+            map.put("answer",choiceWithBLOBs.getAnswer());
+            result.add(map);
+
+        int length=result.size();
+        return map;
+    }
+
+    /**
+     * 根据板块随机获取一道题
+     * @param ban
+     * @return
+     */
+    @RequestMapping("/getBanRandom")
+    @ResponseBody
+        public  Map<String,String> getTiByBan(String ban){
+        logger.info(ban);
+        Question question=questionService.selectTianRandom(ban);
+        logger.info(question.getTiType());
+        Map<String,String> map=new HashMap<>(10);
+        map.put("title",question.getTiTitle());
+        map.put("score",question.getTiScore());
+        map.put("id",question.getId());
+        logger.info(question.getId());
+        //如果是填空题
+        if(question.getTiType()==2){
+            logger.info("填空");
                 TiankongWithBLOBs tiankongWithBLOBs=answerService.selectByQId(question.getId());
-
-            }
-
+                map.put("show",tiankongWithBLOBs.getAnswerforshow());
+                map.put("march",tiankongWithBLOBs.getAnswerformarch());
+                map.put("jiexi",tiankongWithBLOBs.getJiexi());
         }
-        return null;
+        if(question.getTiType()==1){
+            ChoiceWithBLOBs choiceWithBLOBs=choiceservice.selectById(Integer.valueOf(question.getId()));
+            map.put("A",choiceWithBLOBs.getPa());
+            map.put("B",choiceWithBLOBs.getPb());
+            map.put("C",choiceWithBLOBs.getPc());
+            map.put("D",choiceWithBLOBs.getPd());
+            map.put("jiexi",choiceWithBLOBs.getJiexi());
+            map.put("answer",choiceWithBLOBs.getAnswer());
+        }
+
+        return map;
     }
 
 

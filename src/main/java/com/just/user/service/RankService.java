@@ -21,4 +21,9 @@ public interface RankService {
      * @return
      */
     List<Rank> selectByban(String ban);
+
+    /**
+     * 更新分数
+     */
+    int updataScore(Rank rank);
 }

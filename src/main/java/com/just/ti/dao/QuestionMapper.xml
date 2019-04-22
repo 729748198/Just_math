@@ -19,13 +19,24 @@
     where id = #{id,jdbcType=VARCHAR}
   </select>
 
-
+<!--根据板块查找所有题目-->
   <select id="selectByBan" resultMap="BaseResultMap" parameterType="string" >
     select
     <include refid="Base_Column_List" />
     from ti_question
-    where ti_ban = ${ban}
+    where ti_ban = '${ban}'
+    order by rand() limit 1
   </select>
+
+  <!--根据板块随机查找一道题目-->
+  <select id="selectTianByRandom" resultMap="BaseResultMap" parameterType="string" >
+    select
+    <include refid="Base_Column_List" />
+    from ti_question
+    where ti_ban = '${ban}'
+    order by rand() limit 1
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from ti_question
     where id = #{id,jdbcType=VARCHAR}

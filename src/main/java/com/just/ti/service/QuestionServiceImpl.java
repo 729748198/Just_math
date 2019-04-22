@@ -26,7 +26,12 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
-    public List<Question> selectByBan(String ban) {
+    public Question selectByBan(String ban) {
         return mapper.selectByBan(ban);
+    }
+
+    @Override
+    public Question selectTianRandom(String ban) {
+        return mapper.selectTianByRandom(ban);
     }
 }

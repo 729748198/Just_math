@@ -28,6 +28,11 @@ public interface QuestionService {
      * @param ban 板块
      * @return 返回一个题目列表
      */
-    List<Question> selectByBan(String ban);
+    Question selectByBan(String ban);
 
+    /**
+     * 根据板块随机查找一道填空题
+     * @return
+     */
+    Question selectTianRandom(String ban);
 }

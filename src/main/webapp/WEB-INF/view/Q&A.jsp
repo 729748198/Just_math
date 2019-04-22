@@ -22,6 +22,8 @@
     <title>师生答疑</title>
     <link rel="stylesheet" href="<%=basePath%>css/main.css" type="text/css">
     <script src="<%=basePath%>/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="<%=basePath%>assets/css/amazeui.min.css"/>
+    <link rel="stylesheet" href="<%=basePath%>assets/css/admin.css">
 </head>
 <body>
 <!--导航栏-->
@@ -44,7 +46,7 @@
             </a>
         </li>
         <li class="worldnav">
-            <a class="nava" href="<%=path%>/just/Rank">
+            <a class="nava " href="<%=path%>/just/Rank">
                 <img src="<%=basePath%>img/navrating.png" alt="" class="navimg navimg4">积分排行
             </a>
         </li>

@@ -1,5 +1,6 @@
 package com.just.math_world.controller;
 
+import com.just.JSPController;
 import com.just.math_world.entity.Math_world;
 import com.just.math_world.entity.WorldFans;
 import com.just.math_world.entity.WorldFollow;
@@ -7,6 +8,7 @@ import com.just.math_world.service.WorldFansService;
 import com.just.math_world.service.WorldFollowService;
 import com.just.math_world.service.WorldService;
 import com.just.tools.MD5;
+import org.apache.commons.io.FilenameUtils;
 import org.aspectj.weaver.World;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +24,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
+import org.apache.log4j.Logger;
 
 /**
  * @author 贺文杰
@@ -38,6 +41,8 @@ public class WorldController {
 
     @Autowired
     WorldFansService fansService;
+
+    Logger logger=Logger.getLogger(WorldController.class);
 
     @ModelAttribute
     public  void kuayu(HttpServletResponse response){
@@ -148,30 +153,76 @@ public class WorldController {
     }
 
 
-
+    /**
+     * 处理发送
+     * @param file
+     * @param request
+     * @return
+     * @throws IOException
+     */
     @RequestMapping("/dofrom")
-    public String doimg(MultipartFile file, HttpServletRequest request) throws IOException {
+    public String doimg(MultipartFile file,String title,String content,HttpServletRequest request,HttpServletResponse response) throws IOException {
 
+        JSPController jspController=new JSPController();
+        if(file.isEmpty()){
+            logger.info("无文件");
+            String name= (String) request.getSession().getAttribute("user");
+            request.setAttribute("user",name);
+            Math_world world=setWorld(name,content,new Date(),0,title,0);
+             service.insertByUsername(world);
+
+            return "redirect:/just/MathWorld";
+        }
     String contentType=file.getContentType();
-    System.out.println(contentType);
+    logger.info("类型"+contentType);
     String name= (String) request.getSession().getAttribute("user");
-    String title=request.getParameter("title");
-    System.out.println(title);
     String uri =MD5.md5(file.getOriginalFilename());
-    String content="/img/"+uri+".jpg";
-    Math_world world=new Math_world();
-    world.setContent(content);
-    world.setUser(name);
-    world.setCreatTime(new Date());
-    world.setWorldtype(1);
-    world.setTitle(title);
-    world.setIsOk(0);
-    System.out.println(name);
-    File loadPath = new File(content);
-    System.out.println(loadPath);
-    file.transferTo(loadPath);
+    logger.info(uri);
+    String ext = FilenameUtils.getExtension(file
+                .getOriginalFilename());
+    logger.info(ext);
+    String url = request.getSession().getServletContext()
+                .getRealPath("/upload/mathworld");
+
+    File filePath = new File(url);
+
+    logger.info("文件保存路径：" + url);
+
+    if (!filePath.exists() && !filePath.isDirectory()) {
+        logger.info("目录不存在，创建目录：" + filePath);
+        filePath.mkdir();
+    }
+    String path="/upload/mathworld/"+uri+"."+ext;
+
+    url=url+"/"+uri+"."+ext;
+    file.transferTo(new File(url));
+
+    logger.info("插入图片");
+    Math_world world=setWorld(name,path,new Date(),1,title,0);
     service.insertByUsername(world);
 
-        return "MathWorld";
+        return "redirect:/just/MathWorld";
+    }
+
+    /**
+     *
+     * @param name 用户名
+     * @param content 内容
+     * @param date 时间
+     * @param type 类型0是文章，1是图片，2是视频
+     * @param title 标题
+     * @param bool 是否精品，默认是0
+     * @return
+     */
+    public static Math_world setWorld(String name,String content,Date date,Integer type,String title,Integer bool){
+        Math_world world=new Math_world();
+        world.setContent(content);
+        world.setCreatTime(date);
+        world.setIsOk(bool);
+        world.setTitle(title);
+        world.setWorldtype(type);
+        world.setUser(name);
+        return world;
+
     }
 }

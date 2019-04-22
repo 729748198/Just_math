@@ -24,4 +24,9 @@ public class RankServiceImpl implements RankService {
     public List<Rank> selectByban(String ban) {
         return mapper.selectbyBan(ban);
     }
+
+    @Override
+    public int updataScore(Rank rank) {
+        return mapper.updateByPrimaryKeySelective(rank);
+    }
 }
