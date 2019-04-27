@@ -20,6 +20,7 @@
     <script src="<%=basePath%>/js/jquery-1.8.3.min.js"></script>
 </head>
 <body>
+侯号修改
 <form class="form-signin" action="<%=path%>/user/dologin" Method="Post">
     <h2 class="form-signin-heading">登录网站</h2>
     <label for="username" class="sr-only">username</label>
