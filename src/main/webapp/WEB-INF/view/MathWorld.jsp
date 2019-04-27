@@ -84,11 +84,11 @@
 
 
                 <label>
-                    标题<input name="title" type="text" >
+                    标题<input name="title" type="text" style="border:1px solid black">
                 </label>
-                <input class="world-user-submit"  name="content" id="world-user-submit" type="text"/><br>
-            <input type="file" name="file" value="选择图片">
-            <input  type="submit" class="world-submit-button">发  表</input>
+                <input class="world-user-submit"  name="content" id="world-user-submit" type="text"/>
+            <input type="file" name="file" value="选择图片" style="border:1px solid black;">
+            <input  type="submit" class="world-submit-button">
             </form>
         </div>
         <!--分类按钮-->
@@ -182,24 +182,12 @@
                 success:function (data) {
                     var jsObject = JSON.parse(data);
                     var str="";
-                    str+="<table class='dataintable2'>";
-                    str+="<tr>" ;
-                    str+="<th style='width:20%'>" ;
-                    str+="标题" ;
-                    str+="</th>" ;
-                    str+="<th style='width:20%' >" ;
-                    str+="图片" ;
-                    str+="</th>" ;
-                    str+="<th style='width:20%'>" ;
-                    str+="发帖人" ;
-                    str+="</th>" ;
-                    str+="</tr>";
                     for(var i=0;i<jsObject.length;i++){
-                        str+="<tr>";
-                        str+="<td>"+i+"."+jsObject[i].title+"</td>";
-                        str+="<td> <img src= '<%=basePath%>"+jsObject[i].content+"'/></td>";
-                        str+="<td>"+jsObject[i].user+"</td>";
-                        str+="</tr>";
+                        str+='<li class="worldcontent" style="list-style: none"><div class="tiezi">';
+                        str+='<img src="<%=basePath%>/img/worlduser.jpg"  class="tie-user">';
+                        str+='<p class="tie-username">'+jsObject[i].user+'</p>';
+                        str+='<p class="tie-title">'+jsObject[i].title+'</p>';
+                        str+='<img class="tie-img" style="height:166px;top:120px;display: inline-block;position: absolute;" src="<%=basePath%>'+jsObject[i].content+'"></img></div></li>';
                     }
                     str+="</table>";
                     $("#content").html(str);
@@ -287,7 +275,7 @@
 
                     var jsObject = JSON.parse(data);
                     var str="";
-                    str+="<table class='dataintable2'>";
+                    str+="<div class='dataintable2'>";
                     str+="<tr>" ;
                     str+="<th style='width:20%'>" ;
                     str+="标题" ;

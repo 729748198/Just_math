@@ -68,15 +68,9 @@
         <div class="qa-box">
             <table class="qa-table">
                     <tr class="qa-table">
-                            <%--帖子标题--%>
-                        <td class="qa-table qa-title">
-
-                        </td>
-
+                        <td class="qa-table qa-title">金坷垃的时间分开了的时间弗兰克</td>
                         <td class="qa-table qa-userimg"><img src="<%=basePath%>img/worlduser.jpg" alt="" class="qa-table-user" ></td>
-                            <%--创建者--%>
                         <td class="qa-table qa-username">dfsa</td>
-                            <%--创建时间--%>
                         <td class="qa-table qa-date">1999年</td>
                     </tr>
 
