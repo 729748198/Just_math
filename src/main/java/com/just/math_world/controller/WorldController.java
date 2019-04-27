@@ -7,6 +7,7 @@ import com.just.math_world.entity.WorldFollow;
 import com.just.math_world.service.WorldFansService;
 import com.just.math_world.service.WorldFollowService;
 import com.just.math_world.service.WorldService;
+import com.just.tools.FileCreat;
 import com.just.tools.MD5;
 import org.apache.commons.io.FilenameUtils;
 import org.aspectj.weaver.World;
@@ -184,14 +185,8 @@ public class WorldController {
     String url = request.getSession().getServletContext()
                 .getRealPath("/upload/mathworld");
 
-    File filePath = new File(url);
-
-    logger.info("文件保存路径：" + url);
-
-    if (!filePath.exists() && !filePath.isDirectory()) {
-        logger.info("目录不存在，创建目录：" + filePath);
-        filePath.mkdir();
-    }
+    //如果不存在，就创建一个
+    FileCreat.creat(url);
     String path="/upload/mathworld/"+uri+"."+ext;
 
     url=url+"/"+uri+"."+ext;

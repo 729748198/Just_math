@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.just.ti.dao.TiBanMapper" >
+  <resultMap id="BaseResultMap" type="com.just.ti.entity.TiBan" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="sum_score" property="sumScore" jdbcType="INTEGER" />
+    <result column="ban" property="ban" jdbcType="VARCHAR" />
+    <result column="sum_select" property="sumSelect" jdbcType="INTEGER" />
+    <result column="sum_tiankong" property="sumTiankong" jdbcType="INTEGER" />
+    <result column="sum_panduan" property="sumPanduan" jdbcType="INTEGER" />
+    <result column="sum_dati" property="sumDati" jdbcType="INTEGER" />
+    <result column="temp" property="temp" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, sum_score, ban, sum_select, sum_tiankong, sum_panduan, sum_dati, temp
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ti_ban
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectByBan" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from ti_ban
+    where ban = '${ban}'
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ti_ban
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.just.ti.entity.TiBan" >
+    insert into ti_ban (id, sum_score, ban, 
+      sum_select, sum_tiankong, sum_panduan, 
+      sum_dati, temp)
+    values (#{id,jdbcType=INTEGER}, #{sumScore,jdbcType=INTEGER}, #{ban,jdbcType=VARCHAR}, 
+      #{sumSelect,jdbcType=INTEGER}, #{sumTiankong,jdbcType=INTEGER}, #{sumPanduan,jdbcType=INTEGER}, 
+      #{sumDati,jdbcType=INTEGER}, #{temp,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.just.ti.entity.TiBan" >
+    insert into ti_ban
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="sumScore != null" >
+        sum_score,
+      </if>
+      <if test="ban != null" >
+        ban,
+      </if>
+      <if test="sumSelect != null" >
+        sum_select,
+      </if>
+      <if test="sumTiankong != null" >
+        sum_tiankong,
+      </if>
+      <if test="sumPanduan != null" >
+        sum_panduan,
+      </if>
+      <if test="sumDati != null" >
+        sum_dati,
+      </if>
+      <if test="temp != null" >
+        temp,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="sumScore != null" >
+        #{sumScore,jdbcType=INTEGER},
+      </if>
+      <if test="ban != null" >
+        #{ban,jdbcType=VARCHAR},
+      </if>
+      <if test="sumSelect != null" >
+        #{sumSelect,jdbcType=INTEGER},
+      </if>
+      <if test="sumTiankong != null" >
+        #{sumTiankong,jdbcType=INTEGER},
+      </if>
+      <if test="sumPanduan != null" >
+        #{sumPanduan,jdbcType=INTEGER},
+      </if>
+      <if test="sumDati != null" >
+        #{sumDati,jdbcType=INTEGER},
+      </if>
+      <if test="temp != null" >
+        #{temp,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.just.ti.entity.TiBan" >
+    update ti_ban
+    <set >
+      <if test="sumScore != null" >
+        sum_score = #{sumScore,jdbcType=INTEGER},
+      </if>
+      <if test="ban != null" >
+        ban = #{ban,jdbcType=VARCHAR},
+      </if>
+      <if test="sumSelect != null" >
+        sum_select = #{sumSelect,jdbcType=INTEGER},
+      </if>
+      <if test="sumTiankong != null" >
+        sum_tiankong = #{sumTiankong,jdbcType=INTEGER},
+      </if>
+      <if test="sumPanduan != null" >
+        sum_panduan = #{sumPanduan,jdbcType=INTEGER},
+      </if>
+      <if test="sumDati != null" >
+        sum_dati = #{sumDati,jdbcType=INTEGER},
+      </if>
+      <if test="temp != null" >
+        temp = #{temp,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.just.ti.entity.TiBan" >
+    update ti_ban
+    set sum_score = #{sumScore,jdbcType=INTEGER},
+      ban = #{ban,jdbcType=VARCHAR},
+      sum_select = #{sumSelect,jdbcType=INTEGER},
+      sum_tiankong = #{sumTiankong,jdbcType=INTEGER},
+      sum_panduan = #{sumPanduan,jdbcType=INTEGER},
+      sum_dati = #{sumDati,jdbcType=INTEGER},
+      temp = #{temp,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

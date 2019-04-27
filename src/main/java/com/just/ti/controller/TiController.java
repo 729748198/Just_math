@@ -1,13 +1,8 @@
 package com.just.ti.controller;
 
-import com.just.ti.entity.ChoiceWithBLOBs;
-import com.just.ti.entity.Question;
-import com.just.ti.entity.TiankongWithBLOBs;
-import com.just.ti.entity.UserTiWithBLOBs;
-import com.just.ti.service.AnswerService;
-import com.just.ti.service.Choiceservice;
-import com.just.ti.service.QuestionService;
-import com.just.ti.service.UserTiService;
+import com.just.ti.entity.*;
+import com.just.ti.service.*;
+import com.just.tools.FileCreat;
 import com.just.tools.MD5;
 import com.just.user.entity.Rank;
 import com.just.user.service.RankService;
@@ -46,6 +41,9 @@ public class TiController {
 
     @Autowired
     RankService rankService;
+
+    @Autowired
+    TiBanService tiBanService;
 
     Logger logger= Logger.getLogger(TiController.class);
     /**
@@ -115,7 +113,7 @@ public class TiController {
         //ID
         String name = UUID.randomUUID().toString().replaceAll("-", "");
 
-        /**
+        /*
          * 存储图片
          */
         // 获取文件的扩展名
@@ -123,32 +121,31 @@ public class TiController {
                 .getOriginalFilename());
         // 设置图片上传路径
         String url = request.getSession().getServletContext()
-                .getRealPath("/upload");
-        File filePath = new File(url);
-        logger.info("文件保存路径：" + url);
-        if (!filePath.exists() && !filePath.isDirectory()) {
-            logger.info("目录不存在，创建目录：" + filePath);
-            filePath.mkdir();
-        }
+                .getRealPath("/upload/ti/"+ban);
+        //如果不存在，就创建目录
+        FileCreat.creat(url);
+
         url=url+"/"+name+"."+ext;
         // 以绝对路径保存重名命后的图片
         file.transferTo(new File(url));
 
+        //数据库的图片地址
+        String uri="/upload/ti/"+ban+"/"+name+"."+ext;
+        /*
+         * 问题的实体
+         */
 
         //2是填空题
         Integer type=2;
 
-        /**
-         * 问题的实体
-         */
         Question question=new Question();
         question.setId(name);
-        question.setTiTitle(url);
+        question.setTiTitle(uri);
         question.setTiBan(ban);
         question.setTiScore(score);
         question.setTiType(type);
 
-        /**
+        /*
          * 答案的实体
          */
         TiankongWithBLOBs answerWithBLOBs=new TiankongWithBLOBs();
@@ -157,13 +154,22 @@ public class TiController {
         answerWithBLOBs.setAnswerforshow(answerforshow);
         answerWithBLOBs.setAnswerType(2);
 
-        logger.info(question.getTiTitle());
-        logger.info(answerWithBLOBs.getId());
-        logger.info(answerWithBLOBs.getAnswerformarch());
+        /*
+            更新题目章节总分数
+         */
+        TiBan tiBan=tiBanService.selectByBan(ban);
+        //填空题数量+1
+        tiBan.setSumTiankong(tiBan.getSumTiankong()+1);
+        //当前章节总分+score
+        tiBan.setSumScore(tiBan.getSumScore()+Integer.valueOf(score));
 
+
+        /*
+          调用service执行插入
+         */
         questionService.add(question);
         answerService.add(answerWithBLOBs);
-
+        tiBanService.update(tiBan);
         return  "插入成功";
     }
 
@@ -219,8 +225,11 @@ public class TiController {
      */
     @RequestMapping("/doChoice")
     @ResponseBody
-    public  String doChoice(HttpServletResponse response, HttpServletRequest request){
-        funchoice(response,request);
+    public  String doChoice(@RequestParam("title") MultipartFile title,@RequestParam("Ba") MultipartFile Ba,@RequestParam("Bb") MultipartFile Bb,@RequestParam("Bc") MultipartFile Bc,@RequestParam("Bd") MultipartFile Bd,@RequestParam("jiexi") MultipartFile jiexi,String answer,String ban,String score,HttpServletResponse response, HttpServletRequest request){
+        //ID
+        String name = UUID.randomUUID().toString().replaceAll("-", "");
+
+
         return  "插入成功";
     }
 

@@ -264,127 +264,44 @@
         <p>增加一道选择题</p>
         <label for="ban">所属板块</label><input name="ban" id="ban" type="text" ><br>
         <label for="score">分数</label><input name="score" id="score" type="text" ><br>
-        <label for="title">标题</label><input name="title" id="title" type="text" maxlength="1000"> <button id="q">确定</button><br>
-        <div id="editorContainer"></div>
-        <p id="Ca">选项A </p><button id="Ba">确定</button>
-        <div id="editorContainer1"></div>
-        <p id="Cb">选项B</p><button id="Bb">确定</button>
-        <div id="editorContainer2"></div>
-        <p id="Cc">选项C</p><button id="Bc">确定</button>
-        <div id="editorContainer3"></div>
-        <p id="Cd">选项D</p><button id="Bd">确定</button>
-        <div id="editorContainer4"></div>
+        <label for="title">标题</label><input name="title" id="title" type="file" >
+        <p id="Ca">选项A </p><input id="Ba" type="file">
+
+        <p id="Cb">选项B</p><input id="Bb" type="file">
+
+        <p id="Cc">选项C</p><input id="Bc" type="file">
+
+        <p id="Cd">选项D</p><input id="Bd" type="file">
+
         <label for="answer">答案</label><input name="answer" id="answer" type="text"><br><br>
-        <p id="jiexi">添加解析</p><button id="Bjiexi">确定</button>
-        <div id="editorContainer5"></div>
+        <p >添加解析</p><input id="jiexi" type="file">
         <button id="tijiao">提交</button>
-
-        <script>
-            var editor;
-            var editor1;
-            var editor2;
-            var editor3;
-            var editor4;
-            var editor5;
-            window.onload = function () {
-                editor = com.wiris.jsEditor.JsEditor.newInstance({'language': 'en'});
-                editor.insertInto(document.getElementById('editorContainer'));
-                editor1 = com.wiris.jsEditor.JsEditor.newInstance({'language': 'en'});
-                editor1.insertInto(document.getElementById('editorContainer1'));
-                editor2 = com.wiris.jsEditor.JsEditor.newInstance({'language': 'en'});
-                editor2.insertInto(document.getElementById('editorContainer2'));
-                editor3 = com.wiris.jsEditor.JsEditor.newInstance({'language': 'en'});
-                editor3.insertInto(document.getElementById('editorContainer3'));
-                editor4 = com.wiris.jsEditor.JsEditor.newInstance({'language': 'en'});
-                editor4.insertInto(document.getElementById('editorContainer4'));
-                editor5 = com.wiris.jsEditor.JsEditor.newInstance({'language': 'en'});
-                editor5.insertInto(document.getElementById('editorContainer5'));
-            };
-            $("#editorContainer").hide();
-            $("#editorContainer1").hide();
-            $("#editorContainer2").hide();
-            $("#editorContainer3").hide();
-            $("#editorContainer4").hide();
-            $("#editorContainer5").hide();
-        </script>
-
-
 
     </div>
     <script>
         $(document).ready(function () {
 
-            $("#Ca").click(function () {
-                $("#editorContainer1").show();
-            });
-            $("#Ba").click(function () {
-                $("#editorContainer1").hide();
-            });
-            $("#Cb").click(function () {
-                $("#editorContainer2").show();
-            });
-            $("#Bb").click(function () {
-                $("#editorContainer2").hide();
-            });
-            $("#Cc").click(function () {
-                $("#editorContainer3").show();
-            });
-            $("#Bc").click(function () {
-                $("#editorContainer3").hide();
-            });
-            $("#Cd").click(function () {
-                $("#editorContainer4").show();
-            });
-            $("#Bd").click(function () {
-                $("#editorContainer4").hide();
-            });
-            $("#title").click(function () {
-                $("#editorContainer").show();
-            });
-            $("#q").click(function () {
-                $("#editorContainer").hide();
-            });
-            $("#jiexi").click(function () {
-                $("#editorContainer5").show();
-            });
-            $("#Bjiexi").click(function () {
-                $("#editorContainer5").hide();
-            });
             $("#tijiao").click(function () {
-                var title = $("div#editorContainer .wrs_container").html();
-                var Aa=$("div#editorContainer1 .wrs_container").html();
-                var Ab=$("div#editorContainer2 .wrs_container").html();
-               var Ac =$("div#editorContainer3 .wrs_container").html();
-                var Ad= $("div#editorContainer4 .wrs_container").html();
-                var jiexi= $("div#editorContainer5 .wrs_container").html();
+
+                var formData = new FormData();
+
+
                 var ban = $("#ban").val();
                 var score = $("#score").val();
                 var answer=$("#answer").val();
-                console.log("题目"+title);
-                console.log("a"+Aa);
-                console.log("b"+Ab);
-                console.log("c"+Ac);
-                console.log("d"+Ad);
-                console.log("jiexi"+jiexi);
-                console.log("ban"+ban);
-                console.log("score"+score);
-                console.log("answer"+answer);
-
+                formData.append("ban",ban);
+                formData.append("score",score);
+                formData.append("answer",answer);
+                formData.append("title",$('#title')[0].files[0]);
+                formData.append("Ba",$('#Ba')[0].files[0]);
+                formData.append("Bb",$('#Bb')[0].files[0]);
+                formData.append("Bc",$('#Bc')[0].files[0]);
+                formData.append("Bd",$('#Bd')[0].files[0]);
+                formData.append("jiexi",$('#jiexi')[0].files[0]);
                 $.ajax({
                     type: "POST",
                     url: "<%=basePath%>ti/doChoice",
-                    data: {
-                        "Ban":ban,
-                        "Title":title,
-                        "Score":score,
-                        "Answer":answer,
-                        "Aa":Aa,
-                        "Ab":Ab,
-                        "Ac":Ac,
-                        "Ad":Ad,
-                        "Jiexi":jiexi,
-                        "type":5
-                    },
+                    data: formData,
                     // dataType: "json",
                     success: function (data) {
                         alert("成功插入");
