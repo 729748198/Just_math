@@ -1619,7 +1619,7 @@ p.tie-title
     display: inline-block;
     position: absolute;
     font-size: 22px;
-    width: 250px;
+    width: 450px;
     height: 25px;
     line-height: 25px;
     text-align: left;
@@ -1627,6 +1627,33 @@ p.tie-title
     left:36px;
 }
 text.tie-main
+{
+    display: inline-block;
+    position: absolute;
+    padding: 15px;
+    font-size: 16px;
+    text-indent: 2em;
+    width:550px;
+    height: 150px;
+    line-height:18px;
+    top:110px;
+    left: 25px;
+    background-color: #EAF8F8;
+    overflow: auto;
+}
+img.tie-img
+{
+    display: inline-block;
+    position: absolute;
+    padding: 15px;
+    font-size: 16px;
+    text-indent: 2em;
+    width:50px;
+    height: auto;
+    top:510px;
+    left: 25px;
+}
+div.tie-main
 {
     display: inline-block;
     position: absolute;
@@ -1985,4 +2012,12 @@ div.mod-text
 {
     left: 12px;
     color: #0000cc;
+}
+label.mw-label
+{
+    border: 1px solid black;
+}
+label.mw-fabiao
+{
+    top:-5px;
 }
