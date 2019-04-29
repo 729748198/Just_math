@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.DispatcherServlet;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -33,13 +34,11 @@ public class FatieController {
 
     /**
      * 页面跳转
-     */
-    /**
-     * 页面跳转
      *
      */
     @RequestMapping("/content")
     public String toContent(){
+
         return "Q&A-content";
     }
 

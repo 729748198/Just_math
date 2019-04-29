@@ -78,51 +78,51 @@
         </div>
         <!--玩家排行-->
         <div id="content">
-        <div class="rating-user">
-            <img src="<%=basePath%>img/worlduser.jpg" alt="" class="rating-user">
-            <div class="rating-user-ifo">
-                <p class="rating-user-name" >${user}</p>
-                <p class="rating-user-mingci">第${me}名</p>
+            <div class="rating-user">
+                <img src="<%=basePath%>img/worlduser.jpg" alt="" class="rating-user">
+                <div class="rating-user-ifo">
+                    <p class="rating-user-name" >${user}</p>
+                    <p class="rating-user-mingci">第${me}名</p>
+                </div>
+                <div class="rating-user-score" >
+                    ${he}
+                </div>
             </div>
-            <div class="rating-user-score" >
-                ${he}
-            </div>
-        </div>
-        <!--排行榜-->
-        <div class="rating-content">
-            <table class="rating-table">
-                <tr class="rating-table-tr">
-                    <th class="rating-table-th medal rating-col1"><img src="<%=basePath%>img/first.png" alt="" class="rating-medal"></th>
-                    <th class="rating-table-user rating-col2"><img src="<%=basePath%>img/worlduser.jpg" alt="" class="rating-table-user"></th>
-                    <th class="rating-table-th rating-col3">${first.username}</th>
-                    <th class="rating-table-th rating-col4 rating-three">${first.he}</th>
-                </tr>
-                <tr class="rating-table-tr">
-                    <th class="rating-table-th medal rating-col1"><img src="<%=basePath%>img/second.png" alt="" class="rating-medal"></th>
-                    <th class="rating-table-user rating-col2"><img src="<%=basePath%>img/worlduser.jpg" alt="" class="rating-table-user"></th>
-                    <th class="rating-table-th rating-col3">${second.username}</th>
-                    <th class="rating-table-th rating-col4 rating-three">${second.he}</th>
-                </tr>
-                <tr class="rating-table-tr">
-                    <th class="rating-table-th medal rating-col1"><img src="<%=basePath%>img/third.png" alt="" class="rating-medal"></th>
-                    <th class="rating-table-user rating-col2"><img src="<%=basePath%>img/worlduser.jpg" alt="" class="rating-table-user"></th>
-                    <th class="rating-table-th rating-col3">${thread.username}</th>
-                    <th class="rating-table-th rating-col4 rating-three">${thread.he}</th>
-                </tr>
-                <% int count=4;%>
-                <c:forEach items="${rank}" var="r">
+            <!--排行榜-->
+            <div class="rating-content">
+                <table class="rating-table">
+                    <tr class="rating-table-tr">
+                        <th class="rating-table-th medal rating-col1"><img src="<%=basePath%>img/first.png" alt="" class="rating-medal"></th>
+                        <th class="rating-table-user rating-col2"><img src="<%=basePath%>img/worlduser.jpg" alt="" class="rating-table-user"></th>
+                        <th class="rating-table-th rating-col3">${first.username}</th>
+                        <th class="rating-table-th rating-col4 rating-three">${first.he}</th>
+                    </tr>
+                    <tr class="rating-table-tr">
+                        <th class="rating-table-th medal rating-col1"><img src="<%=basePath%>img/second.png" alt="" class="rating-medal"></th>
+                        <th class="rating-table-user rating-col2"><img src="<%=basePath%>img/worlduser.jpg" alt="" class="rating-table-user"></th>
+                        <th class="rating-table-th rating-col3">${second.username}</th>
+                        <th class="rating-table-th rating-col4 rating-three">${second.he}</th>
+                    </tr>
+                    <tr class="rating-table-tr">
+                        <th class="rating-table-th medal rating-col1"><img src="<%=basePath%>img/third.png" alt="" class="rating-medal"></th>
+                        <th class="rating-table-user rating-col2"><img src="<%=basePath%>img/worlduser.jpg" alt="" class="rating-table-user"></th>
+                        <th class="rating-table-th rating-col3">${thread.username}</th>
+                        <th class="rating-table-th rating-col4 rating-three">${thread.he}</th>
+                    </tr>
+                    <% int count=4;%>
+                    <c:forEach items="${rank}" var="r">
 
 
-                <tr class="rating-table-tr">
-                    <th class="rating-table-th rating-col1"><%=count%></th>
-                    <th class="rating-table-user rating-col2"><img src="<%=basePath%>img/worlduser.jpg" alt="" class="rating-table-user"></th>
-                    <th class="rating-table-th rating-col3">${r.username}</th>
-                    <th class="rating-table-th rating-col4">${r.he}</th>
-                </tr>
-                    <% count++;%>
-                </c:forEach>
-            </table>
-        </div>
+                    <tr class="rating-table-tr">
+                        <th class="rating-table-th rating-col1"><%=count%></th>
+                        <th class="rating-table-user rating-col2"><img src="<%=basePath%>img/worlduser.jpg" alt="" class="rating-table-user"></th>
+                        <th class="rating-table-th rating-col3">${r.username}</th>
+                        <th class="rating-table-th rating-col4">${r.he}</th>
+                    </tr>
+                        <% count++;%>
+                    </c:forEach>
+                </table>
+            </div>
         </div>
         <script>
             $(document).ready(function () {
@@ -142,26 +142,27 @@
                             var html="";
                             html+="<table class=\"rating-table\">";
                             html+="<tr class=\"rating-table-tr\">";
-                            html+="<th class=\"rating-table-th medal rating-col1\"><img src=\"<%=basePath%>img/first.png\" alt=\"\" class=\"rating-medal\"></th>";
+                            html+="<th class=\"rating-table-th medal rating-col1\"><img src=\"<%=basePath%>img/first.png\"  class=\"rating-medal\"></th>";
                             html+="<th class=\"rating-table-user rating-col2\"><img src=\"<%=basePath%>img/worlduser.jpg\" alt=\"\" class=\"rating-table-user\"></th>";
                             html+=" <th class=\"rating-table-th rating-col3\">";
                             html+= data.first.username;
-                            html+=" "</th>";
-                            html+="<th class=\"rating-table-th rating-col4 rating-three\">data.first.fen</th>";
+                            html+=" </th>";
+                            html+="<th class=\"rating-table-th rating-col4 rating-three\">"+data.first.fen+"</th>";
                             html+=" </tr>";
                             html+="<tr class=\"rating-table-tr\">";
                             html+="<th class=\"rating-table-th medal rating-col1\"><img src=\"<%=basePath%>img/second.png\" alt=\"\" class=\"rating-medal\"></th>";
                             html+="<th class=\"rating-table-user rating-col2\"><img src=\"<%=basePath%>img/worlduser.jpg\" alt=\"\" class=\"rating-table-user\"></th>";
-                            html+="<th class=\"rating-table-th rating-col3\">data.second.username</th>";
-                            html+="<th class=\"rating-table-th rating-col4 rating-three\">data.second.fen</th>";
+                            html+="<th class=\"rating-table-th rating-col3\">"+data.second.username+"</th>";
+                            html+="<th class=\"rating-table-th rating-col4 rating-three\">"+data.second.fen+"</th>";
                             html+="</tr>";
                             html+="<tr class=\"rating-table-tr\">";
                             html+="<th class=\"rating-table-th medal rating-col1\"><img src=\"<%=basePath%>img/third.png\" alt=\"\" class=\"rating-medal\"></th>";
                             html+="<th class=\"rating-table-user rating-col2\"><img src=\"<%=basePath%>img/worlduser.jpg\" alt=\"\" class=\"rating-table-user\"></th>";
-                            html+="<th class=\"rating-table-th rating-col3\">data.thread.username</th>";
-                            html+=" <th class=\"rating-table-th rating-col4 rating-three\">data.thread.fen</th>";
+                            html+="<th class=\"rating-table-th rating-col3\">"+data.thread.username+"</th>";
+                            html+=" <th class=\"rating-table-th rating-col4 rating-three\">"+data.thread.fen+"</th>";
                             html+=" </tr>";
 
+                            $("#content").html(html);
 
                             //可以再log中查看数据
                             console.log(data);

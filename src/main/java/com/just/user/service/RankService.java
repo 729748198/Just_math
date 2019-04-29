@@ -9,6 +9,7 @@ import java.util.List;
  * 2019/3/6 18:39
  */
 public interface RankService {
+
     /**
      * 获取所有信息
      * @return 每个人各科成绩

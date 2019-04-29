@@ -134,8 +134,6 @@
 </div>
 <SCRIPT>
     $(document).ready(function () {
-
-    <% %>
             $.ajax({
                 url:"<%=path%>/world/getallTxt",
                 type:"get",

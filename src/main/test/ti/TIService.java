@@ -43,4 +43,5 @@ public class TIService {
         logger.info(bt.getSumScore());
 
     }
+
 }

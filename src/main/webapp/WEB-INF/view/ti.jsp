@@ -112,7 +112,43 @@ padding: 5px 5px 10px 5px;">
                 function hide() {
                     $("#demo").hide();
                 }
-                var ban="第一章";
+                function getti() {
+                    $.ajax({
+                        url: "<%=basePath%>/ti/getBanRandom?ban="+ban,
+                        type:"get",
+                        dataType:"json",
+                        success:function (data) {
+                            var html="";
+                            console.log(data);
+                            html=html+"<h1>题目</h1><img src='<%=basePath%>"+data.title+"' /> ";
+                            html=html+"<h1 id='test'>解答</h1>";
+                            html=html+"<p id='tiid' style='display: none'>"+data.tiid+"</p>";
+                            html=html+"<p id='titype' style='display: none'>"+data.titype+"</p>";
+
+                            if(data.titype=="2") {
+                                html=html+"<label for='answerfortian'>点击右侧输入框，在编辑器中输入答案</label> <input type='text' name='answerfortian' id='answerfortian'  onclick='show()'>";
+                                html=html+"<button id='que' onclick='hide()'>确定</button>";
+                            }else if(data.titype=="1"){
+                                html=html+"<label for='answerforxuan'>点击右侧输入框，输入答案</label><input type='text' name='answerforxuan' id='answerforxuan'>";
+
+
+                            }
+                            $(".exercise-conent").html(html);
+
+                        },
+                        error:function (XMLHttpRequest, textStatus, errorThrown) {
+                            alert("请求失败");
+                            console.log(errorThrown);
+                            console.log(textStatus);
+                            console.log(XMLHttpRequest);
+                        }
+
+                    })
+                }
+                $(document).ready(function () {
+                  getti();
+                })
+                var ban="第三章";
                 $("#tijiao").click(function () {
                         var tiid=$("#tiid").text();
                         var titype=$("#titype").text();
@@ -148,39 +184,7 @@ padding: 5px 5px 10px 5px;">
 
                      })
                 });
-                $("#nextTi").click(function () {
-                    $.ajax({
-                        url: "<%=basePath%>/ti/getBanRandom?ban="+ban,
-                        type:"get",
-                        dataType:"json",
-                        success:function (data) {
-                            var html="";
-                            console.log(data);
-                            html=html+"<h1>题目</h1><img src='<%=basePath%>"+data.title+"' /> ";
-                            html=html+"<h1 id='test'>解答</h1>";
-                            html=html+"<p id='tiid' style='display: none'>"+data.tiid+"</p>";
-                            html=html+"<p id='titype' style='display: none'>"+data.titype+"</p>";
-
-                            if(data.titype=="2") {
-                                html=html+"<label for='answerfortian'>点击右侧输入框，在编辑器中输入答案</label> <input type='text' name='answerfortian' id='answerfortian'  onclick='show()'>";
-                                html=html+"<button id='que' onclick='hide()'>确定</button>";
-                            }else if(data.titype=="1"){
-                                html=html+"<label for='answerforxuan'>点击右侧输入框，输入答案</label><input type='text' name='answerforxuan' id='answerforxuan'>";
-
-
-                            }
-                            $(".exercise-conent").html(html);
-
-                        },
-                        error:function (XMLHttpRequest, textStatus, errorThrown) {
-                            alert("请求失败");
-                            console.log(errorThrown);
-                            console.log(textStatus);
-                            console.log(XMLHttpRequest);
-                        }
-
-                    })
-                })
+                $("#nextTi").click(getti())
             </script>
         </div>
     </div>

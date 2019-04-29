@@ -1,5 +1,6 @@
 package com.just.user.controller;
 
+import com.google.gson.Gson;
 import com.just.fatie.entity.ForumMain;
 import com.just.fatie.service.FatieService;
 import com.just.math_world.controller.WorldController;
@@ -14,6 +15,7 @@ import com.just.user.entity.UserLogin;
 import com.just.user.service.RankService;
 import com.just.user.service.UserService;
 import jdk.nashorn.internal.ir.BaseNode;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -56,7 +58,9 @@ public class UserController {
     RankService Rankservice;
 
 
+    Logger logger=Logger.getLogger(UserController.class);
 
+    Gson gson=new Gson();
     //注册
     /**
      * 处理注册
@@ -114,30 +118,28 @@ public class UserController {
     @RequestMapping("/rank")
     @ResponseBody
     public Map<String, Object> rank(HttpServletRequest request, HttpServletResponse response){
-        System.out.println(
-                "后台"
-        );
+        logger.info("排名查询");
         String username=(String) request.getSession().getAttribute("user");
         String Ban=request.getParameter("ban");
-        System.out.println(Ban);
+        logger.info(Ban);
         Ban=Ban.trim();
-        System.out.println(Ban);
+        logger.info(Ban);
         int cout=0;
         int he=0;
         String ban;
         Map<String,Integer>banMap=new HashMap<>(15);
-        banMap.put("第一章",1);
-        banMap.put("第二章",2);
-        banMap.put("第三章",3);
-        banMap.put("第四章",4);
-        banMap.put("第五章",5);
-        banMap.put("第六章",6);
-        banMap.put("第七章",7);
-        banMap.put("第八章",8);
-        banMap.put("第九章",9);
-        banMap.put("第十章",10);
-        banMap.put("第十一章",11);
-        banMap.put("第十二章",12);
+        banMap.put("高数第一章",1);
+        banMap.put("高数第二章",2);
+        banMap.put("高数第三章",3);
+        banMap.put("高数第四章",4);
+        banMap.put("高数第五章",5);
+        banMap.put("高数第六章",6);
+        banMap.put("高数第七章",7);
+        banMap.put("高数第八章",8);
+        banMap.put("高数第九章",9);
+        banMap.put("高数第十章",10);
+        banMap.put("高数第十一章",11);
+        banMap.put("高数第十二章",12);
         banMap.put("概率论",13);
         banMap.put("线性代数",14);
         banMap.put("总排行",15);
@@ -160,11 +162,15 @@ public class UserController {
             case 15:ban="he";break;
             default:ban="null";break;
         }
-        System.out.println(ban);
+        logger.info(ban);
         /**
          * 此时的Rank中只有 username和要查的版块分数两个参数
          */
         List<Rank> rankList=Rankservice.selectByban(ban);
+        if(Ban.length()>4){
+            Ban=Ban.substring(2);
+        }
+        logger.info(Ban);
         /**
          * 查找自己的分数/排名
          */
@@ -185,6 +191,7 @@ public class UserController {
         map.put("rank",rankList);
         map.put("me",realCout);
         map.put("he",he);
+        logger.info(gson.toJson(map));
 
         return map;
     }
