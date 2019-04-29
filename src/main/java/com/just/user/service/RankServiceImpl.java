@@ -29,4 +29,9 @@ public class RankServiceImpl implements RankService {
     public int updataScore(Rank rank) {
         return mapper.updateByPrimaryKeySelective(rank);
     }
+
+    @Override
+    public Rank selectByUsername(String username) {
+        return mapper.selectByPrimaryKey(username);
+    }
 }

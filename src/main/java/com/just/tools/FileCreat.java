@@ -13,7 +13,7 @@ public class FileCreat {
         logger.info("文件保存路径：" + url);
         if (!filePath.exists() && !filePath.isDirectory()) {
             logger.info("目录不存在，创建目录：" + filePath);
-            boolean flag=filePath.mkdir();
+            boolean flag=filePath.mkdirs();
             if(flag){
                 logger.info("创建成功");
             }

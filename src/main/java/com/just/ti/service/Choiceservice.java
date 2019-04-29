@@ -1,6 +1,6 @@
 package com.just.ti.service;
 
-import com.just.ti.entity.ChoiceWithBLOBs;
+import com.just.ti.entity.TiChoice;
 
 /**
  * @author 贺文杰
@@ -12,12 +12,12 @@ public interface Choiceservice {
      * @param id
      * @return
      */
-    ChoiceWithBLOBs selectById(Integer id);
+    TiChoice selectById(String id);
 
     /**
      * 增加一道选择题
      * @param bloBs
      * @return
      */
-    int addById(ChoiceWithBLOBs bloBs);
+    int addById(TiChoice bloBs);
 }

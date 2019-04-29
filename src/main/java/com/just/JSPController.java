@@ -10,7 +10,6 @@ import com.just.math_world.entity.WorldFollow;
 import com.just.math_world.service.WorldFansService;
 import com.just.math_world.service.WorldFollowService;
 import com.just.math_world.service.WorldService;
-import com.just.ti.entity.ChoiceWithBLOBs;
 import com.just.ti.entity.Question;
 import com.just.ti.entity.TiankongWithBLOBs;
 import com.just.ti.service.AnswerService;

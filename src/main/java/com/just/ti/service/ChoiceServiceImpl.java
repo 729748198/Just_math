@@ -1,7 +1,7 @@
 package com.just.ti.service;
 
-import com.just.ti.dao.ChoiceMapper;
-import com.just.ti.entity.ChoiceWithBLOBs;
+import com.just.ti.dao.TiChoiceMapper;
+import com.just.ti.entity.TiChoice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,15 +12,15 @@ import org.springframework.stereotype.Service;
 @Service("ChoiceServiceImpl")
 public class ChoiceServiceImpl implements Choiceservice {
     @Autowired
-    ChoiceMapper mapper;
+    TiChoiceMapper mapper;
 
     @Override
-    public ChoiceWithBLOBs selectById(Integer id) {
+    public TiChoice selectById(String  id) {
         return mapper.selectByPrimaryKey(id);
     }
 
     @Override
-    public int addById(ChoiceWithBLOBs bloBs) {
+    public int addById(TiChoice bloBs) {
         return mapper.insertSelective(bloBs);
     }
 }

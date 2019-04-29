@@ -176,18 +176,18 @@ public class Rank {
 
     public Integer get(String Ban){
         switch (Ban){
-            case "高数第一章":return getOne();
-            case "高数第二章":return getTwo();
-            case "高数第三章":return getThree();
-            case "高数第四章":return getFour();
-            case "高数第五章":return getFive();
-            case "高数第六章":return getSix();
-            case "高数第七章":return getSeven();
-            case "高数第八章":return getEight();
-            case "高数第九章":return getNine();
-            case "高数第十章":return getTen();
-            case "高数第十一章":return getEleven();
-            case "高数第十二章":return getTweven();
+            case "第一章":return getOne();
+            case "第二章":return getTwo();
+            case "第三章":return getThree();
+            case "第四章":return getFour();
+            case "第五章":return getFive();
+            case "第六章":return getSix();
+            case "第七章":return getSeven();
+            case "第八章":return getEight();
+            case "第九章":return getNine();
+            case "第十章":return getTen();
+            case "第十一章":return getEleven();
+            case "第十二章":return getTweven();
             case "概率论":return getGailvlun();
             case "线性代数":return getXiandai();
             case "总排行":return gethe();
@@ -198,18 +198,18 @@ public class Rank {
     }
     public void set(String Ban,Integer score){
         switch (Ban){
-            case "高数第一章":setOne(score);break;
-            case "高数第二章":setTwo(score);break;
-            case "高数第三章":setThree(score);break;
-            case "高数第四章":setFour(score);break;
-            case "高数第五章":setFive(score);break;
-            case "高数第六章":setSix(score);break;
-            case "高数第七章":setSeven(score);break;
-            case "高数第八章":setEight(score);break;
-            case "高数第九章":setNine(score);break;
-            case "高数第十章":setTen(score);break;
-            case "高数第十一章":setEleven(score);break;
-            case "高数第十二章":setTweven(score);break;
+            case "第一章":setOne(score);break;
+            case "第二章":setTwo(score);break;
+            case "第三章":setThree(score);break;
+            case "第四章":setFour(score);break;
+            case "第五章":setFive(score);break;
+            case "第六章":setSix(score);break;
+            case "第七章":setSeven(score);break;
+            case "第八章":setEight(score);break;
+            case "第九章":setNine(score);break;
+            case "第十章":setTen(score);break;
+            case "第十一章":setEleven(score);break;
+            case "第十二章":setTweven(score);break;
             case "概率论":setGailvlun(score);break;
             case "线性代数":setXiandai(score);break;
             default:break;

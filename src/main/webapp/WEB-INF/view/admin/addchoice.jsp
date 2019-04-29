@@ -265,16 +265,7 @@
         <label for="ban">所属板块</label><input name="ban" id="ban" type="text" ><br>
         <label for="score">分数</label><input name="score" id="score" type="text" ><br>
         <label for="title">标题</label><input name="title" id="title" type="file" >
-        <p id="Ca">选项A </p><input id="Ba" type="file">
-
-        <p id="Cb">选项B</p><input id="Bb" type="file">
-
-        <p id="Cc">选项C</p><input id="Bc" type="file">
-
-        <p id="Cd">选项D</p><input id="Bd" type="file">
-
         <label for="answer">答案</label><input name="answer" id="answer" type="text"><br><br>
-        <p >添加解析</p><input id="jiexi" type="file">
         <button id="tijiao">提交</button>
 
     </div>
@@ -284,8 +275,6 @@
             $("#tijiao").click(function () {
 
                 var formData = new FormData();
-
-
                 var ban = $("#ban").val();
                 var score = $("#score").val();
                 var answer=$("#answer").val();
@@ -293,14 +282,12 @@
                 formData.append("score",score);
                 formData.append("answer",answer);
                 formData.append("title",$('#title')[0].files[0]);
-                formData.append("Ba",$('#Ba')[0].files[0]);
-                formData.append("Bb",$('#Bb')[0].files[0]);
-                formData.append("Bc",$('#Bc')[0].files[0]);
-                formData.append("Bd",$('#Bd')[0].files[0]);
-                formData.append("jiexi",$('#jiexi')[0].files[0]);
+                console.log(formData);
                 $.ajax({
                     type: "POST",
                     url: "<%=basePath%>ti/doChoice",
+                    processData: false,
+                    contentType: false,
                     data: formData,
                     // dataType: "json",
                     success: function (data) {

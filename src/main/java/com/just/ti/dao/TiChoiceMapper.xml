@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.just.ti.dao.TiChoiceMapper" >
+  <resultMap id="BaseResultMap" type="com.just.ti.entity.TiChoice" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="answer" property="answer" jdbcType="VARCHAR" />
+    <result column="pA" property="pa" jdbcType="VARCHAR" />
+    <result column="pB" property="pb" jdbcType="VARCHAR" />
+    <result column="pC" property="pc" jdbcType="VARCHAR" />
+    <result column="pD" property="pd" jdbcType="VARCHAR" />
+    <result column="jiexi" property="jiexi" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, answer, pA, pB, pC, pD, jiexi
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from ti_choice
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from ti_choice
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.just.ti.entity.TiChoice" >
+    insert into ti_choice (id, answer, pA, 
+      pB, pC, pD, jiexi
+      )
+    values (#{id,jdbcType=VARCHAR}, #{answer,jdbcType=VARCHAR}, #{pa,jdbcType=VARCHAR}, 
+      #{pb,jdbcType=VARCHAR}, #{pc,jdbcType=VARCHAR}, #{pd,jdbcType=VARCHAR}, #{jiexi,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.just.ti.entity.TiChoice" >
+    insert into ti_choice
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="answer != null" >
+        answer,
+      </if>
+      <if test="pa != null" >
+        pA,
+      </if>
+      <if test="pb != null" >
+        pB,
+      </if>
+      <if test="pc != null" >
+        pC,
+      </if>
+      <if test="pd != null" >
+        pD,
+      </if>
+      <if test="jiexi != null" >
+        jiexi,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="answer != null" >
+        #{answer,jdbcType=VARCHAR},
+      </if>
+      <if test="pa != null" >
+        #{pa,jdbcType=VARCHAR},
+      </if>
+      <if test="pb != null" >
+        #{pb,jdbcType=VARCHAR},
+      </if>
+      <if test="pc != null" >
+        #{pc,jdbcType=VARCHAR},
+      </if>
+      <if test="pd != null" >
+        #{pd,jdbcType=VARCHAR},
+      </if>
+      <if test="jiexi != null" >
+        #{jiexi,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.just.ti.entity.TiChoice" >
+    update ti_choice
+    <set >
+      <if test="answer != null" >
+        answer = #{answer,jdbcType=VARCHAR},
+      </if>
+      <if test="pa != null" >
+        pA = #{pa,jdbcType=VARCHAR},
+      </if>
+      <if test="pb != null" >
+        pB = #{pb,jdbcType=VARCHAR},
+      </if>
+      <if test="pc != null" >
+        pC = #{pc,jdbcType=VARCHAR},
+      </if>
+      <if test="pd != null" >
+        pD = #{pd,jdbcType=VARCHAR},
+      </if>
+      <if test="jiexi != null" >
+        jiexi = #{jiexi,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.just.ti.entity.TiChoice" >
+    update ti_choice
+    set answer = #{answer,jdbcType=VARCHAR},
+      pA = #{pa,jdbcType=VARCHAR},
+      pB = #{pb,jdbcType=VARCHAR},
+      pC = #{pc,jdbcType=VARCHAR},
+      pD = #{pd,jdbcType=VARCHAR},
+      jiexi = #{jiexi,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -25,6 +25,11 @@ public interface RankMapper {
      */
     List<Rank> selectbyBan(@Param(value = "ban") String ban);
 
+    /**
+     * 根据用户名查找各科成绩
+     * @param username 用户名
+     * @return 返回一个Rank实体
+     */
     Rank selectByPrimaryKey(String username);
 
     /**

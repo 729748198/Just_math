@@ -20,6 +20,7 @@
     <title>难题突破</title>
     <link rel="stylesheet" href="<%=basePath%>css/main.css" type="text/css">
     <script src="<%=basePath%>/js/jquery-1.8.3.min.js"></script>
+    <script src="<%=basePath%>/js/editor.js"></script>
 </head>
 <body>
 
@@ -79,45 +80,73 @@
             </div>
             <!--答题-->
             <div class="exe-content">
-                <div class="exercise-content" style="border:1px solid #274b8b ;
+                <div class="exercise-conent" style="border:1px solid #274b8b ;
 padding: 5px 5px 10px 5px;">
-                   ${title}
-                    <br><br><br><br><br><br><br><br><br><br><br><br><br>
-                    <label>
-                        <input type="radio" name="choice" value="A"/>A.${choice.A}
-                    </label>
-                    <label>
-                        <input type="radio" name="choice" value="B"/>B.${choice.B}
-                    </label>
-                    <label>
-                        <input type="radio" name="choice" value="C"/>C.${choice.C}
-                    </label>
-                    <label>
-                        <input type="radio" name="choice" value="D" />D.${choice.D}
-                    </label>
-                    <div id="demo">
 
-                    </div>
                 </div>
+                <div id="demo">
+
+                </div>
+                <div id="mess">
+
+                </div>
+                <script>
+                    var editor;
+
+                    window.onload = function () {
+                        editor = com.wiris.jsEditor.JsEditor.newInstance({'language': 'en'});
+                        editor.insertInto(document.getElementById('demo'));
+                        $("#demo").hide();
+                    };
+
+                </script>
                 <%--<input type="text" class="exe-answer">--%>
                 <p> <a id="tijiao"  class="exe-button exe-submit">提交</a></p>
                 <a id="nextTi" class="exe-button exe-next">下一题</a>
 
             </div>
             <script>
+                function show() {
+                    $("#demo").show();
+                }
+                function hide() {
+                    $("#demo").hide();
+                }
                 var ban="第一章";
                 $("#tijiao").click(function () {
-                    var radioValue = $('input:radio[name="choice"]:checked').val();
-                    var html="";
-                    var anser="${answer}";
-                    if(radioValue==anser){
-                        html+="<p style='color: green'>答案正确</p>";
-                    }else {
+                        var tiid=$("#tiid").text();
+                        var titype=$("#titype").text();
+                        if(titype=="1"){
+                            var answer=$("#answerforxuan").val();
 
-                        html+="<p style='color: red'>答案错误！</p>";
-                        html+="<p>正确答案为${answer}</p>";
-                    }
-                    $("#demo").html(html);
+                        }else if(titype=="2"){
+                            var answer=editor.getMathML();
+                        }
+                       console.log(tiid);
+                       console.log(titype);
+                       console.log(answer);
+                     $.ajax({
+                         url: "<%=basePath%>/ti/doanswer",
+                         type: "post",
+                         dataType: "json",
+                         data:{
+                             "tiid":tiid,
+                             "answer":answer,
+                             "titype":titype,
+                         },
+                         success:function (data) {
+                             console.log(data);
+                             var html="";
+                             if(data.flag=="yes"){
+                                 html+="<p style='color: green'>回答正确！</p>";
+                             }else if(data.flag=="no"){
+                                 html+="<p style='color:red'>回答错误！</p>";
+                             }
+                             $("#mess").html(html);
+
+                         }
+
+                     })
                 });
                 $("#nextTi").click(function () {
                     $.ajax({
@@ -127,9 +156,27 @@ padding: 5px 5px 10px 5px;">
                         success:function (data) {
                             var html="";
                             console.log(data);
-                            html=html+"<h1>题目</h1><img src='<%=basePath%>/upload/e14ebdabeec1446191a3559d24e85a87.png'/>"+
-                                    "<p></p>"
-                            $(".exercise-content").html(html);
+                            html=html+"<h1>题目</h1><img src='<%=basePath%>"+data.title+"' /> ";
+                            html=html+"<h1 id='test'>解答</h1>";
+                            html=html+"<p id='tiid' style='display: none'>"+data.tiid+"</p>";
+                            html=html+"<p id='titype' style='display: none'>"+data.titype+"</p>";
+
+                            if(data.titype=="2") {
+                                html=html+"<label for='answerfortian'>点击右侧输入框，在编辑器中输入答案</label> <input type='text' name='answerfortian' id='answerfortian'  onclick='show()'>";
+                                html=html+"<button id='que' onclick='hide()'>确定</button>";
+                            }else if(data.titype=="1"){
+                                html=html+"<label for='answerforxuan'>点击右侧输入框，输入答案</label><input type='text' name='answerforxuan' id='answerforxuan'>";
+
+
+                            }
+                            $(".exercise-conent").html(html);
+
+                        },
+                        error:function (XMLHttpRequest, textStatus, errorThrown) {
+                            alert("请求失败");
+                            console.log(errorThrown);
+                            console.log(textStatus);
+                            console.log(XMLHttpRequest);
                         }
 
                     })

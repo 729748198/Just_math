@@ -34,6 +34,6 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
      <!--指定生成哪张表-->
-        <table tableName="ti_ban" domainObjectName="TiBan" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+        <table tableName="ti_choice" domainObjectName="TiChoice" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
     </context>
 </generatorConfiguration>
