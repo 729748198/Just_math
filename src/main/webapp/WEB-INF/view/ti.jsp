@@ -101,7 +101,7 @@
                 </script>
                 <%--<input type="text" class="exe-answer">--%>
                 <p> <a id="tijiao"  class="exe-button exe-submit" style="border: none" >提交</a></p>
-                <a id="nextTi" class="exe-button exe-next" style="border: none" >下一题</a>
+                <a id="nextTi" class="exe-button exe-next" style="border: none"  onclick="getti()">下一题</a>
 
             </div>
             <script>
@@ -112,6 +112,7 @@
                     $("#demo").hide();
                 }
                 function getti() {
+                    $("#mess").html("");
                     $.ajax({
                         url: "<%=basePath%>/ti/getBanRandom?ban="+ban,
                         type:"get",
@@ -146,7 +147,7 @@
                 }
                 $(document).ready(function () {
                   getti();
-                })
+                });
                 var ban="第一章";
                 $("#tijiao").click(function () {
                         var tiid=$("#tiid").text();
@@ -157,9 +158,6 @@
                         }else if(titype=="2"){
                             var answer=editor.getMathML();
                         }
-                       console.log(tiid);
-                       console.log(titype);
-                       console.log(answer);
                      $.ajax({
                          url: "<%=basePath%>/ti/doanswer",
                          type: "post",
