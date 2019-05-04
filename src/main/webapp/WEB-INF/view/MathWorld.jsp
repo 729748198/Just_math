@@ -197,35 +197,26 @@
                 success:function (data) {
                     var jsObject = JSON.parse(data);
                     var str="";
-                    str+="<table class='dataintable2'>";
-                    str+="<tr>" ;
-                    str+="<th style='width:20%'>" ;
-                    str+="标题" ;
-                    str+="</th>" ;
-                    str+="<th style='width:20%' >" ;
-                    str+="内容" ;
-                    str+="</th>" ;
-                    str+="<th style='width:20%'>" ;
-                    str+="发帖人" ;
-                    str+="</th>" ;
-                    str+="</tr>";
+                    var str='   <ul class="worldcontent">' ;
                     for(var i=0;i<jsObject.length;i++){
                         if(jsObject[i].worldtype==0) {
 
-                            str += "<tr>";
-                            str += "<td>" + i + "." + jsObject[i].title + "</td>";
-                            str += "<td>" + jsObject[i].content + "</td>";
-                            str += "<td>" + jsObject[i].user + "</td>";
-                            str += "</tr>";
+                            str+='<li class="worldcontent"><div class="tiezi">';
+                            str+='<img src="<%=basePath%>/img/worlduser.jpg"  class="tie-user">';
+                            str+='<p class="tie-username">'+jsObject[i].user+'</p>';
+                            str+='<p class="tie-title">'+jsObject[i].title+'</p>';
+                            str+='<text class="tie-main">'+jsObject[i].content+'</text></div></li>';
+
                         }else if(jsObject[i].worldtype==1){
-                            str+="<tr>";
-                            str+="<td>"+i+"."+jsObject[i].title+"</td>";
-                            str+="<td> <img src= '"+jsObject[i].content+"'/></td>";
-                            str+="<td>"+jsObject[i].user+"</td>";
-                            str+="</tr>";
+                            str+='<li class="worldcontent" style="list-style: none"><div class="tiezi">';
+                            str+='<img src="<%=basePath%>/img/worlduser.jpg"  class="tie-user">';
+                            str+='<p class="tie-username">'+jsObject[i].user+'</p>';
+                            str+='<p class="tie-title">'+jsObject[i].title+'</p>';
+                            str+='<img class="tie-img" style="height:166px;top:120px;display: inline-block;position: absolute;" src="<%=basePath%>'+jsObject[i].content+'"></img></div></li>';
+
                         }
                     }
-                    str+="</table>";
+                    str+='</ul>';
                     $("#content").html(str);
                 }
             })
@@ -238,26 +229,26 @@
 
                     var jsObject = JSON.parse(data);
                     var str="";
-                    str+="<table class='dataintable2'>";
-                    str+="<tr>" ;
-                    str+="<th style='width:20%'>" ;
-                    str+="标题" ;
-                    str+="</th>" ;
-                    str+="<th style='width:20%' >" ;
-                    str+="内容" ;
-                    str+="</th>" ;
-                    str+="<th style='width:20%'>" ;
-                    str+="发帖人" ;
-                    str+="</th>" ;
-                    str+="</tr>";
+                    var str='   <ul class="worldcontent">' ;
                     for(var i=0;i<jsObject.length;i++){
-                        str+="<tr>";
-                        str+="<td>"+i+"."+jsObject[i].title+"</td>";
-                        str+="<td>"+jsObject[i].content+"</td>";
-                        str+="<td>"+jsObject[i].user+"</td>";
-                        str+="</tr>";
+                        if(jsObject[i].worldtype==0) {
+
+                            str+='<li class="worldcontent"><div class="tiezi">';
+                            str+='<img src="<%=basePath%>/img/worlduser.jpg"  class="tie-user">';
+                            str+='<p class="tie-username">'+jsObject[i].user+'</p>';
+                            str+='<p class="tie-title">'+jsObject[i].title+'</p>';
+                            str+='<text class="tie-main">'+jsObject[i].content+'</text></div></li>';
+
+                        }else if(jsObject[i].worldtype==1){
+                            str+='<li class="worldcontent" style="list-style: none"><div class="tiezi">';
+                            str+='<img src="<%=basePath%>/img/worlduser.jpg"  class="tie-user">';
+                            str+='<p class="tie-username">'+jsObject[i].user+'</p>';
+                            str+='<p class="tie-title">'+jsObject[i].title+'</p>';
+                            str+='<img class="tie-img" style="height:166px;top:120px;display: inline-block;position: absolute;" src="<%=basePath%>'+jsObject[i].content+'"></img></div></li>';
+
+                        }
                     }
-                    str+="</table>";
+                    str+='</ul>';
                     $("#content").html(str);
                 }
             })
@@ -271,26 +262,26 @@
 
                     var jsObject = JSON.parse(data);
                     var str="";
-                    str+="<div class='dataintable2'>";
-                    str+="<tr>" ;
-                    str+="<th style='width:20%'>" ;
-                    str+="标题" ;
-                    str+="</th>" ;
-                    str+="<th style='width:20%' >" ;
-                    str+="内容" ;
-                    str+="</th>" ;
-                    str+="<th style='width:20%'>" ;
-                    str+="发帖人" ;
-                    str+="</th>" ;
-                    str+="</tr>";
+                    var str='   <ul class="worldcontent">' ;
                     for(var i=0;i<jsObject.length;i++){
-                        str+="<tr>";
-                        str+="<td>"+i+"."+jsObject[i].title+"</td>";
-                        str+="<td>"+jsObject[i].content+"</td>";
-                        str+="<td>"+jsObject[i].user+"</td>";
-                        str+="</tr>";
+                        if(jsObject[i].worldtype==0) {
+
+                            str+='<li class="worldcontent"><div class="tiezi">';
+                            str+='<img src="<%=basePath%>/img/worlduser.jpg"  class="tie-user">';
+                            str+='<p class="tie-username">'+jsObject[i].user+'</p>';
+                            str+='<p class="tie-title">'+jsObject[i].title+'</p>';
+                            str+='<text class="tie-main">'+jsObject[i].content+'</text></div></li>';
+
+                        }else if(jsObject[i].worldtype==1){
+                            str+='<li class="worldcontent" style="list-style: none"><div class="tiezi">';
+                            str+='<img src="<%=basePath%>/img/worlduser.jpg"  class="tie-user">';
+                            str+='<p class="tie-username">'+jsObject[i].user+'</p>';
+                            str+='<p class="tie-title">'+jsObject[i].title+'</p>';
+                            str+='<img class="tie-img" style="height:166px;top:120px;display: inline-block;position: absolute;" src="<%=basePath%>'+jsObject[i].content+'"></img></div></li>';
+
+                        }
                     }
-                    str+="</table>"
+                    str+='</ul>';
                     $("#content").html(str);
                 }
             })
