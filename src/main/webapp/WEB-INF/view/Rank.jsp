@@ -140,6 +140,18 @@
                         dataType:"json",
                         success:function (data) {
                             var html="";
+                            var merank=data.me;
+                            html+="<div class=\"rating-user\">\n" +
+                                "                <img src=\"<%=basePath%>img/worlduser.jpg\" alt=\"\" class=\"rating-user\">\n" +
+                                "                <div class=\"rating-user-ifo\">\n" +
+                                "                    <p class=\"rating-user-name\" >"+data.user+"</p>" +
+                                "                    <p class=\"rating-user-mingci\">"+"第"+data.me+"名"+"</p>" +
+                                "                </div>\n" +
+                                "                <div class=\"rating-user-score\" >\n" +
+                                                 data.he +
+                                "                </div>\n" +
+                                "            </div>";
+                            html+=" <div class=\"rating-content\">";
                             html+="<table class=\"rating-table\">";
                             html+="<tr class=\"rating-table-tr\">";
                             html+="<th class=\"rating-table-th medal rating-col1\"><img src=\"<%=basePath%>img/first.png\"  class=\"rating-medal\"></th>";
@@ -161,6 +173,16 @@
                             html+="<th class=\"rating-table-th rating-col3\">"+data.thread.username+"</th>";
                             html+=" <th class=\"rating-table-th rating-col4 rating-three\">"+data.thread.fen+"</th>";
                             html+=" </tr>";
+                            for(var i=0;i<data.rank.length;i++) {
+                                var rank=i+4;
+                                html += "<tr class=\"rating-table-tr\">";
+                                html += "<th class=\"rating-table-th medal rating-col1\">"+rank+"</th>";
+                                html += "<th class=\"rating-table-user rating-col2\"><img src=\"<%=basePath%>img/worlduser.jpg\" alt=\"\" class=\"rating-table-user\"></th>";
+                                html += "<th class=\"rating-table-th rating-col3\">" + data.rank[i].username + "</th>";
+                                html += " <th class=\"rating-table-th rating-col4 rating-three\">" + data.rank[i].fen + "</th>";
+                                html += " </tr>";
+                            }
+                            html+="</div>";
 
                             $("#content").html(html);
 

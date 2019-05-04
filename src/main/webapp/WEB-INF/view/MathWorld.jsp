@@ -81,14 +81,12 @@
         <!--发表栏-->
         <div class="worldsubmit">
             <form method="post" action="<%=path%>/world/dofrom" enctype="multipart/form-data">
-
-
                 <label>
-                    标题<input name="title" type="text" style="border:1px solid black">
+                    标题<input name="title" type="text" style="border:1px solid black;">
+                    <input type="file" name="file" value="选择图片" style="border:none;">
+                    <input class="world-user-submit"  name="content" id="world-user-submit" type="text"/>
                 </label>
-                <input class="world-user-submit"  name="content" id="world-user-submit" type="text"/>
-            <input type="file" name="file" value="选择图片" style="border:1px solid black;">
-            <input  type="submit" class="world-submit-button">
+                <button  type="submit" class="world-submit-button" style="bottom: 2px; ">发表</button>
             </form>
         </div>
         <!--分类按钮-->
@@ -185,7 +183,7 @@
                         str+='<img src="<%=basePath%>/img/worlduser.jpg"  class="tie-user">';
                         str+='<p class="tie-username">'+jsObject[i].user+'</p>';
                         str+='<p class="tie-title">'+jsObject[i].title+'</p>';
-                        str+='<img class="tie-img" style="height:166px;top:120px;display: inline-block;position: absolute;" src="<%=basePath%>'+jsObject[i].content+'"></img></div></li>';
+                        str+='<img class="tie-img" style="height:166px;width:auto;top:120px;display: inline-block;position: absolute;" src="<%=basePath%>'+jsObject[i].content+'"></img></div></li>';
                     }
                     str+="</table>";
                     $("#content").html(str);

@@ -23,7 +23,7 @@
 <body>
 <div class="mymath-container">
     <!--background-->
-    <img src="<%=basePath%>img/database-bcg.png" class="worldbcg" alt="">
+    <img src="<%=basePath%>img/mathmodel-bgc.jpg" class="worldbcg" alt="">
     <!--导航栏-->
     <ul class="mymathnav">
         <li class="mymathnav">
@@ -60,15 +60,13 @@
         <div class="exe-exe">
             <!--抬头-->
             <p class="exe-chapter">数学建模 > 入门了解</p>
-
-            <!--答题-->
+            <!--资料-->
             <div class="exe-content">
-                <div class="mod-text">
-                    数学建模入门须知
-                </div>
+
+
+
 
             </div>
-
         </div>
     </div>
 

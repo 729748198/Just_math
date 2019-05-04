@@ -483,7 +483,7 @@ div.mytree
 {
     width:660px;
 }
-ul.qa-col
+ul.qa-col1
 {
     text-decoration: none;
     list-style: none;
@@ -1264,7 +1264,7 @@ a.exe-button
     font-size: 22px;
     line-height: 35px;
     background-color: skyblue;
-    border: 1px solid black;
+    border: skyblue;
     border-radius: 8px;
     text-decoration: none;
     color: black;
@@ -1572,7 +1572,7 @@ ul.worldcontent
 }
 li.worldcontent
 {
-    height: 325px;
+    height: 285px;
 }
 div.tiezi
 {
@@ -2020,4 +2020,8 @@ label.mw-label
 label.mw-fabiao
 {
     top:-5px;
+}
+button.ti-button
+{
+    width: 65px;    height: 36px;    line-height: 36px;    background-color:skyblue;    border-radius: 5px;top:100px;    left:300px;    display: inline-block;    position: absolute;
 }

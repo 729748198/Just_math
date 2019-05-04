@@ -79,9 +79,8 @@
                 <img src="<%=basePath%>img/exe-probar.png" alt="" class="exe-probar">
             </div>
             <!--答题-->
-            <div class="exe-content">
-                <div class="exercise-conent" style="border:1px solid #274b8b ;
-padding: 5px 5px 10px 5px;">
+            <div class="exe-content" style="height: 93%;">
+                <div class="exercise-conent" style="border:1px solid #274b8b;padding: 5px 5px 10px 5px;max-height: 360px;min-height:150px;overflow: auto;">
 
                 </div>
                 <div id="demo">
@@ -101,8 +100,8 @@ padding: 5px 5px 10px 5px;">
 
                 </script>
                 <%--<input type="text" class="exe-answer">--%>
-                <p> <a id="tijiao"  class="exe-button exe-submit">提交</a></p>
-                <a id="nextTi" class="exe-button exe-next">下一题</a>
+                <p> <a id="tijiao"  class="exe-button exe-submit" style="border: none" >提交</a></p>
+                <a id="nextTi" class="exe-button exe-next" style="border: none" >下一题</a>
 
             </div>
             <script>
@@ -120,16 +119,16 @@ padding: 5px 5px 10px 5px;">
                         success:function (data) {
                             var html="";
                             console.log(data);
-                            html=html+"<h1>题目</h1><img src='<%=basePath%>"+data.title+"' /> ";
+                            html=html+"<h1>题目</h1><img style=\"width:95%;\" src='<%=basePath%>"+data.title+"' /> ";
                             html=html+"<h1 id='test'>解答</h1>";
                             html=html+"<p id='tiid' style='display: none'>"+data.tiid+"</p>";
                             html=html+"<p id='titype' style='display: none'>"+data.titype+"</p>";
 
                             if(data.titype=="2") {
-                                html=html+"<label for='answerfortian'>点击右侧输入框，在编辑器中输入答案</label> <input type='text' name='answerfortian' id='answerfortian'  onclick='show()'>";
-                                html=html+"<button id='que' onclick='hide()'>确定</button>";
+                                html=html+"<label for='answerfortian'>点击右侧输入框，在编辑器中输入答案</label> <input type='text' name='answerfortian' id='answerfortian' style='border-radius:5px;outline:none;border-top-style: groove;border-right-style: groove;border-bottom-style: groove;border-left-style: groove;border:1px solid #a1a1a1; ' onclick='show()'>";
+                                html=html+"<button id='que' style='width: 65px;height: 36px;line-height: 36px;background-color:skyblue;border-radius: 5px;left:18px;display: inline-block;position: relative;' onclick='hide()'>确 定</button>";
                             }else if(data.titype=="1"){
-                                html=html+"<label for='answerforxuan'>点击右侧输入框，输入答案</label><input type='text' name='answerforxuan' id='answerforxuan'>";
+                                html=html+"<label for='answerforxuan'>点击右侧输入框，输入答案</label><input type='text' name='answerforxuan' id='answerforxuan' style='border-color:black ' >";
 
 
                             }
@@ -148,7 +147,7 @@ padding: 5px 5px 10px 5px;">
                 $(document).ready(function () {
                   getti();
                 })
-                var ban="第三章";
+                var ban="第一章";
                 $("#tijiao").click(function () {
                         var tiid=$("#tiid").text();
                         var titype=$("#titype").text();

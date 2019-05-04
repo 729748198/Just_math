@@ -58,7 +58,7 @@
     <!--主体部分-->
     <div class="worldmain">
         <!--栏目-->
-        <ul class="qa-col">
+        <ul class="qa-col1">
             <li class="qa-col qa-col1"><button class="qa-button" type="button">看帖子</button></li>
             <li class="qa-col qa-col2"><button class="qa-button" type="button">发帖子</button></li>
             <li class="qa-col qa-col3"><button class="qa-button" type="button">@回复我</button></li>
@@ -73,6 +73,7 @@
                         <td class="qa-table qa-username">dfsa</td>
                         <td class="qa-table qa-date">1999年</td>
                     </tr>
+
 
             </table>
 

@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="<%=basePath%>assets/css/amazeui.min.css"/>
     <link rel="stylesheet" href="<%=basePath%>assets/css/admin.css">
 </head>
-<body>
+<body style="overflow: auto;">
 <!--导航栏-->
 <div class="nav">
     <img class="navbgc" src="<%=basePath%>img/q&anav.jpg" alt="">
@@ -60,10 +60,10 @@
     <!--主体部分-->
     <div class="worldmain">
         <!--栏目-->
-        <ul class="qa-col">
-            <li class="qa-col qa-col1"><button class="qa-button" type="button">看帖子</button></li>
-            <li class="qa-col qa-col2"><button class="qa-button" type="button">发帖子</button></li>
-            <li class="qa-col qa-col3"><button class="qa-button" type="button">@回复我</button></li>
+        <ul class="qa-col1" style="padding:0;">
+            <li class="qa-col qa-col1"><a href="" style="color: black"><button class="qa-button" type="button">看帖子</button></a></li>
+            <li class="qa-col qa-col2"><a href="" style="color: black"><button class="qa-button" type="button">发帖子</button></a></li>
+            <li class="qa-col qa-col3"><a href="" style="color: black"><button class="qa-button" type="button">@回复我</button></a></li>
         </ul>
 
         <!--内容-->
@@ -75,7 +75,7 @@
                         <td class="qa-table qa-title">
                             <nobr>
                                 <text class="title">
-                                    <a href="<%=basePath%>/fatie/content" class="qa-title">${tie.forumMain.mainTitle}</a>
+                                    <a href="<%=basePath%>/fatie/content" target="_blank" class="qa-title">${tie.forumMain.mainTitle}</a>
                                 </text>
                                 <text class="bubble">${tie.forumInfo.infoReply}</text>
                             </nobr>
@@ -91,34 +91,6 @@
 
 
             </table>
-            <form action="<%=basePath%>fatie/dofatie" method="post" id="saveTiezi">
-                <label for="mainTitle">帖子标题</label>
-                <input type="text" name="mainTitle" id="mainTitle" placeholder="最大长度80个汉字" style="width:360px;">
-                <button type="button" class="btn btn-primary btn-xs text-right" onclick="subForm()">发表帖子</button>
-
-                <!-- 加载编辑器的容器 -->
-                <div style="padding: 0px;margin: 0px;width: 100%;height: 100%;" >
-                    <script id="container" name="content" type="text/plain">
-                    </script>
-                </div>
-            </form>
-            <!-- 配置文件 -->
-            <script type="text/javascript" src="<%=basePath %>js/uedit/js/ueditor.config.js"> </script>
-            <!-- 编辑器源码文件 -->
-            <script type="text/javascript" src="<%=basePath %>js/uedit/js/ueditor.all.js"> </script>
-            <!-- 实例化编辑器 -->
-            <script type="text/javascript">
-                var editor = UE.getEditor('container');
-                function subForm (){
-                    var content = editor.getContent();
-                    var mainTitle = $("#mainTitle").val();
-                    if (content === '' || mainTitle === ''){
-                        alert ("请输入标题与内容");
-                    }else{
-                        $("#saveTiezi").submit();
-                    }
-                }
-            </script>
 
         </div>
 
