@@ -18,6 +18,11 @@
     from ti_question
     where id = #{id,jdbcType=VARCHAR}
   </select>
+  <select id="selectAll" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from ti_question
+  </select>
 
 <!--根据板块查找所有题目-->
   <select id="selectByBan" resultMap="BaseResultMap" parameterType="string" >

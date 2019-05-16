@@ -7,6 +7,16 @@ public class Tiankong {
 
     private Integer answerType;
 
+    @Override
+    public String toString() {
+        return "Tiankong{" +
+                "id=" + id +
+                ", tiId='" + tiId + '\'' +
+                ", answerType=" + answerType +
+                ", jiexi='" + jiexi + '\'' +
+                '}';
+    }
+
     private String jiexi;
 
     public Integer getId() {

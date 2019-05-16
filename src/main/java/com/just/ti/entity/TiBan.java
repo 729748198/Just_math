@@ -9,6 +9,20 @@ public class TiBan {
 
     private Integer sumSelect;
 
+    @Override
+    public String toString() {
+        return "TiBan{" +
+                "id=" + id +
+                ", sumScore=" + sumScore +
+                ", ban='" + ban + '\'' +
+                ", sumSelect=" + sumSelect +
+                ", sumTiankong=" + sumTiankong +
+                ", sumPanduan=" + sumPanduan +
+                ", sumDati=" + sumDati +
+                ", temp='" + temp + '\'' +
+                '}';
+    }
+
     private Integer sumTiankong;
 
     private Integer sumPanduan;

@@ -5,6 +5,18 @@ public class Question {
 
     private String tiTitle;
 
+    @Override
+    public String toString() {
+        return "Question{" +
+                "id='" + id + '\'' +
+                ", tiTitle='" + tiTitle + '\'' +
+                ", tiBan='" + tiBan + '\'' +
+                ", tiScore='" + tiScore + '\'' +
+                ", tiType=" + tiType +
+                ", tiEro=" + tiEro +
+                '}';
+    }
+
     private String tiBan;
 
     private String tiScore;

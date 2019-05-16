@@ -28,6 +28,12 @@ public interface QuestionMapper {
 
     Question selectByPrimaryKey(String id);
 
+    /**
+     * 查找所有题目
+     * @return
+     */
+    List<Question> selectAll();
+
     int updateByPrimaryKeySelective(Question record);
 
     int updateByPrimaryKey(Question record);

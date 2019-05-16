@@ -13,6 +13,17 @@ public class UserTi {
 
     private Date dotime;
 
+    @Override
+    public String toString() {
+        return "UserTi{" +
+                "id=" + id +
+                ", tiId='" + tiId + '\'' +
+                ", username='" + username + '\'' +
+                ", isDo=" + isDo +
+                ", dotime=" + dotime +
+                '}';
+    }
+
     public Integer getId() {
         return id;
     }

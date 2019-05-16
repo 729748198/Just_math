@@ -71,6 +71,7 @@ public class JSPController {
      */
     Logger logger=Logger.getLogger(JSPController.class);
 
+
     /**
      * 跨域处理
      * @param response

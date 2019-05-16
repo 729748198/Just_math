@@ -13,6 +13,15 @@ public class TiankongWithBLOBs extends Tiankong {
         this.answerformarch = answerformarch == null ? null : answerformarch.trim();
     }
 
+
+    @Override
+    public String toString() {
+        return "TiankongWithBLOBs{" +
+                "answerformarch='" + answerformarch + '\'' +
+                ", answerforshow='" + answerforshow + '\'' +
+                '}';
+    }
+
     public String getAnswerforshow() {
         return answerforshow;
     }

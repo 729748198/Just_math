@@ -34,4 +34,9 @@ public class QuestionServiceImpl implements QuestionService {
     public Question selectTianRandom(String ban) {
         return mapper.selectTianByRandom(ban);
     }
+
+    @Override
+    public List<Question> selectAll() {
+        return mapper.selectAll();
+    }
 }

@@ -20,4 +20,12 @@ public class UserTiWithBLOBs extends UserTi {
     public void setRightanswer(String rightanswer) {
         this.rightanswer = rightanswer == null ? null : rightanswer.trim();
     }
+
+    @Override
+    public String toString() {
+        return "UserTiWithBLOBs{" +
+                "doanswer='" + doanswer + '\'' +
+                ", rightanswer='" + rightanswer + '\'' +
+                '}';
+    }
 }

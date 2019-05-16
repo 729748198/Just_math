@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>精互同</title>
+    <link rel="stylesheet" href="../layui/css/layui.css">
+    <script src="../js/editor.js"></script>
+    <script src="../js/jquery-1.8.3.min.js"></script>
+</head>
+<body >
+<section class="layui-larry-box">
+            <div class="larry-personal">
+                <blockquote class="layui-elem-quote layui-text">
+                    <!--<header class="larry-personal-tit">-->
+                    <span>添加填空题</span>
+                    <!--</header>&lt;!&ndash; /header &ndash;&gt;-->
+                </blockquote>
+                <form name="myupload" id="myupload" class="layui-form" action="/ti/dotian" method="post" enctype='multipart/form-data'
+                      style="margin-left: auto;margin-right: auto;text-align: left">
+
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">所属板块</label>
+                            <div class="layui-input-block">
+                                <select name="ban" lay-verify="required">
+                                    <option value="第一章" selected>第一章</option>
+                                    <option value="第二章">第二章</option>
+                                    <option value="第三章">第三章</option>
+                                    <option value="第四章">第四章</option>
+                                    <option value="第五章">第五章</option>
+                                    <option value="第六章">第六章</option>
+                                    <option value="第七章">第七章</option>
+                                    <option value="第八章">第八章</option>
+                                    <option value="第九章">第九章</option>
+                                    <option value="第十章">第十章</option>
+                                    <option value="第十一章">第十一章</option>
+                                    <option value="第十二章">第十二章</option>
+                                    <option value="线性代数">线性代数</option>
+                                    <option value="概率论">概率论</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">分数</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="score"  autocomplete="off" class="layui-input" placeholder="10/20/30" >
+                        </div>
+                    </div>
+                    <div class="layui-upload">
+
+                        <label class="layui-form-label">题目</label>
+                        <input type="button" value="选取题目图片" class="layui-btn layui-btn-normal" onclick="getFile()">
+                        <label id="lb"></label><br><!-- 展示文字名称-->
+                        <input style="display: none" type="file"  name="file" id="getF" onchange="clickF()">
+                        <!--<button type="submit" class="layui-btn" id="test9" onclick="alert('正在上传，请稍后')">开始上传</button>-->
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">答案</label>
+                        <div class="layui-input-block">
+                            <input type="button" value="点击此处在编辑器中输入答案" 	class="layui-btn layui-btn-warm" onclick="show()">
+                            <button class="layui-btn"  lay-submit lay-filter="que">确定</button>
+                        </div>
+                    </div>
+
+                    <p  id="hint"  style="color: red" align="center"></p>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button  class="layui-btn" lay-submit lay-filter="formDemo">添加</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+                    </div>
+                </form>
+                <div class="larry-personal-body clearfix" id="demo">
+                </div>
+
+            </div>
+        </section>
+<div class="larry-personal-body clearfix">
+    <!--            UI填充造成视觉的效果！-->
+</div>
+<div class="larry-personal-body clearfix">
+    <table class="layui-hide"  id="showti" lay-filter="showti"></table>
+</div>
+
+<script src="../layui/layui.js"></script>
+<script>
+    function show() {
+        $("#demo").show();
+    }
+    function hide() {
+        $("#demo").hide();
+    }
+    var editor;
+    window.onload = function () {
+        editor = com.wiris.jsEditor.JsEditor.newInstance({'language': 'en'});
+        editor.insertInto(document.getElementById('demo'));
+    };
+    $("#demo").hide();
+    layui.use(['form', 'layedit', 'laydate','table'], function() {
+        var form = layui.form
+            , layer = layui.layer
+            , layedit = layui.layedit
+            , laydate = layui.laydate
+            ,table=layui.table;
+
+        //上传的form表单
+        form.on('submit(formDemo)', function(data){
+            layer.msg(JSON.stringify(data.field.file+"正在上传"));
+            var myform=document.getElementById("myupload");
+            var formdate=new FormData(myform);
+            var answerformarch=editor.getMathML();
+            var answerforshow=$(".wrs_container").html();
+            formdate.append('answerformath',answerformarch);
+            formdate.append('answerforshow',answerforshow);
+            layer.alert(JSON.stringify(formdate));
+            $.ajax({
+                url: "../ti/dotian",
+                type: "POST",
+                data: formdate,
+                contentType: false,       //一定要写
+                processData: false,       //一定要写
+                traditional: true,//这里设置为true
+                success: function(data) {
+                    layer.msg(data);
+                }
+            });
+            return false;
+        });
+
+        //点击确认，隐藏编辑器
+        form.on('submit(que)', function(data){
+            hide();
+            return false;
+        });
+        //题目的
+        table.render({
+            elem: '#showti'
+            ,height: 312
+            ,url: 'http://localhost:8080/Just_math/ti/getAll' //数据接口
+            ,page: true //开启分页
+            ,cols: [[ //表头l
+                {field: 'id', title: 'ID', width:138, sort: true, fixed: 'center'}
+                ,{field: 'tiTitle', title: '题目', width:138}
+                ,{field: 'tiBan', title: '所属板块', width:138, sort: true}
+                ,{field: 'tiScore', title: '分数', width:138}
+            ]]
+        });
+    })
+    function getFile(){
+        $("#getF").click();
+    }
+    var filename="";
+    function clickF() {
+        filename=$("#getF").val();
+        var filenames=filename.split("\\");
+        filename=filenames[filenames.length-1];
+        $("#lb").text(filename);
+
+    }
+
+</script>
+</body>
+</html>

@@ -1,6 +1,7 @@
 package com.just.ti.entity;
 
 public class TiChoice {
+
     private String id;
 
     private String answer;
@@ -14,6 +15,19 @@ public class TiChoice {
     private String pd;
 
     private String jiexi;
+
+    @Override
+    public String toString() {
+        return "TiChoice{" +
+                "id='" + id + '\'' +
+                ", answer='" + answer + '\'' +
+                ", pa='" + pa + '\'' +
+                ", pb='" + pb + '\'' +
+                ", pc='" + pc + '\'' +
+                ", pd='" + pd + '\'' +
+                ", jiexi='" + jiexi + '\'' +
+                '}';
+    }
 
     public String getId() {
         return id;

@@ -10,6 +10,7 @@ import org.apache.commons.io.FilenameUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -180,7 +181,10 @@ public class TiController {
      */
     @RequestMapping("/dotian")
     @ResponseBody
+    @Transactional
     public String dotian(@RequestParam("file") MultipartFile file,String answerformath,String answerforshow,String ban,String score,HttpServletResponse response, HttpServletRequest request) throws IOException {
+
+        logger.info("file:"+file+"\nanswerformath:"+answerformath+"\nanswerforshow:"+answerforshow+"\nban:"+ban+"\nscore:"+score);
 
         //ID
         String name = UUID.randomUUID().toString().replaceAll("-", "");
@@ -217,6 +221,7 @@ public class TiController {
         question.setTiScore(score);
         question.setTiType(type);
 
+        logger.info(question.toString());
         /*
          * 答案的实体
          */
@@ -226,6 +231,7 @@ public class TiController {
         answerWithBLOBs.setAnswerforshow(answerforshow);
         answerWithBLOBs.setAnswerType(2);
 
+        logger.info(answerWithBLOBs.toString());
         /*
             更新题目章节总分数
          */
@@ -452,4 +458,16 @@ public class TiController {
         return map;
     }
 
+    @RequestMapping("/getAll")
+    @ResponseBody
+    public Map<String,Object> getAll(){
+
+        List<Question>list=questionService.selectAll();
+        Map<String,Object>map=new HashMap<>();
+        map.put("code", 0);
+        map.put("msg", "succ");
+        map.put("conut", list.size());
+        map.put("data",list);
+        return map;
+    }
 }

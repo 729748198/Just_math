@@ -39,7 +39,8 @@
 
     <link rel="stylesheet" type="text/css" href="<%=basePath%>/css/font-awesome.css" >
     <link rel="stylesheet" type="text/css" href="<%=basePath%>/css/ionicons.min.css" >
-
+    <link rel="stylesheet" href="<%=basePath%>/layui/css/layui.css">
+    <script src="<%=basePath%>/layui/layui.js"></script>
 
 </head>
 
@@ -269,7 +270,7 @@
         <label for="answer">答案</label><input name="answer" id="answer" type="text"><button id="que">确定</button><br>
         <button id="tijiao">提交</button>
         <div id="editorContainer"></div>
-
+    <a href="<%=basePath%>admin/index.html">点击跳转</a>
         <script>
             var editor;
 
@@ -284,6 +285,7 @@
 
 
     </div>
+
     <script>
         $(document).ready(function () {
             $("#answer").click(function () {
@@ -322,6 +324,7 @@
         })
     </script>
     <!-- /.content-wrapper -->
+
 
     <!-- Main Footer -->
     <footer class="main-footer">

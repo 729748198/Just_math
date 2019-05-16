@@ -35,4 +35,10 @@ public interface QuestionService {
      * @return
      */
     Question selectTianRandom(String ban);
+
+    /**
+     * 查找所有题目
+     * @return
+     */
+    List<Question> selectAll();
 }
