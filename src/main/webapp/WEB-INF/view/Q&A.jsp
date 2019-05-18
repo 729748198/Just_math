@@ -81,42 +81,42 @@
             <div class="am-tabs-bd ">
                 <div class="am-tab-panel am-fade am-in am-active" id="tab1" style="height: 650px;overflow:auto; " >
                     <table class="qa-table">
-                           <%--<tr class="qa-table">--%>
-                                <%--&lt;%&ndash;帖子标题&ndash;%&gt;--%>
-                                <%--<td class="qa-table qa-title">--%>
-                                    <%--<nobr>--%>
-                                        <%--<text class="title">--%>
-                                            <%--<a href="<%=basePath%>/fatie/content" target="_blank" class="qa-title">帖子标题</a>--%>
-                                        <%--</text>--%>
-                                        <%--<text class="bubble">12</text>--%>
-                                    <%--</nobr>--%>
-                                <%--</td>--%>
-                                    <%--&lt;%&ndash;照片&ndash;%&gt;--%>
-                                <%--<td class="qa-table qa-userimg"><img src="<%=basePath%>img/worlduser.jpg" alt="" class="qa-table-user" ></td>--%>
-                                    <%--&lt;%&ndash;创建者&ndash;%&gt;--%>
-                                <%--<td class="qa-table qa-username">创建者</td>--%>
-                                    <%--&lt;%&ndash;创建时间&ndash;%&gt;--%>
-                                <%--<td class="qa-table qa-date">创建时间</td>--%>
-                            <%--</tr>--%>
-                       <c:forEach items="${tiezi}" var="tie"  >
                            <tr class="qa-table">
-                                   <%--帖子标题--%>
-                               <td class="qa-table qa-title">
-                                   <nobr>
-                                       <text class="title">
-                                           <a href="<%=basePath %>/fatie/content" class="qa-title" target="_blank">${tie.forumMain.mainTitle}</a>
-                                       </text>
-                                       <text class="bubble">${tie.forumInfo.infoReply}</text>
-                                   </nobr>
-                               </td>
-                                   <%--照片--%>
-                               <td class="qa-table qa-userimg"><img src="<%=basePath%>img/worlduser.jpg" alt="" class="qa-table-user" ></td>
-                                   <%--创建者--%>
-                               <td class="qa-table qa-username">${tie.forumMain.mainCreatuser}</td>
-                                   <%--创建时间--%>
-                               <td class="qa-table qa-date"><fmt:formatDate value="${tie.forumMain.mainCreatime}" pattern="yyyy年MM月dd日" /></td>
-                           </tr>
-                       </c:forEach>
+                                <%--帖子标题--%>
+                                <td class="qa-table qa-title">
+                                    <nobr>
+                                        <text class="title">
+                                            <a href="<%=basePath%>/fatie/content" target="_blank" class="qa-title">帖子标题</a>
+                                        </text>
+                                        <text class="bubble">12</text>
+                                    </nobr>
+                                </td>
+                                    <%--照片--%>
+                                <td class="qa-table qa-userimg"><img src="<%=basePath%>img/worlduser.jpg" alt="" class="qa-table-user" ></td>
+                                    <%--创建者--%>
+                                <td class="qa-table qa-username">创建者</td>
+                                    <%--创建时间--%>
+                                <td class="qa-table qa-date">创建时间</td>
+                            </tr>
+                       <%--<c:forEach items="${tiezi}" var="tie"  >--%>
+                           <%--<tr class="qa-table">--%>
+                                   <%--&lt;%&ndash;帖子标题&ndash;%&gt;--%>
+                               <%--<td class="qa-table qa-title">--%>
+                                   <%--<nobr>--%>
+                                       <%--<text class="title">--%>
+                                           <%--<a href="<%=basePath %>/fatie/content" class="qa-title" target="_blank">${tie.forumMain.mainTitle}</a>--%>
+                                       <%--</text>--%>
+                                       <%--<text class="bubble">${tie.forumInfo.infoReply}</text>--%>
+                                   <%--</nobr>--%>
+                               <%--</td>--%>
+                                   <%--&lt;%&ndash;照片&ndash;%&gt;--%>
+                               <%--<td class="qa-table qa-userimg"><img src="<%=basePath%>img/worlduser.jpg" alt="" class="qa-table-user" ></td>--%>
+                                   <%--&lt;%&ndash;创建者&ndash;%&gt;--%>
+                               <%--<td class="qa-table qa-username">${tie.forumMain.mainCreatuser}</td>--%>
+                                   <%--&lt;%&ndash;创建时间&ndash;%&gt;--%>
+                               <%--<td class="qa-table qa-date"><fmt:formatDate value="${tie.forumMain.mainCreatime}" pattern="yyyy年MM月dd日" /></td>--%>
+                           <%--</tr>--%>
+                       <%--</c:forEach>--%>
                     </table>
                 </div>
 
@@ -189,19 +189,20 @@
             success:function(data){
                 var jsObject = JSON.parse(data);
                 console.log(jsObject);
+                console.log(jsObject[0].forumInfo.infoId);
+                var html="<table class=\"qa-table\">\n";
                 for(var i=0;i<jsObject.length;i++){
-                var html="<table class=\"qa-table\">\n" +
-                    "                           <tr class=\"qa-table\">\n" +
+                html+="                           <tr class=\"qa-table\">\n" +
                     "                                <%--帖子标题--%>\n" +
                     "                                <td class=\"qa-table qa-title\">\n" +
                     "                                    <nobr>\n" +
                     "                                        <text class=\"title\">\n" +
                     "                                            <a href=\"<%=basePath%>/fatie/content\" target=\"_blank\" class=\"qa-title\">"+
-                    jsObject[i].mainContent+
+                    jsObject[i].forumMain.mainTitle+
                     "</a>\n" +
                     "                                        </text>\n" +
                     "                                        <text class=\"bubble\">"+
-                    jsObject[i].mainDelete+
+                    jsObject[i].forumInfo.infoId+
                     "</text>\n" +
                     "                                    </nobr>\n" +
                     "                                </td>\n" +
@@ -209,15 +210,17 @@
                     "                                <td class=\"qa-table qa-userimg\"><img src=\"<%=basePath%>img/worlduser.jpg\" alt=\"\" class=\"qa-table-user\" ></td>\n" +
                     "                                    <%--创建者--%>\n" +
                     "                                <td class=\"qa-table qa-username\">"+
-                    jsObject[i].mainCreatuser+
+                    jsObject[i].forumMain.mainCreatuser+
                     "</td>\n" +
                     "                                    <%--创建时间--%>\n" +
                     "                                <td class=\"qa-table qa-date\">"+
-                    jsObject[i].mainCreatime+
+                    jsObject[i].forumMain.mainCreatime+
                     "</td>\n" +
-                    "                            </tr>\n" +
-                    "                    </table>";
-            }
+                    "                            </tr>\n" ;
+                }
+                html+="                    </table>";
+                $("#tab1").html(html);
+                $("#tab3").html(html);
             }
 
         })
