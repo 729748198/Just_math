@@ -72,7 +72,19 @@
             <p class="exe-chapter">高等数学 > 函数与极限</p>
             <!--内容-->
             <div class="exe-content">
-
+                <div class="MM-content MM-text">
+                    <p class="biaoti">建模应用</p>
+                    <p class="neirong">数学是研究现实世界数量关系和空间形式的科学，在它产生和发展的历史长河中，一直是和各种各样的应用问题紧密相关的。数学的特点不仅在于概念的抽象性，逻辑的严密性，结论的明确性和体系的完整性，而且在于它应用的广泛性。自从20世纪以来，随着科学技术的迅速发展和计算机的日益普及，人们对各种问题的要求越来越精确，使得数学的应用越来越广泛和深入，特别是在21世纪这个知识经济时代，数学科学的地位会发生巨大的变化，它正在从国家经济和科技的后备走到了前沿。经济发展的全球化、计算机的迅猛发展、数学理论与方法的不断扩充，使得数学已经成为当代高科技的一个重要组成部分和思想库，数学已经成为一种能够普遍实施的技术。培养学生应用数学的意识和能力已经成为数学教学的一个重要方面。</p>
+                </div>
+                <div class="MM-content MM-img">
+                    <img src="<%=basePath%>img/mathmodel-example.jpg" class="MM-img" alt="">
+                </div>
+                <div class="MM-content MM-documt">
+                    <a href="<%=basePath%>img/mathmodel-example.jpg" download="mathmodel-example.jpg" class="MM-documt">
+                        <img src="<%=basePath%>img/MM-examplefile.png" alt="" class="MM-img">
+                        <p class="biaoti">文件名——测试图片</p>
+                    </a>
+                </div>
             </div>
         </div>
     </div>

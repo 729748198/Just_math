@@ -26,8 +26,14 @@
     <link rel="stylesheet" href="<%=basePath%>/assets/css/admin.css">
     <script src="<%=basePath%>/js/amazeui.min.js"></script>
     <style>
-        a{
-            text-decoration: none;
+        #container{
+            position: absolute;
+            width:100%;
+            height:100%;
+            overflow: hidden;
+            top:0;
+            left:0;
+            z-index: 999;
         }
     </style>
 </head>
@@ -60,33 +66,104 @@
     ​</div>
 
 <!--container-->
-<div class="container">
+<div class="container" >
     <!--background-->
     <img src="<%=basePath%>img/q&abgc.jpg" class="worldbcg" alt="">
     <!--主体部分-->
-    <div class="worldmain">
-
+    <div class="worldmain" style="background-color: white">
         <div class="am-tabs am-margin" data-am-tabs>
-            <ul class="am-tabs-nav am-nav am-nav-tabs">
-                <li class="am-active"><a href="#tab1">基本信息</a></li>
-                <li><a href="#tab2">详细描述</a></li>
-                <li><a href="#tab3">SEO 选项</a></li>
+            <ul class="am-tabs-nav am-nav am-nav-tabs" style="color: white">
+                <li class="am-active"><a href="#tab1">看帖子</a></li>
+                <li><a href="#tab2">发帖子</a></li>
+                <li><a href="#tab3">@我的</a></li>
             </ul>
 
-            <div class="am-tabs-bd">
-                <div class="am-tab-panel am-fade am-in am-active" id="tab1" >
-
+            <div class="am-tabs-bd ">
+                <div class="am-tab-panel am-fade am-in am-active" id="tab1" style="height: 650px;overflow:auto; " >
                     <table class="qa-table">
+                           <%--<tr class="qa-table">--%>
+                                <%--&lt;%&ndash;帖子标题&ndash;%&gt;--%>
+                                <%--<td class="qa-table qa-title">--%>
+                                    <%--<nobr>--%>
+                                        <%--<text class="title">--%>
+                                            <%--<a href="<%=basePath%>/fatie/content" target="_blank" class="qa-title">帖子标题</a>--%>
+                                        <%--</text>--%>
+                                        <%--<text class="bubble">12</text>--%>
+                                    <%--</nobr>--%>
+                                <%--</td>--%>
+                                    <%--&lt;%&ndash;照片&ndash;%&gt;--%>
+                                <%--<td class="qa-table qa-userimg"><img src="<%=basePath%>img/worlduser.jpg" alt="" class="qa-table-user" ></td>--%>
+                                    <%--&lt;%&ndash;创建者&ndash;%&gt;--%>
+                                <%--<td class="qa-table qa-username">创建者</td>--%>
+                                    <%--&lt;%&ndash;创建时间&ndash;%&gt;--%>
+                                <%--<td class="qa-table qa-date">创建时间</td>--%>
+                            <%--</tr>--%>
+                       <c:forEach items="${tiezi}" var="tie"  >
                            <tr class="qa-table">
-                                            <%--帖子标题--%>
-                                            <td class="qa-table qa-title">
-                                                <nobr>
-                                                    <text class="title">
-                                                        <a href="<%=basePath%>/fatie/content" target="_blank" class="qa-title">${tie.forumMain.mainTitle}</a>
-                                                    </text>
-                                                    <text class="bubble">${tie.forumInfo.infoReply}</text>
-                                                </nobr>
-                                            </td>
+                                   <%--帖子标题--%>
+                               <td class="qa-table qa-title">
+                                   <nobr>
+                                       <text class="title">
+                                           <a href="<%=basePath %>/fatie/content" class="qa-title" target="_blank">${tie.forumMain.mainTitle}</a>
+                                       </text>
+                                       <text class="bubble">${tie.forumInfo.infoReply}</text>
+                                   </nobr>
+                               </td>
+                                   <%--照片--%>
+                               <td class="qa-table qa-userimg"><img src="<%=basePath%>img/worlduser.jpg" alt="" class="qa-table-user" ></td>
+                                   <%--创建者--%>
+                               <td class="qa-table qa-username">${tie.forumMain.mainCreatuser}</td>
+                                   <%--创建时间--%>
+                               <td class="qa-table qa-date"><fmt:formatDate value="${tie.forumMain.mainCreatime}" pattern="yyyy年MM月dd日" /></td>
+                           </tr>
+                       </c:forEach>
+                    </table>
+                </div>
+
+                <div class="am-tab-panel am-fade" id="tab2">
+                    <form action="<%=basePath%>fatie/dofatie" method="post" id="saveTiezi">
+                        <label for="mainTitle">帖子标题</label>
+                        <input type="text" name="mainTitle" id="mainTitle" placeholder="最大长度25个汉字" style="width:360px;">
+                        <button type="button" class="btn btn-primary btn-xs text-right" onclick="subForm()">发表帖子</button>
+
+                        <!-- 加载编辑器的容器 -->
+                        <div style="display: inline-block;position:relative;padding: 0px;margin: 0px;width: 100%;height: 100%;top:36px;left:0;" >
+                            <script id="container" name="content" type="text/plain" >
+                            </script>
+                        </div>
+                    </form>
+                    <!-- 配置文件 -->
+                    <script type="text/javascript" src="<%=basePath %>js/uedit/js/ueditor.config.js"> </script>
+                    <!-- 编辑器源码文件 -->
+                    <script type="text/javascript" src="<%=basePath %>js/uedit/js/ueditor.all.js"> </script>
+                    <!-- 实例化编辑器 -->
+                    <script type="text/javascript">
+                        var editor = UE.getEditor('container');
+                        function subForm (){
+                            var content = editor.getContent();
+                            var mainTitle = $("#mainTitle").val();
+                            if (content === '' || mainTitle === ''){
+                                alert ("请输入标题与内容");
+                            }else{
+                                $("#saveTiezi").submit();
+                            }
+                        }
+                    </script>
+                </div>
+
+                <div class="am-tab-panel am-fade" id="tab3">
+                    <table class="qa-table">
+                        <c:forEach items="${tiezi}" var="tie"  >
+                            <tr class="qa-table">
+                                    <%--帖子标题--%>
+                                <td class="qa-table qa-title">
+                                    <nobr>
+                                        <text class="title">
+                                            <a href="" class="qa-title">${tie.forumMain.mainTitle}</a>
+                                        </text>
+                                        <text class="bubble">${tie.forumInfo.infoReply}</text>
+                                    </nobr>
+                                </td>
                                     <%--照片--%>
                                 <td class="qa-table qa-userimg"><img src="<%=basePath%>img/worlduser.jpg" alt="" class="qa-table-user" ></td>
                                     <%--创建者--%>
@@ -94,39 +171,8 @@
                                     <%--创建时间--%>
                                 <td class="qa-table qa-date"><fmt:formatDate value="${tie.forumMain.mainCreatime}" pattern="yyyy年MM月dd日" /></td>
                             </tr>
-
-
+                        </c:forEach>
                     </table>
-                    <script>
-                        function gettie(){
-                            $.ajax({
-                            url:"<%=basePath%>/fatie/getall",
-                                success:function(data){
-                                    var jsObject = JSON.parse(data);
-                                    console.log(jsObject);
-                                    var html="";
-                                }
-
-                        })
-                        };
-
-                        $(document).ready(function () {
-                            gettie();
-                        })
-
-
-
-
-                    </script>
-
-                </div>
-
-                <div class="am-tab-panel am-fade" id="tab2">
-                    阿斯蒂芬阿斯顿发生的
-                </div>
-
-                <div class="am-tab-panel am-fade" id="tab3">
-                    阿斯顿啊
                 </div>
 
             </div>
@@ -136,9 +182,51 @@
 
 </div>
 
+<script>
+    function gettie(){
+        $.ajax({
+            url:"<%=basePath%>/fatie/getall",
+            success:function(data){
+                var jsObject = JSON.parse(data);
+                console.log(jsObject);
+                for(var i=0;i<jsObject.length;i++){
+                var html="<table class=\"qa-table\">\n" +
+                    "                           <tr class=\"qa-table\">\n" +
+                    "                                <%--帖子标题--%>\n" +
+                    "                                <td class=\"qa-table qa-title\">\n" +
+                    "                                    <nobr>\n" +
+                    "                                        <text class=\"title\">\n" +
+                    "                                            <a href=\"<%=basePath%>/fatie/content\" target=\"_blank\" class=\"qa-title\">"+
+                    jsObject[i].mainContent+
+                    "</a>\n" +
+                    "                                        </text>\n" +
+                    "                                        <text class=\"bubble\">"+
+                    jsObject[i].mainDelete+
+                    "</text>\n" +
+                    "                                    </nobr>\n" +
+                    "                                </td>\n" +
+                    "                                    <%--照片--%>\n" +
+                    "                                <td class=\"qa-table qa-userimg\"><img src=\"<%=basePath%>img/worlduser.jpg\" alt=\"\" class=\"qa-table-user\" ></td>\n" +
+                    "                                    <%--创建者--%>\n" +
+                    "                                <td class=\"qa-table qa-username\">"+
+                    jsObject[i].mainCreatuser+
+                    "</td>\n" +
+                    "                                    <%--创建时间--%>\n" +
+                    "                                <td class=\"qa-table qa-date\">"+
+                    jsObject[i].mainCreatime+
+                    "</td>\n" +
+                    "                            </tr>\n" +
+                    "                    </table>";
+            }
+            }
 
-</div>
+        })
+    }
 
+    $(document).ready(function () {
+        gettie();
+    })
+</script>
 
 </body>
 </html>

@@ -560,7 +560,8 @@ table.qa-table
     width: 866px;
     left:5px;
     top:8px;
-    position: absolute;
+    display: inline-block;
+    position: relative;
 }
 tr.qa-table
 {
@@ -629,15 +630,17 @@ td.qa-username
 {
     display: inline-block;
     position: absolute;
-    right: 20%;
-    top:33%;
+    font-size: 18px;
+    right: 15%;
+    top:35%;
 }
 td.qa-date
 {
     display: inline-block;
     position: absolute;
-    right: 0%;
-    top:33%;
+    right: 0.5%;
+    font-size: 15px;
+    top:38%;
 }
 div.rating-col
 {
@@ -2065,4 +2068,44 @@ a.MM-documt:hover
     width: 100%;
     color: #00c0ef;
     cursor: pointer;
+}
+div.qa-content
+{
+    display: inline-block;
+    position: relative;
+    width: 90%;
+    min-height: 66px;
+    border-radius: 8px;
+    background-color:#5D7FAD;
+    margin: 10px 25px;
+    padding: 5px 8px;
+}
+div.answer
+{
+    background-color: #E3F6F4;
+}
+p.qa-title
+{
+    font-weight: bolder;
+    font-size: 33px;
+}
+p.qa-question
+{
+    font-weight: normal;
+    font-size: 15px;
+    color: white;
+}
+p.create-inf
+{
+    display: inline-block;
+    position: relative;
+    left:70%;
+}
+p.qa-answer
+{
+    font-weight: normal;
+    font-size: 15px;
+    position: relative;
+    left:8px;
+    color: black;
 }
