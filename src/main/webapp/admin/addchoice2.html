@@ -14,12 +14,10 @@
     <div class="larry-personal">
         <blockquote class="layui-elem-quote layui-text">
             <!--<header class="larry-personal-tit">-->
-            <span>添加填空题</span>
+            <span>添加填空题(不带公式)</span>
             <!--</header>&lt;!&ndash; /header &ndash;&gt;-->
         </blockquote>
-        <form name="myupload" id="myupload" class="layui-form" action="" method="post" enctype='multipart/form-data'
-              style="margin-left: auto;margin-right: auto;text-align: left">
-
+        <form class="layui-form" action="" method="post" >
             <div class="layui-form-item">
                 <div class="layui-inline">
                     <label class="layui-form-label">所属板块</label>
@@ -48,17 +46,17 @@
                 <div class="layui-input-block">
                     <select name="score" lay-verify="required">
                         <option value="10" selected>10分</option>
-                        <option value="20" selected>20分</option>
-                        <option value="30" selected>30分</option>
+                        <option value="20" >20分</option>
+                        <option value="30" >30分</option>
                     </select>
                 </div>
             </div>
-            <div class="layui-upload">
+            <div class="layui-form-item">
 
                 <label class="layui-form-label">题目</label>
-                <input type="button" value="选取题目图片" class="layui-btn layui-btn-normal" onclick="getFile()">
-                <label id="lb"></label><br><!-- 展示文字名称-->
-                <input style="display: none" type="file"  name="title" id="getF" onchange="clickF()">
+                <div class="layui-input-block">
+                <input type="text" name="title" placeholder="输入题目" class="layui-input" >
+                </div>
                 <!--<button type="submit" class="layui-btn" id="test9" onclick="alert('正在上传，请稍后')">开始上传</button>-->
             </div>
             <div class="layui-form-item">
@@ -103,13 +101,11 @@
 
         //上传的form表单
         form.on('submit(formDemo)', function(data){
-            layer.msg(JSON.stringify(data.field.file+"正在上传"));
-            var myform=document.getElementById("myupload");
-            var formdate=new FormData(myform);
+            //执行实例
             $.ajax({
-                url: "../ti/doChoice",
+                url: "../ti/dochoice",
                 type: "POST",
-                data: formdate,
+                data: data.field,
                 contentType: false,       //一定要写
                 processData: false,       //一定要写
                 traditional: true,//这里设置为true

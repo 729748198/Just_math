@@ -101,13 +101,17 @@
                         function gettie(){
                             $.ajax({
                             url:"<%=basePath%>/fatie/getall",
-
+                                success:function(data){
+                                    var jsObject = JSON.parse(data);
+                                    console.log(jsObject);
+                                    var html="";
+                                }
 
                         })
                         };
 
                         $(document).ready(function () {
-
+                            gettie();
                         })
 
 
