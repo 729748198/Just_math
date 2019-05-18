@@ -1,10 +1,10 @@
 *
-{
-    margin:0;
-    padding:0;
-    border:0;
-    font-family: "微软雅黑", Times, serif;
-}
+    {
+        margin:0;
+        padding:0;
+        border:0;
+        font-family: "微软雅黑", Times, serif;
+    }
 button:hover
 {
     cursor: pointer;
@@ -1226,6 +1226,7 @@ div.exe-content
     top:50px;
     background-color: #FFFFFF;
     border: 1px solid black;
+    overflow: auto;
 }
 div.exercise-content
 {
@@ -2024,4 +2025,44 @@ label.mw-fabiao
 button.ti-button
 {
     width: 65px;    height: 36px;    line-height: 36px;    background-color:skyblue;    border-radius: 5px;top:100px;    left:300px;    display: inline-block;    position: absolute;
+}
+div.MM-content
+{
+    display: inline-block;
+    position: relative;
+    min-height: 50px;
+    padding: 10px 25px 10px 25px;
+    border-bottom: 1px solid black;
+}
+p.biaoti
+ {
+     display: inline-block;
+     height:35px;
+     line-height: 35px;
+     font-size: 20px;
+     font-weight: bold;
+ }
+p.neirong
+{
+    display: inline-block;
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: normal;
+    text-indent: 2em;
+}
+img.MM-img
+{
+    display: inline-block;
+    width: 100%;
+}
+a.MM-documt
+{
+    text-decoration: none;
+    color: black;
+}
+a.MM-documt:hover
+{
+    width: 100%;
+    color: #00c0ef;
+    cursor: pointer;
 }

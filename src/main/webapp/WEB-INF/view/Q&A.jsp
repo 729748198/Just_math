@@ -22,8 +22,14 @@
     <title>师生答疑</title>
     <link rel="stylesheet" href="<%=basePath%>css/main.css" type="text/css">
     <script src="<%=basePath%>/js/jquery.min.js"></script>
-    <link rel="stylesheet" href="<%=basePath%>assets/css/amazeui.min.css"/>
-    <link rel="stylesheet" href="<%=basePath%>assets/css/admin.css">
+    <link rel="stylesheet" href="<%=basePath%>/assets/css/amazeui.min.css"/>
+    <link rel="stylesheet" href="<%=basePath%>/assets/css/admin.css">
+    <script src="<%=basePath%>/js/amazeui.min.js"></script>
+    <style>
+        a{
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body style="overflow: auto;">
 <!--导航栏-->
@@ -59,42 +65,72 @@
     <img src="<%=basePath%>img/q&abgc.jpg" class="worldbcg" alt="">
     <!--主体部分-->
     <div class="worldmain">
-        <!--栏目-->
-        <ul class="qa-col1" style="padding:0;">
-            <li class="qa-col qa-col1"><a href="" style="color: black"><button class="qa-button" type="button">看帖子</button></a></li>
-            <li class="qa-col qa-col2"><a href="" style="color: black"><button class="qa-button" type="button">发帖子</button></a></li>
-            <li class="qa-col qa-col3"><a href="" style="color: black"><button class="qa-button" type="button">@回复我</button></a></li>
-        </ul>
 
-        <!--内容-->
-        <div class="qa-box">
-            <table class="qa-table">
-                <c:forEach items="${tiezi}" var="tie"  >
-                <tr class="qa-table">
-                    <%--帖子标题--%>
-                        <td class="qa-table qa-title">
-                            <nobr>
-                                <text class="title">
-                                    <a href="<%=basePath%>/fatie/content" target="_blank" class="qa-title">${tie.forumMain.mainTitle}</a>
-                                </text>
-                                <text class="bubble">${tie.forumInfo.infoReply}</text>
-                            </nobr>
-                        </td>
-                        <%--照片--%>
-                        <td class="qa-table qa-userimg"><img src="<%=basePath%>img/worlduser.jpg" alt="" class="qa-table-user" ></td>
-                        <%--创建者--%>
-                        <td class="qa-table qa-username">${tie.forumMain.mainCreatuser}</td>
-                        <%--创建时间--%>
-                        <td class="qa-table qa-date"><fmt:formatDate value="${tie.forumMain.mainCreatime}" pattern="yyyy年MM月dd日" /></td>
-                </tr>
-                </c:forEach>
+        <div class="am-tabs am-margin" data-am-tabs>
+            <ul class="am-tabs-nav am-nav am-nav-tabs">
+                <li class="am-active"><a href="#tab1">基本信息</a></li>
+                <li><a href="#tab2">详细描述</a></li>
+                <li><a href="#tab3">SEO 选项</a></li>
+            </ul>
+
+            <div class="am-tabs-bd">
+                <div class="am-tab-panel am-fade am-in am-active" id="tab1" >
+
+                    <table class="qa-table">
+                           <tr class="qa-table">
+                                            <%--帖子标题--%>
+                                            <td class="qa-table qa-title">
+                                                <nobr>
+                                                    <text class="title">
+                                                        <a href="<%=basePath%>/fatie/content" target="_blank" class="qa-title">${tie.forumMain.mainTitle}</a>
+                                                    </text>
+                                                    <text class="bubble">${tie.forumInfo.infoReply}</text>
+                                                </nobr>
+                                            </td>
+                                    <%--照片--%>
+                                <td class="qa-table qa-userimg"><img src="<%=basePath%>img/worlduser.jpg" alt="" class="qa-table-user" ></td>
+                                    <%--创建者--%>
+                                <td class="qa-table qa-username">${tie.forumMain.mainCreatuser}</td>
+                                    <%--创建时间--%>
+                                <td class="qa-table qa-date"><fmt:formatDate value="${tie.forumMain.mainCreatime}" pattern="yyyy年MM月dd日" /></td>
+                            </tr>
 
 
-            </table>
+                    </table>
+                    <script>
+                        function gettie(){
+                            $.ajax({
+                            url:"<%=basePath%>/fatie/getall",
 
+
+                        })
+                        };
+
+                        $(document).ready(function () {
+
+                        })
+
+
+
+
+                    </script>
+
+                </div>
+
+                <div class="am-tab-panel am-fade" id="tab2">
+                    阿斯蒂芬阿斯顿发生的
+                </div>
+
+                <div class="am-tab-panel am-fade" id="tab3">
+                    阿斯顿啊
+                </div>
+
+            </div>
         </div>
 
     </div>
+
+</div>
 
 
 </div>

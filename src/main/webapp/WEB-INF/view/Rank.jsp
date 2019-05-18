@@ -18,7 +18,7 @@
 <head>
     <meta charset="UTF-8">
     <title>积分排行</title>
-    <link rel="stylesheet" href="<%=basePath%>/css/main.css" type="text/css">
+    <link rel="stylesheet" href="<%=basePath%>/css/main.css?version=1" type="text/css">
     <script src="<%=basePath%>/js/jquery-1.8.3.min.js"></script>
 </head>
 <body>
