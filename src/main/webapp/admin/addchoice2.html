@@ -44,7 +44,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">分数</label>
                 <div class="layui-input-block">
-                    <select name="score" lay-verify="required">
+                    <select name="score" lay-verify="required" >
                         <option value="10" selected>10分</option>
                         <option value="20" >20分</option>
                         <option value="30" >30分</option>
@@ -56,6 +56,17 @@
                 <label class="layui-form-label">题目</label>
                 <div class="layui-input-block">
                 <input type="text" name="title" placeholder="输入题目" class="layui-input" >
+                </div>
+                <!--<button type="submit" class="layui-btn" id="test9" onclick="alert('正在上传，请稍后')">开始上传</button>-->
+            </div>
+            <div class="layui-form-item">
+
+                <label class="layui-form-label">选项</label>
+                <div class="layui-input-block">
+                    <input type="text" name="Ba" placeholder="选项A" class="layui-input" width="138">
+                    <input type="text" name="Bb" placeholder="选项B" class="layui-input" width="138">
+                    <input type="text" name="Bc" placeholder="选项C" class="layui-input" width="138">
+                    <input type="text" name="Bd" placeholder="选项D" class="layui-input" width="138">
                 </div>
                 <!--<button type="submit" class="layui-btn" id="test9" onclick="alert('正在上传，请稍后')">开始上传</button>-->
             </div>
@@ -101,14 +112,12 @@
 
         //上传的form表单
         form.on('submit(formDemo)', function(data){
+            console.log(data.field);
             //执行实例
             $.ajax({
                 url: "../ti/dochoice",
                 type: "POST",
                 data: data.field,
-                contentType: false,       //一定要写
-                processData: false,       //一定要写
-                traditional: true,//这里设置为true
                 success: function(data) {
                     layer.msg(data);
                 }

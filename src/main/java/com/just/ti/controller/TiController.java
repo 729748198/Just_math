@@ -258,19 +258,17 @@ public class TiController {
      */
 
     public  void funchoice(HttpServletResponse response,HttpServletRequest request){
-        String ban=request.getParameter("Ban");
-        String title=request.getParameter("Title");
-        String score=request.getParameter("Score");
-        String answer=request.getParameter("Answer");
-        String aa=request.getParameter("Aa");
-        String ab=request.getParameter("Ab");
-        String ac=request.getParameter("Ac");
-        String ad=request.getParameter("Ad");
-        String jiexi=request.getParameter("Jiexi");
-        String ttype=request.getParameter("type");
-       String ti_id= MD5.md5(title);
+        String ban=request.getParameter("ban");
+        String title=request.getParameter("title");
+        String score=request.getParameter("score");
+        String answer=request.getParameter("answer");
+        String aa=request.getParameter("Ba");
+        String ab=request.getParameter("Bb");
+        String ac=request.getParameter("Bc");
+        String ad=request.getParameter("Bd");
+       String ti_id=UUID.randomUUID().toString().replaceAll("-", "");
 
-        Integer type=Integer.valueOf(ttype);
+        Integer type=5;
 
         /**
          */
@@ -281,6 +279,7 @@ public class TiController {
         question.setTiTitle(title);
         question.setTiType(type);
 
+        logger.info(question.toString());
         /**
          * 答案的实体
          */
@@ -291,7 +290,8 @@ public class TiController {
         bloBs.setPc(ac);
         bloBs.setPd(ad);
         bloBs.setAnswer(answer);
-        bloBs.setJiexi(jiexi);
+
+        logger.info(bloBs.toString());
         questionService.add(question);
         choiceservice.addById(bloBs);
     }
@@ -390,9 +390,38 @@ public class TiController {
      * @return
      */
     @RequestMapping("/dochoice")
-    public  String doChoiceNoMath(HttpServletRequest request,HttpServletResponse respnse){
-        funchoice(respnse,request);
-    return  "admin/addchoiceNomath";
+    @ResponseBody
+    public  String doChoiceNoMath(String answer,String ban,String score,String title,String Ba,String Bb,String Bc,String Bd,HttpServletRequest request,HttpServletResponse respnse){
+
+        String ti_id=UUID.randomUUID().toString().replaceAll("-", "");
+
+        Integer type=5;
+
+        /**
+         */
+        Question question=new Question();
+        question.setId(ti_id);
+        question.setTiBan(ban);
+        question.setTiScore(score);
+        question.setTiTitle(title);
+        question.setTiType(type);
+
+        logger.info(question.toString());
+        /**
+         * 答案的实体
+         */
+        TiChoice bloBs=new TiChoice();
+        bloBs.setId(ti_id);
+        bloBs.setPa(Ba);
+        bloBs.setPb(Bb);
+        bloBs.setPc(Bc);
+        bloBs.setPd(Bd);
+        bloBs.setAnswer(answer);
+
+        logger.info(bloBs.toString());
+        questionService.add(question);
+        choiceservice.addById(bloBs);
+        return "插入成功";
     }
 
     /**

@@ -50,8 +50,26 @@ public class FatieController {
 
     @RequestMapping("/getall")
     @ResponseBody
-    public List<ForumMain> getAlltiezi(){
-        return  fatieService.selectAll();
+    public List<Map<String,Object>> getAlltiezi(){
+        /**
+         * 查找所有帖子
+         */
+        List<ForumMain>forumMainList=fatieService.selectAll();
+        /**
+         * 新建一个List存储帖子信息和回复信息
+         */
+        List<Map<String,Object>> lists=new ArrayList<Map<String, Object>>();
+        for (ForumMain m :
+                forumMainList) {
+            Map<String,Object>map=new HashMap<String, Object>(2);
+            ForumInfo forumInfo=forumInfoService.selectByMainId(m.getMainId());
+            map.put("forumMain",m);
+            map.put("forumInfo",forumInfo);
+            lists.add(map);
+
+        }
+
+        return  lists;
     }
 
     /**
