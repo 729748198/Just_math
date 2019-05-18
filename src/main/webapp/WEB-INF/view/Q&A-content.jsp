@@ -56,29 +56,34 @@
     <!--background-->
     <img src="<%=basePath%>img/q&abgc.jpg" class="worldbcg" alt="">
     <!--主体部分-->
-    <div class="worldmain">
-        <!--栏目-->
-        <ul class="qa-col1">
-            <li class="qa-col qa-col1"><button class="qa-button" type="button">看帖子</button></li>
-            <li class="qa-col qa-col2"><button class="qa-button" type="button">发帖子</button></li>
-            <li class="qa-col qa-col3"><button class="qa-button" type="button">@回复我</button></li>
-        </ul>
+    <div class="worldmain" style="background-color: white">
+        <div class="qa-content question">
+            <p class="qa-title">数学建模是什么?</p>
+            <p class="qa-question">
+                有什么用，需要用到什么知识，好学吗？<br>
+                我是大一的学生，数学成绩并不好，能学吗？不知道对我有什么用<br>
+                希望各位高手给出详细的说明，谢谢！！
+            </p>
+            <p class="create-inf">162210702115 2019年1月1日</p>
+        </div>
+        <div class="qa-content answer">
+            <p class="qa-answer">
+                数学建模就是根据实际问题来建立数学模型，对数学模型来进行求解，然后根据结果去解决实际问题。
 
-        <!--内容-->
-        <div class="qa-box">
-            <table class="qa-table">
-                    <tr class="qa-table">
-                        <td class="qa-table qa-title">金坷垃的时间分开了的时间弗兰克</td>
-                        <td class="qa-table qa-userimg"><img src="<%=basePath%>img/worlduser.jpg" alt="" class="qa-table-user" ></td>
-                        <td class="qa-table qa-username">dfsa</td>
-                        <td class="qa-table qa-date">1999年</td>
-                    </tr>
+                当需要从定量的角度分析和研究一个实际问题时，人们就要在深入调查研究、了解对象信息、作出简化假设、分析内在规律等工作的基础上，用数学的符号和语言作表述来建立数学模型。
 
-
-            </table>
-
-
-
+                数学建模就是建立数学模型，建立数学模型的过程就是数学建模的过程。数学建模是一种数学的思考方法，是运用数学的语言和方法，通过抽象、简化建立能近似刻画并"解决"实际问题的一种强有力的数学手段。
+            </p>
+            <p class="create-inf">162210702115   2019年1月1日</p>
+        </div>
+        <div class="qa-content answer">
+            <p class="qa-answer">
+                数学建模的详细定义网上多的我就不阐述了，说一点其他的~~
+                数学的主要发展方向是数学结合计算机。运用数学的算法结合计算机技术解决实际问题，将来你会比单纯学计算机的水平高出一个档次，因为你的算法比他们的先进。而这也就是数学建模竞赛的主要考察的。
+                数模比赛的含金量也是比较高的，你参加比赛得了名次，完全可以证明你是有一定实力的~~
+                你担心数学成绩不好，其实是没有必要的，我参加过几次比赛，用的数学知识并没有很高深，高中数学也能解决很多问题了，主要就是优化，模拟，我觉得考验个人思维能力多一点，况且数学、计算机、写作三个方面呢，你只要有一方面特长就可以了~~
+            </p>
+            <p class="create-inf">162210702115   2019年1月1日</p>
         </div>
 
     </div>
