@@ -39,4 +39,9 @@ public class QuestionServiceImpl implements QuestionService {
     public List<Question> selectAll() {
         return mapper.selectAll();
     }
+
+    @Override
+    public int delectByid(String id) {
+        return mapper.deleteByPrimaryKey(id);
+    }
 }

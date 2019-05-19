@@ -23,4 +23,14 @@ public class AnswerServiceImpl implements AnswerService {
     public int add(TiankongWithBLOBs answerWithBLOBs) {
         return mapper.insertSelective(answerWithBLOBs);
     }
+
+    @Override
+    public int delectByid(Integer id) {
+        return mapper.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public int delectByTIID(String id) {
+        return mapper.deleteByTiId(id);
+    }
 }

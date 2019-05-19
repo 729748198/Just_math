@@ -28,6 +28,11 @@ public interface WorldService {
      */
     List<Math_world> getAllJIng();
     /**
+     * 所有非精品
+     * @return
+     */
+    List<Math_world> getAllPu();
+    /**
      * 获取图片
      */
     List<Math_world> getAllPic();
@@ -45,4 +50,13 @@ public interface WorldService {
      * @return
      */
     int insertByUsername(Math_world math_world);
+
+    /**
+     * 更新
+     * @param math_world
+     * @return
+     */
+    int updataBySelect(Math_world math_world);
+
+
 }

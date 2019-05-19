@@ -6,6 +6,11 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface QuestionMapper {
+    /**
+     * 删除题目
+     * @param id
+     * @return
+     */
     int deleteByPrimaryKey(String id);
 
     int insert(Question record);

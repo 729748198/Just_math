@@ -10,5 +10,10 @@ public interface TiBanService {
      */
     TiBan selectByBan(String ban);
 
+    /**
+     * 更新板块
+     * @param tiBan
+     * @return
+     */
     int update(TiBan tiBan);
 }

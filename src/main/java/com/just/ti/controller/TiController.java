@@ -499,4 +499,28 @@ public class TiController {
         map.put("data",list);
         return map;
     }
+
+    @RequestMapping("/delectById")
+    @ResponseBody
+    @Transactional
+    public  String delectById(String id,String tiban,String tiScore,String tiType){
+
+        logger.info("要删除：\nid:"+id+",板块:"+tiban+",分数："+tiScore+"类型:"+tiType);
+    int type=Integer.valueOf(tiType);
+
+        if(type==1||type==5){
+            choiceservice.delectByTi_id(id);
+        }else if (type==2){
+            answerService.delectByTIID(id);
+        }
+        questionService.delectByid(id);
+/*
+        板块分数实体
+         */
+        TiBan tiBan=tiBanService.selectByBan(tiban);
+        tiBan.setSumScore(tiBan.getSumScore()+Integer.valueOf(tiScore));
+        tiBan.setSumSelect(tiBan.getSumSelect()-1);
+        tiBanService.update(tiBan);
+        return "删除成功";
+    }
 }

@@ -37,6 +37,12 @@ public interface Math_worldMapper {
      * @return
      */
     List<Math_world> selectJing();
+
+    /**
+     * 获取普通作品
+     * @return
+     */
+    List<Math_world> selectPu();
     /**
      * 根据用户名获取所有作品
      * @param name
@@ -44,6 +50,11 @@ public interface Math_worldMapper {
      */
     List<Math_world> selectByUsername(String name);
 
+    /**
+     * 更新
+     * @param record
+     * @return
+     */
     int updateByPrimaryKeySelective(Math_world record);
 
     int updateByPrimaryKeyWithBLOBs(Math_world record);

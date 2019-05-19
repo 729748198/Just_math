@@ -32,6 +32,11 @@ public class WorldServiceImpl implements WorldService{
     }
 
     @Override
+    public List<Math_world> getAllPu() {
+        return math_worldMapper.selectPu();
+    }
+
+    @Override
     public List<Math_world> getAllPic() {
         return math_worldMapper.selectPic();
     }
@@ -48,6 +53,11 @@ public class WorldServiceImpl implements WorldService{
 
     @Override
     public int insertByUsername(Math_world math_world) {
+        return math_worldMapper.insertSelective(math_world);
+    }
+
+    @Override
+    public int updataBySelect(Math_world math_world) {
         return math_worldMapper.insertSelective(math_world);
     }
 }

@@ -111,6 +111,16 @@ public class WorldController {
         List<Math_world>list=service.getAllJIng();
         return  list;
     }
+    /**
+     * 获取非精品接口
+     * @return
+     */
+    @RequestMapping("/getpu")
+    @ResponseBody
+    public List<Math_world> getAllPu(){
+        List<Math_world>list=service.getAllPu();
+        return  list;
+    }
  //关注模板
 
     /**

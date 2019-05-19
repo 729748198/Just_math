@@ -20,4 +20,11 @@ public interface Choiceservice {
      * @return
      */
     int addById(TiChoice bloBs);
+
+    /**
+     * 根据题目id删除选择题答案
+     * @param id
+     * @return
+     */
+    int delectByTi_id(String id);
 }

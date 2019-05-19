@@ -23,4 +23,9 @@ public class ChoiceServiceImpl implements Choiceservice {
     public int addById(TiChoice bloBs) {
         return mapper.insertSelective(bloBs);
     }
+
+    @Override
+    public int delectByTi_id(String id) {
+        return mapper.deleteByPrimaryKey(id);
+    }
 }

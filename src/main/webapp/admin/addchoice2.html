@@ -128,16 +128,52 @@
         //题目的
         table.render({
             elem: '#showti'
-            ,height: 312
+            //  ,height: 312
+            ,toolbar: '#toolbarDemo'
             ,url: 'http://localhost:8080/Just_math/ti/getAll' //数据接口
             ,page: true //开启分页
             ,cols: [[ //表头l
                 {field: 'id', title: 'ID', width:138, sort: true, fixed: 'center'}
-                ,{field: 'tiTitle', title: '题目', width:138}
+                ,{field: 'tiTitle', title: '题目',  width:138,templet:'<div><img src="http://localhost:8080/Just_math{{ d.tiTitle}}"></div>'}
                 ,{field: 'tiBan', title: '所属板块', width:138, sort: true}
                 ,{field: 'tiScore', title: '分数', width:138}
+                ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:150}
             ]]
         });
+        table.on('tool(showti)', function(obj){
+            var data = obj.data;
+            console.log(obj);
+            if(obj.event === 'del'){
+                layer.confirm('真的删除这道题吗', function(index){
+                    $.ajax({
+                        url:'../ti/delectById',
+                        data: {
+                            'id':data.id,
+                            'tiban':data.tiBan,
+                            'tiScore':data.tiScore,
+                            'tiType':data.tiType,
+
+                        },
+                        method:'POST',
+                        traditional: true,
+                        success:function (msg) {
+                            layer.msg(msg);
+                            obj.del();
+                        },
+                        error:function (msg) {
+                            layer.msg(msg)
+                        }
+
+
+
+                    })
+                    layer.close(index);
+                });
+            } else if(obj.event === 'edit'){
+                layer.msg(JSON.stringify("您可以直接单击单元格进行编辑"))
+            }
+        });
+
     })
     function getFile(){
         $("#getF").click();
@@ -151,6 +187,15 @@
 
     }
 
+</script>
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+<script type="text/html" id="toolbarDemo">
+    <div class="layui-btn-container">
+        <button class="layui-btn layui-btn-sm" lay-event="getCheckData">右侧进行筛选导出</button>
+    </div>
 </script>
 </body>
 </html>
