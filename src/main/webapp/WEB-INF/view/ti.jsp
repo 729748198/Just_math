@@ -95,7 +95,6 @@
                     window.onload = function () {
                         editor = com.wiris.jsEditor.JsEditor.newInstance({'language': 'en'});
                         editor.insertInto(document.getElementById('demo'));
-                        $("#demo").hide();
                     };
 
                 </script>
@@ -126,9 +125,11 @@
                             html=html+"<p id='titype' style='display: none'>"+data.titype+"</p>";
 
                             if(data.titype=="2") {
+                                show();
                                 html=html+"<label for='answerfortian'>点击右侧输入框，在编辑器中输入答案</label> <input type='text' name='answerfortian' id='answerfortian' style='border-radius:5px;outline:none;border-top-style: groove;border-right-style: groove;border-bottom-style: groove;border-left-style: groove;border:1px solid #a1a1a1; ' onclick='show()'>";
-                                html=html+"<button id='que' style='width: 65px;height: 36px;line-height: 36px;background-color:skyblue;border-radius: 5px;left:18px;display: inline-block;position: relative;' onclick='hide()'>确 定</button>";
+                                html=html+"<button id='que' style='width: 65px;height: 36px;line-height: 36px;background-color:skyblue;border-radius: 5px;left:18px;display: inline-block;position: relative;' onclick='hide()'>保 存</button>";
                             }else if(data.titype=="1"){
+                                hide();
                                 html=html+"<label for='answerforxuan'>点击右侧输入框，输入答案</label><input type='text' name='answerforxuan' id='answerforxuan' style='border-color:black ' >";
 
 

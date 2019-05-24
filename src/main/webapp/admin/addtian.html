@@ -142,13 +142,13 @@
         //题目的
         table.render({
             elem: '#showti'
-          //  ,height: 312
+            //  ,height: 312
             ,toolbar: '#toolbarDemo'
-            ,url: 'http://localhost:8080/Just_math/ti/getAll' //数据接口
+            ,url: 'http://120.78.66.11:8080/Just_math/ti/getAll' //数据接口
             ,page: true //开启分页
             ,cols: [[ //表头l
                 {field: 'id', title: 'ID', width:138, sort: true, fixed: 'center'}
-                ,{field: 'tiTitle', title: '题目',  width:138,templet:'<div><img src="http://localhost:8080/Just_math{{ d.tiTitle}}"></div>'}
+                ,{field: 'tiTitle', title: '题目',  width:138,templet:'<div><img src="http://120.78.66.11:8080/Just_math{{ d.tiTitle}}"></div>'}
                 ,{field: 'tiBan', title: '所属板块', width:138, sort: true}
                 ,{field: 'tiScore', title: '分数', width:138}
                 ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:150}

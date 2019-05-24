@@ -24,7 +24,10 @@ import javax.xml.crypto.Data;
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import org.apache.log4j.Logger;
 
 /**
@@ -109,6 +112,7 @@ public class WorldController {
     @ResponseBody
     public List<Math_world> getAlljing(){
         List<Math_world>list=service.getAllJIng();
+
         return  list;
     }
     /**
@@ -117,9 +121,14 @@ public class WorldController {
      */
     @RequestMapping("/getpu")
     @ResponseBody
-    public List<Math_world> getAllPu(){
-        List<Math_world>list=service.getAllPu();
-        return  list;
+    public Map<String,Object> getAllPu(){
+        Map<String,Object>map=new HashMap<>();
+        List<Math_world>list=service.getAllJIng();
+        map.put("code", 0);
+        map.put("msg", "succ");
+        map.put("conut", list.size());
+        map.put("data",list);
+        return  map;
     }
  //关注模板
 
