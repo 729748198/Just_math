@@ -29,6 +29,10 @@
     delete from ti_answer
     where id = #{id,jdbcType=INTEGER}
   </delete>
+  <delete id="deleteByTiId" parameterType="java.lang.String" >
+    delete from ti_answer
+    where ti_id = #{id,jdbcType=VARCHAR}
+  </delete>
   <insert id="insert" parameterType="com.just.ti.entity.TiankongWithBLOBs" >
     insert into ti_answer (id, ti_id, answer_type, 
       jiexi, answerformarch, answerforshow

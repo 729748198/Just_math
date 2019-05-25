@@ -42,6 +42,14 @@
     from math_world
     where is_OK=1
   </select>
+  <select id="selectPu" resultMap="ResultMapWithBLOBs"  >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from math_world
+    where is_OK=0
+  </select>
   <select id="selectPic" resultMap="ResultMapWithBLOBs"  >
     select
     <include refid="Base_Column_List" />

@@ -19,6 +19,11 @@ public interface TiBanMapper {
      */
     TiBan selectByBan(@Param(value = "ban") String ban);
 
+    /**
+     * 更新分数
+     * @param record
+     * @return
+     */
     int updateByPrimaryKeySelective(TiBan record);
 
     int updateByPrimaryKey(TiBan record);

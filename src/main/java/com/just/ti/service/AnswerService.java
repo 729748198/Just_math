@@ -16,9 +16,20 @@ public interface AnswerService {
     TiankongWithBLOBs selectByQId(String id);
 
     /**
-     * 增加一道题的答案
+     * 增加一道填空题的答案
      * @param answerWithBLOBs
      * @return
      */
     int add(TiankongWithBLOBs answerWithBLOBs);
+
+    /**
+     * 根据主键删除填空题
+     * @param id
+     * @return
+     */
+    int delectByid(Integer id);
+    /**
+     * 根据tiid删除填空题
+     */
+    int delectByTIID(String id);
 }

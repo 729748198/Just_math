@@ -15,7 +15,7 @@
         <!--            UI填充造成视觉的效果！-->
     </div>
     <div class="larry-personal-body clearfix">
-        <table class="layui-hide"  id="showti" lay-filter="showti"></table>
+        <table class="layui-hide"  id="showtie" lay-filter="showtie"></table>
     </div>
 </section>
 
@@ -34,15 +34,16 @@
 
         //题目的
         table.render({
-            elem: '#showti'
+            elem: '#showtie'
             ,height: 312
-            ,url: 'http://localhost:8080/Just_math/ti/getAll' //数据接口
+            ,url: '../world/getpu' //数据接口
             ,page: true //开启分页
             ,cols: [[ //表头l
                 {field: 'id', title: 'ID', width:138, sort: true, fixed: 'center'}
-                ,{field: 'tiTitle', title: '题目', width:138}
-                ,{field: 'tiBan', title: '所属板块', width:138, sort: true}
-                ,{field: 'tiScore', title: '分数', width:138}
+                ,{field: 'user', title: '作者', width:138}
+                ,{field: 'creatTime', title: '创建时间', width:138, sort: true}
+                ,{field: 'title', title: '题目', width:138}
+                ,{field: 'content', title: '内容', width:138}
             ]]
         });
     })

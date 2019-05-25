@@ -41,4 +41,11 @@ public interface QuestionService {
      * @return
      */
     List<Question> selectAll();
+
+    /**
+     * 根据id删除题目
+     * @param id
+     * @return
+     */
+    int delectByid(String id);
 }
