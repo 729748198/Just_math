@@ -73,7 +73,7 @@
                 <li class="rating-col2"><button class="rating-col" id="eleven"><img src="<%=basePath%>img/button.png" alt="" class="rating-button"> 高数第十一章</button></li>
                 <li class="rating-col2"><button class="rating-col" id="tweven"><img src="<%=basePath%>img/button.png" alt="" class="rating-button"> 高数第十二章</button></li>
                 <li class="rating-col2"><button class="rating-col" id="gailv"><img src="<%=basePath%>img/button.png" alt="" class="rating-button"> 概率论</button></li>
-                <li class="rating-col2"><button class="rating-col" id="lisan"><img src="<%=basePath%>img/button.png" alt="" class="rating-button"> 离散数学</button></li>
+                <li class="rating-col2"><button class="rating-col" id="lisan"><img src="<%=basePath%>img/button.png" alt="" class="rating-button"> 线性代数</button></li>
             </ul>
         </div>
         <!--玩家排行-->

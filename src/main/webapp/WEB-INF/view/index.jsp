@@ -31,7 +31,7 @@
 <%--</c:otherwise>--%>
 <%--</c:choose>--%>
 
-<img src="<%=basePath%>img/homepagebcg.png" alt="" class="hp-bgc">
+<img src="<%=basePath%>img/homepagebcg.jpg" alt="" class="hp-bgc">
 <!--精模块-->
 
 <div class="jing">
