@@ -14,55 +14,55 @@
 
 ### 项目结构
 
-├─.idea
-│  ├─inspectionProfiles
-│  └─libraries
-├─db  ————数据库文件
-├─src
-│  └─main
-│      ├─java
-│      │  └─com
-│      │      └─just
-│      │          ├─fatie  ————发帖模块 
-│      │          ├─learn  ————学习板块（目前没有用）
-│      │          ├─math_world  ————大数世界模块
-│      │          ├─ti  ————做题模块
-│      │          ├─tools  ————格式类工具
-│      │          ├─user  ————用户模块包括排名逻辑
-│      │          └─webSorcket   ————大同社区模块（一个在线聊天页面）
-│      ├─resources  ——配置文件，本来打算加入Shiro,没有搞定
-│      └─webapp
-│          ├─admin  ————后台页面，使用了Layui
-│          ├─assets
-│          ├─css
-│          ├─img
-│          │  └─adminlte
-│          │      └─credit
-│          ├─js
-│          │  └─uedit  ——百度编辑器
+├─.idea  
+│  ├─inspectionProfiles  
+│  └─libraries  
+├─db  ————数据库文件  
+├─src  
+│  └─main  
+│      ├─java  
+│      │  └─com  
+│      │      └─just  
+│      │          ├─fatie  ————发帖模块   
+│      │          ├─learn  ————学习板块（目前没有用）  
+│      │          ├─math_world  ————大数世界模块  
+│      │          ├─ti  ————做题模块  
+│      │          ├─tools  ————格式类工具  
+│      │          ├─user  ————用户模块包括排名逻辑  
+│      │          └─webSorcket   ————大同社区模块（一个在线聊天页面）  
+│      ├─resources  ——配置文件，本来打算加入Shiro,没有搞定  
+│      └─webapp  
+│          ├─admin  ————后台页面，使用了Layui  
+│          ├─assets  
+│          ├─css  
+│          ├─img  
+│          │  └─adminlte  
+│          │      └─credit  
+│          ├─js  
+│          │  └─uedit  ——百度编辑器  
 │          ├─layui 
-│          ├─static  ————静态资源有点混乱
-│          └─WEB-INF
-│              └─view  ————视图页面
-└─target   
-    │  ├─upload  ————上传后的文件在这里
-    ├─maven-archiver
-    └─test-classes
-        ├─ti
-        └─user
+│          ├─static  ————静态资源有点混乱  
+│          └─WEB-INF  
+│              └─view  ————视图页面  
+└─target     
+    │  ├─upload  ————上传后的文件在这里  
+    ├─maven-archiver  
+    └─test-classes  
+        ├─ti  
+        └─user  
 
 
 
-### 要点解释：
+### 要点解释：  
 
-1. #### 页面控制交互
+1. #### 页面控制交互  
 
-   关于jsp页面对应的内容，都可以在这个控制层找到注释。
+   关于jsp页面对应的内容，都可以在这个控制层找到注释。  
 
-   java
-   └─com
-   	└─just
-       	└─JSPController
+   java  
+   └─com  
+   	└─just  
+       	└─JSPController  
 
    JSPController是控制页面跳转的控制器，传点参数到新页面，可以全改为ajax渲染
 
