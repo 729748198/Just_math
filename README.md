@@ -68,13 +68,9 @@
 
 2. #### 公式编辑器：
 
-   (1).首先映入js文件
+   (1).首先引入js文件
 
-   ![1561360500811](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1561360500811.png)
 
-   
-
-   
 
    (2).需要插入编辑器的地方写一个div占位符
 
