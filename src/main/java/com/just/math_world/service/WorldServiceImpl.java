@@ -32,8 +32,16 @@ public class WorldServiceImpl implements WorldService{
     }
 
     @Override
-    public List<Math_world> getAllPu() {
-        return math_worldMapper.selectPu();
+    public List<Math_world> getAllPu(String type) {
+         if(type.equals("text")){
+            return math_worldMapper.selectPuText();
+        }else if(type.equals("pic")){
+            return math_worldMapper.selectPuPic();
+        }else if(type.equals("vdo")){
+            return math_worldMapper.selectPuVdo();
+        }else {
+             return math_worldMapper.selectPu();
+         }
     }
 
     @Override

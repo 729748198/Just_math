@@ -31,7 +31,7 @@ public interface WorldService {
      * 所有非精品
      * @return
      */
-    List<Math_world> getAllPu();
+    List<Math_world> getAllPu(String type);
     /**
      * 获取图片
      */

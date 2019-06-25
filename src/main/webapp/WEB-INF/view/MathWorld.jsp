@@ -107,24 +107,7 @@
         </div>
         <!--内容-->
         <div class="worldcontent" id="content">
-            <c:forEach items="${worlds}" var="world"  >
-                <c:if test="${world.worldtype==0}">
-                <tr>
-                    <td>用户名：${world.user}</td>
-                    <td>标题：${world.title}</td>
-                    <td>内容：${world.content}</td>
-                    <td>时间：<fmt:formatDate value="${world.creatTime}" pattern="yyyy年MM月dd日HH点mm分ss秒" /></td>
-                </tr>
-                </c:if>
-                <c:if test="${world.worldtype==1}">
-                    <tr>
-                        <td>用户名：${world.user}</td>
-                        <td>标题：${world.title}</td>
-                        <td>内容：<img src="${world.content}"/></td>
-                        <td>时间：<fmt:formatDate value="${world.creatTime}" pattern="yyyy年MM月dd日HH点mm分ss秒" /></td>
-                    </tr>
-                </c:if>
-            </c:forEach>
+
         </div>
 
     </div>
@@ -261,6 +244,7 @@
                 success:function(data){
 
                     var jsObject = JSON.parse(data);
+                    jsObject=jsObject.data;
                     var str="";
                     var str='   <ul class="worldcontent">' ;
                     for(var i=0;i<jsObject.length;i++){

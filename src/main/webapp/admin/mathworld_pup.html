@@ -11,6 +11,13 @@
 </head>
 <body >
 <section class="layui-larry-box">
+    <div class="larry-personal">
+        <blockquote class="layui-elem-quote layui-text">
+            <!--<header class="larry-personal-tit">-->
+            <span>图片审核</span>
+            <!--</header>&lt;!&ndash; /header &ndash;&gt;-->
+        </blockquote>
+    </div>
     <div class="larry-personal-body clearfix">
         <!--            UI填充造成视觉的效果！-->
     </div>
@@ -36,14 +43,14 @@
         table.render({
             elem: '#showtie'
             ,height: 312
-            ,url: '../world/getpu' //数据接口
+            ,url: '../world/getpu?type=pic' //数据接口
             ,page: true //开启分页
             ,cols: [[ //表头l
                 {field: 'id', title: 'ID', width:138, sort: true, fixed: 'center'}
                 ,{field: 'user', title: '作者', width:138}
                 ,{field: 'creatTime', title: '创建时间', width:138, sort: true}
                 ,{field: 'title', title: '题目', width:138}
-                ,{field: 'content', title: '内容', width:138}
+                ,{field: 'content', title: '内容', width:138,templet:'<div><img src="http://120.78.66.11:8080/Just_math{{ d.content}}"></div>'}
             ]]
         });
     })

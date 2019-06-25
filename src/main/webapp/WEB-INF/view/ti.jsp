@@ -53,10 +53,10 @@
             目录<br>
             <div class="exe-chapter">
                 <ul class="exe-chapter">
-                    <li><a href="" class="exe-chapter">Ⅰ 函数与极限</a></li>
-                    <li><a href="<%=path%>/just/dotian" class="exe-chapter">Ⅱ 导数与微分</a></li>
-                    <li><a href="" class="exe-chapter">Ⅲ 微分中值定理与导数的应用</a></li>
-                    <li><a href="" class="exe-chapter">Ⅳ 不定积分</a></li>
+                    <li value="1" class="li-ti"><a href="" class="exe-chapter" >Ⅰ 函数与极限</a></li>
+                    <li value="2" class="li-ti"><a href="" class="exe-chapter">Ⅱ 导数与微分</a></li>
+                    <li value="3" class="li-ti"><a href="" class="exe-chapter">Ⅲ 微分中值定理与导数的应用</a></li>
+                    <li><a href="" class="ejxe-chapter">Ⅳ 不定积分</a></li>
                     <li><a href="" class="exe-chapter">Ⅴ 定积分</a></li>
                     <li><a href="" class="exe-chapter">Ⅵ 定积分的应用</a></li>
                     <li><a href="" class="exe-chapter">Ⅶ 微分方程</a></li>
@@ -70,6 +70,9 @@
                 </ul>
             </div>
         </div>
+        <script>
+
+        </script>
         <!--题目-->
         <div class="exe-exe">
             <!--抬头-->
@@ -148,7 +151,13 @@
                 }
                 $(document).ready(function () {
                   getti();
+                  //点击不同的章节显示对应题目
+
                 });
+                $(".li-ti").click(function () {
+                    var ban=(this).value;
+                    console.log(ban);
+                })
                 var ban="第一章";
                 $("#tijiao").click(function () {
                         var tiid=$("#tiid").text();

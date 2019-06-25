@@ -7,6 +7,7 @@ import com.just.math_world.entity.WorldFollow;
 import com.just.math_world.service.WorldFansService;
 import com.just.math_world.service.WorldFollowService;
 import com.just.math_world.service.WorldService;
+import com.just.tools.DataFormat;
 import com.just.tools.FileCreat;
 import com.just.tools.MD5;
 import org.apache.commons.io.FilenameUtils;
@@ -15,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -110,10 +112,11 @@ public class WorldController {
      */
     @RequestMapping("/getjing")
     @ResponseBody
-    public List<Math_world> getAlljing(){
+    public Map<String, Object> getAlljing(){
+
         List<Math_world>list=service.getAllJIng();
 
-        return  list;
+        return DataFormat.formap(list);
     }
     /**
      * 获取非精品接口
@@ -121,14 +124,10 @@ public class WorldController {
      */
     @RequestMapping("/getpu")
     @ResponseBody
-    public Map<String,Object> getAllPu(){
-        Map<String,Object>map=new HashMap<>();
-        List<Math_world>list=service.getAllJIng();
-        map.put("code", 0);
-        map.put("msg", "succ");
-        map.put("conut", list.size());
-        map.put("data",list);
-        return  map;
+    public Map<String,Object> getAllPu( @RequestParam(defaultValue = "all") String type){
+
+        List<Math_world>list=service.getAllPu(type);
+        return  DataFormat.formap(list);
     }
  //关注模板
 

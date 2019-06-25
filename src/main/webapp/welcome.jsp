@@ -357,7 +357,7 @@
         <div class="wel-teacher">
             <text class="teacher-1">关于叶慧老师</text>
             <img src="<%=basePath%>/img/main-user.png" alt="" class="wel-teacher">
-            <text class="teacher-2">叶慧 <br> <text style="font-size:15px;font-weight: normal">理学院副教授</text></text>
+            <text class="teacher-2">叶慧老师 <br> <text style="font-size:15px;font-weight: normal"></text></text>
             <text class="teacher-3"><b>注重教学创新，被学生自发誉为“高数女神” <br>江苏电视台、镇江电视台进行教学专访，新浪、搜狐、现代快报、扬子晚报等多家媒体转载报道</b> </text>
             <text class="teacher-4"><b>教学成果显著，被学校评为教学名师，省度优秀党员，省优秀教学工作者。自创“精互同”教学模式，获学校“教学成果特等奖”</b> <br></text>
 

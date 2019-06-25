@@ -98,7 +98,8 @@
                         <th class="rating-table-th rating-col4 rating-three">${first.he}</th>
                     </tr>
                     <tr class="rating-table-tr">
-                        <th class="rating-table-th medal rating-col1"><img src="<%=basePath%>img/second.png" alt="" class="rating-medal"></th>
+                        <th class="rati
+                        ng-table-th medal rating-col1"><img src="<%=basePath%>img/second.png" alt="" class="rating-medal"></th>
                         <th class="rating-table-user rating-col2"><img src="<%=basePath%>img/worlduser.jpg" alt="" class="rating-table-user"></th>
                         <th class="rating-table-th rating-col3">${second.username}</th>
                         <th class="rating-table-th rating-col4 rating-three">${second.he}</th>

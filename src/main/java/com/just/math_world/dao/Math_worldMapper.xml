@@ -50,6 +50,30 @@
     from math_world
     where is_OK=0
   </select>
+  <select id="selectPuText" resultMap="ResultMapWithBLOBs"  >
+  select
+  <include refid="Base_Column_List" />
+  ,
+  <include refid="Blob_Column_List" />
+  from math_world
+  where is_OK=0 and worldtype=0;
+</select>
+  <select id="selectPuPic" resultMap="ResultMapWithBLOBs"  >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from math_world
+    where is_OK=0 and worldtype=1;
+  </select>
+  <select id="selectPuVdo" resultMap="ResultMapWithBLOBs"  >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from math_world
+    where is_OK=0 and worldtype=2;
+  </select>
   <select id="selectPic" resultMap="ResultMapWithBLOBs"  >
     select
     <include refid="Base_Column_List" />
@@ -58,6 +82,7 @@
     from math_world
     where worldtype=1;
   </select>
+
   <select id="selectTxt" resultMap="ResultMapWithBLOBs"  >
     select
     <include refid="Base_Column_List" />

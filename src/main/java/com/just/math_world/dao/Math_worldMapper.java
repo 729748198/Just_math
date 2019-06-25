@@ -44,6 +44,21 @@ public interface Math_worldMapper {
      */
     List<Math_world> selectPu();
     /**
+     * 获取普通文本作品
+     * @return
+     */
+    List<Math_world> selectPuText();
+    /**
+     * 获取普通图片作品
+     * @return
+     */
+    List<Math_world> selectPuPic();
+    /**
+     * 获取普通视频作品
+     * @return
+     */
+    List<Math_world> selectPuVdo();
+    /**
      * 根据用户名获取所有作品
      * @param name
      * @return
