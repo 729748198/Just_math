@@ -68,45 +68,69 @@
 
 2. #### 公式编辑器：
 
-   (1).首先引入js文件
+   (1).首先引入js文件  
+   
+ <script src="../js/editor.js"></script>
 
 
+   (2).需要插入编辑器的地方写一个div占位符  
 
-   (2).需要插入编辑器的地方写一个div占位符
+```html
+<div id="demo">
+```
 
-   ![1561360558075](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1561360558075.png)
+
 
    (3).JavaScript渲染
 
-   ![1561360913473](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1561360913473.png)
+    ```html
+<script>
+    var editor;
 
-   
+    window.onload = function () {
+        editor = com.wiris.jsEditor.JsEditor.newInstance({'language': 'en'});
+        editor.insertInto(document.getElementById('demo'));
+    };
 
-   
+</script>
+    ```
 
-   此时，编辑器已经出现了，编辑器的显示隐藏用![1561360972178](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1561360972178.png)就可以
+
+
+   此时，编辑器已经出现了，编辑器的显示隐藏
+
+```javascript
+ function show() {
+                    $("#demo").show();
+                }
+                function hide() {
+                    $("#demo").hide();
+                }
+```
+
+
 
    （4）.上传题目公式
 
-   ![1561361483070](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1561361483070.png)
-
    
 
-               var answerformarch=editor.getMathML();  ————获取公式的字符串，用来与正确答案进行比对
-               var answerforshow=$(".wrs_container").html();  ————获取公式的JavaScript代码，可以在html中展示为公式
-               
-               后端传入数据库就行。
+```javascript
+           var answerformarch=editor.getMathML();  ————获取公式的字符串，用来与正确答案进行比对
+           var answerforshow=$(".wrs_container").html();  ————获取公式的JavaScript代码，可以在html中展示为公式
+           
+           后端传入数据库就行。
+```
 
-       
+
    (5). 公式在页面上的展示
-
-   ![1561366870637](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1561366870637.png)
 
    用ajax获取到这段html代码后，直接嵌入到div中，就可以展示为公式了。
 
    
 
-      $("#right").html(data.rightanswer);
+```javascript
+  $("#right").html(data.rightanswer);
+```
 
 3. #### 后台（管理页面）
 
