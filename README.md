@@ -62,8 +62,7 @@
    java
    └─com
    	└─just
-
-   ​     	└─JSPController
+       	└─JSPController
 
    JSPController是控制页面跳转的控制器，传点参数到新页面，可以全改为ajax渲染
 
@@ -102,8 +101,7 @@
                
                后端传入数据库就行。
 
-
-   ​        
+       
    (5). 公式在页面上的展示
 
    ![1561366870637](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1561366870637.png)
